@@ -83,7 +83,7 @@ INSTALL_STEPS = f"""
 <li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
 <li>Print something. The installer recognised the printer and set it up as the default.</li>
 </ol>
-<p class="note"><strong>Had the printer maker's old driver installed</strong> (Canon IJ, etc.)? Restart the Mac once, then unplug and re-plug the printer. The old driver is moved to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted.</p>"""
+<p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see below.</p>"""
 
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
@@ -92,8 +92,8 @@ def brand_page(b):
     desc = f"Free native arm64 macOS driver for {len(ms)} {b} printers. Fixes 'The printer software is not compatible with this device' on macOS 27 without Rosetta. Step-by-step install."
     body = f"""
 <h1>{html.escape(b)} printer drivers for Apple Silicon Macs</h1>
-<p class="lead">{len(ms)} {html.escape(b)} models work on M-series Macs with this free, native (arm64) driver — no Rosetta, no {html.escape(b)} software needed.</p>
-<div class="card"><strong>Search your exact model instead:</strong> <a href="{BASE}/#search">use the search box on the home page</a> — it shows the one command you need.</div>
+<p class="lead">{len(ms)} {html.escape(b)} models work again on Apple Silicon Macs with this free driver. Install once, print again.</p>
+<div class="card"><strong>Looking for your exact model?</strong> <a href="{BASE}/#search">Search on the home page</a>.</div>
 <h2>Install (same package for every model)</h2>
 {INSTALL_STEPS}
 <h2>Printer not set up automatically?</h2>
@@ -130,6 +130,7 @@ ex_rows = "\n".join(f'<tr><td>{n}</td><td><code>sudo gutenprint-add {i}</code></
 faq = [
  ("Why does my Mac say “The printer software is not compatible with this device”?",
   "Your printer's driver was compiled for Intel Macs only. macOS 27 flags Intel-only printer software on Apple Silicon (M1–M4) Macs, and Rosetta, which used to run it, is being phased out. This site provides a native replacement."),
+ ("I had the printer maker's old driver installed. Anything to do?", "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension that blocks macOS's own USB printer driver; the installer moves the old driver to /Users/Shared/printer-driver-backup (nothing is deleted) and macOS needs a restart to notice."),
  ("Which printers get set up automatically?", "Any printer connected over USB during installation whose USB name matches a model in the database — e.g. “Canon MP250 series”, “EPSON Stylus Photo R300”, “Brother HL-5040 series”. Others take one gutenprint-add command, shown when you search your model on this page."),
  ("Is it safe? Will macOS complain?", "The installer is signed with an Apple Developer ID and notarized by Apple, so Gatekeeper opens it without warnings. Everything it does is documented in SECURITY.md on GitHub and the install script is plain shell you can read."),
  ("Is it free?", "Yes. It is the open-source Gutenprint driver (GPL-2.0), compiled natively for Apple Silicon and packaged as a one-click macOS installer."),
@@ -151,20 +152,20 @@ home_ld = [
            {"@type": "HowToStep", "text": "Print. The installer sets the printer up automatically; otherwise search the model on the site for the one command to add it."}]},
 ]
 home = f"""
-<h1>Old printer, new Mac? Get it printing on Apple Silicon.</h1>
-<p class="lead">Free native (arm64) macOS driver for <strong>{len(models)} printers</strong> — Canon PIXMA, Epson Stylus, HP DeskJet &amp; LaserJet, Brother, Samsung, Lexmark, Kyocera, Xerox, Ricoh, Oki, Kodak and more. Fixes <em>“The printer software is not compatible with this device”</em> on macOS 27 without Rosetta.</p>
+<h1>Printer stopped working after the macOS update?</h1>
+<p class="lead">Free fix for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs. Install once, print again.</p>
 
 <figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
 
 <h2>Install</h2>
 {INSTALL_STEPS}
 
-<h2 id="search">Is my printer supported? / It wasn't set up automatically</h2>
-<p>Type your model to check. If the installer didn't pick it up (Wi-Fi printer, unusual USB name, or it wasn't plugged in), you'll get the one command that adds it.</p>
+<h2 id="search">Is my printer supported?</h2>
+<p>Type your model. You'll also get the command to add it by hand if the installer didn't pick it up.</p>
 <form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off"></form>
 <ul id="results"></ul>
 <div id="answer" class="card hidden"></div>
-<p class="note">Not listed? Try fewer words (just the model number). If it still isn't there, Gutenprint doesn't support that model. Also: if macOS already sees your printer via AirPrint, you don't need any of this.</p>
+<p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in BRANDS[:16])} <a href="{BASE}/brands/">all brands →</a></span></p>
 
 <h2>Questions</h2>
@@ -173,7 +174,7 @@ home = f"""
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
 
 <h2>How it works</h2>
-<p>The package is <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a> compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
+<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
 
 <script>
 const BASE={json.dumps(BASE)};let MODELS=null,sel=-1;

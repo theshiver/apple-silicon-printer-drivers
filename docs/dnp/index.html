@@ -39,8 +39,8 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 <main>
 
 <h1>DNP printer drivers for Apple Silicon Macs</h1>
-<p class="lead">9 DNP models work on M-series Macs with this free, native (arm64) driver — no Rosetta, no DNP software needed.</p>
-<div class="card"><strong>Search your exact model instead:</strong> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">use the search box on the home page</a> — it shows the one command you need.</div>
+<p class="lead">9 DNP models work again on Apple Silicon Macs with this free driver. Install once, print again.</p>
+<div class="card"><strong>Looking for your exact model?</strong> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Search on the home page</a>.</div>
 <h2>Install (same package for every model)</h2>
 
 <ol class="steps">
@@ -48,7 +48,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 <li><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
 <li>Print something. The installer recognised the printer and set it up as the default.</li>
 </ol>
-<p class="note"><strong>Had the printer maker's old driver installed</strong> (Canon IJ, etc.)? Restart the Mac once, then unplug and re-plug the printer. The old driver is moved to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted.</p>
+<p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see below.</p>
 <h2>Printer not set up automatically?</h2>
 <p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody><tr><td>Dai Nippon Printing DS40</td><td><code>sudo gutenprint-add dnp-ds40</code></td></tr>

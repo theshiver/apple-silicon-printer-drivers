@@ -1,187 +1,95 @@
 # Apple Silicon Printer Drivers
 
-**🔎 Website with model search: https://theshiver.github.io/apple-silicon-printer-drivers/** — type your printer, get the command.
-
-**The problem:** many printers (Canon PIXMA, Epson Stylus, HP DeskJet/LaserJet, Brother, Samsung, Lexmark…)
-only ever got *Intel* macOS drivers. On an Apple Silicon Mac they ran through Rosetta, and macOS 27
-now shows **"The printer software is not compatible with this device"** — and Rosetta is going away.
+**Your printer stopped working after a macOS update? "The printer software is not compatible with this device"?**
 
 ![macOS error: The printer software is not compatible with this device](docs/not-compatible.png)
 
-**The fix:** one installer with [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/), the open-source
-driver suite, compiled **natively for Apple Silicon**. It supports **3,578 printer models**. No Rosetta,
-no vendor software.
+Free fix for 3,500+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
+Website: **https://theshiver.github.io/apple-silicon-printer-drivers/**
 
----
-
-## Install — 3 steps
+## Fix it
 
 1. Plug the printer into the Mac with USB and switch it on.
-2. Download the `.pkg` from the **[latest release](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)**.
-3. Open the downloaded `.pkg` and click through the installer (it asks for your password).
-   The package is signed and notarized by Apple, so there is no security warning.
+2. **[Download the installer](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)** and open it. Click through, enter your password. (Signed and notarized by Apple, no warnings.)
+3. Print.
 
-The installer looks at the printers connected over USB, recognises the ones Gutenprint supports and
-**creates the printer for you** (it becomes the default). Try printing — you're probably done.
+That's it. The installer finds the printer and sets it up.
 
-**If your printer maker's old driver was installed before** (e.g. Canon IJ): restart the Mac once,
-then unplug and re-plug the printer. The installer moves the old driver to `/Users/Shared/printer-driver-backup`
-(nothing is deleted).
+## Didn't work?
 
----
-
-## If the printer wasn't set up automatically
-
-(printer not connected during install, on Wi-Fi, or the USB name didn't match)
-
-**A. Find your printer's id** — search by name, no password needed:
-
-```sh
-gutenprint-add --list "iP4300"
-```
-
-Output looks like `bjc-PIXMA-iP4300    Canon PIXMA iP4300`. The first word is the id.
-
-**B. Add it:**
-
-```sh
-sudo gutenprint-add bjc-PIXMA-iP4300
-```
-
-That creates the printer if it's on USB. For a **network / Wi-Fi** printer add a name and address:
-
-```sh
-sudo gutenprint-add escp2-r300 Epson_R300 socket://192.168.1.50
-```
-
-(`lpinfo -v` lists the addresses macOS sees.) Or go to *System Settings → Printers & Scanners → Add →
-Use: Select Software…* and pick the entry ending in **"Apple Silicon"**.
-
-### Copy-paste examples
-
-| Printer | Command |
-|---|---|
-| Canon PIXMA MP250 | `sudo gutenprint-add bjc-MULTIPASS-MP250` |
-| Canon PIXMA iP4300 | `sudo gutenprint-add bjc-PIXMA-iP4300` |
-| Canon PIXMA MG5100 | `sudo gutenprint-add bjc-PIXMA-MG5100` |
-| Canon PIXMA MX922 | `sudo gutenprint-add bjc-PIXMA-MX922` |
-| Canon SELPHY CP400 | `sudo gutenprint-add canon-cp400` |
-| Epson Stylus Photo R300 | `sudo gutenprint-add escp2-r300` |
-| Epson Stylus Photo 1400 | `sudo gutenprint-add escp2-1400` |
-| Epson WorkForce 30 | `sudo gutenprint-add escp2-wf30` |
-| HP DeskJet 500 | `sudo gutenprint-add pcl-500` |
-| HP LaserJet 1010 | `sudo gutenprint-add hp-lj_1010` |
-| HP Color LaserJet 4500 | `sudo gutenprint-add hp-clj_4500` |
-| Brother HL-5040 | `sudo gutenprint-add brother-hl-5040` |
-| Samsung ML-2150 | `sudo gutenprint-add samsung-ml-2150` |
-| Lexmark Optra E | `sudo gutenprint-add lexmark-optra_e` |
-| Xerox Phaser 6130N | `sudo gutenprint-add xerox-phaser_6130n` |
-| Kyocera FS-1000 | `sudo gutenprint-add kyocera-fs-1000` |
-| Ricoh Aficio 401 | `sudo gutenprint-add ricoh-afc_401` |
-| Oki B430 | `sudo gutenprint-add oki-b430` |
-| Dell 3100cn | `sudo gutenprint-add dell-3100cn` |
-| Sharp AR-161 | `sudo gutenprint-add sharp-ar-161` |
-| Kodak 6800 (dye-sub) | `sudo gutenprint-add kodak-6800` |
-| DNP DS40 (dye-sub) | `sudo gutenprint-add dnp-ds40` |
-| Mitsubishi CP-3020D (dye-sub) | `sudo gutenprint-add mitsubishi-3020d` |
-| Sony UP-DR150 (dye-sub) | `sudo gutenprint-add sony-updr150` |
-| Fujifilm ASK-300 (dye-sub) | `sudo gutenprint-add fujifilm-ask-300` |
+- **It still shows the old error / old printer entry:** restart the Mac once, then unplug and re-plug the printer.
+- **The printer wasn't added:** check it's supported and get the one command to add it, on the website: https://theshiver.github.io/apple-silicon-printer-drivers/#search
+- **Wi-Fi / network printer:** see the FAQ below.
+- **Something else:** [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
 
 ---
 
-## Supported brands
+## Supported printers
 
-**3,578 models.** The main brands:
+3,578 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
-1. **Canon** — PIXMA iP / iX / MP / MG / MX / TS / TR / Pro, BJC, S-series, i-series, SELPHY CP (~1,250)
-2. **Epson** — Stylus Color / Photo / Pro, Stylus C / D / R / RX / SX, Expression, WorkForce, Artisan (~590)
-3. **HP** — DeskJet, LaserJet, Color LaserJet, OfficeJet, PhotoSmart, Business Inkjet (~400)
-4. **Brother** — HL, DCP, MFC laser series
-5. **Samsung** — ML, CLP, CLX, SCX
-6. **Lexmark** — Optra, E / C / T / X series, 4076
-7. **Xerox** — Phaser, WorkCentre, DocuPrint
-8. **Kyocera** — FS, KM, Ecosys
-9. **Ricoh** (+ Gestetner, Lanier, NRG, Savin, Infotec) — Aficio, SP (~740)
-10. **Oki** — B / C series
-11. **Dell** — laser series
-12. **Sharp** — AR series
-13. **Kodak** — 605 / 6800 / 6850 / 7000 / 8800 dye-sub
-14. **DNP / Dai Nippon** — DS40 / DS80 / RX1 / DS620
-15. **Mitsubishi** — CP-D / CP-K / CP-3020 dye-sub
-16. **Sony** — UP-DR / UP-CR dye-sub
-17. **Fujifilm** — ASK dye-sub
-18. **Citizen, Shinko, Olympus** — dye-sub photo printers
+Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
 
-Search to be sure: `gutenprint-add --list "<part of the name>"` or [the website](https://theshiver.github.io/apple-silicon-printer-drivers/).
+Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
 
-**Not covered:** printers that need a vendor-only protocol Gutenprint doesn't speak — most modern
-Canon/HP/Brother laser MFPs, Canon "G" ink-tank series, and anything that already works via
-**AirPrint** (if macOS finds your printer by itself, you don't need this).
+## FAQ
 
-**Scanner:** all-in-one scanners are not handled here (vendor scanner drivers are also Intel-only).
-Native options: [SANE](http://www.sane-project.org/) via Homebrew, or VueScan.
+**Why did my printer stop working?**
+The printer maker's driver was built for Intel Macs only. It ran on Apple Silicon through Rosetta until macOS 27, which no longer allows that. The maker never released an Apple Silicon version. This installer replaces it with a native driver.
 
----
+**Still on macOS 26 or earlier?**
+Your printer works now, but will break when you update if it uses one of those drivers. Install this before or after, either way.
 
-## Uninstall
+**I had the old Canon driver. Why the restart?**
+Canon's driver installs a small kernel extension that blocks macOS's own USB printer driver. The installer moves it aside (to `/Users/Shared/printer-driver-backup`, nothing is deleted) and macOS needs one restart to notice.
 
-```sh
-sudo ./uninstall.sh
-```
+**My printer is on Wi-Fi, not USB.**
+Install the package, then either add it in *System Settings → Printers & Scanners → Add → Use: Select Software…* and pick the entry ending in "Apple Silicon", or in Terminal:
+`sudo gutenprint-add <model-id> MyPrinter socket://<printer-ip>` (model id from the website search; `lpinfo -v` lists addresses).
 
-Removes the driver, its printers, all `Gutenprint-*.ppd` files and `gutenprint-add`. Vendor files the
-installer moved aside stay in `/Users/Shared/printer-driver-backup` if you want them back.
+**Add a printer by hand (not detected on USB):**
+`gutenprint-add --list "iP4300"` to find the id, then `sudo gutenprint-add bjc-PIXMA-iP4300`.
 
----
+**Does the scanner work?**
+No, only printing. For scanning use VueScan or SANE.
 
-## Technical details (for the curious)
+**Is it safe?**
+The installer is signed with an Apple Developer ID and notarized by Apple. Every step it takes is listed in [SECURITY.md](SECURITY.md); the install script is plain shell you can read. Releases are also built from source on GitHub Actions with a build attestation.
 
-What gets installed:
-
-| Path | Purpose |
-|---|---|
-| `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, ad-hoc signed) |
-| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson` | maintenance commands (head clean, nozzle check) |
-| `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator (used by `gutenprint-add` and the installer) |
-| `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | helper described above |
-| `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |
-| `/Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd` | PPDs generated on demand, with absolute filter paths |
-
-The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against Gutenprint's
-model names (word match, shortest name wins) and calls `gutenprint-add` for it.
-
-Why it is built this way — things that bit us on macOS 27:
-
-- Apple's `cupsd` runs filters in a sandbox that can read `/Library/Printers` but **not** `/usr/local`,
-  and `/usr/libexec/cups` is SIP-protected. So everything lives under `/Library/Printers/Gutenprint`
-  and the PPD's `*cupsFilter` lines use absolute paths.
-- Gutenprint needs `CFLAGS="-O2 -D_DARWIN_C_SOURCE"` or `netinet/ip.h` fails on `u_char`.
-- Canon's IJ driver ships a codeless `AppleUSBMergeNub` kext (`/Library/Extensions/BJUSBLoad.kext`) that
-  pins its x86_64 USB class-driver plugin to the printer in the I/O Registry. While it is loaded the `usb`
-  backend refuses to fall back to Apple's generic class driver — that is why the installer removes it
-  and why a reboot + replug is needed once. (Other vendors' leftovers: open an issue with `kextstat`
-  / `ls /Library/Extensions` output and we'll add them.)
-- macOS 27 marks any queue whose filters lack an arm64 slice as *Software Incompatible* on every
-  `cupsd` start, even when the job would still run under Rosetta.
-
-Reproducible build: `build/build-gutenprint.sh` (needs Xcode Command Line Tools + Homebrew `gettext`),
-then `build/make-pkg.sh <version>`. Website: `python3 site/build-site.py` → `docs/`.
-
-This project started as a fix for one Canon PIXMA MP250 on a MacBook Air; it turned out the same
-problem hits thousands of models, so it became generic.
-
-## Is it safe?
-
-The installer is **signed with an Apple Developer ID and notarized by Apple** (Gatekeeper checks it on open).
-Releases are additionally built from source on GitHub's own Apple Silicon runners (`ci-*` assets with a build-provenance attestation) so you can compare the notarized package against a build nobody's laptop touched.
-
-What the installer does, line by line, is in [SECURITY.md](SECURITY.md). The post-install script is 60 lines of plain shell.
+**Uninstall:** `sudo ./uninstall.sh`
 
 ## ☕ Buy me a coffee
 
-This started as a weekend fix for one printer and grew into something a lot of people needed. If it saved you from buying a new printer, you can [sponsor me on GitHub](https://github.com/sponsors/theshiver) — a coffee is plenty.
+This started as a weekend fix for one printer and grew into something a lot of people needed. If it saved you from buying a new printer, you can [sponsor me on GitHub](https://github.com/sponsors/theshiver). A coffee is plenty.
+
+---
+
+## Technical details
+
+The package is [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
+
+| Path | Purpose |
+|---|---|
+| `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, signed) |
+| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson` | maintenance commands (head clean, nozzle check) |
+| `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator |
+| `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | adds a printer by model id |
+| `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |
+| `/Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd` | PPDs generated on demand, with absolute filter paths |
+
+The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against Gutenprint's model names (word match, shortest name wins) and calls `gutenprint-add` for it.
+
+Things that bit us on macOS 27, for anyone porting another driver:
+
+- Apple's `cupsd` runs filters in a sandbox that can read `/Library/Printers` but **not** `/usr/local`, and `/usr/libexec/cups` is SIP-protected. Everything lives under `/Library/Printers/Gutenprint` and the PPD's `*cupsFilter` lines use absolute paths.
+- Gutenprint needs `CFLAGS="-O2 -D_DARWIN_C_SOURCE"` or `netinet/ip.h` fails on `u_char`.
+- Canon's IJ driver ships a codeless `AppleUSBMergeNub` kext (`/Library/Extensions/BJUSBLoad.kext`) that pins its x86_64 USB class-driver plugin to the printer in the I/O Registry. While it is loaded the `usb` backend won't fall back to Apple's generic class driver. Other vendors' leftovers: open an issue with `ls /Library/Extensions` output.
+- macOS 27 marks any queue whose filters lack an arm64 slice as *Software Incompatible* on every `cupsd` start, even when the job would still run under Rosetta.
+
+Build: `build/build-gutenprint.sh` (Xcode CLT + Homebrew `gettext`), then `build/make-pkg.sh <version>` (signs and notarizes when Developer ID certs are present). Website: `python3 site/build-site.py` → `docs/`.
+
+This project started as a fix for one Canon PIXMA MP250 on a MacBook Air. Contributions welcome.
 
 ## License
 
-Gutenprint is GPL-2.0 (see `LICENSE-gutenprint`); source: gutenprint-5.3.4.tar.xz from SourceForge.
-Scripts in this repo: MIT.
+Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). Scripts, installer and site: MIT (`LICENSE`).
