@@ -1,6 +1,6 @@
 # Printer drivers for Apple Silicon Macs (Canon MP250 and ~3,500 others)
 
-**🔎 Website with model search: https://theshiver.github.io/mp250-arm-driver/** — type your printer, get the command.
+**🔎 Website with model search: https://theshiver.github.io/apple-silicon-printer-drivers/** — type your printer, get the command.
 
 **The problem:** many older printers (Canon PIXMA, Epson Stylus, HP DeskJet/LaserJet, Brother, Samsung…)
 only ever got *Intel* macOS drivers. On an Apple Silicon Mac they ran through Rosetta, and macOS 27
@@ -16,11 +16,11 @@ It was built for the **Canon PIXMA MP250**, but the same package drives every pr
 ## Step by step: Canon MP250
 
 1. Plug the printer into the Mac with USB and switch it on.
-2. Download the `.pkg` from the **[latest release](https://github.com/theshiver/mp250-arm-driver/releases/latest)**.
+2. Download the `.pkg` from the **[latest release](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)**.
 3. Open **Terminal** (Spotlight → type `Terminal`) and paste this, then press Enter and type your password:
 
    ```sh
-   sudo installer -pkg ~/Downloads/Canon-MP250-arm64-Gutenprint-1.1.0.pkg -target /
+   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.2.0.pkg -target /
    ```
 
 4. **If you had Canon's driver installed before: restart the Mac, then unplug and replug the printer once.**

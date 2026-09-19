@@ -3,7 +3,7 @@
 set -u
 B="/Users/Shared/canon-mp250-backup"
 NEED_REBOOT=0
-log() { echo "[mp250-arm] $*"; }
+log() { echo "[printer-drivers] $*"; }
 
 # 1) Canon's codeless kext pins its x86_64 USB class driver to the printer -> generic driver can't be used
 if [ -d /Library/Extensions/BJUSBLoad.kext ]; then

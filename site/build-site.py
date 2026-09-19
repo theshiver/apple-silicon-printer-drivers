@@ -7,10 +7,10 @@ import json, re, html, datetime, pathlib, collections
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
-BASE = "https://theshiver.github.io/mp250-arm-driver"
-REPO = "https://github.com/theshiver/mp250-arm-driver"
+BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
+REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "Canon-MP250-arm64-Gutenprint-1.1.0.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.2.0.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))

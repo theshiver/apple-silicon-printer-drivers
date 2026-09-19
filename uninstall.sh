@@ -4,5 +4,5 @@
 lpadmin -x Canon_MP250 2>/dev/null
 rm -f /usr/local/bin/gutenprint-add
 rm -rf /Library/Printers/Gutenprint /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd
-pkgutil --forget com.github.mp250-arm-driver >/dev/null 2>&1
+pkgutil --forget com.github.apple-silicon-printer-drivers >/dev/null 2>&1
 echo "removed"

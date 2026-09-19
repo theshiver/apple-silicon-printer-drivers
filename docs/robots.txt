@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://theshiver.github.io/mp250-arm-driver/sitemap.xml
+Sitemap: https://theshiver.github.io/apple-silicon-printer-drivers/sitemap.xml
