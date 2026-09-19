@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generic printer driver for Apple Silicon Mac (M1/M2/M3/M4) — 20 models</title>
+<meta name="description" content="Free native arm64 macOS driver for 20 Generic printers. Fixes &#x27;The printer software is not compatible with this device&#x27; on macOS 27 without Rosetta. Step-by-step install.">
+<meta name="keywords" content="Generic driver mac, Generic apple silicon, Generic macos 27, printer software not compatible with this device">
+<link rel="canonical" href="https://theshiver.github.io/mp250-arm-driver/generic/">
+<meta property="og:type" content="website"><meta property="og:title" content="Generic printer driver for Apple Silicon Mac (M1/M2/M3/M4) — 20 models">
+<meta property="og:description" content="Free native arm64 macOS driver for 20 Generic printers. Fixes &#x27;The printer software is not compatible with this device&#x27; on macOS 27 without Rosetta. Step-by-step install."><meta property="og:url" content="https://theshiver.github.io/mp250-arm-driver/generic/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Generic printer driver for Apple Silicon Mac (M1/M2/M3/M4) \u2014 20 models","numberOfItems":20,"itemListElement":[{"@type":"ListItem","position":1,"name":"Generic PCL 4 LF Printer"},{"@type":"ListItem","position":2,"name":"Generic PCL 4 Printer"},{"@type":"ListItem","position":3,"name":"Generic PCL 4 Printer wide margin"},{"@type":"ListItem","position":4,"name":"Generic PCL 5 LF Printer"},{"@type":"ListItem","position":5,"name":"Generic PCL 5 Printer"},{"@type":"ListItem","position":6,"name":"Generic PCL 5 Printer wide margin"},{"@type":"ListItem","position":7,"name":"Generic PCL 5c LF Printer"},{"@type":"ListItem","position":8,"name":"Generic PCL 5c Printer"},{"@type":"ListItem","position":9,"name":"Generic PCL 5e LF Printer"},{"@type":"ListItem","position":10,"name":"Generic PCL 5e Printer"},{"@type":"ListItem","position":11,"name":"Generic PCL 6 LF Printer wide margin"},{"@type":"ListItem","position":12,"name":"Generic PCL 6 Printer wide margin"},{"@type":"ListItem","position":13,"name":"Generic PCL 6 Tabl Printer wide margin"},{"@type":"ListItem","position":14,"name":"Generic PCL 6/PCL XL LF Printer"},{"@type":"ListItem","position":15,"name":"Generic PCL 6/PCL XL Printer"},{"@type":"ListItem","position":16,"name":"Generic PCL Color Laser"},{"@type":"ListItem","position":17,"name":"Generic PCL Color Laser LF Printer"},{"@type":"ListItem","position":18,"name":"Generic PCL Color LF wide margin"},{"@type":"ListItem","position":19,"name":"Generic PCL Color Tabl wide margin"},{"@type":"ListItem","position":20,"name":"Generic PCL Color wide margin"}]}</script>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}header{padding:12px 16px;border-bottom:1px solid var(--line)}
+header a{color:var(--fg);text-decoration:none;font-weight:600}header nav a{margin-left:16px;font-weight:400;color:var(--muted)}
+h1{font-size:1.9rem;line-height:1.2;margin:.4em 0}h2{margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.25em}
+a{color:var(--accent)}p.lead{font-size:1.1rem;color:var(--muted)}
+input[type=search]{width:100%;font-size:1.15rem;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+input[type=search]:focus{outline:none;border-color:var(--accent)}
+#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-top:8px;cursor:pointer}
+#results li:hover,#results li.sel{border-color:var(--accent)}#results small{color:var(--muted)}
+pre,code{font:.95em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow:auto;position:relative}
+code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+ol.steps li{margin:.6em 0}.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
+.hidden{display:none}.note{color:var(--muted);font-size:.95rem}.brands a{display:inline-block;margin:4px 8px 4px 0}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<header><a href="https://theshiver.github.io/mp250-arm-driver/">🖨 Apple Silicon Printer Drivers</a>
+<nav style="display:inline"><a href="https://theshiver.github.io/mp250-arm-driver/#search">Find your printer</a><a href="https://theshiver.github.io/mp250-arm-driver/brands/">Brands</a><a href="https://github.com/theshiver/mp250-arm-driver">GitHub</a></nav></header>
+<main>
+
+<h1>Generic printer drivers for Apple Silicon Macs</h1>
+<p class="lead">20 Generic models work on M-series Macs with this free, native (arm64) driver — no Rosetta, no Generic software needed.</p>
+<div class="card"><strong>Search your exact model instead:</strong> <a href="https://theshiver.github.io/mp250-arm-driver/#search">use the search box on the home page</a> — it shows the one command you need.</div>
+<h2>1. Install the driver package (same for every model)</h2>
+
+<ol class="steps">
+<li>Connect the printer to the Mac with a USB cable and switch it on.</li>
+<li><a href="https://github.com/theshiver/mp250-arm-driver/releases/latest"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
+<li>Open <strong>Terminal</strong> (press <kbd>⌘</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, Enter), paste this line and press Enter. Type your Mac password when asked (it stays invisible while typing):
+<pre><button class="copy">Copy</button><code>sudo installer -pkg ~/Downloads/Canon-MP250-arm64-Gutenprint-1.1.0.pkg -target /</code></pre></li>
+<li><strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
+</ol>
+<h2>2. Add your Generic printer</h2>
+<p>Find your model in the table, paste its command into Terminal and press Enter. The printer queue is created automatically when the printer is connected over USB.</p>
+<table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody><tr><td>Generic PCL 4 LF Printer</td><td><code>sudo gutenprint-add pcl-g_4_l</code></td></tr>
+<tr><td>Generic PCL 4 Printer</td><td><code>sudo gutenprint-add pcl-g_4</code></td></tr>
+<tr><td>Generic PCL 4 Printer wide margin</td><td><code>sudo gutenprint-add pcl-g_4_a4</code></td></tr>
+<tr><td>Generic PCL 5 LF Printer</td><td><code>sudo gutenprint-add pcl-g_5_l</code></td></tr>
+<tr><td>Generic PCL 5 Printer</td><td><code>sudo gutenprint-add pcl-g_5</code></td></tr>
+<tr><td>Generic PCL 5 Printer wide margin</td><td><code>sudo gutenprint-add pcl-g_5_a4</code></td></tr>
+<tr><td>Generic PCL 5c LF Printer</td><td><code>sudo gutenprint-add pcl-g_5c_l</code></td></tr>
+<tr><td>Generic PCL 5c Printer</td><td><code>sudo gutenprint-add pcl-g_5c</code></td></tr>
+<tr><td>Generic PCL 5e LF Printer</td><td><code>sudo gutenprint-add pcl-g_5e_l</code></td></tr>
+<tr><td>Generic PCL 5e Printer</td><td><code>sudo gutenprint-add pcl-g_5e</code></td></tr>
+<tr><td>Generic PCL 6 LF Printer wide margin</td><td><code>sudo gutenprint-add pcl-g_6_lf_a4</code></td></tr>
+<tr><td>Generic PCL 6 Printer wide margin</td><td><code>sudo gutenprint-add pcl-g_6_a4</code></td></tr>
+<tr><td>Generic PCL 6 Tabl Printer wide margin</td><td><code>sudo gutenprint-add pcl-g_6_tabloid_a4</code></td></tr>
+<tr><td>Generic PCL 6/PCL XL LF Printer</td><td><code>sudo gutenprint-add pcl-g_6_l</code></td></tr>
+<tr><td>Generic PCL 6/PCL XL Printer</td><td><code>sudo gutenprint-add pcl-g_6</code></td></tr>
+<tr><td>Generic PCL Color Laser</td><td><code>sudo gutenprint-add pcl-g_c</code></td></tr>
+<tr><td>Generic PCL Color Laser LF Printer</td><td><code>sudo gutenprint-add pcl-g_c_l</code></td></tr>
+<tr><td>Generic PCL Color LF wide margin</td><td><code>sudo gutenprint-add pcl-g_c_lf_a4</code></td></tr>
+<tr><td>Generic PCL Color Tabl wide margin</td><td><code>sudo gutenprint-add pcl-g_c_tabloid_a4</code></td></tr>
+<tr><td>Generic PCL Color wide margin</td><td><code>sudo gutenprint-add pcl-g_c_a4</code></td></tr></tbody></table>
+<p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "CUPS+Gutenprint" entry.</p>
+<p><a href="https://theshiver.github.io/mp250-arm-driver/brands/">← All brands</a></p>
+
+<footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="https://github.com/theshiver/mp250-arm-driver">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+</main>
+</body></html>
