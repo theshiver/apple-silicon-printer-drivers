@@ -21,7 +21,7 @@ no vendor software.
 3. Open **Terminal** (Spotlight → type `Terminal`), paste this, press Enter, type your password:
 
    ```sh
-   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.1.pkg -target /
+   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.2.pkg -target /
    ```
 
 The installer looks at the printers connected over USB, recognises the ones Gutenprint supports and
@@ -172,6 +172,16 @@ then `build/make-pkg.sh <version>`. Website: `python3 site/build-site.py` → `d
 
 This project started as a fix for one Canon PIXMA MP250 on a MacBook Air; it turned out the same
 problem hits thousands of models, so it became generic.
+
+## Is it safe?
+
+Every release is built from source on GitHub's own Apple Silicon runners and carries a build-provenance attestation — you can verify the file you downloaded came from this repo's code:
+
+```sh
+gh attestation verify ~/Downloads/AppleSilicon-Printer-Drivers-1.3.2.pkg --owner theshiver
+```
+
+What the installer does, line by line, is in [SECURITY.md](SECURITY.md). The post-install script is 60 lines of plain shell.
 
 ## ☕ Buy me a coffee
 
