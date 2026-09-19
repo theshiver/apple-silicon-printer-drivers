@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.2.0.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.0.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -83,7 +83,7 @@ INSTALL_STEPS = f"""
 <li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
 <li>Open <strong>Terminal</strong> (press <kbd>⌘</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, Enter), paste this line and press Enter. Type your Mac password when asked (it stays invisible while typing):
 <pre><button class="copy">Copy</button><code>sudo installer -pkg ~/Downloads/{PKG} -target /</code></pre></li>
-<li><strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
+<li>The installer detects the printers on USB and creates them for you. <strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
 </ol>"""
 
 def brand_page(b):
@@ -125,14 +125,15 @@ brand_links = "\n".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)} ({len(by_
 urls.append(f"{BASE}/brands/")
 
 # ---- home
-examples = [("Canon PIXMA MP250", None), ("Canon PIXMA iP4300", "bjc-PIXMA-iP4300"), ("Epson Stylus Photo R300", "escp2-r300"),
+examples = [("Canon PIXMA MP250", "bjc-MULTIPASS-MP250"), ("Canon PIXMA iP4300", "bjc-PIXMA-iP4300"), ("Epson Stylus Photo R300", "escp2-r300"),
             ("HP LaserJet 1010", "hp-lj_1010"), ("Brother HL-5040", "brother-hl-5040"), ("Samsung ML-2150", "samsung-ml-2150")]
-ex_rows = "\n".join(f'<tr><td>{n}</td><td>{"<em>automatic — nothing to type</em>" if i is None else f"<code>sudo gutenprint-add {i}</code>"}</td></tr>' for n, i in examples)
+ex_rows = "\n".join(f'<tr><td>{n}</td><td><code>sudo gutenprint-add {i}</code></td></tr>' for n, i in examples)
 faq = [
  ("Why does my Mac say “The printer software is not compatible with this device”?",
   "Your printer's driver was compiled for Intel Macs only. macOS 27 flags Intel-only printer software on Apple Silicon (M1–M4) Macs, and Rosetta, which used to run it, is being phased out. This site provides a native replacement."),
+ ("Which printers get set up automatically?", "Any printer connected over USB during installation whose USB name matches a model in the database — e.g. “Canon MP250 series”, “EPSON Stylus Photo R300”, “Brother HL-5040 series”. Others take one gutenprint-add command, shown when you search your model on this page."),
  ("Is it free?", "Yes. It is the open-source Gutenprint driver (GPL-2.0), compiled natively for Apple Silicon and packaged as a one-click macOS installer."),
- ("Does it remove my old driver?", "For the Canon MP250 it moves Canon's Intel driver to /Users/Shared/canon-mp250-backup (nothing is deleted). Other vendors' drivers are left in place."),
+ ("Does it remove my old driver?", "Only when it has to: Canon's IJ driver installs a kernel extension that blocks macOS's own USB printer driver, so the installer moves it to /Users/Shared/printer-driver-backup (nothing is deleted). Other vendors' drivers are left in place."),
  ("Does the scanner of my all-in-one work?", "No. Only printing is covered. For scanning use SANE (Homebrew) or VueScan, which have native Apple Silicon support."),
  ("My printer is on Wi-Fi, not USB.", "Install the package, then add the printer in System Settings → Printers & Scanners, choose Use: Select Software… and pick the entry ending in “CUPS+Gutenprint v5.3.4”."),
  ("Which macOS versions?", "Built and tested on macOS 27 (Apple Silicon). It should work on macOS 12 and later on M-series Macs."),
@@ -142,13 +143,13 @@ home_ld = [
  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Apple Silicon Printer Drivers (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
   "downloadUrl": RELEASE, "softwareVersion": "1.1.0", "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
-  "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers."},
+  "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
   "step": [{"@type": "HowToStep", "text": "Connect the printer over USB and switch it on."},
            {"@type": "HowToStep", "text": "Download the .pkg installer from GitHub."},
            {"@type": "HowToStep", "text": f"In Terminal run: sudo installer -pkg ~/Downloads/{PKG} -target /"},
-           {"@type": "HowToStep", "text": "Search your model on this page and run the shown gutenprint-add command."}]},
+           {"@type": "HowToStep", "text": "USB printers are set up automatically. Otherwise search your model on this page and run the shown gutenprint-add command."}]},
 ]
 home = f"""
 <h1>Old printer, new Mac? Get it printing on Apple Silicon.</h1>
@@ -164,7 +165,7 @@ home = f"""
 {INSTALL_STEPS}
 
 <h2>3. Add the printer</h2>
-<p>Canon MP250 owners are done — the installer set it up. Everyone else: paste the command shown for your model in step 1. Examples:</p>
+<p><strong>Was your printer plugged in during step 2?</strong> Then the installer most likely created it already — check <em>System Settings → Printers &amp; Scanners</em> and just print. If it isn't there (or it's a Wi-Fi printer), paste the command shown for your model in step 1. Examples:</p>
 <table><thead><tr><th>Printer</th><th>Command</th></tr></thead><tbody>{ex_rows}</tbody></table>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in BRANDS[:16])} <a href="{BASE}/brands/">all brands →</a></span></p>
 
@@ -184,10 +185,9 @@ async function search(){{await load();const terms=norm(q.value).split(' ').filte
  const hits=MODELS.map(m=>[score(m,terms),m]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]).slice(0,12);
  if(!hits.length){{res.innerHTML='<li>No match. Try only the model number (e.g. “MP250”).</li>';return}}
  for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong> <small>${{m.id}}</small>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
-function show(m){{res.innerHTML='';q.value=m.name;const mp250=/MP250/i.test(m.name);
+function show(m){{res.innerHTML='';q.value=m.name;const mp250=false;
  ans.classList.remove('hidden');ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>`+
- (mp250?`<p>Install the package (step 2 below) — the installer sets up the MP250 automatically. Nothing else to type.</p>`:
- `<p>After installing the package (step 2 below), paste this in Terminal:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">Creates the printer automatically if it's connected over USB.</p>`);
+ `<p>Install the package (step 2 below). If the printer was on USB during install it is already set up — otherwise paste this in Terminal:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">Creates the printer automatically if it's connected over USB.</p>`;
  wire();history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
 q.addEventListener('input',search);q.addEventListener('keydown',e=>{{const items=[...res.children];if(e.key==='ArrowDown'){{sel=Math.min(sel+1,items.length-1)}}else if(e.key==='ArrowUp'){{sel=Math.max(sel-1,0)}}else if(e.key==='Enter'){{if(items[sel]||items[0])(items[sel]||items[0]).click();return}}else return;items.forEach((li,i)=>li.classList.toggle('sel',i===sel));e.preventDefault()}});
 function wire(){{document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})}}

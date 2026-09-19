@@ -1,6 +1,6 @@
 #!/bin/sh
 # Reproducible build of the shipped binaries (macOS on Apple Silicon, Xcode CLT, Homebrew gettext).
-# Produces pkgroot/Library/Printers/Gutenprint/{libexec,share} and the MP250 PPD.
+# Produces pkgroot/Library/Printers/Gutenprint/{libexec,share}. PPDs are generated at install time.
 set -e
 VER=5.3.4
 HERE="$(cd "$(dirname "$0")" && pwd)"; ROOT="$HERE/.."; W="$(mktemp -d /tmp/gp-build.XXXX)"
@@ -17,7 +17,4 @@ OUT="$ROOT/pkgroot/Library/Printers/Gutenprint"; rm -rf "$OUT"; mkdir -p "$OUT/l
 cp -R "$W/stage/Library/Printers/Gutenprint/share/gutenprint" "$OUT/share/"
 cp "$W/stage/usr/libexec/cups/filter/rastertogutenprint.5.3" "$W/stage/usr/libexec/cups/filter/commandtocanon" "$W/stage/usr/libexec/cups/filter/commandtoepson" "$W/stage/usr/sbin/cups-genppd.5.3" "$OUT/libexec/"
 codesign -s - -f "$OUT/libexec/"*
-gunzip -c "$W/stage/usr/share/cups/model/gutenprint/5.3/C/stp-bjc-MP250-series.5.3.ppd.gz" \
- | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster 100 )rastertogutenprint\.5\.3"#$1/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )commandtocanon"#$1/Library/Printers/Gutenprint/libexec/commandtocanon"#' \
- > "$ROOT/pkgroot/Library/Printers/PPDs/Contents/Resources/Gutenprint-Canon-MP250.ppd"
 echo "done -> $OUT"

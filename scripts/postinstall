@@ -1,51 +1,66 @@
 #!/bin/sh
-# Gutenprint MP250 (arm64) — post-install: retire Canon's Intel-only driver, create the queue.
+# Apple Silicon Printer Drivers — post-install
+#  1. retire vendor Intel-only driver bits that block Apple's generic USB class driver
+#  2. auto-detect USB printers and create queues for the ones Gutenprint knows
 set -u
-B="/Users/Shared/canon-mp250-backup"
+GP=/Library/Printers/Gutenprint
+B="/Users/Shared/printer-driver-backup"
 NEED_REBOOT=0
 log() { echo "[printer-drivers] $*"; }
 
-# 1) Canon's codeless kext pins its x86_64 USB class driver to the printer -> generic driver can't be used
+chown -R root:wheel "$GP"; chmod -R u=rwX,go=rX "$GP"
+mkdir -p /usr/local/bin && ln -sf "$GP/bin/gutenprint-add" /usr/local/bin/gutenprint-add
+
+# ---- 1) Canon IJ driver (Intel-only). Its codeless kext pins Canon's x86_64 USB class-driver
+#         plugin to the printer, which stops macOS from using its own generic driver.
 if [ -d /Library/Extensions/BJUSBLoad.kext ]; then
   mkdir -p "$B"
   kmutil unload -b jp.co.canon.bj.print.BJUSBLoad >/dev/null 2>&1 || true
-  mv /Library/Extensions/BJUSBLoad.kext "$B/" && log "moved BJUSBLoad.kext -> $B"
+  mv /Library/Extensions/BJUSBLoad.kext "$B/" && log "moved Canon BJUSBLoad.kext -> $B"
   kmutil install --update-all >/dev/null 2>&1 || true
   NEED_REBOOT=1
 fi
-
-# 2) Canon IJ driver tree (x86_64 filters + USB class driver plugin) and its PPD
 if [ -d /Library/Printers/Canon/BJPrinter ]; then
-  mkdir -p "$B"
-  mv /Library/Printers/Canon "$B/Canon" && log "moved /Library/Printers/Canon -> $B"
+  mkdir -p "$B"; mv /Library/Printers/Canon "$B/Canon" && log "moved /Library/Printers/Canon -> $B"
 fi
-for p in /Library/Printers/PPDs/Contents/Resources/CanonIJMP250series.ppd.gz; do
+for p in /Library/Printers/PPDs/Contents/Resources/CanonIJ*.ppd.gz; do
   [ -f "$p" ] && mkdir -p "$B" && mv "$p" "$B/" && log "moved $(basename "$p") -> $B"
 done
 rm -rf /Library/Caches/Canon
-
-# 3) drop queues that still point at the Canon PPD
+# queues that still point at the Canon IJ filters can never print again
 for q in $(lpstat -p 2>/dev/null | awk '{print $2}'); do
   if grep -qs 'Raster2CanonIJ' "/etc/cups/ppd/$q.ppd" 2>/dev/null; then
-    lpadmin -x "$q" && log "removed old Canon queue: $q"
+    lpadmin -x "$q" && log "removed dead Canon queue: $q"
   fi
 done
 
-# 4) create / refresh the Gutenprint queue if the printer is connected
-lpadmin -x Canon_MP250_Gutenprint 2>/dev/null && log "replacing manual queue Canon_MP250_Gutenprint with Canon_MP250"
-PPD=/Library/Printers/PPDs/Contents/Resources/Gutenprint-Canon-MP250.ppd
-chmod 644 "$PPD"; chown -R root:wheel /Library/Printers/Gutenprint; chmod -R u=rwX,go=rX /Library/Printers/Gutenprint
-mkdir -p /usr/local/bin && ln -sf /Library/Printers/Gutenprint/bin/gutenprint-add /usr/local/bin/gutenprint-add
-URI=$(lpinfo -v 2>/dev/null | awk '/usb:\/\/Canon\/MP250/{print $2; exit}')
-if [ -n "$URI" ]; then
-  lpadmin -p Canon_MP250 -E -v "$URI" -P "$PPD" -D "Canon MP250 (Gutenprint)" -o printer-is-shared=false 2>&1 | grep -v 'deprecated\|kullanımdan' || true
-  cupsenable Canon_MP250 2>/dev/null; cupsaccept Canon_MP250 2>/dev/null
-  lpadmin -d Canon_MP250 2>/dev/null || true
-  log "queue Canon_MP250 ready ($URI)"
-else
-  log "printer not detected over USB — connect it and add it in System Settings > Printers,"
-  log "choosing 'Canon MP250 series - CUPS+Gutenprint v5.3.4' under Select Software."
-fi
+# ---- 2) auto-detect USB printers
+#  lpinfo -v prints: direct usb://Vendor/Model%20name?serial=XXX
+#  Match vendor+model words against Gutenprint's model list; take the shortest full match.
+MODELS=$("$GP/libexec/cups-genppd.5.3" -M -v 2>/dev/null)
+lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r URI; do
+  DEV=$(printf '%s' "$URI" | sed -E 's#^usb://##; s#\?.*##; s#%20# #g; s#/# #')
+  ID=$(printf '%s\n' "$MODELS" | awk -v dev="$DEV" '
+    function norm(s,  t){ t=tolower(s); gsub(/[^a-z0-9]+/," ",t); t=" " t " "; gsub(/ hewlett packard /," hp ",t); gsub(/ seiko epson /," epson ",t); gsub(/ (series|inc|corp|co|ltd|usb|printer) /," ",t); gsub(/ +/," ",t); gsub(/^ | $/,"",t); return t }
+    BEGIN{ nd=split(norm(dev),dt," ") }
+    { id=$1; name=$0; sub(/^[^ ]+ +/,"",name); n=norm(name); m=split(n,nt," "); delete have; for(i=1;i<=m;i++) have[nt[i]]=1
+      ok=1; for(i=1;i<=nd;i++) if(!(dt[i] in have)) { ok=0; break }
+      if(ok && (best=="" || length(n)<length(bestn))) { best=id; bestn=n }
+    }
+    END{ if(best!="") print best }')
+  if [ -n "$ID" ]; then
+    QUEUE=$(printf '%s' "$DEV" | tr -c 'A-Za-z0-9\n' '_' | sed -E 's/_+/_/g; s/^_//; s/_$//')
+    if "$GP/bin/gutenprint-add" "$ID" "$QUEUE" "$URI" >/dev/null 2>&1; then
+      lpadmin -d "$QUEUE" 2>/dev/null || true
+      log "queue '$QUEUE' created for '$DEV' ($ID) and set as default"
+    else
+      log "could not create queue for '$DEV'"
+    fi
+  else
+    log "USB printer '$DEV' not matched automatically — run: gutenprint-add --list \"<model>\"  then: sudo gutenprint-add <id>"
+  fi
+done
+[ "$(lpinfo -v 2>/dev/null | grep -c '^direct usb://')" = 0 ] && log "no USB printer connected — connect one and run: sudo gutenprint-add <id>  (find <id> with: gutenprint-add --list \"<model>\")"
 
-[ "$NEED_REBOOT" = 1 ] && log "REBOOT REQUIRED (kernel extension removed) — then unplug/replug the printer once."
+[ "$NEED_REBOOT" = 1 ] && log "REBOOT REQUIRED (vendor kernel extension removed) — then unplug/replug the printer once."
 exit 0

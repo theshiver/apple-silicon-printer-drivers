@@ -47,8 +47,8 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 <li>Connect the printer to the Mac with a USB cable and switch it on.</li>
 <li><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
 <li>Open <strong>Terminal</strong> (press <kbd>⌘</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, Enter), paste this line and press Enter. Type your Mac password when asked (it stays invisible while typing):
-<pre><button class="copy">Copy</button><code>sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.2.0.pkg -target /</code></pre></li>
-<li><strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
+<pre><button class="copy">Copy</button><code>sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.0.pkg -target /</code></pre></li>
+<li>The installer detects the printers on USB and creates them for you. <strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
 </ol>
 <h2>2. Add your Epson printer</h2>
 <p>Find your model in the table, paste its command into Terminal and press Enter. The printer queue is created automatically when the printer is connected over USB.</p>
