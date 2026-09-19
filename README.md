@@ -18,7 +18,7 @@ That's it. The installer finds the printer and sets it up.
 ## Didn't work?
 
 - **It still shows the old error / old printer entry:** restart the Mac once, then unplug and re-plug the printer.
-- **The printer wasn't added:** check it's supported and get the one command to add it, on the website: https://theshiver.github.io/apple-silicon-printer-drivers/#search
+- **The printer wasn't added:** check it's supported on the website, it tells you what to do: https://theshiver.github.io/apple-silicon-printer-drivers/#search
 - **Wi-Fi / network printer:** see the FAQ below.
 - **Something else:** [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
 

@@ -17,7 +17,7 @@ models = json.load(open(DOCS / "models.json"))
 
 # brand normalisation: first word of the display name, with a few fixes
 ALIAS = {"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox",
-         "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax"}
+         "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera"}
 def brand_of(m):
     b = m["name"].split()[0]
     return ALIAS.get(b, b)
@@ -27,6 +27,7 @@ for m in models:
     by_brand[brand_of(m)].append(m)
 # only brands with a handful of models get their own page
 BRANDS = sorted([b for b, l in by_brand.items() if len(l) >= 4], key=lambda b: -len(by_brand[b]))
+POPULAR = ["Canon","Epson","HP","Brother","Samsung","Lexmark","Xerox","Kyocera","Ricoh","Oki","Dell","Sharp","Kodak","Sony","Mitsubishi","DNP","Fujifilm","Panasonic"]
 slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 CSS = """
@@ -120,7 +121,7 @@ brand_links = "\n".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)} ({len(by_
     "Supported printer brands — Apple Silicon Mac drivers",
     f"{len(models)} printer models from {len(BRANDS)} brands supported by the native arm64 Gutenprint driver for macOS.",
     f"{BASE}/brands/",
-    f"<h1>Supported brands</h1><p class='lead'>{len(models)} models. Click a brand for the full list with copy-paste commands.</p><p class='brands'>{brand_links}</p>"))
+    f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"))
 urls.append(f"{BASE}/brands/")
 
 # ---- home
@@ -128,16 +129,22 @@ examples = [("Canon PIXMA MP250", "bjc-MULTIPASS-MP250"), ("Canon PIXMA iP4300",
             ("HP LaserJet 1010", "hp-lj_1010"), ("Brother HL-5040", "brother-hl-5040"), ("Samsung ML-2150", "samsung-ml-2150")]
 ex_rows = "\n".join(f'<tr><td>{n}</td><td><code>sudo gutenprint-add {i}</code></td></tr>' for n, i in examples)
 faq = [
- ("Why does my Mac say “The printer software is not compatible with this device”?",
-  "Your printer's driver was compiled for Intel Macs only. macOS 27 flags Intel-only printer software on Apple Silicon (M1–M4) Macs, and Rosetta, which used to run it, is being phased out. This site provides a native replacement."),
- ("I had the printer maker's old driver installed. Anything to do?", "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension that blocks macOS's own USB printer driver; the installer moves the old driver to /Users/Shared/printer-driver-backup (nothing is deleted) and macOS needs a restart to notice."),
- ("Which printers get set up automatically?", "Any printer connected over USB during installation whose USB name matches a model in the database — e.g. “Canon MP250 series”, “EPSON Stylus Photo R300”, “Brother HL-5040 series”. Others take one gutenprint-add command, shown when you search your model on this page."),
- ("Is it safe? Will macOS complain?", "The installer is signed with an Apple Developer ID and notarized by Apple, so Gatekeeper opens it without warnings. Everything it does is documented in SECURITY.md on GitHub and the install script is plain shell you can read."),
- ("Is it free?", "Yes. It is the open-source Gutenprint driver (GPL-2.0), compiled natively for Apple Silicon and packaged as a one-click macOS installer."),
- ("Does it remove my old driver?", "Only when it has to: Canon's IJ driver installs a kernel extension that blocks macOS's own USB printer driver, so the installer moves it to /Users/Shared/printer-driver-backup (nothing is deleted). Other vendors' drivers are left in place."),
- ("Does the scanner of my all-in-one work?", "No. Only printing is covered. For scanning use SANE (Homebrew) or VueScan, which have native Apple Silicon support."),
- ("My printer is on Wi-Fi, not USB.", "Install the package, then add the printer in System Settings → Printers & Scanners, choose Use: Select Software… and pick the entry ending in “Apple Silicon”."),
- ("Which macOS versions?", "Built and tested on macOS 27 (Apple Silicon). It should work on macOS 12 and later on M-series Macs."),
+ ("Why did my printer stop working?",
+  "The printer maker's driver was built for Intel Macs only. On Apple Silicon it ran through Rosetta until macOS 27, which no longer allows that, and the maker never released an Apple Silicon version. This installer replaces it with a native driver."),
+ ("I had the printer maker's old driver installed. Anything to do?",
+  "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension behind that blocks macOS's own USB printer driver; the installer moves the old driver aside (to /Users/Shared/printer-driver-backup, nothing is deleted) and macOS needs one restart to notice. Other makers' drivers are left in place."),
+ ("Still on macOS 26 or earlier?",
+  "Your printer works now, but it will stop after you update if it uses one of those old drivers. You can install this before or after updating."),
+ ("My printer is on Wi-Fi, not USB.",
+  "Install the package, then add the printer in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry ending in “Apple Silicon”."),
+ ("The installer didn't add my printer.",
+  "Search your model above; if it's supported you get a command to add it by hand. Open Terminal (⌘+Space, type Terminal), paste the command, press Enter, type your password."),
+ ("Does the scanner on my all-in-one work?",
+  "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical); both run natively on Apple Silicon."),
+ ("Is it safe? Will macOS complain?",
+  "The installer is signed with an Apple Developer ID and notarized by Apple, so it opens without warnings. Everything it does is listed in SECURITY.md on GitHub and the install script is plain text you can read."),
+ ("Is it free?", "Yes. Free and open source, no account, nothing collected."),
+ ("Which macOS versions?", "Built and tested on macOS 27 on Apple Silicon. It should work on macOS 12 and later on M-series Macs."),
 ]
 faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in faq)
 home_ld = [
@@ -161,12 +168,12 @@ home = f"""
 {INSTALL_STEPS}
 
 <h2 id="search">Is my printer supported?</h2>
-<p>Type your model. You'll also get the command to add it by hand if the installer didn't pick it up.</p>
+<p>Type your model to check.</p>
 <form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off"></form>
 <ul id="results"></ul>
 <div id="answer" class="card hidden"></div>
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
-<p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in BRANDS[:16])} <a href="{BASE}/brands/">all brands →</a></span></p>
+<p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in by_brand)} <a href="{BASE}/brands/">all brands →</a></span></p>
 
 <h2>Questions</h2>
 {faq_html}
