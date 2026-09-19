@@ -6,6 +6,8 @@
 only ever got *Intel* macOS drivers. On an Apple Silicon Mac they ran through Rosetta, and macOS 27
 now shows **"The printer software is not compatible with this device"** — and Rosetta is going away.
 
+![macOS error: The printer software is not compatible with this device](docs/not-compatible.png)
+
 **The fix:** one installer with [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/), the open-source
 driver suite, compiled **natively for Apple Silicon**. It supports **3,578 printer models**. No Rosetta,
 no vendor software.

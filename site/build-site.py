@@ -63,7 +63,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords=""):
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{BASE}/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/not-compatible.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
 {ld}
 <style>{CSS}</style>
@@ -143,7 +143,7 @@ home_ld = [
  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Apple Silicon Printer Drivers (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
   "downloadUrl": RELEASE, "softwareVersion": "1.1.0", "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
-  "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
+  "image": f"{BASE}/not-compatible.png", "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
   "step": [{"@type": "HowToStep", "text": "Connect the printer over USB and switch it on."},
@@ -154,6 +154,8 @@ home_ld = [
 home = f"""
 <h1>Old printer, new Mac? Get it printing on Apple Silicon.</h1>
 <p class="lead">Free native (arm64) macOS driver for <strong>{len(models)} printers</strong> — Canon PIXMA, Epson Stylus, HP DeskJet &amp; LaserJet, Brother, Samsung, Lexmark, Kyocera, Xerox, Ricoh, Oki, Kodak and more. Fixes <em>“The printer software is not compatible with this device”</em> on macOS 27 without Rosetta.</p>
+
+<figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
 
 <h2 id="search">1. Find your printer</h2>
 <form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off" autofocus></form>
