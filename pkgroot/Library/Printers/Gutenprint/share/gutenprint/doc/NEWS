@@ -1,0 +1,978 @@
+Welcome to Gutenprint 5.3.4!  Please read these release notes
+carefully.  Gutenprint 5.2 is still considered the stable release
+line.
+
+Gutenprint is a suite of printer drivers for UNIX, Linux, and
+Macintosh OS X systems (10.6 and above) that use CUPS as their
+printing system.  Gutenprint currently supports over 3000 printers.
+It also includes an enhanced Print plug-in for GIMP that replaces the
+print plug-in packaged with the GIMP distribution.
+
+*** NOTE TO PACKAGERS: Please read the file README.package for issues
+    that are of interest to distributors and packagers of Gutenprint.
+    It is not necessary for end users of Gutenprint to read this file.
+
+These release notes contain the following sections:
+
+I)    General Requirements
+II)   Changes from Previous Releases
+III)  Exceptions and Workarounds
+	A) General Issues
+	B) Printer-Specific Issues
+	C) Build/Installation Issues
+IV)   Overall changes from Gutenprint 5.2
+	A) General User-visible Changes
+	B) New Functionality
+	C) Changes to the Enhanced Print plugin for GIMP
+	D) Changes to the CUPS interface
+	E) Architectural Changes
+V)    Critical Upgrade Note from Gutenprint 5.0 or Earlier
+
+================================================================
+
+I) GENERAL REQUIREMENTS
+
+Gutenprint will run on any reasonably modern computer running Linux,
+Macintosh OS X (10.6 through currently 10.14), Solaris, or any other
+UNIX-like operating system.  If you plan to compile this package from
+source, you will also need an ANSI C compiler, such as gcc
+(recommended).  A compiler is not required if you are installing a
+pre-compiled package.
+
+Processor and memory requirements vary depending upon the printer and
+runtime options selected; any system dating from 2005 or later should
+easily suffice.  We suggest that you have at least 64 MB of memory for
+general purpose printing, 256 MB or more for high quality printing on
+a good printer, and 1 GB or more for large format printing at high
+resolution.  You should have at least 50 MB of free disk space to
+compile and install Gutenprint.  Disk space requirements for printing
+will vary depending upon how you use Gutenprint, but are generally
+modest except as noted below.  We recommend a processor speed of at
+least 300 MHz.  Fast printers may require a faster processor to
+achieve maximum printing speed.
+
+For general use, you should have the Common UNIX Printing System, CUPS
+(version 1.1.15 or above).  Please read the rest of the release notes,
+in particular the Exceptions and Workarounds, for full details on
+installation, as there is important information to be aware of.  CUPS
+is the printing system used on Macintosh OS X 10.3 and above, and many
+other systems use it.  The combination of CUPS and Gutenprint provides
+a flexible, general purpose printing system capable of producing the
+highest quality output with any of the printers supported by this
+package.  We strongly recommend using CUPS with Gutenprint as a
+general-purpose printing solution.
+
+The enhanced Print plug-in for GIMP requires GIMP 2.0 or above (GIMP
+2.2 recommended).  This plug-in will work with any printing system,
+and offers a comprehensive user interface to control all aspects of
+the printing process.  If you are printing photographs in large format
+from GIMP at very high resolution, disk space requirements may be
+substantial, and we recommend at least 2 GB of free disk space for
+that purpose.
+
+Users of Macintosh 10.6 (Snow Leopard) and above can use this package.
+For ease of installation, a pre-built package with installer is
+normally supplied a few days after the release of the source package.
+We strongly recommend that OS X users use the pre-built package rather
+than attempt to build it themselves.  Packages are not always supplied
+for development releases.
+
+The README file included with this package provides full instructions
+for building and installing Gutenprint.
+================================================================
+
+
+II) MAJOR CHANGES FROM PREVIOUS RELEASES
+
+* Changes from Gutenprint 5.3.3
+
+  1) Gutenprint (any release) does not currently work on MacOS 10.15
+     (Catalina).  We do not as of this time have a fix in hand; if you
+     want to use Gutenprint, you should stick with 10.14 (Mojave) or
+     below.
+
+  2) A long-standing gamma correction bug affecting all dye-sublimation
+     printers has been corrected, resulting in visibly improved contrast,
+     tonal range, and color fidelity.  However, users upgrading from older
+     versions can continue using the old gamma behaviour, by setting the
+     "StpLegacyDyesubGamma" option to "true"
+
+  3) Support for the following dye sublimcation printers has been added:
+
+     Citizen CX-02W
+     Citizen CZ-01
+     DNP QW410
+     HiTi P520L
+     HiTi P525L
+     HiTi P720L (EXPERIMENTAL)
+     HiTi P750L (EXPERIMENTAL)
+     Kodak 6900 (EXPERIMENTAL)
+     Mitsubishi CP30D series
+     Mitsubishi CP-D70DW-S
+     Mitsubishi CP-M1 & CP-M15 series
+     Stryker SDP1000
+
+  4) The following printers have received siginificant bugfixes or
+     major enhancements:
+
+     DNP DS820
+     Kodak 605
+     Kodak 6800/6850
+     Kodak 7000 series
+     Kodak 8810
+     Mitsubishi CP-D90 series
+     Sinfonia CHC-S2245/S3
+     Sony UP-D898 family
+     Sony UP-DR80MD
+     Sony UP-DR200
+
+     Note that for the Mitsubishi CP-D90 series, when upgrading from a
+     prior release, you will need to remove and re-create your printer
+     queue for printing to function properly.
+
+  5) Add support for Epson Stylus Office BX305F.
+
+  6) Add duplex support for the following:
+
+     Epson Stylus Office BX525WD
+     Epson Stylus Office BX535WD
+     Epson Stylus Office BX62F5WD
+     Epson Stylus Office BX635FWD
+     Epson Stylus Office TX620FWD
+
+  7) Croation translation added; other translations updated.
+
+  8) Corrected bugs in the following Canon printers:
+
+     PIXMA iP6210D
+     PIXMA iP6220D
+     PIXMA iP6310D
+     PIXMA iP6320D
+
+  9) Corrected margins for the following Brother laster printers:
+
+     Brother DCP-8045D
+     Brother HL-1050
+     Brother HL-1060
+     Brother HL-1070
+     Brother HL-10h
+     Brother HL-1250
+     Brother HL-1260
+     Brother HL-1270N
+     Brother HL-1440
+     Brother HL-1450
+     Brother HL-1470N
+     Brother HL-1650
+     Brother HL-1660e
+     Brother HL-1670N
+     Brother HL-1850
+     Brother HL-1870N
+     Brother HL-2060
+     Brother HL-2460
+     Brother HL-2460N
+     Brother HL-5030
+     Brother HL-5040
+     Brother HL-5050
+     Brother HL-5070N
+     Brother HL-5140
+     Brother HL-5150D
+     Brother HL-5170DN
+     Brother HL-5340D
+     Brother HL-660
+     Brother HL-7050
+     Brother HL-7050N
+     Brother HL-760
+     Brother HL-960
+
+
+* Changes from Gutenprint 5.3.1 (Gutenprint 5.3.2 was not released)
+
+  1) Gutenprint will fail to configure if the necessary CUPS
+     development packages are not installed.  This is to protect users
+     against attempting to install newer versions of Gutenprint
+     without installing the CUPS development package.  This results in
+     an installation that does not work with CUPS, which has created
+     confusion in the past.
+
+     Normally, you should install the CUPS development package, which
+     on most systems is "cups-devel", "cups-dev", or similar, using
+     your operating system's package manager.
+
+     If you really want to install Gutenprint without CUPS, you may
+     run configure with "--without-cups".  This may be useful if you
+     intend to use only the Gutenprint plugin for GIMP, or you intend
+     to use the Gutenprint library to support a custom printing
+     solution that does not involve CUPS.  However, for most users,
+     simply running configure --without-cups is not the correct course
+     of action.
+
+  2) The following new printers have been added:
+
+     * DNP DS-SL20 (EXPERIMENTAL)
+     * Epson Expression Home XP-240 (EXPERIMENTAL)
+     * Epson Expression Home XP-245 (EXPERIMENTAL)
+     * Epson Expression Home XP-340 (EXPERIMENTAL)
+     * Epson Expression Home XP-344 (EXPERIMENTAL)
+     * Epson Expression Home XP-440 (EXPERIMENTAL)
+     * Epson Expression Home XP-442 (EXPERIMENTAL)
+     * Epson Expression Photo XP-860 (Preliminary)
+     * Epson Expression Photo XP-960 (Preliminary)
+     * Epson Expression Photo XP-8500 (Preliminary)
+     * Epson Stylus L130
+     * Sinfonia CHC-S2245/S3 (EXPERIMENTAL)
+     * Sony UP-D895 family
+     * Sony UP-D897 family
+     * Sony UP-D898 family (EXPERIMENTAL)
+     * Sony UP-CR20L (EXPERIMENTAL)
+     * Sony UP-DR80MD (EXPERIMENTAL)
+
+  3) Bugfixes and other enhancements for the following printers:
+
+     * DNP DS80DX
+     * DNP DS-SL10 (EXPERIMENTAL)
+     * Nidac Copal DPB-6000
+     * Kodak 7000/7010/7015
+     * Kodak 8810
+     * Sony UP-DP10
+     * Sony UP-DR150
+     * Sony UP-DR200
+     * Sony UP-CR10L
+
+  4) Many miscellaneous fixes for dyesub printers and the dyesub
+     backend; please see the ChangeLog for details.
+
+  5) The Gutenprint plugin for GIMP displays a higher resolution
+     thumbnail.
+
+  6) The following models have been added to existing printer series:
+
+     * Canon PIXMA iP2899 (EXPERIMENTAL)
+     * Canon PIXMA G1910 (EXPERIMENTAL)
+     * Canon PIXMA G2910 (EXPERIMENTAL)
+     * Canon PIXMA G2915 (EXPERIMENTAL)
+     * Canon PIXMA G3010 (EXPERIMENTAL)
+     * Canon PIXMA G3910 (EXPERIMENTAL)
+     * Canon PIXMA G3915 (EXPERIMENTAL)
+     * Canon PIXMA G4010 (EXPERIMENTAL)
+     * Canon PIXMA G4902 (EXPERIMENTAL)
+     * Canon PIXMA G4910 (EXPERIMENTAL)
+     * Canon PIXMA G4911 (EXPERIMENTAL)
+     * Canon PIXMA TS3130S (EXPERIMENTAL)
+     * Canon PIXMA TS3190 (EXPERIMENTAL)
+     * Canon PIXMA TS3195 (EXPERIMENTAL)
+     * Canon PIXMA TS5030S (EXPERIMENTAL)
+     * Canon PIXMA E3190 (EXPERIMENTAL)
+     * Canon PIXMA E3195 (EXPERIMENTAL)
+
+* Changes from Gutenprint 5.3.0
+
+  1) This is the initial 5.3 release.  While we believe that this
+     release is stable and fully useful, it has not had the level of
+     exposure that Gutenprint 5.2 has had.
+
+  2) cups-genppdupdate will by default refuse to upgrade PPD files from
+     5.2 (or earlier).  Supply the -x option to force this upgrade, or
+     use -i to upgrade interactively.  This permits you to continue
+     using Gutenprint 5.2 while experimenting with 5.3.
+
+  3) The PCL driver now supports color laser printers that use PCL 5c
+     natively (as opposed to emulation).  The support is considered to
+     be preliminary at this time.
+
+     * The following printers now support color printing:
+
+       Epson ActionLaser AL-C8600
+       Epson ActionLaser AL-C8600 PS3
+       HP Color LaserJet 2500
+       HP Color LaserJet 5
+       HP Color LaserJet 5000
+       HP Color LaserJet 8550GN
+       Kyocera FS-5800C
+       Kyocera FS-5900C
+       Kyocera FS-8000C
+       Xerox DocuPrint C20
+       Xerox WorkCentre 7345
+
+    * The following new printers have been added, with color support:
+
+       Brother HL-2400CeN
+       Brother HL-2600CN
+       Brother HL-3400CN
+       Brother HL-3450CN
+       Canon LBP-5360
+       Canon LBP-5390
+       Canon imageRunner C2570
+       Canon imageRunner C2570i
+       Canon imageRunner C2620N
+       Canon imageRunner C3100
+       Canon imageRunner C3170
+       Canon imageRunner C3170i
+       Canon imageRunner C3200
+       Canon imageRunner C5030
+       Canon imageRunner C5180
+       Canon imageRunner C5800
+       Canon imageRunner C5870U
+       Canon imageRunner C6800
+       Canon imageRunner C6870U
+       HP Color LaserJet 5m
+       HP Color LaserJet 2500
+       HP Color LaserJet 2500
+       HP Color LaserJet 3000
+       HP Color LaserJet 3000dn
+       HP Color LaserJet 3000dtn
+       HP Color LaserJet 3000n
+       HP Color LaserJet 3700
+       HP Color LaserJet 3700n
+       HP Color LaserJet 3800
+       HP Color LaserJet 3800dn
+       HP Color LaserJet 3800dtn
+       HP Color LaserJet 3800n
+       HP Color LaserJet 4600
+       HP Color LaserJet 4610
+       HP Color LaserJet 4650
+       HP Color LaserJet 4700
+       HP Color LaserJet 4700dn
+       HP Color LaserJet 4700dtn
+       HP Color LaserJet 4700n
+       HP Color LaserJet 4700ph+
+       HP Color LaserJet 5500dn
+       HP Color LaserJet 5500dtn
+       HP Color LaserJet 5500hdn
+       HP Color LaserJet 5500n
+       HP Color LaserJet 8500
+       HP Color LaserJet 8500dn
+       HP Color LaserJet 8500n
+       HP Color LaserJet 8550
+       HP Color LaserJet 8550DN
+       HP Color LaserJet 8550GN
+       HP Color LaserJet 9500
+       HP Color LaserJet 9500gp
+       HP Color LaserJet 9500hdn
+       HP Color LaserJet 9500n
+       HP Color LaserJet CM1312
+       HP Color LaserJet CM1312nfi
+       HP Color LaserJet CM1411FN
+       HP Color LaserJet CM1412FN
+       HP Color LaserJet CM1413FN
+       HP Color LaserJet CM1415FN
+       HP Color LaserJet CM1415FNW
+       HP Color LaserJet CM1416FNW
+       HP Color LaserJet CM1417FNW
+       HP Color LaserJet CM1418FNW
+       HP Color LaserJet CM2320 MFP
+       HP Color LaserJet CM2320FXI MFP
+       HP Color LaserJet CM2320N MFP
+       HP Color LaserJet CM2320NF MFP
+       HP Color LaserJet CM3530 MFP
+       HP Color LaserJet CM4540 MFP
+       HP Color LaserJet CM4730 MFP
+       HP Color LaserJet CM6030 MFP
+       HP Color LaserJet CM6040 MFP
+       HP Color LaserJet CM6040f MFP
+       HP Color LaserJet CM6049f MFP
+       HP Color LaserJet CP1514n
+       HP Color LaserJet CP1515n
+       HP Color LaserJet CP1518ni
+       HP Color LaserJet CP2025
+       HP Color LaserJet CP2025dn
+       HP Color LaserJet CP2025n
+       HP Color LaserJet CP2025x
+       HP Color LaserJet CP3505
+       HP Color LaserJet CP3505dn
+       HP Color LaserJet CP3505n
+       HP Color LaserJet CP3505x
+       HP Color LaserJet CP3525
+       HP Color LaserJet CP3525dn
+       HP Color LaserJet CP3525n
+       HP Color LaserJet CP3525x
+       HP Color LaserJet CP4005
+       HP Color LaserJet CP4005dn
+       HP Color LaserJet CP4005n
+       HP Color LaserJet CP4020
+       HP Color LaserJet CP4500
+       HP Color LaserJet CP4520
+       HP Color LaserJet CP4540
+       HP Color LaserJet CP5225
+       HP Color LaserJet CP5225dn
+       HP Color LaserJet CP5225n
+       HP Color LaserJet CP5520
+       HP Color LaserJet CP6015de
+       HP Color LaserJet CP6015dn
+       HP Color LaserJet CP6015n
+       HP Color LaserJet CP6015x
+       HP Color LaserJet CP6015xh
+       Kyocera Ci-1100
+       Kyocera CS-250ci
+       Kyocera CS-2525E
+       Kyocera CS-300ci
+       Kyocera CS-400ci
+       Kyocera CS-500ci
+       Kyocera CS-3050ci
+       Kyocera CS-3225E
+       Kyocera CS-3232E
+       Kyocera CS-3550ci
+       Kyocera CS-4035E
+       Kyocera FS-5800C
+       Kyocera FS-5900C
+       Kyocera FS-8000C
+       Kyocera FS-C5015N
+       Kyocera FS-C5016N
+       Kyocera FS-C5020N
+       Kyocera FS-C5025N
+       Kyocera FS-C5030N
+       Kyocera FS-C5100DN
+       Kyocera FS-C5200DN
+       Kyocera FS-C5300DN
+       Kyocera FS-C5350DN
+       Kyocera FS-C5400DN
+       Kyocera FS-C8008N
+       Kyocera FS-C8100DN
+       Kyocera FS-C8100DN+
+       Kyocera KM-C830
+       Kyocera KM-C850
+       Kyocera KM-C2520
+       Kyocera KM-C2525E
+       Kyocera KM-C2630
+       Kyocera KM-C3225
+       Kyocera KM-C3225E
+       Kyocera KM-C3232
+       Kyocera KM-C3232E
+       Kyocera KM-C4035E
+       Kyocera TASKalfa 250ci
+       Kyocera TASKalfa 300ci
+       Kyocera TASKalfa 400ci
+       Kyocera TASKalfa 500ci
+       Oki C5300
+       Oki C5400
+       Oki C7300
+       Oki C9200
+       Oki C9400
+       Sharp AR-BC260
+       Sharp AR-BC320
+       Sharp AR-C170M
+       Sharp AR-C172M
+       Sharp AR-C260
+       Sharp AR-C260F
+       Sharp AR-C260M
+       Sharp AR-C260P
+       Sharp AR-C260S
+       Sharp AR-C261F
+       Sharp AR-C261M
+       Sharp AR-C261S
+       Sharp AR-C262M
+       Sharp AR-C262S
+       Xerox Phaser 3160N
+       Xerox Phaser 8860
+       Xerox WorkCentre C2424
+
+     * Many other color laser printers, too numerous to list, have been
+       added based on specification; please report success or failure
+       with any other color laser printer using the Generic PCL Color
+       drivers.  Printers that we know about that may be supported are
+       listed as UNTESTED Automatically Generated.
+
+  4) The following BW laser printer has been added:
+
+       HP LaserJet 5N
+
+  5) The Canon driver offers improved support for the following printer
+     models:
+
+       BJC-85
+       BJC-1000
+       BJC-2100
+       BJC S9000
+
+  6) The following Epson inkjet printers have been added:
+
+       Epson Expression ET-2550 EcoTank ET (UNTESTED)
+       Epson Expression ET-2600 EcoTank ET
+       Epson Expression ET-2650 EcoTank ET (UNTESTED)
+       Epson Expression ET-2700 EcoTank ET (UNTESTED)
+       Epson Expression ET-2750 EcoTank ET
+       Epson Expression ET-2750 EcoTank Business Edition (UNTESTED)
+       Epson Expression XP-15000 Series
+
+     The following printers are known not to be supported by any current
+     driver; if you are interested in assisting or contributing one of
+     these printers for development, please contact us.  Note that many
+     of these are network printers that likely support IPP Everywhere
+     without requiring a driver.
+
+       Epson Expression ET-3600 EcoTank
+       Epson Expression ET-3700 EcoTank
+       Epson Expression Home XP-5100
+       Epson WorkForce ET-3750
+       Epson WorkForce ET-4750
+       Epson WorkForce ET-8700
+       Epson WorkForce ET-16500
+       Epson WorkForce WF-2750
+       Epson WorkForce WF-2760
+       Epson WorkForce WF-2860
+       Epson WorkForce WF-6530
+       Epson WorkForce WF-7210
+       Epson WorkForce WF-7710
+       Epson WorkForce WF-7720
+       Epson WorkForce Enterprise WF-C17590
+       Epson WorkForce Enterprise WF-C20590
+       Epson WorkForce Pro WF-3720
+       Epson WorkForce Pro WF-4630
+       Epson WorkForce Pro WF-4720
+       Epson WorkForce Pro WF-4730
+       Epson WorkForce Pro WF-4734
+       Epson WorkForce Pro WF-4740
+       Epson WorkForce Pro WF-5110
+       Epson WorkForce Pro WF-5190
+       Epson WorkForce Pro WF-5620
+       Epson WorkForce Pro WF-5690
+       Epson WorkForce Pro WF-6090
+       Epson WorkForce Pro WF-6590
+       Epson WorkForce Pro WF-7110
+       Epson WorkForce Pro WF-7620
+       Epson WorkForce Pro WF-8090
+       Epson WorkForce Pro WF-8590
+       Epson WorkForce Pro WF-C5210
+       Epson WorkForce Pro WF-C5290
+       Epson WorkForce Pro WF-C5710
+       Epson WorkForce Pro WF-C5790
+       Epson WorkForce Pro WF-C7610
+       Epson WorkForce Pro WF-C7710
+       Epson WorkForce Pro WF-C7720
+       Epson WorkForce Pro WF-C8190
+       Epson WorkForce Pro WF-C8690
+       Epson WorkForce Pro WF-C869R
+       Epson WorkForce Pro WF-M5194
+       Epson WorkForce Pro WF-M5299
+       Epson WorkForce Pro WF-M5694
+       Epson WorkForce Pro WF-M5799
+       Epson WorkForce Pro WF-R4640
+       Epson WorkForce Pro WF-R5190
+       Epson WorkForce Pro WF-R5690
+
+     The following printers may work with an existing driver; if you
+     have one and are interested in testing, please contact us:
+
+       Epson Expression Home XP-340
+       Epson Expression Home XP-434
+       Epson Expression Home XP-440
+       Epson Expression Home XP-446
+       Epson Expression Premium ET-7700
+       Epson Expression Premium ET-7750
+       Epson Expression Photo XP-860
+       Epson Expression Photo XP-960
+       Epson Expression Photo XP-8500
+       Epson PictureMate PM-400
+       Epson Premium XP-640
+       Epson Premium XP-820
+       Epson Premium XP-830
+       Epson Premium XP-6000
+       Epson Stylus C88+ (will likely work with C88 driver up to
+			  2880x1440 DPI)
+       Epson WorkForce WF-100
+       Epson WorkForce WF-2630
+       Epson WorkForce WF-M1560 (may work with existing driver in black
+				 and white mode)
+
+  7) Paper size options have been corrected, so that inappropriate paper
+     sizes for many printers have been removed.
+
+  8) The USB dye-sublimation printer backend has been considerably
+     enhanced.  As well as many bugfixes, the following user-visable
+     changes have been made:
+
+      * Much improved status and media reporting via standard CUPS
+	marker attributes.
+
+      * Simpler, cleaner URI scheme.  This is an example of a typical
+	URI reported by older Gutenprint release:
+
+	  gutenprint53+usb://Dai+Nippon+Printing/DP-DS620?serial=123456783&backend=dnpds40
+
+	The same printer will now generate this URI scheme:
+
+	  gutenprint53+usb://dnpds620/12345678
+
+	The backend will continue to parse the old scheme indefinitely, so that
+	existing installations will function normally.
+
+================================================================
+
+
+III) EXCEPTIONS AND WORKAROUNDS
+
+A) GENERAL ISSUES
+
+  1) The Canon, Hewlett-Packard, Lexmark, and dye sublimation drivers
+     do not offer all of the additional options and improvements that
+     the Epson driver does.  Please contact us if you would like to
+     assist with making these options available (requires C
+     programming skills).
+
+
+----------------
+
+B) PRINTER-SPECIFIC ISSUES
+
+  1) A number of Epson printers have been reported to produce poor
+     quality at the bottom of the page in borderless mode when the
+     resolution is set to 5760x2880 DPI.  The specific problem
+     observed is that the print fades at the bottom of the page.
+     Other than reducing the resolution or avoiding use of borderless
+     mode, there is no known workaround for this problem.
+
+  2) There have been reports of poor color fidelity on the Epson
+     Stylus Photo R2880 with certain paper types.  This problem has
+     not been reproduced.
+
+  3) A number of laser printers capable of large format printing are
+     incorrectly classified as small format, thereby not permitting
+     users to select large paper sizes.  The workaround is to use the
+     printer named "Generic PCL 6/PCL XL LF Printer".  Please report
+     any such printers to gimp-print-devel@lists.sourceforge.net; they
+     will be fixed in the next available release.
+
+----------------
+
+C) BUILD/INSTALLATION ISSUES
+
+  1) With certain versions of CUPS and in certain non-default
+     configurations, if a new version of Gutenprint is installed over
+     an existing version genppd will create PPD files based on the
+     older version of Gutenprint rather than the newer version.  This
+     will happen if all of the following are true:
+
+     i) The cups-config provided by the CUPS driver adds
+        -Wl,rpath=/usr/lib. This is done by some versions of CUPS
+        reportedly because in some cases the runtime linker does not
+        pick up libraries out of /usr/lib.  This can be checked by
+        running
+
+        cups-config --libs --ldflags
+
+        and inspecting the output for any mention of "rpath", "RPATH",
+        "RUN_PATH", or the like.  This is controlled by the CUPS
+        installation on your system.
+
+     ii) There is presently a version of Gutenprint installed in /usr
+        (--prefix=/usr) rather than /usr/local or the like.  The
+        default location of Gutenprint installation is in /usr/local,
+        but system vendors typically install Gutenprint in /usr.
+
+     iii) Gutenprint is built dynamically only (--disable-static or
+        --disable-static-genppd).  This is not a default, and requires
+        the explicit --disable-static or --disable-static-genppd on
+	the Gutenprint "configure" command line.  Therefore, if you
+	build Gutenprint normally you should not be vulnerable to this
+	problem.
+
+     Note that in general if you install CUPS into a non-standard
+     location, and install Gutenprint into the same location, this
+     problem can surface.  For example, if you choose to install CUPS
+     in /usr/local and Gutenprint in /usr/local you are vulnerable to
+     this.  However, it is not standard practice to install CUPS
+     anywhere but /usr.
+
+     In this case, the run path embedded in the genppd executable
+     points to the version of Gutenprint installed in /usr/lib.  This
+     run path overrides any attempt by libtool to look in the build
+     directory.  The result is that cups-genppd and rastertogutenprint
+     are run against the older version of Gutenprint.  If the new
+     version contains additional features (more printers, changes to
+     printer options, etc.) they will not be available.
+
+     This bug is difficult to detect in a normal build.  It normally
+     does not cause an error to happen during build unless there is an
+     API change from the version installed and the version being
+     built; the only failure is frequently that some PPD files may not
+     be built or may be built with missing options.  Due to the PPD
+     version checking introduced in this release, the behavior might
+     manifest itself as a runtime error.  It is also possible that
+     there will be no error at all other than the older version of
+     Gutenprint being used, with the result that new features and bug
+     fixes are not available.
+
+     If you wish to use only shared libraries, do not wish to build
+     static libraries at all, and are vulnerable to this issue
+     (because cups-config --ldflags sets the run path), there are
+     three workarounds available:
+
+     i) Build and install Gutenprint into /usr (rather than
+        /usr/local) and then rebuild Gutenprint from scratch.  This
+        will install the correct libgutenprint.so in /usr/lib, and in
+        the rebuild genppd will be run against the correct library.
+
+     ii) Remove the old version of Gutenprint prior to building the
+        new version of Gutenprint.  The important files to remove are
+        anything named /usr/lib/libgutenprint*.
+
+     iii) Edit cups-config to remove the reference to the run path.
+
+  2) There is a known complication building "escputil" that causes
+     problems on a small number of systems.  "escputil" uses the
+     "readline" package, to support command editing and history within
+     the program.  Unfortunately, linking programs with "readline"
+     often requires linking against additional libraries, and the
+     exact library depends upon the system (e. g. not all Linux/UNIX
+     systems have the same requirements).
+
+     The configure script attempts to determine which additional
+     library must be linked against.  It tries using the following
+     libraries in this order to build a test executable:
+
+     -lncurses
+     -lcurses
+     -ltermcap
+     no additional libraries
+
+     The reason it tries other libraries first is that some systems
+     will link successfully, but only fail when an attempt is made to
+     actually call readline.  Therefore, we assume that additional
+     libraries are required.  Since we try the extra libraries in
+     order from most recent to oldest, we expect that the first one we
+     find will be appropriate.  For example, if the "ncurses" library
+     is the standard on a given system, the "termcap" library may be
+     provided for back compatibility, but it is unlikely that
+     "termcap" will be the standard with "curses" or "ncurses" being
+     provided for compatibility only (so that the link will succeed
+     but the command will use the incorrect library).
+
+     As this procedure is not failsafe, we provide the following
+     configure options to control this behavior:
+
+     ./configure --with-readline=yes  (the default; attempts to
+				      determine the correct library
+				      to link against)
+
+     ./configure --with-readline=no   (turns off use of readline
+				      altogether)
+
+     ./configure --with-readline=only (specifically instructs
+				      configure to not attempt to
+				      link against any other
+				      libraries)
+
+     ./configure --with-readline=libs (specifies the libraries to be
+				      linked against)
+
+     A hypothetical (this won't work anywhere!) example of the latter
+     would be
+
+     ./configure --with-readline='-lncurses -ltermcap'
+
+     Note that configure will not allow readline to be used if it
+     cannot successfully build the test program, regardless of the
+     option selected.  If you are having difficulty getting escputil
+     to build, we suggest using --with-readline=no.  The commands
+     used within escputil are very short and seldom require
+     significant editing.
+
+================================================================
+
+IV) OVERALL CHANGES FROM 5.2 to 5.3
+
+A) GENERAL USER-VISIBLE CHANGES
+
+   1) It is now possible to specify units in fractional point sizes,
+      allowing more precise placements and page sizes.
+
+   2) Added support for the following printers:
+
+     Canon SELPHY CP1300
+     Magicard Tango 2E
+     Magicard Rio 2E
+     Magicard Avalon E     (Experimental)
+     Magicard Enduro       (Experimental)
+     Magicard Enduro Plus  (Experimental)
+     Fujifilm ASK-2000     (Experimental)
+     Fujifilm ASK-2500     (Experimental)
+     Fujifilk ASK-4000     (Experimental)
+     Nidac Copal DPB-4000  (Experimental)
+     Nidac Copal DPB-6000
+     Nidac Copal DPB-8000  (Experimental)
+     Samsung ProXpress SL-M3820ND
+
+   3) Enhanced support and bugfixes for the following printers:
+
+      Fujifilm ASK-300
+      Sony UP-DR150 and UP-DR200
+      Canon SELPHY CP820, CP910, CP1000, and CP1200
+      DNP DS40, DS620, and RX1HS
+      Citizen CW-01 and CY-02
+      Mitusbishi CP-D70DW, CP-D707DW, and CP-D80DW
+      Shinko/Sinfonia S1245
+      Mitsubishi CP9800DW, CP9800DW-S, and CP-9810DW
+
+   4) Improved the performance of all dye-sublimation printers
+
+
+B) NEW FUNCTIONALITY
+
+   1) All units are now floating point rather than integer.
+
+
+C) CHANGES TO THE ENHANCED PRINT PLUGIN FOR GIMP
+
+   1) Units can be entered in fractional point sizes as well as
+      Imperial and metric sizes that are not exact numbers of points.
+
+
+D) CHANGES TO THE CUPS INTERFACE
+
+   1) Units can be entered in fractional point sizes as well as
+      Imperial and metric sizes that are not exact numbers of points.
+
+
+E) ARCHITECTURAL CHANGES
+
+   1) All units are now floating point rather than integer.
+
+
+================================================================
+
+V) CRITICAL UPGRADE NOTE FROM GUTENPRINT 5.0 OR EARLIER
+
+This note does not apply to initial installations of Gutenprint,
+upgrades from any 5.2 release, or to Macintosh users; if this
+describes you, you should skip this section.
+
+If you are using CUPS with Gutenprint on a non-Macintosh system, and
+are upgrading from Gimp-Print 4.2 or a version of Gutenprint prior to
+5.2, please read this note carefully as there are special procedures
+that you should follow in addition to the normal procedure of running
+cups-genppdupdate.
+
+Background: older versions of Gutenprint distributed CUPS backends,
+named "epson" and "canon", that we have determined have compatibility
+problems on certain systems.  The symptom of this problem is that the
+last page of each print job does not complete; it prints almost to the
+end of the page, and the printer stops.  The only way to clear this
+condition is to power the printer off and back on after each job.
+
+A CUPS "backend" is a special program whose purpose is to transfer
+data from the printer driver to the printer itself.  CUPS provides a
+number of general purpose backends.  The "epson" and "canon" backends
+previously provided with Gutenprint are capable of retrieving ink
+level information from Epson and Canon inkjet printers respectively.
+These backends are no longer needed in CUPS 1.2, and are not strictly
+necessary in CUPS 1.1.  Therefore, these backends have been removed
+from Gutenprint as of 5.2.
+
+Due to a subtle issue, these backends may not correctly send all of
+the data to the printer on some systems.  While we have not fully
+characterized the systems on which this happens, it appears likely
+that it is on certain operating system versions.  The backend believes
+that all data has been sent, but the way it does I/O results in some
+data not being sent on all systems.  As a result, the printer
+continues to wait for more data to be received.
+
+We recommend that if you have any printer queues using these backends
+that you modify the queues to use a different backend.  Even if you
+are not currently having problems, we recommend that you do this, as a
+future operating system upgrade may result in this problem becoming
+visible.  If this is the first version of Gutenprint or Gimp-Print you
+have installed on your system, you should not have these backends
+present.  Here are the steps we recommend that you follow.
+
+1) Determine whether any printers on your system use the epson or
+   canon backends.
+
+   This can be determined via "lpstat -v".  This may be done without
+   administrator privileges:
+
+      $ lpstat -v
+      device for EPSON_Stylus_Photo_R300_USB_1: usb://EPSON/Stylus%20Photo%20R300
+      device for espr300-ez: usb://EPSON/Stylus%20Photo%20R300
+      device for r300-test: epson:/dev/usb/lp0
+      device for HP_LaserJet_1022_USB_1: usb://HP/LaserJet%201022
+
+   Inspect each device line for a device that begins with "epson:" or
+   "canon:".  These are the queues you must modify.  In this case, the
+   only queue that must be modified is "r300-test".  The other queues
+   all have devices that begin with "usb:"; these queues use the
+   standard CUPS USB backend that does not have this problem.
+
+2) For each queue that uses the epson or canon backend, modify it to
+   use an appropriate backend.
+
+   If your system provides a user interface for administering
+   printers, we recommend that you use that interface.  If you're
+   comfortable with the KDE or GNOME print manager, you may use that
+   interface.  However, we recommend using the CUPS web interface
+   (http://localhost:631/printers) to modify the printer.  The steps
+   you should follow (assuming that you are using the CUPS web
+   interface) are:
+
+   i) Click "Modify Printer", to start leading you through a series of
+      screens allowing you to change the printer properties.
+
+   ii) The first screen, entitled "Modify Printer r300-test" (the
+      printer name, of course, will vary), will display the name of
+      the printer, along with the location and description.  You may
+      modify these if you wish, but it isn't necessary.  Click
+      "Continue".
+
+   iii) The next screen, entitled "Device for r300-test", is the
+      important one.  This provides you a drop-down list of devices.
+      These devices typically include "AppSocket/HP JetDirect",
+      "LP#1", and so forth.  It is critical that you select the
+      correct device at this point.
+
+      The entries that you want are of the form
+
+      EPSON Stylus Photo R300 USB #1 (EPSON Stylus Photo R300)
+
+      or
+
+      EPSON Stylus Photo EX Parallel #1 (EPSON Stylus Photo EX)
+
+      Make sure to select the one that's appropriate for your printer
+      model.
+
+      You will likely also see entries such as "Gutenprint USB Printer
+      #1 (EPSON USB2.0 Printer (Hi-speed)".  These are the entries
+      corresponding to the "epson" and "canon" backends, and you must
+      avoid these.
+
+   iv) The next screen, entitled "Make/Manufacturer for r300-test",
+      allows you to select the manufacturer of the printer.  Normally,
+      the correct manufacturer (Epson or Canon) will be highlighted,
+      and you can click Continue.
+
+   v) The next screen, entitled "Model/Driver for r300-test", allows
+      you to select the precise model of the printer.  Normally, the
+      correct model (which will be named something like "Epson Stylus
+      Photo R300 - CUPS+Gutenprint v5.3.0-pre2") will already be
+      highlighted, and you can click "Modify Printer".  Otherwise, you
+      must find and select the correct printer model before clicking
+      Modify Printer.  You will likely need to provide your
+      administrator username and password to continue here.
+
+      After this, you should see a message "Printer r300-test modified
+      successfully".
+
+3) Remove the epson and canon backends.
+
+   On most systems, the backends will be named
+   /usr/lib/cups/backend/canon and /usr/lib/cups/backend/epson.  On
+   some systems, the backends will be named
+   /usr/lib64/cups/backend/canon and /usr/lib64/cups/backend/epson.
+   They may be present in other locations, but these are the most
+   common locations.  If these files are present, you should create a
+   directory named /usr/lib/cups/old-backend or
+   /usr/lib64/cups/old-backend, and move the epson and canon backends
+   there just in case you later need them.
+
+      % cd /usr/lib/cups
+      % sudo mkdir old-backend
+      Password: <type your administrator password>
+      % cd backend
+      % sudo mv canon epson ../old-backend
+      Password: <retype your administrator password if prompted>
+
+The specific underlying technical problem appears to be that when at
+least certain devices are in non-blocking mode (O_NONBLOCK or
+O_NDELAY) with certain operating system versions (Linux 2.6.25 appears
+to be suffer this problem, and most likely some other versions also
+do), the close() call does not result in all data being flushed to the
+device.  We have determined that the data is in fact written by the
+"epson" process, but it's never getting to the printer.

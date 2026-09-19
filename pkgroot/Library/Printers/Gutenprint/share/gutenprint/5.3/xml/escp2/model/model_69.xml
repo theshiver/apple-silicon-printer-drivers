@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<gutenprint xmlns="http://gimp-print.sourceforge.net/xsd/gp.xsd-1.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://gimp-print.sourceforge.net/xsd/gp.xsd-1.0 gutenprint.xsd">
+<copyright>
+ *   Copyright 2008 Robert Krawitz (rlk@alum.mit.edu)
+ *
+ *   This program is free software; you can redistribute it and/or modify it
+ *   under the terms of the GNU General Public License as published by the Free
+ *   Software Foundation; either version 2 of the License, or (at your option)
+ *   any later version.
+ *
+ *   This program is distributed in the hope that it will be useful, but
+ *   WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ *   or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ *   for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see https://www.gnu.org/licenses/.
+</copyright>
+<escp2Model id="69" base="escp2/model/base/c8x.xml">
+ <verticalBorderlessSequence>SNL\000\000\011\027\000\000\000\000\000\000\000\003\000\000\001\260\004\336\0044\001\000\002\000\000\000\0004\010h\020\030\025\310\031\340=\314\020\214\012\024\005\214\000\012\001,\001\000\000\017\017\017\017\017\017\017\017\004\012\004\017\017\017\017\017\006\004\000\001\001\001\000\000\370\007</verticalBorderlessSequence>
+ <borderless>Yes</borderless>
+ <headConfiguration type="default">
+  <Nozzles>59</Nozzles>
+  <MinNozzles>60</MinNozzles>
+  <FirstNozzle>0</FirstNozzle>
+  <NozzleSeparation>2</NozzleSeparation>
+ </headConfiguration>
+ <maximumResolution>2880 2880</maximumResolution>
+ <zeroMarginOffset>80</zeroMarginOffset>
+ <microLeftMargin>42</microLeftMargin>
+ <bidirectionalAutoUpperLimit>1036800</bidirectionalAutoUpperLimit>
+ <margins interleave="soft" media="sheet">9 9 0 9</margins>
+ <margins interleave="printer" media="sheet">9 9 0 9</margins>
+ <extraBottom>24</extraBottom>
+</escp2Model>
+</gutenprint>
