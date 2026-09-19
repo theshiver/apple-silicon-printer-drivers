@@ -32,6 +32,7 @@ for q in $(lpstat -p 2>/dev/null | awk '{print $2}'); do
 done
 
 # 4) create / refresh the Gutenprint queue if the printer is connected
+lpadmin -x Canon_MP250_Gutenprint 2>/dev/null && log "replacing manual queue Canon_MP250_Gutenprint with Canon_MP250"
 PPD=/Library/Printers/PPDs/Contents/Resources/Gutenprint-Canon-MP250.ppd
 chmod 644 "$PPD"; chown -R root:wheel /Library/Printers/Gutenprint; chmod -R u=rwX,go=rX /Library/Printers/Gutenprint
 URI=$(lpinfo -v 2>/dev/null | awk '/usb:\/\/Canon\/MP250/{print $2; exit}')
