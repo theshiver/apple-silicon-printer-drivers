@@ -70,7 +70,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords=""):
 </head>
 <body>
 <header><a href="{BASE}/">🖨 Apple Silicon Printer Drivers</a>
-<nav style="display:inline"><a href="{BASE}/#search">Find your printer</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
+<nav style="display:inline"><a href="{RELEASE}">Download</a><a href="{BASE}/#search">Is my printer supported?</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 {body}
 <footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
@@ -79,11 +79,11 @@ def page(title, desc, canonical, body, jsonld=None, keywords=""):
 
 INSTALL_STEPS = f"""
 <ol class="steps">
-<li>Connect the printer to the Mac with a USB cable and switch it on.</li>
-<li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
-<li>Open the downloaded file and click through the installer (it asks for your Mac password). It is signed and notarized by Apple — no security warnings.</li>
-<li>The installer detects the printers on USB and creates them for you. <strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
-</ol>"""
+<li>Plug the printer into the Mac with a USB cable and switch it on.</li>
+<li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
+<li>Print something. The installer recognised the printer and set it up as the default.</li>
+</ol>
+<p class="note"><strong>Had the printer maker's old driver installed</strong> (Canon IJ, etc.)? Restart the Mac once, then unplug and re-plug the printer. The old driver is moved to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted.</p>"""
 
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
@@ -94,10 +94,10 @@ def brand_page(b):
 <h1>{html.escape(b)} printer drivers for Apple Silicon Macs</h1>
 <p class="lead">{len(ms)} {html.escape(b)} models work on M-series Macs with this free, native (arm64) driver — no Rosetta, no {html.escape(b)} software needed.</p>
 <div class="card"><strong>Search your exact model instead:</strong> <a href="{BASE}/#search">use the search box on the home page</a> — it shows the one command you need.</div>
-<h2>1. Install the driver package (same for every model)</h2>
+<h2>Install (same package for every model)</h2>
 {INSTALL_STEPS}
-<h2>2. Add your {html.escape(b)} printer</h2>
-<p>Find your model in the table, paste its command into Terminal and press Enter. The printer queue is created automatically when the printer is connected over USB.</p>
+<h2>Printer not set up automatically?</h2>
+<p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody>{rows}</tbody></table>
 <p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "Apple Silicon" entry.</p>
 <p><a href="{BASE}/brands/">← All brands</a></p>
@@ -147,9 +147,8 @@ home_ld = [
  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
   "step": [{"@type": "HowToStep", "text": "Connect the printer over USB and switch it on."},
-           {"@type": "HowToStep", "text": "Download the .pkg installer from GitHub."},
-           {"@type": "HowToStep", "text": "Open the .pkg and click through the installer (signed and notarized by Apple)."},
-           {"@type": "HowToStep", "text": "USB printers are set up automatically. Otherwise search your model on this page and run the shown gutenprint-add command."}]},
+           {"@type": "HowToStep", "text": "Download the .pkg installer and open it (signed and notarized by Apple)."},
+           {"@type": "HowToStep", "text": "Print. The installer sets the printer up automatically; otherwise search the model on the site for the one command to add it."}]},
 ]
 home = f"""
 <h1>Old printer, new Mac? Get it printing on Apple Silicon.</h1>
@@ -157,18 +156,15 @@ home = f"""
 
 <figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
 
-<h2 id="search">1. Find your printer</h2>
-<form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off" autofocus></form>
-<ul id="results"></ul>
-<div id="answer" class="card hidden"></div>
-<p class="note">Not listed? Try fewer words (just the model number). If it still isn't there, Gutenprint doesn't support that model — check whether macOS already sees it via AirPrint.</p>
-
-<h2>2. Install (same package for every printer)</h2>
+<h2>Install</h2>
 {INSTALL_STEPS}
 
-<h2>3. Add the printer</h2>
-<p><strong>Was your printer plugged in during step 2?</strong> Then the installer most likely created it already — check <em>System Settings → Printers &amp; Scanners</em> and just print. If it isn't there (or it's a Wi-Fi printer), paste the command shown for your model in step 1. Examples:</p>
-<table><thead><tr><th>Printer</th><th>Command</th></tr></thead><tbody>{ex_rows}</tbody></table>
+<h2 id="search">Is my printer supported? / It wasn't set up automatically</h2>
+<p>Type your model to check. If the installer didn't pick it up (Wi-Fi printer, unusual USB name, or it wasn't plugged in), you'll get the one command that adds it.</p>
+<form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off"></form>
+<ul id="results"></ul>
+<div id="answer" class="card hidden"></div>
+<p class="note">Not listed? Try fewer words (just the model number). If it still isn't there, Gutenprint doesn't support that model. Also: if macOS already sees your printer via AirPrint, you don't need any of this.</p>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in BRANDS[:16])} <a href="{BASE}/brands/">all brands →</a></span></p>
 
 <h2>Questions</h2>
@@ -189,9 +185,9 @@ async function search(){{await load();const terms=norm(q.value).split(' ').filte
  const hits=MODELS.map(m=>[score(m,terms),m]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]).slice(0,12);
  if(!hits.length){{res.innerHTML='<li>No match. Try only the model number (e.g. “MP250”).</li>';return}}
  for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong> <small>${{m.id}}</small>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
-function show(m){{res.innerHTML='';q.value=m.name;const mp250=false;
- ans.classList.remove('hidden');ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>`+
- `<p>Install the package (step 2 below). If the printer was on USB during install it is already set up — otherwise paste this in Terminal:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">Creates the printer automatically if it's connected over USB.</p>`;
+function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>
+ <p><strong>Plugged in over USB?</strong> Just <a href="{RELEASE}">install the package</a>, it sets the printer up by itself.</p>
+ <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p>`;
  wire();history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
 q.addEventListener('input',search);q.addEventListener('keydown',e=>{{const items=[...res.children];if(e.key==='ArrowDown'){{sel=Math.min(sel+1,items.length-1)}}else if(e.key==='ArrowUp'){{sel=Math.max(sel-1,0)}}else if(e.key==='Enter'){{if(items[sel]||items[0])(items[sel]||items[0]).click();return}}else return;items.forEach((li,i)=>li.classList.toggle('sel',i===sel));e.preventDefault()}});
 function wire(){{document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})}}

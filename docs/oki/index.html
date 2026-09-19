@@ -35,22 +35,22 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 </head>
 <body>
 <header><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">🖨 Apple Silicon Printer Drivers</a>
-<nav style="display:inline"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Find your printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
+<nav style="display:inline"><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest">Download</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Is my printer supported?</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 
 <h1>Oki printer drivers for Apple Silicon Macs</h1>
 <p class="lead">24 Oki models work on M-series Macs with this free, native (arm64) driver — no Rosetta, no Oki software needed.</p>
 <div class="card"><strong>Search your exact model instead:</strong> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">use the search box on the home page</a> — it shows the one command you need.</div>
-<h2>1. Install the driver package (same for every model)</h2>
+<h2>Install (same package for every model)</h2>
 
 <ol class="steps">
-<li>Connect the printer to the Mac with a USB cable and switch it on.</li>
-<li><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
-<li>Open the downloaded file and click through the installer (it asks for your Mac password). It is signed and notarized by Apple — no security warnings.</li>
-<li>The installer detects the printers on USB and creates them for you. <strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
+<li>Plug the printer into the Mac with a USB cable and switch it on.</li>
+<li><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
+<li>Print something. The installer recognised the printer and set it up as the default.</li>
 </ol>
-<h2>2. Add your Oki printer</h2>
-<p>Find your model in the table, paste its command into Terminal and press Enter. The printer queue is created automatically when the printer is connected over USB.</p>
+<p class="note"><strong>Had the printer maker's old driver installed</strong> (Canon IJ, etc.)? Restart the Mac once, then unplug and re-plug the printer. The old driver is moved to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted.</p>
+<h2>Printer not set up automatically?</h2>
+<p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody><tr><td>Oki B401d</td><td><code>sudo gutenprint-add oki-b401d</code></td></tr>
 <tr><td>Oki B430</td><td><code>sudo gutenprint-add oki-b430</code></td></tr>
 <tr><td>Oki B4350</td><td><code>sudo gutenprint-add oki-b4350</code></td></tr>
