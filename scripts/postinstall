@@ -28,8 +28,9 @@ for p in /Library/Printers/PPDs/Contents/Resources/CanonIJ*.ppd.gz; do
 done
 rm -rf /Library/Caches/Canon
 # queues that still point at the Canon IJ filters can never print again
-for q in $(lpstat -p 2>/dev/null | awk '{print $2}'); do
-  if grep -qs 'Raster2CanonIJ' "/etc/cups/ppd/$q.ppd" 2>/dev/null; then
+for f in /etc/cups/ppd/*.ppd; do
+  [ -f "$f" ] || continue; q=$(basename "$f" .ppd)
+  if grep -qs 'Raster2CanonIJ' "$f"; then
     lpadmin -x "$q" && log "removed dead Canon queue: $q"
   fi
 done
