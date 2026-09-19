@@ -1,5 +1,7 @@
 # Printer drivers for Apple Silicon Macs (Canon MP250 and ~3,500 others)
 
+**🔎 Website with model search: https://theshiver.github.io/mp250-arm-driver/** — type your printer, get the command.
+
 **The problem:** many older printers (Canon PIXMA, Epson Stylus, HP DeskJet/LaserJet, Brother, Samsung…)
 only ever got *Intel* macOS drivers. On an Apple Silicon Mac they ran through Rosetta, and macOS 27
 now shows **"The printer software is not compatible with this device"** — and Rosetta is going away.
