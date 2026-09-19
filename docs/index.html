@@ -35,7 +35,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 </head>
 <body>
 <header><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">🖨 Apple Silicon Printer Drivers</a>
-<nav style="display:inline"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Find your printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a></nav></header>
+<nav style="display:inline"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Find your printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 
 <h1>Old printer, new Mac? Get it printing on Apple Silicon.</h1>
@@ -76,6 +76,8 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 <h3>My printer is on Wi-Fi, not USB.</h3><p>Install the package, then add the printer in System Settings → Printers &amp; Scanners, choose Use: Select Software… and pick the entry ending in “Apple Silicon”.</p>
 <h3>Which macOS versions?</h3><p>Built and tested on macOS 27 (Apple Silicon). It should work on macOS 12 and later on M-series Macs.</p>
 
+<div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
+
 <h2>How it works</h2>
 <p>The package is <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a> compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Full details, source and build scripts are <a href="https://github.com/theshiver/apple-silicon-printer-drivers">on GitHub</a>.</p>
 
@@ -102,6 +104,6 @@ wire();
 (async()=>{const h=decodeURIComponent(location.hash.slice(1));if(h){await load();const m=MODELS.find(x=>x.id===h);if(m)show(m)}})();
 </script>
 
-<footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+<footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
 </main>
 </body></html>

@@ -70,10 +70,10 @@ def page(title, desc, canonical, body, jsonld=None, keywords=""):
 </head>
 <body>
 <header><a href="{BASE}/">🖨 Apple Silicon Printer Drivers</a>
-<nav style="display:inline"><a href="{BASE}/#search">Find your printer</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a></nav></header>
+<nav style="display:inline"><a href="{BASE}/#search">Find your printer</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 {body}
-<footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+<footer>Open source (Gutenprint GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
 </main>
 </body></html>"""
 
@@ -171,6 +171,8 @@ home = f"""
 
 <h2>Questions</h2>
 {faq_html}
+
+<div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
 
 <h2>How it works</h2>
 <p>The package is <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a> compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>

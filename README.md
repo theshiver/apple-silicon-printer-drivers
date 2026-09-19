@@ -171,6 +171,10 @@ then `build/make-pkg.sh <version>`. Website: `python3 site/build-site.py` → `d
 This project started as a fix for one Canon PIXMA MP250 on a MacBook Air; it turned out the same
 problem hits thousands of models, so it became generic.
 
+## ☕ Buy me a coffee
+
+This started as a weekend fix for one printer and grew into something a lot of people needed. If it saved you from buying a new printer, you can [sponsor me on GitHub](https://github.com/sponsors/theshiver) — a coffee is plenty.
+
 ## License
 
 Gutenprint is GPL-2.0 (see `LICENSE-gutenprint`); source: gutenprint-5.3.4.tar.xz from SourceForge.
