@@ -35,6 +35,7 @@ done
 lpadmin -x Canon_MP250_Gutenprint 2>/dev/null && log "replacing manual queue Canon_MP250_Gutenprint with Canon_MP250"
 PPD=/Library/Printers/PPDs/Contents/Resources/Gutenprint-Canon-MP250.ppd
 chmod 644 "$PPD"; chown -R root:wheel /Library/Printers/Gutenprint; chmod -R u=rwX,go=rX /Library/Printers/Gutenprint
+mkdir -p /usr/local/bin && ln -sf /Library/Printers/Gutenprint/bin/gutenprint-add /usr/local/bin/gutenprint-add
 URI=$(lpinfo -v 2>/dev/null | awk '/usb:\/\/Canon\/MP250/{print $2; exit}')
 if [ -n "$URI" ]; then
   lpadmin -p Canon_MP250 -E -v "$URI" -P "$PPD" -D "Canon MP250 (Gutenprint)" -o printer-is-shared=false 2>&1 | grep -v 'deprecated\|kullanımdan' || true
