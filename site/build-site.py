@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.2.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.3.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -81,8 +81,7 @@ INSTALL_STEPS = f"""
 <ol class="steps">
 <li>Connect the printer to the Mac with a USB cable and switch it on.</li>
 <li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> from GitHub.</li>
-<li>Open <strong>Terminal</strong> (press <kbd>⌘</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, Enter), paste this line and press Enter. Type your Mac password when asked (it stays invisible while typing):
-<pre><button class="copy">Copy</button><code>sudo installer -pkg ~/Downloads/{PKG} -target /</code></pre></li>
+<li>Open the downloaded file and click through the installer (it asks for your Mac password). It is signed and notarized by Apple — no security warnings.</li>
 <li>The installer detects the printers on USB and creates them for you. <strong>If the printer maker's old driver was installed before:</strong> restart the Mac, then unplug and re-plug the printer once.</li>
 </ol>"""
 
@@ -132,6 +131,7 @@ faq = [
  ("Why does my Mac say “The printer software is not compatible with this device”?",
   "Your printer's driver was compiled for Intel Macs only. macOS 27 flags Intel-only printer software on Apple Silicon (M1–M4) Macs, and Rosetta, which used to run it, is being phased out. This site provides a native replacement."),
  ("Which printers get set up automatically?", "Any printer connected over USB during installation whose USB name matches a model in the database — e.g. “Canon MP250 series”, “EPSON Stylus Photo R300”, “Brother HL-5040 series”. Others take one gutenprint-add command, shown when you search your model on this page."),
+ ("Is it safe? Will macOS complain?", "The installer is signed with an Apple Developer ID and notarized by Apple, so Gatekeeper opens it without warnings. Everything it does is documented in SECURITY.md on GitHub and the install script is plain shell you can read."),
  ("Is it free?", "Yes. It is the open-source Gutenprint driver (GPL-2.0), compiled natively for Apple Silicon and packaged as a one-click macOS installer."),
  ("Does it remove my old driver?", "Only when it has to: Canon's IJ driver installs a kernel extension that blocks macOS's own USB printer driver, so the installer moves it to /Users/Shared/printer-driver-backup (nothing is deleted). Other vendors' drivers are left in place."),
  ("Does the scanner of my all-in-one work?", "No. Only printing is covered. For scanning use SANE (Homebrew) or VueScan, which have native Apple Silicon support."),
@@ -148,7 +148,7 @@ home_ld = [
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
   "step": [{"@type": "HowToStep", "text": "Connect the printer over USB and switch it on."},
            {"@type": "HowToStep", "text": "Download the .pkg installer from GitHub."},
-           {"@type": "HowToStep", "text": f"In Terminal run: sudo installer -pkg ~/Downloads/{PKG} -target /"},
+           {"@type": "HowToStep", "text": "Open the .pkg and click through the installer (signed and notarized by Apple)."},
            {"@type": "HowToStep", "text": "USB printers are set up automatically. Otherwise search your model on this page and run the shown gutenprint-add command."}]},
 ]
 home = f"""

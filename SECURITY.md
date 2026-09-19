@@ -15,13 +15,16 @@ It does not touch anything else, does not phone home, and needs no network.
 
 ## Verifying a release
 
-Every release is built **from source on GitHub Actions** (Apple Silicon runner) by
-[`.github/workflows/release.yml`](.github/workflows/release.yml) and carries a Sigstore build-provenance attestation:
+The release package is signed with a Developer ID Installer certificate and notarized by Apple. Check it with:
 
 ```sh
-gh attestation verify AppleSilicon-Printer-Drivers-<ver>.pkg --owner theshiver
-shasum -a 256 -c SHA256SUMS.txt
+spctl -a -vv -t install AppleSilicon-Printer-Drivers-<ver>.pkg     # → "accepted, source=Notarized Developer ID"
+pkgutil --check-signature AppleSilicon-Printer-Drivers-<ver>.pkg
 ```
+
+Each tag is also built from source on GitHub Actions (Apple Silicon runner) by
+[`.github/workflows/release.yml`](.github/workflows/release.yml); those `ci-*` assets carry a Sigstore
+build-provenance attestation (`gh attestation verify ci-AppleSilicon-Printer-Drivers-<ver>.pkg --owner theshiver`).
 
 You can also inspect the package before installing:
 
@@ -29,8 +32,7 @@ You can also inspect the package before installing:
 pkgutil --expand AppleSilicon-Printer-Drivers-<ver>.pkg /tmp/pkg && cat /tmp/pkg/Scripts/postinstall
 ```
 
-The package is ad-hoc signed, not notarized (no paid Apple Developer account behind this project).
-macOS may warn on double-click; `sudo installer -pkg … -target /` works as documented.
+Prefer the command line? `sudo installer -pkg AppleSilicon-Printer-Drivers-<ver>.pkg -target /` does the same as double-clicking.
 
 ## Reporting
 

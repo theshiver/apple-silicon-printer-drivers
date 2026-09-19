@@ -18,11 +18,8 @@ no vendor software.
 
 1. Plug the printer into the Mac with USB and switch it on.
 2. Download the `.pkg` from the **[latest release](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)**.
-3. Open **Terminal** (Spotlight → type `Terminal`), paste this, press Enter, type your password:
-
-   ```sh
-   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.2.pkg -target /
-   ```
+3. Open the downloaded `.pkg` and click through the installer (it asks for your password).
+   The package is signed and notarized by Apple, so there is no security warning.
 
 The installer looks at the printers connected over USB, recognises the ones Gutenprint supports and
 **creates the printer for you** (it becomes the default). Try printing — you're probably done.
@@ -175,11 +172,8 @@ problem hits thousands of models, so it became generic.
 
 ## Is it safe?
 
-Every release is built from source on GitHub's own Apple Silicon runners and carries a build-provenance attestation — you can verify the file you downloaded came from this repo's code:
-
-```sh
-gh attestation verify ~/Downloads/AppleSilicon-Printer-Drivers-1.3.2.pkg --owner theshiver
-```
+The installer is **signed with an Apple Developer ID and notarized by Apple** (Gatekeeper checks it on open).
+Releases are additionally built from source on GitHub's own Apple Silicon runners (`ci-*` assets with a build-provenance attestation) so you can compare the notarized package against a build nobody's laptop touched.
 
 What the installer does, line by line, is in [SECURITY.md](SECURITY.md). The post-install script is 60 lines of plain shell.
 
