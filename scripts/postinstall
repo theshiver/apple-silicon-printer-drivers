@@ -46,6 +46,5 @@ else
   log "choosing 'Canon MP250 series - CUPS+Gutenprint v5.3.4' under Select Software."
 fi
 
-launchctl kickstart -k system/org.cups.cupsd 2>/dev/null || true
 [ "$NEED_REBOOT" = 1 ] && log "REBOOT REQUIRED (kernel extension removed) — then unplug/replug the printer once."
 exit 0
