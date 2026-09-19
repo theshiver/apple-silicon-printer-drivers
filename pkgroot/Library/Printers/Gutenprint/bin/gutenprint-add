@@ -17,7 +17,7 @@ T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
 SRC=$(ls "$T"/*.ppd* | head -1); [ -n "$SRC" ] || { echo "PPD not generated"; exit 1; }
 OUT="$PPDDIR/Gutenprint-$MODEL.ppd"
 case "$SRC" in *.gz) gunzip -c "$SRC";; *) cat "$SRC";; esac \
- | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#' > "$OUT"
+ | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#; s#^(\*NickName:\s*")(.*?) - CUPS\+Gutenprint v[\d.]+"#$1$2 - Apple Silicon"#' > "$OUT"
 chmod 644 "$OUT"
 NICK=$(grep '^\*NickName' "$OUT" | cut -d'"' -f2)
 echo "PPD installed: $OUT"

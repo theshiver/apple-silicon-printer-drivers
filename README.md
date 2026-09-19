@@ -19,7 +19,7 @@ no vendor software.
 3. Open **Terminal** (Spotlight → type `Terminal`), paste this, press Enter, type your password:
 
    ```sh
-   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.0.pkg -target /
+   sudo installer -pkg ~/Downloads/AppleSilicon-Printer-Drivers-1.3.1.pkg -target /
    ```
 
 The installer looks at the printers connected over USB, recognises the ones Gutenprint supports and
@@ -56,7 +56,7 @@ sudo gutenprint-add escp2-r300 Epson_R300 socket://192.168.1.50
 ```
 
 (`lpinfo -v` lists the addresses macOS sees.) Or go to *System Settings → Printers & Scanners → Add →
-Use: Select Software…* and pick the entry ending in **"CUPS+Gutenprint v5.3.4"**.
+Use: Select Software…* and pick the entry ending in **"Apple Silicon"**.
 
 ### Copy-paste examples
 

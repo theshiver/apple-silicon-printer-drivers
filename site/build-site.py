@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.0.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.1.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -100,7 +100,7 @@ def brand_page(b):
 <h2>2. Add your {html.escape(b)} printer</h2>
 <p>Find your model in the table, paste its command into Terminal and press Enter. The printer queue is created automatically when the printer is connected over USB.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody>{rows}</tbody></table>
-<p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "CUPS+Gutenprint" entry.</p>
+<p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "Apple Silicon" entry.</p>
 <p><a href="{BASE}/brands/">← All brands</a></p>
 """
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": title,
@@ -135,7 +135,7 @@ faq = [
  ("Is it free?", "Yes. It is the open-source Gutenprint driver (GPL-2.0), compiled natively for Apple Silicon and packaged as a one-click macOS installer."),
  ("Does it remove my old driver?", "Only when it has to: Canon's IJ driver installs a kernel extension that blocks macOS's own USB printer driver, so the installer moves it to /Users/Shared/printer-driver-backup (nothing is deleted). Other vendors' drivers are left in place."),
  ("Does the scanner of my all-in-one work?", "No. Only printing is covered. For scanning use SANE (Homebrew) or VueScan, which have native Apple Silicon support."),
- ("My printer is on Wi-Fi, not USB.", "Install the package, then add the printer in System Settings → Printers & Scanners, choose Use: Select Software… and pick the entry ending in “CUPS+Gutenprint v5.3.4”."),
+ ("My printer is on Wi-Fi, not USB.", "Install the package, then add the printer in System Settings → Printers & Scanners, choose Use: Select Software… and pick the entry ending in “Apple Silicon”."),
  ("Which macOS versions?", "Built and tested on macOS 27 (Apple Silicon). It should work on macOS 12 and later on M-series Macs."),
 ]
 faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in faq)
