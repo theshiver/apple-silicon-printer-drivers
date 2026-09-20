@@ -27,6 +27,24 @@ jobs:
           build/build-gutenprint.sh
           file pkgroot/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3
 
+      - name: Smoke test — generated PPD must pass through the real filter chain
+        run: |
+          set -e
+          GP=$PWD/pkgroot/Library/Printers/Gutenprint
+          T=$(mktemp -d)
+          for M in bjc-MP250-series escp2-r300 hp-lj_1010; do
+            STP_DATA_PATH=$GP/share/gutenprint/5.3/xml "$GP/libexec/cups-genppd.5.3" -p "$T" "$M" >/dev/null
+          done
+          for Z in "$T"/*.ppd.gz; do
+            P="${Z%.gz}"; gunzip -c "$Z" | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#' > "$P"
+            echo "smoke test" | /usr/libexec/cups/filter/cgtexttopdf 1 u t 1 "" > "$T/t.pdf" 2>/dev/null
+            PPD="$P" /usr/libexec/cups/filter/cgpdftoraster 1 u t 1 "" "$T/t.pdf" > "$T/t.ras" 2>/dev/null
+            OUT=$(STP_DATA_PATH=$GP/share/gutenprint/5.3/xml PPD="$P" "$GP/libexec/rastertogutenprint.5.3" 1 u t 1 "" "$T/t.ras" 2>"$T/err" | wc -c)
+            grep -i 'corrupt\|ERROR' "$T/err" && exit 1
+            [ "$OUT" -gt 1000 ] || { echo "no output for $P"; exit 1; }
+            echo "OK $(basename "$P"): $OUT bytes"
+          done
+
       - name: Build .pkg
         run: |
           VER=${GITHUB_REF_NAME#v}; [ "$VER" = "$GITHUB_REF_NAME" ] && VER=0.0.0-ci

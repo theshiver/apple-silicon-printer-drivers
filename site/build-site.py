@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.4.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.5.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
