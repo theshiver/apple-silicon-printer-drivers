@@ -26,11 +26,36 @@ That's it. The installer finds the printer and sets it up.
 
 ## Supported printers
 
-3,578 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,579 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
 Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
 
 Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
+
+## Brother HL-1210W
+
+The source tree now includes a native arm64 [brlaser v6](https://github.com/pdewacht/brlaser/tree/v6)
+filter and an HL-1210W profile based on upstream's HL-1200 series driver. Build a new
+installer as described below; older releases do not contain this driver.
+
+After installing the updated package, connected USB printers are detected automatically.
+For manual USB setup:
+
+```sh
+sudo gutenprint-add brlaser-hl-1210w
+```
+
+For Wi-Fi, use the printer's IP address (replace the example):
+
+```sh
+sudo gutenprint-add brlaser-hl-1210w Brother_HL1210W socket://192.168.1.50
+```
+
+The default is 600 dpi; 1200HQ is also available. The profile offers A4, Letter, Legal,
+A5, B5 and Executive on plain paper. Folio is not available in brlaser v6. The native build and macOS filter
+chain are tested automatically; physical output on an HL-1210W still needs verification.
+Upstream [reports successful HL-1210W printing](https://github.com/pdewacht/brlaser/issues/40);
+v6 includes the 64-line block limit needed for complex pages.
 
 ## FAQ
 
@@ -66,18 +91,20 @@ This started as a weekend fix for one printer and grew into something a lot of p
 
 ## Technical details
 
-The package is [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
+The package contains [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
 
 | Path | Purpose |
 |---|---|
 | `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, signed) |
+| `/Library/Printers/Gutenprint/libexec/rastertobrlaser` | arm64 Brother HL-1210W raster filter (brlaser v6) |
+| `/Library/Printers/Gutenprint/share/brlaser` | HL-1210W PPD, GPL license and exact brlaser source archive |
 | `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson` | maintenance commands (head clean, nozzle check) |
 | `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator |
 | `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | adds a printer by model id |
 | `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |
 | `/Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd` | PPDs generated on demand, with absolute filter paths |
 
-The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against Gutenprint's model names (word match, shortest name wins) and calls `gutenprint-add` for it.
+The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against the combined Gutenprint and brlaser model names (word match, shortest name wins) and calls `gutenprint-add` for it.
 
 Things that bit us on macOS 27, for anyone porting another driver:
 
@@ -86,10 +113,10 @@ Things that bit us on macOS 27, for anyone porting another driver:
 - Canon's IJ driver ships a codeless `AppleUSBMergeNub` kext (`/Library/Extensions/BJUSBLoad.kext`) that pins its x86_64 USB class-driver plugin to the printer in the I/O Registry. While it is loaded the `usb` backend won't fall back to Apple's generic class driver. Other vendors' leftovers: open an issue with `ls /Library/Extensions` output.
 - macOS 27 marks any queue whose filters lack an arm64 slice as *Software Incompatible* on every `cupsd` start, even when the job would still run under Rosetta.
 
-Build: `build/build-gutenprint.sh` (Xcode CLT + Homebrew `gettext`), then `build/make-pkg.sh <version>` (signs and notarizes when Developer ID certs are present). Website: `python3 site/build-site.py` → `docs/`.
+Build: `build/build-gutenprint.sh` (Xcode CLT + Homebrew `gettext`), then `build/build-brlaser.sh` (Homebrew `cmake`), then `build/make-pkg.sh <version>` (signs and notarizes when Developer ID certs are present). Validate with `python3 -m unittest discover -s tests -v` and `build/test-brlaser.sh`. Website: `python3 site/build-site.py` → `docs/`.
 
 This project started as a fix for one Canon PIXMA MP250 on a MacBook Air. Contributions welcome.
 
 ## License
 
-Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). Scripts, installer and site: MIT (`LICENSE`).
+Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. Scripts, installer and site: MIT (`LICENSE`).

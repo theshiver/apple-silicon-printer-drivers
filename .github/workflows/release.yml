@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install build deps
-        run: brew install gettext pkgconf
+        run: brew install gettext pkgconf cmake
 
       - name: Build Gutenprint (arm64) from source
         run: |
@@ -26,6 +26,14 @@ jobs:
           rm -rf pkgroot/Library/Printers/Gutenprint/libexec pkgroot/Library/Printers/Gutenprint/share
           build/build-gutenprint.sh
           file pkgroot/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3
+
+      - name: Build brlaser (arm64) from source
+        run: build/build-brlaser.sh
+
+      - name: Test printer setup and Brother filter chain
+        run: |
+          python3 -m unittest discover -s tests -v
+          build/test-brlaser.sh
 
       - name: Smoke test — generated PPD must pass through the real filter chain
         run: |

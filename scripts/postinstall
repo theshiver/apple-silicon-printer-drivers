@@ -1,7 +1,7 @@
 #!/bin/sh
 # Apple Silicon Printer Drivers — post-install
 #  1. retire vendor Intel-only driver bits that block Apple's generic USB class driver
-#  2. auto-detect USB printers and create queues for the ones Gutenprint knows
+#  2. auto-detect USB printers and create queues for supported models
 set -u
 GP=/Library/Printers/Gutenprint
 B="/Users/Shared/printer-driver-backup"
@@ -37,18 +37,10 @@ done
 
 # ---- 2) auto-detect USB printers
 #  lpinfo -v prints: direct usb://Vendor/Model%20name?serial=XXX
-#  Match vendor+model words against Gutenprint's model list; take the shortest full match.
-MODELS=$("$GP/libexec/cups-genppd.5.3" -M -v 2>/dev/null)
+#  Match through the helper so Gutenprint and brlaser use the same catalog.
 lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r URI; do
   DEV=$(printf '%s' "$URI" | sed -E 's#^usb://##; s#\?.*##; s#%20# #g; s#/# #')
-  ID=$(printf '%s\n' "$MODELS" | awk -v dev="$DEV" '
-    function norm(s,  t){ t=tolower(s); gsub(/[^a-z0-9]+/," ",t); t=" " t " "; gsub(/ hewlett packard /," hp ",t); gsub(/ seiko epson /," epson ",t); gsub(/ (series|inc|corp|co|ltd|usb|printer) /," ",t); gsub(/ +/," ",t); gsub(/^ | $/,"",t); return t }
-    BEGIN{ nd=split(norm(dev),dt," ") }
-    { id=$1; name=$0; sub(/^[^ ]+ +/,"",name); n=norm(name); m=split(n,nt," "); delete have; for(i=1;i<=m;i++) have[nt[i]]=1
-      ok=1; for(i=1;i<=nd;i++) if(!(dt[i] in have)) { ok=0; break }
-      if(ok && (best=="" || length(n)<length(bestn))) { best=id; bestn=n }
-    }
-    END{ if(best!="") print best }')
+  ID=$("$GP/bin/gutenprint-add" --match-usb "$URI")
   if [ -n "$ID" ]; then
     QUEUE=$(printf '%s' "$DEV" | tr -c 'A-Za-z0-9\n' '_' | sed -E 's/_+/_/g; s/^_//; s/_$//')
     if "$GP/bin/gutenprint-add" "$ID" "$QUEUE" "$URI" >/dev/null 2>&1; then

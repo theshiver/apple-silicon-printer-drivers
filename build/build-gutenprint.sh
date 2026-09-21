@@ -13,7 +13,10 @@ export PATH="/opt/homebrew/opt/gettext/bin:/opt/homebrew/bin:$PATH"
   --without-readline --disable-test --disable-testpattern CFLAGS="-O2 -D_DARWIN_C_SOURCE"
 make -j"$(sysctl -n hw.ncpu)"
 make install DESTDIR="$W/stage"
-OUT="$ROOT/pkgroot/Library/Printers/Gutenprint"; rm -rf "$OUT"; mkdir -p "$OUT/libexec" "$OUT/share"
+OUT="$ROOT/pkgroot/Library/Printers/Gutenprint"
+# Preserve the checked-in helper and any separately built drivers.
+rm -rf "$OUT/share/gutenprint"
+mkdir -p "$OUT/libexec" "$OUT/share"
 cp -R "$W/stage/Library/Printers/Gutenprint/share/gutenprint" "$OUT/share/"
 cp "$W/stage/usr/libexec/cups/filter/rastertogutenprint.5.3" "$W/stage/usr/libexec/cups/filter/commandtocanon" "$W/stage/usr/libexec/cups/filter/commandtoepson" "$W/stage/usr/sbin/cups-genppd.5.3" "$OUT/libexec/"
 codesign -s - -f "$OUT/libexec/"*
