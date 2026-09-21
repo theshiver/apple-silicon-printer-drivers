@@ -53,7 +53,7 @@ sudo gutenprint-add brlaser-hl-1210w Brother_HL1210W socket://192.168.1.50
 
 The default is 600 dpi; 1200HQ is also available. The profile offers A4, Letter, Legal,
 A5, B5 and Executive on plain paper. Folio is not available in brlaser v6. The native build and macOS filter
-chain are tested automatically; physical output on an HL-1210W still needs verification.
+chain are tested automatically. A user has also confirmed a successful physical print on an HL-1210W.
 Upstream [reports successful HL-1210W printing](https://github.com/pdewacht/brlaser/issues/40);
 v6 includes the 64-line block limit needed for complex pages.
 
