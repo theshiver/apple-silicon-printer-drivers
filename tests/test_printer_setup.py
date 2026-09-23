@@ -31,6 +31,8 @@ class PrinterSetupTest(unittest.TestCase):
         self.script(self.gp / "libexec/cups-genppd.5.3", '''
 if [ "$1" = -M ]; then
   printf 'brother-hl-5040 Brother HL-5040\nbrother-hl-5030 Brother HL-5030\nbjc-MP250-series Canon MP250 series\nescp2-r300 Epson Stylus Photo R300\n'
+elif [ "$3" = bjc-MP250-series ]; then
+  printf '*PPD-Adobe: "4.3"\n*ShortNickName: "Canon MP250 series"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*OpenUI *StpCDXAdjustment/CD Adjustment: PickOne\n*StpCDXAdjustment 0/0 mm: ""\n*CloseUI: *StpCDXAdjustment\n*CustomStpCDXAdjustment True: "pop"\n*ParamCustomStpCDXAdjustment Value/Value: 1 points -15 15\n' > "$2/stp.ppd"
 else
   exit 1
 fi
@@ -105,6 +107,13 @@ fi
         self.assertIn("no USB device auto-matched", output)
         self.assertFalse((self.root / "lpadmin.log").exists())
         self.assertTrue((self.root / f"ppds/Gutenprint-{MODEL}.ppd").exists())
+
+    def test_gutenprint_ppd_drops_custom_options(self):
+        self.run_helper("bjc-MP250-series", "Canon", "usb://Canon/MP250")
+        args = (self.root / "lpadmin.log").read_text().splitlines()
+        ppd = Path(args[args.index("-P") + 1]).read_text()
+        self.assertIn("*StpCDXAdjustment 0/0 mm", ppd)
+        self.assertNotIn("CustomStp", ppd)  # macOS 27 Printer Features OK breaks on these (#1)
 
     def test_queue_failure_is_reported(self):
         self.env["TEST_FAIL"] = "1"

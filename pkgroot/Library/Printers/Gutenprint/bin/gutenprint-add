@@ -47,8 +47,10 @@ case "$MODEL" in
 esac
 mkdir -p "$PPDDIR" || exit 1
 OUT="$PPDDIR/Gutenprint-$MODEL.ppd"
+# Drop Gutenprint's *CustomStp*/*ParamCustomStp* entries: with them macOS 27's Printer Features
+# sheet ignores OK (issue #1). The options stay as normal PickOne lists.
 case "$SRC" in *.gz) gunzip -c "$SRC";; *) cat "$SRC";; esac \
- | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#' > "$OUT"
+ | perl -pe '$_="" if /^\*(Param)?CustomStp/; s#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#' > "$OUT"
 chmod 644 "$OUT"
 # Keep *NickName untouched: rastertogutenprint validates the "- CUPS+Gutenprint vX.Y.Z" suffix.
 # The friendly name goes into the queue description, which is what Printers & Scanners shows.
