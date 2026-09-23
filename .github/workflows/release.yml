@@ -77,7 +77,9 @@ jobs:
         run: |
           # the notarized package is built locally with Developer ID certs and attached first;
           # CI only fills in when a tag has no package yet (and always refreshes checksums of its own build as ci-*)
-          if gh release view "$GITHUB_REF_NAME" --json assets -q '.assets[].name' | grep -q '\.pkg$'; then
+          # probe the download URL: the release API's asset list can lag and come back empty
+          PKG=$(basename dist/*.pkg)
+          if curl -sfIL -o /dev/null "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/$PKG"; then
             for f in dist/*; do cp "$f" "dist/ci-$(basename "$f")"; done
             gh release upload "$GITHUB_REF_NAME" dist/ci-* --clobber
           else
