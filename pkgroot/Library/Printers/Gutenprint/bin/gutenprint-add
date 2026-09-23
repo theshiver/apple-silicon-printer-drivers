@@ -22,15 +22,12 @@ case "${1:-}" in
     DEV=$(printf '%s' "$2" | sed -E 's#^usb://##; s#\?.*##; s#%20# #g; s#/# #')
     list_models | awk -v dev="$DEV" '
       function norm(s, t){ t=tolower(s); gsub(/[^a-z0-9]+/," ",t); t=" " t " "; gsub(/ hewlett packard /," hp ",t); gsub(/ seiko epson /," epson ",t); gsub(/ (series|inc|corp|co|ltd|usb|printer) /," ",t); gsub(/ +/," ",t); gsub(/^ | $/,"",t); return t }
-      BEGIN{
-        d=norm(dev)
-        # Some HL-1210W devices identify themselves by the HL-1200 family.
-        if(d=="brother hl 1200") d="brother hl 1210w"
-        nd=split(d,dt," ")
-      }
+      BEGIN{ nd=split(norm(dev),dt," ") }
       { id=$1; name=$0; sub(/^[^ ]+ +/,"",name); n=norm(name); m=split(n,nt," "); delete have; for(i=1;i<=m;i++) have[nt[i]]=1
         ok=1; for(i=1;i<=nd;i++) if(!(dt[i] in have)) { ok=0; break }
-        if(ok && (best=="" || length(n)<length(bestn))) { best=id; bestn=n }
+        # brlaser wins over a Gutenprint entry for the same device (e.g. HL-5030)
+        b=(id ~ /^brlaser-/)
+        if(ok && (best=="" || b>bestb || (b==bestb && length(n)<length(bestn)))) { best=id; bestn=n; bestb=b }
       }
       END{ if(best!="") print best }'
     exit 0;;

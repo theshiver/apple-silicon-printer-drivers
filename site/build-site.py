@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.5.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.6.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -88,7 +88,7 @@ INSTALL_STEPS = f"""
 
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
-    rows = "\n".join(f'<tr><td>{html.escape(m["name"])}{" (next release)" if m.get("unreleased") else ""}</td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
+    rows = "\n".join(f'<tr><td>{html.escape(m["name"])}</td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
     title = f"{b} printer driver for Apple Silicon Mac (M1/M2/M3/M4) — {len(ms)} models"
     desc = f"Free native arm64 macOS driver for {len(ms)} {b} printers. Fixes 'The printer software is not compatible with this device' on macOS 27 without Rosetta. Step-by-step install."
     body = f"""
@@ -181,7 +181,7 @@ home = f"""
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
 
 <h2>How it works</h2>
-<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother HL-1210W support uses the bundled native arm64 <a href="https://github.com/pdewacht/brlaser">brlaser v6</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
+<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/pdewacht/brlaser">brlaser v6</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
 
 <script>
 const BASE={json.dumps(BASE)};let MODELS=null,sel=-1;
@@ -194,7 +194,6 @@ async function search(){{await load();const terms=norm(q.value).split(' ').filte
  if(!hits.length){{res.innerHTML='<li>No match. Try only the model number (e.g. “MP250”).</li>';return}}
  for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong> <small>${{m.id}}</small>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
 function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');
- if(m.unreleased){{ans.innerHTML=`<h3 style="margin-top:0">${{m.name}} support is in the next release</h3><p>The driver is available in the source tree. Existing release installers do not include it yet. See the <a href="{REPO}#brother-hl-1210w">build and setup instructions</a>. A user has confirmed a successful physical print on an HL-1210W.</p>`;history.replaceState(null,'','#'+encodeURIComponent(m.id));return}}
  ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>
  <p><strong>Plugged in over USB?</strong> Just <a href="{RELEASE}">install the package</a>, it sets the printer up by itself.</p>
  <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p>`;

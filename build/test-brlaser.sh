@@ -37,3 +37,13 @@ for DPI in 600 1200; do
     echo "OK: HL-1210W $DPI dpi, $PAPER ($(wc -c < "$T/test.prn" | tr -d ' ') bytes)"
   done
 done
+# Every other upstream model: valid PPD and one A4 page through the filter.
+for P in "$GP"/share/brlaser/ppd/*.ppd; do
+  sed "s#/Library/Printers/Gutenprint/libexec/rastertobrlaser#$FILTER#" "$P" > "$T/m.ppd"
+  cupstestppd -q -I filters "$T/m.ppd"
+  PPD="$T/m.ppd" /usr/libexec/cups/filter/cgpdftoraster 1 user test 1 "PageSize=A4" "$T/test.pdf" > "$T/test.ras" 2>"$T/raster.log"
+  PPD="$T/m.ppd" "$FILTER" 1 user test 1 "PageSize=A4" "$T/test.ras" > "$T/test.prn" 2>"$T/filter.log"
+  if grep -iE 'ERROR|corrupt' "$T/filter.log"; then exit 1; fi
+  grep -aq '@PJL EOJ' "$T/test.prn"
+done
+echo "OK: $(ls "$GP"/share/brlaser/ppd/*.ppd | wc -l | tr -d ' ') brlaser PPDs"

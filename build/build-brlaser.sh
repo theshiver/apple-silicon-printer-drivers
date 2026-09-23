@@ -1,5 +1,5 @@
 #!/bin/sh
-# Native Brother HL-1210W filter and PPD (macOS, Xcode CLT, CMake).
+# Native brlaser filter and PPDs for every upstream Brother model (macOS, Xcode CLT, CMake).
 set -eu
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$HERE/.."
@@ -29,7 +29,9 @@ ctest --test-dir "$W/build" --output-on-failure
 sed -E '/^MediaSize (A6|B6|EnvC5|EnvMonarch|EnvDL)$/d; /^InputSlot [2-5] /d; /^MediaType /d' \
   "$W/build/brlaser.drv" > "$W/hl1210w.drv"
 /usr/bin/ppdc -d "$W/ppd" "$W/hl1210w.drv"
+/usr/bin/ppdc -d "$W/all" "$W/build/brlaser.drv"
 
+rm -rf "$OUT/share/brlaser/ppd"
 mkdir -p "$OUT/libexec" "$OUT/share/brlaser/ppd"
 cp "$W/build/rastertobrlaser" "$OUT/libexec/"
 codesign -s - -f "$OUT/libexec/rastertobrlaser"
@@ -39,6 +41,14 @@ sed -e 's/HL-1200/HL-1210W/g' \
     -e 's/using brlaser v6/using brlaser v6 - Apple Silicon/' \
     -e 's#33 rastertobrlaser#33 /Library/Printers/Gutenprint/libexec/rastertobrlaser#' \
     "$W/ppd/br1200.ppd" > "$OUT/share/brlaser/ppd/brlaser-hl-1210w.ppd"
+# Every upstream model as shipped by Linux distributions, id from its name:
+# "Brother HL-2270DW series" -> brlaser-hl-2270dw.
+for p in "$W"/all/*.ppd; do
+  ID=$(sed -n 's/^\*ShortNickName: "Brother \(.*\)"/\1/p' "$p" | sed 's/ series$//' | tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')
+  sed -e 's/using brlaser v6/using brlaser v6 - Apple Silicon/' \
+      -e 's#33 rastertobrlaser#33 /Library/Printers/Gutenprint/libexec/rastertobrlaser#' \
+      "$p" > "$OUT/share/brlaser/ppd/brlaser-$ID.ppd"
+done
 # Ship the exact corresponding source and license with the binary.
 cp "$W/brlaser.tar.gz" "$OUT/share/brlaser/brlaser-$VER.tar.gz"
 cp "$W/brlaser-$VER/COPYING" "$OUT/share/brlaser/COPYING"

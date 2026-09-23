@@ -30,7 +30,7 @@ class PrinterSetupTest(unittest.TestCase):
         self.helper.chmod(0o755)
         self.script(self.gp / "libexec/cups-genppd.5.3", '''
 if [ "$1" = -M ]; then
-  printf 'brother-hl-5040 Brother HL-5040\nbjc-MP250-series Canon MP250 series\nescp2-r300 Epson Stylus Photo R300\n'
+  printf 'brother-hl-5040 Brother HL-5040\nbrother-hl-5030 Brother HL-5030\nbjc-MP250-series Canon MP250 series\nescp2-r300 Epson Stylus Photo R300\n'
 else
   exit 1
 fi
@@ -67,7 +67,9 @@ fi
         for uri, model in [
             ("usb://Brother/HL-1210W%20series?serial=123", MODEL),
             ("usb://Brother/HL-1210w?serial=123", MODEL),
-            ("usb://Brother/HL-1200%20series?serial=123", MODEL),
+            ("usb://Brother/HL-1200%20series?serial=123", "brlaser-hl-1200"),
+            ("usb://Brother/HL-2270DW%20series?serial=123", "brlaser-hl-2270dw"),
+            ("usb://Brother/HL-5030%20series?serial=123", "brlaser-hl-5030"),
             ("usb://Brother/HL-5040?serial=123", "brother-hl-5040"),
             ("usb://Canon/MP250%20series?serial=123", "bjc-MP250-series"),
             ("usb://EPSON/Stylus%20Photo%20R300?serial=123", "escp2-r300"),
@@ -124,6 +126,9 @@ fi
         models = json.loads((ROOT / "docs/models.json").read_text())
         self.assertEqual([m["name"] for m in models if m["id"] == MODEL], ["Brother HL-1210W"])
         self.assertIn(MODEL, (ROOT / "docs/brother/index.html").read_text())
+        ppds = sorted(p.stem for p in (PAYLOAD / "share/brlaser/ppd").glob("*.ppd"))
+        self.assertEqual(sorted(m["id"] for m in models if m["id"].startswith("brlaser-")), ppds)
+        self.assertFalse(any("unreleased" in m for m in models))
 
 
 if __name__ == "__main__":
