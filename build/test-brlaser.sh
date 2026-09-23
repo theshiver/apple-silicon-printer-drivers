@@ -12,7 +12,7 @@ cleanup() {
 }
 trap cleanup EXIT
 FILTER="$GP/libexec/rastertobrlaser"
-lipo -verify_arch arm64 "$FILTER"
+lipo "$FILTER" -verify_arch arm64
 codesign --verify "$FILTER"
 # Validate with the staged filter path, since nothing is installed system-wide.
 sed "s#/Library/Printers/Gutenprint/libexec/rastertobrlaser#$FILTER#" \
