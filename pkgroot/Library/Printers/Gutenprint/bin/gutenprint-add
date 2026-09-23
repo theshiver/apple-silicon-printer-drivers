@@ -1,20 +1,54 @@
 #!/bin/sh
-# gutenprint-add — install a native-arm64 Gutenprint PPD for any supported printer on macOS.
-#   gutenprint-add --list [pattern]           list Gutenprint model ids (e.g. --list "PIXMA iP4")
+# gutenprint-add — install a native-arm64 printer PPD for any supported printer on macOS.
+#   gutenprint-add --list [pattern]           list model ids (e.g. --list "HL-1210W")
 #   gutenprint-add <model-id>                 install PPD (+ create queue if a USB match is found)
 #   gutenprint-add <model-id> <queue> <uri>   install PPD and create queue <queue> on device <uri>
 GP=/Library/Printers/Gutenprint
 GEN="$GP/libexec/cups-genppd.5.3"
 PPDDIR=/Library/Printers/PPDs/Contents/Resources
+list_models() {
+  "$GEN" -M -v 2>/dev/null
+  for p in "$GP"/share/brlaser/ppd/*.ppd; do
+    [ -f "$p" ] || continue
+    printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ShortNickName: "\(.*\)"/\1/p' "$p")"
+  done
+}
 case "${1:-}" in
   ""|-h|--help) sed -n '2,5p' "$0"; exit 0;;
-  --list|-l) shift; "$GEN" -M -v 2>/dev/null | { [ -n "${1:-}" ] && grep -i -- "$1" || cat; }; exit 0;;
+  --list|-l) shift; list_models | { [ -n "${1:-}" ] && grep -i -- "$1" || cat; }; exit 0;;
+  --match-usb)
+    # Internal interface shared with postinstall. Only USB URIs are candidates.
+    case "${2:-}" in usb://*) ;; *) exit 1;; esac
+    DEV=$(printf '%s' "$2" | sed -E 's#^usb://##; s#\?.*##; s#%20# #g; s#/# #')
+    list_models | awk -v dev="$DEV" '
+      function norm(s, t){ t=tolower(s); gsub(/[^a-z0-9]+/," ",t); t=" " t " "; gsub(/ hewlett packard /," hp ",t); gsub(/ seiko epson /," epson ",t); gsub(/ (series|inc|corp|co|ltd|usb|printer) /," ",t); gsub(/ +/," ",t); gsub(/^ | $/,"",t); return t }
+      BEGIN{
+        d=norm(dev)
+        # Some HL-1210W devices identify themselves by the HL-1200 family.
+        if(d=="brother hl 1200") d="brother hl 1210w"
+        nd=split(d,dt," ")
+      }
+      { id=$1; name=$0; sub(/^[^ ]+ +/,"",name); n=norm(name); m=split(n,nt," "); delete have; for(i=1;i<=m;i++) have[nt[i]]=1
+        ok=1; for(i=1;i<=nd;i++) if(!(dt[i] in have)) { ok=0; break }
+        if(ok && (best=="" || length(n)<length(bestn))) { best=id; bestn=n }
+      }
+      END{ if(best!="") print best }'
+    exit 0;;
 esac
 MODEL=$1; QUEUE=${2:-}; URI=${3:-}
+case "$MODEL" in *[!A-Za-z0-9_-]*) echo "invalid model id"; exit 1;; esac
 [ "$(id -u)" = 0 ] || { echo "run with sudo"; exit 1; }
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
-"$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
-SRC=$(ls "$T"/*.ppd* | head -1); [ -n "$SRC" ] || { echo "PPD not generated"; exit 1; }
+case "$MODEL" in
+  brlaser-*)
+    SRC="$GP/share/brlaser/ppd/$MODEL.ppd"
+    [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
+    [ -x "$GP/libexec/rastertobrlaser" ] || { echo "brlaser filter missing; reinstall the package"; exit 1; };;
+  *)
+    "$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
+    SRC=$(ls "$T"/*.ppd* | head -1); [ -n "$SRC" ] || { echo "PPD not generated"; exit 1; };;
+esac
+mkdir -p "$PPDDIR" || exit 1
 OUT="$PPDDIR/Gutenprint-$MODEL.ppd"
 case "$SRC" in *.gz) gunzip -c "$SRC";; *) cat "$SRC";; esac \
  | perl -pe 's#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#' > "$OUT"
@@ -27,12 +61,22 @@ echo "  ($NICK)"
 if [ -z "$URI" ]; then
   # try to auto-match a USB printer by manufacturer word of the model id
   BRAND=$(grep '^\*Manufacturer' "$OUT" | cut -d'"' -f2 | awk '{print $1}')
-  URI=$(lpinfo -v 2>/dev/null | awk -v b="$BRAND" 'tolower($2) ~ "^usb://" tolower(b) {print $2; exit}')
+  case "$MODEL" in
+    brlaser-*)
+      URI=$(lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r device; do
+        if [ "$("$0" --match-usb "$device")" = "$MODEL" ]; then printf '%s\n' "$device"; break; fi
+      done);;
+    *) URI=$(lpinfo -v 2>/dev/null | awk -v b="$BRAND" 'tolower($2) ~ "^usb://" tolower(b) {print $2; exit}');;
+  esac
 fi
 if [ -n "$URI" ]; then
   [ -n "$QUEUE" ] || QUEUE=$(echo "$MODEL" | tr -c 'A-Za-z0-9_\n' '_')
-  lpadmin -p "$QUEUE" -E -v "$URI" -P "$OUT" -D "$NICK" -o printer-is-shared=false 2>&1 | grep -viE 'deprecated|kullanımdan' || true
-  cupsenable "$QUEUE" 2>/dev/null; cupsaccept "$QUEUE" 2>/dev/null
+  if ! lpadmin -p "$QUEUE" -E -v "$URI" -P "$OUT" -D "$NICK" -o printer-is-shared=false >"$T/lpadmin.log" 2>&1; then
+    cat "$T/lpadmin.log"; exit 1
+  fi
+  grep -viE 'deprecated|kullanımdan' "$T/lpadmin.log" || true
+  cupsenable "$QUEUE" 2>/dev/null || exit 1
+  cupsaccept "$QUEUE" 2>/dev/null || exit 1
   echo "queue created: $QUEUE -> $URI"
 else
   echo "no USB device auto-matched; add the printer in System Settings > Printers & Scanners"

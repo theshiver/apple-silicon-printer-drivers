@@ -9,7 +9,7 @@ The `.pkg` copies files to `/Library/Printers/Gutenprint/` and then runs
 2. If Canon's Intel-only IJ driver is present, **moves** (never deletes) these to `/Users/Shared/printer-driver-backup`:
    `/Library/Extensions/BJUSBLoad.kext`, `/Library/Printers/Canon`, `/Library/Printers/PPDs/Contents/Resources/CanonIJ*.ppd.gz`.
    It also removes printer queues that reference the (now unusable) Canon filters.
-3. Runs `lpinfo -v`, matches USB printers against Gutenprint's model list, and creates queues with `lpadmin`.
+3. Runs `lpinfo -v`, matches USB printers against the combined Gutenprint and brlaser model list, and creates queues with `lpadmin`.
 
 It does not touch anything else, does not phone home, and needs no network.
 
