@@ -105,3 +105,5 @@ Drivers other than Gutenprint are community-supported. Models from the upstream 
 ## License
 
 Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. Scripts, installer and site: MIT (`LICENSE`).
+
+Made by [Can Çetin](https://cancetin.com/).
