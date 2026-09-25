@@ -52,6 +52,12 @@ Install the package, then either add it in *System Settings → Printers & Scann
 **Add a printer by hand (not detected on USB):**
 `gutenprint-add --list "iP4300"` to find the id, then `sudo gutenprint-add bjc-PIXMA-iP4300`.
 
+**Where are print quality and black & white?**
+In the print dialog, open Printer Features (Printer Options on macOS 27). Quality is under Resolution, not Print Quality: Automatic, Draft, High, Photo modes and so on, depending on the printer. For black & white set Color Model to Grayscale. Presets offers Text and Photograph tuning.
+
+**Black doesn't print, or colors look off.**
+First run a nozzle check from the printer itself: an empty or clogged black cartridge is the usual cause, and this driver can't show ink levels like the maker's driver did. Then check in Printer Features that no “color-only” mode is selected under Resolution or Ink Set. Colors can look a little different from the maker's driver because the color tables are different.
+
 **Does the scanner work?**
 No, only printing. For scanning use VueScan or SANE.
 
