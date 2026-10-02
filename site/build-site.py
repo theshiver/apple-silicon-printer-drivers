@@ -28,7 +28,15 @@ for m in models:
 # only brands with a handful of models get their own page
 BRANDS = sorted([b for b, l in by_brand.items() if len(l) >= 4], key=lambda b: -len(by_brand[b]))
 POPULAR = ["Canon","Epson","HP","Brother","Samsung","Lexmark","Xerox","Kyocera","Ricoh","Oki","Dell","Sharp","Kodak","Sony","Mitsubishi","DNP","Fujifilm","Panasonic"]
-slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.replace("+", " plus").lower()).strip("-")
+GUTENPRINT, BRLASER = "5.3.5", "6.2.8"
+VERSION = re.search(r"-(\d+(?:\.\d+)+)\.pkg$", PKG).group(1)
+
+def model_path(m):
+    """canon/pixma-ip4300 — mirrored by modelPath() in the home page search script."""
+    w = m["name"].split()[0]
+    return f"{slug(ALIAS.get(w, w))}/{slug(m['name'][len(w):]) or slug(m['name'])}"
+assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
 
 CSS = """
 :root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333}
@@ -88,13 +96,13 @@ INSTALL_STEPS = f"""
 
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
-    rows = "\n".join(f'<tr><td>{html.escape(m["name"])}</td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
-    title = f"{b} printer driver for Apple Silicon Mac (M1/M2/M3/M4) — {len(ms)} models"
+    rows = "\n".join(f'<tr><td><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
+    title = f"{b} printer drivers for Mac: macOS 27 & Apple Silicon ({len(ms)} models, free)"
     desc = f"Free native arm64 macOS driver for {len(ms)} {b} printers. Fixes 'The printer software is not compatible with this device' on macOS 27 without Rosetta. Step-by-step install."
     body = f"""
 <h1>{html.escape(b)} printer drivers for Apple Silicon Macs</h1>
 <p class="lead">{len(ms)} {html.escape(b)} models work again on Apple Silicon Macs with this free driver. Install once, print again.</p>
-<div class="card"><strong>Looking for your exact model?</strong> <a href="{BASE}/#search">Search on the home page</a>.</div>
+<div class="card"><strong>Looking for your exact model?</strong> Pick it in the table below for model-specific instructions, or <a href="{BASE}/#search">search on the home page</a>.</div>
 <h2>Install (same package for every model)</h2>
 {INSTALL_STEPS}
 <h2>Printer not set up automatically?</h2>
@@ -104,8 +112,70 @@ def brand_page(b):
 <p><a href="{BASE}/brands/">← All brands</a></p>
 """
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": title,
-          "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"]} for i, m in enumerate(ms[:200])]}
-    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, keywords=f"{b} driver mac, {b} apple silicon, {b} macos 27, printer software not compatible with this device")
+          "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]}
+    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, keywords=f"{b} printer driver mac, {b} driver macos, {b} apple silicon, {b} macos 27, printer software not compatible with this device")
+
+def model_page(m, b, siblings):
+    name, mid = m["name"], m["id"]
+    esc = html.escape(name)
+    brlaser = mid.startswith("brlaser-")
+    driver = (f'<a href="https://github.com/Owl-Maintain/brlaser">brlaser {BRLASER}</a>' if brlaser
+              else f'<a href="https://gimp-print.sourceforge.io/">Gutenprint {GUTENPRINT}</a>')
+    brand_url = f"{BASE}/{slug(b)}/" if b in BRANDS else f"{BASE}/brands/"
+    brand_label = f"{b} printers" if b in BRANDS else "All brands"
+    notes = []
+    if b == "Canon":
+        notes.append("<p><strong>Had Canon's own driver installed?</strong> It leaves a small kernel extension behind that blocks macOS's USB printer driver. The installer moves it aside (to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted); restart the Mac once afterwards, then unplug and re-plug the printer.</p>")
+    if b == "Epson" or mid.startswith("escp2-"):
+        notes.append("<p><strong>Black missing or faint?</strong> Run a nozzle check from the printer first: a clogged or empty black cartridge is the usual cause, and this driver can't read ink levels like Epson's did. Then make sure no color-only mode is picked under Resolution or Ink Set in Printer Features.</p>")
+    if brlaser:
+        notes.append(f"<p>The {esc} is a Brother laser without PCL or AirPrint, so it uses the bundled native arm64 brlaser driver rather than Gutenprint. Duplex, toner save and resolution are in the print dialog under Printer Features.</p>")
+    sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
+    title = f"{name} driver for Mac: macOS 27 & Apple Silicon (free)"
+    desc = (f"Free native driver for the {name} on Apple Silicon Macs (M1–M4). Fixes “The printer software is not compatible "
+            f"with this device” on macOS 27 without Rosetta. USB sets up automatically; Wi-Fi in one command.")
+    body = f"""
+<p class="note"><a href="{BASE}/">Home</a> › <a href="{brand_url}">{html.escape(brand_label)}</a> › {esc}</p>
+<h1>{esc} driver for Mac</h1>
+<p class="lead">The {esc} works on Apple Silicon Macs and macOS 27 with this free, native arm64 macOS printer driver. No Rosetta, no Intel-only software from the printer maker.</p>
+<div class="card">✅ <strong>{esc}</strong> is supported. Driver: {driver}. Model id: <code>{html.escape(mid)}</code></div>
+<h2>Install the {esc} driver</h2>
+{INSTALL_STEPS}
+<h2>Wi-Fi, network, or not detected over USB</h2>
+<p>After installing, open Terminal (⌘+Space, type <em>Terminal</em>), paste this and press Enter:</p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)}</code></pre>
+<p>For a network printer, add a name and the printer's address (<code>lpinfo -v</code> lists what macOS can see):</p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)} MyPrinter socket://192.168.1.50</code></pre>
+<p class="note">Or without Terminal: System Settings → Printers &amp; Scanners → Add → Use: Select Software… and pick “{esc}” ending in “Apple Silicon”.</p>
+<h2>Why did my {esc} stop working?</h2>
+<p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta until macOS 27, which no longer allows that, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>
+{"".join(notes)}
+<p><strong>Print quality and black &amp; white:</strong> in the print dialog open Printer Features (Printer Options on macOS 27). Quality is under Resolution; for black &amp; white set Color Model to Grayscale. Ink and toner levels can't be shown by open source drivers.</p>
+{f'<h2>Similar {html.escape(b)} models</h2><p>{sib}</p>' if sib else ''}
+<p><a href="{brand_url}">← {html.escape(brand_label)}</a></p>
+<script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})</script>
+"""
+    url = f"{BASE}/{model_path(m)}/"
+    crumbs = [("Home", f"{BASE}/"), (brand_label, brand_url), (name, url)]
+    ld = [
+        {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{name} driver for macOS (Apple Silicon)",
+         "operatingSystem": "macOS 12 or later (Apple Silicon)", "applicationCategory": "DriverApplication",
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "downloadUrl": RELEASE, "softwareVersion": VERSION},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement":
+            [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]},
+    ]
+    return page(title, desc, url, body, ld,
+                keywords=f"{name} driver mac, {name} macos 27, {name} apple silicon, {name} m1, {b} printer driver mac")
+
+# ---- write model pages
+model_urls = []
+for b, ms in by_brand.items():
+    ms = sorted(ms, key=lambda m: m["name"].lower())
+    for i, m in enumerate(ms):
+        siblings = ms[max(0, i - 6):i] + ms[i + 1:i + 7]
+        d = DOCS / model_path(m); d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(model_page(m, b, siblings))
+        model_urls.append(f"{BASE}/{model_path(m)}/")
 
 # ---- write brand pages
 urls = []
@@ -158,7 +228,7 @@ faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, 
 home_ld = [
  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Apple Silicon Printer Drivers (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-  "downloadUrl": RELEASE, "softwareVersion": "1.1.0", "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+  "downloadUrl": RELEASE, "softwareVersion": VERSION, "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
   "image": f"{BASE}/not-compatible.png", "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
@@ -168,7 +238,7 @@ home_ld = [
 ]
 home = f"""
 <h1>Printer stopped working after the macOS update?</h1>
-<p class="lead">Free fix for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs. Install once, print again.</p>
+<p class="lead">Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon (M1–M4). No Rosetta. Install once, print again.</p>
 
 <figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
 
@@ -192,7 +262,9 @@ home = f"""
 <p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/Owl-Maintain/brlaser">brlaser 6.2.8</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
 
 <script>
-const BASE={json.dumps(BASE)};let MODELS=null,sel=-1;
+const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1;
+const slug=s=>s.replace(/\\+/g,' plus').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+function modelPath(m){{const w=m.name.split(' ')[0];return slug(ALIAS[w]||w)+'/'+(slug(m.name.slice(w.length))||slug(m.name))}}
 const q=document.getElementById('q'),res=document.getElementById('results'),ans=document.getElementById('answer');
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 async function load(){{if(!MODELS){{MODELS=await (await fetch('models.json')).json();MODELS.forEach(m=>m.n=norm(m.name+' '+m.id));}}}}
@@ -204,7 +276,7 @@ async function search(){{await load();const terms=norm(q.value).split(' ').filte
 function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');
  ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>
  <p><strong>Plugged in over USB?</strong> Just <a href="{RELEASE}">install the package</a>, it sets the printer up by itself.</p>
- <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p>`;
+ <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p><p><a href="${{BASE}}/${{modelPath(m)}}/">Full ${{m.name}} driver instructions →</a></p>`;
  wire();history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
 q.addEventListener('input',search);q.addEventListener('keydown',e=>{{const items=[...res.children];if(e.key==='ArrowDown'){{sel=Math.min(sel+1,items.length-1)}}else if(e.key==='ArrowUp'){{sel=Math.max(sel-1,0)}}else if(e.key==='Enter'){{if(items[sel]||items[0])(items[sel]||items[0]).click();return}}else return;items.forEach((li,i)=>li.classList.toggle('sel',i===sel));e.preventDefault()}});
 function wire(){{document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})}}
@@ -216,16 +288,17 @@ wire();
 </script>
 """
 (DOCS / "index.html").write_text(page(
-    "Printer not compatible with your Apple Silicon Mac? Free native driver for 3,500+ printers",
-    "Fix “The printer software is not compatible with this device” on M1/M2/M3/M4 Macs and macOS 27. Free native arm64 driver for Canon PIXMA, Epson Stylus, HP, Brother, Samsung and 3,500+ printers. Search your model, one command to install.",
+    f"Free Mac Printer Drivers for macOS 27 & Apple Silicon: {len(models):,} printers",
+    f"Fix “The printer software is not compatible with this device” on macOS 27 and M1–M4 Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
     f"{BASE}/", home, home_ld,
-    keywords="printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"))
+    keywords="mac printer drivers, macos printer driver, macos 27 printer driver, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"))
 urls.insert(0, f"{BASE}/")
 
 # ---- sitemap / robots / 404
 (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if u.endswith('driver/') else '0.7'}</priority></url>\n" for u in urls) + "</urlset>\n")
+    "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if u == BASE + '/' else '0.7'}</priority></url>\n" for u in urls) +
+    "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>0.5</priority></url>\n" for u in model_urls) + "</urlset>\n")
 (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 (DOCS / ".nojekyll").write_text("")
 (DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>'))
-print(f"wrote {len(urls)} pages for {len(BRANDS)} brands")
+print(f"wrote {len(urls)} pages for {len(BRANDS)} brands and {len(model_urls)} model pages")
