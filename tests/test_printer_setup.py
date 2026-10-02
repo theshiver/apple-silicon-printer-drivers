@@ -61,9 +61,9 @@ fi
 
     def test_list_combines_both_drivers(self):
         result = self.run_helper("--list")
-        self.assertIn(f"{MODEL} Brother HL-1210W", result)
+        self.assertIn(f"{MODEL} Brother HL-1210W series", result)
         self.assertIn("brother-hl-5040 Brother HL-5040", result)
-        self.assertEqual(self.run_helper("--list", "1210w").strip(), f"{MODEL} Brother HL-1210W")
+        self.assertEqual(self.run_helper("--list", "1210w").strip(), f"{MODEL} Brother HL-1210W series")
 
     def test_usb_names_and_existing_models(self):
         for uri, model in [
@@ -73,6 +73,8 @@ fi
             ("usb://Brother/HL-2270DW%20series?serial=123", "brlaser-hl-2270dw"),
             ("usb://Brother/HL-5030%20series?serial=123", "brlaser-hl-5030"),
             ("usb://Brother/HL-5040?serial=123", "brother-hl-5040"),
+            ("usb://Brother/DCP-1610W%20series?serial=123", "brlaser-dcp-1610w"),
+            ("usb://Brother/MFC-7320?serial=123", "brlaser-mfc-7320"),
             ("usb://Canon/MP250%20series?serial=123", "bjc-MP250-series"),
             ("usb://EPSON/Stylus%20Photo%20R300?serial=123", "escp2-r300"),
             ("usb://Brother/HL-1212W?serial=123", ""),
@@ -133,7 +135,7 @@ fi
 
     def test_website_catalog_and_ppd_agree(self):
         models = json.loads((ROOT / "docs/models.json").read_text())
-        self.assertEqual([m["name"] for m in models if m["id"] == MODEL], ["Brother HL-1210W"])
+        self.assertEqual([m["name"] for m in models if m["id"] == MODEL], ["Brother HL-1210W series"])
         self.assertIn(MODEL, (ROOT / "docs/brother/index.html").read_text())
         ppds = sorted(p.stem for p in (PAYLOAD / "share/brlaser/ppd").glob("*.ppd"))
         self.assertEqual(sorted(m["id"] for m in models if m["id"].startswith("brlaser-")), ppds)

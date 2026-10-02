@@ -22,9 +22,9 @@ sed "s#/Library/Printers/Gutenprint/libexec/rastertobrlaser#$FILTER#" \
 cupstestppd -I filters "$T/brother.ppd"
 printf 'Brother HL-1210W native arm64 smoke test\n' | \
   /usr/libexec/cups/filter/cgtexttopdf 1 user test 1 "" > "$T/test.pdf" 2>"$T/pdf.log"
-for DPI in 600 1200; do
+for RES in 600dpi 1200x600dpi; do
   for PAPER in A4 Letter; do
-    OPTS="Resolution=${DPI}dpi PageSize=$PAPER"
+    OPTS="Resolution=$RES PageSize=$PAPER"
     PPD="$T/brother.ppd" /usr/libexec/cups/filter/cgpdftoraster 1 user test 1 "$OPTS" "$T/test.pdf" > "$T/test.ras" 2>"$T/raster.log"
     PPD="$T/brother.ppd" "$FILTER" 1 user test 1 "$OPTS" "$T/test.ras" > "$T/test.prn" 2>"$T/filter.log"
     if grep -iE 'ERROR|corrupt' "$T/filter.log"; then exit 1; fi
@@ -32,9 +32,11 @@ for DPI in 600 1200; do
     grep -aq '@PJL EOJ' "$T/test.prn"
     PAPER_CODE=$(printf '%s' "$PAPER" | tr '[:lower:]' '[:upper:]')
     grep -aq "@PJL SET PAPER = $PAPER_CODE" "$T/test.prn"
-    if [ "$DPI" = 1200 ]; then MODE=TRUE; else MODE=FALSE; fi
+    if [ "$RES" = 1200x600dpi ]; then MODE=TRUE; else MODE=FALSE; fi
     grep -aq "@PJL SET RAS1200MODE = $MODE" "$T/test.prn"
-    echo "OK: HL-1210W $DPI dpi, $PAPER ($(wc -c < "$T/test.prn" | tr -d ' ') bytes)"
+    # Default toner density must reach the printer as 0, not an unset -100.
+    grep -aq "@PJL SET DENSITY=0" "$T/test.prn"
+    echo "OK: HL-1210W $RES, $PAPER ($(wc -c < "$T/test.prn" | tr -d ' ') bytes)"
   done
 done
 # Every other upstream model: valid PPD and one A4 page through the filter.

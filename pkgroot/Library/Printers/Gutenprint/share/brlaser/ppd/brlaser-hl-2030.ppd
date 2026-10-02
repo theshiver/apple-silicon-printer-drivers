@@ -2,7 +2,7 @@
 *%%%% PPD file for HL-2030 series with CUPS.
 *%%%% Created by the CUPS PPD Compiler CUPS v2.3.4.
 *FormatVersion: "4.3"
-*FileVersion: "6"
+*FileVersion: "6.2.8"
 *LanguageVersion: English
 *LanguageEncoding: ISOLatin1
 *PCFileName: "br2030.ppd"
@@ -10,7 +10,7 @@
 *Manufacturer: "Brother"
 *ModelName: "Brother HL-2030 series"
 *ShortNickName: "Brother HL-2030 series"
-*NickName: "Brother HL-2030 series, using brlaser v6 - Apple Silicon"
+*NickName: "Brother HL-2030 series, using brlaser v6.2.8 - Apple Silicon"
 *PSVersion: "(3010.000) 0"
 *LanguageLevel: "3"
 *ColorDevice: False
@@ -83,8 +83,8 @@
 *OpenUI *Resolution/Resolution: PickOne
 *OrderDependency: 10 AnySetup *Resolution
 *DefaultResolution: 600dpi
-*Resolution 600dpi/600 DPI: "<</HWResolution[600 600]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
-*Resolution 1200dpi/1200HQ: "<</HWResolution[1200 1200]/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+*Resolution 600dpi/600 DPI: "<</HWResolution[600 600]/cupsColorSpace 3/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0>>setpagedevice"
+*Resolution 1200x600dpi/HQ1200 (1200x600dpi): "<</HWResolution[1200 1200]/cupsColorSpace 3/cupsBitsPerColor 1/cupsRowCount 0/cupsRowFeed 0/cupsRowStep 0/cupsInteger12 2>>setpagedevice"
 *CloseUI: *Resolution
 *OpenUI *InputSlot/Media Source: PickOne
 *OrderDependency: 10 AnySetup *InputSlot
@@ -115,6 +115,23 @@
 *brlaserEconomode False/Off: "<</cupsInteger10 0>>setpagedevice"
 *brlaserEconomode True/On: "<</cupsInteger10 1>>setpagedevice"
 *CloseUI: *brlaserEconomode
+*OpenUI *brlaserDensityAdjust/Toner Density: PickOne
+*OrderDependency: 10 AnySetup *brlaserDensityAdjust
+*DefaultbrlaserDensityAdjust: 100
+*brlaserDensityAdjust 94/-6 (lighter): "<</cupsInteger11 94>>setpagedevice"
+*brlaserDensityAdjust 95/-5 (lighter): "<</cupsInteger11 95>>setpagedevice"
+*brlaserDensityAdjust 96/-4 (lighter): "<</cupsInteger11 96>>setpagedevice"
+*brlaserDensityAdjust 97/-3 (lighter): "<</cupsInteger11 97>>setpagedevice"
+*brlaserDensityAdjust 98/-2 (lighter): "<</cupsInteger11 98>>setpagedevice"
+*brlaserDensityAdjust 99/-1 (lighter): "<</cupsInteger11 99>>setpagedevice"
+*brlaserDensityAdjust 100/0 (default): "<</cupsInteger11 100>>setpagedevice"
+*brlaserDensityAdjust 101/+1 (darker): "<</cupsInteger11 101>>setpagedevice"
+*brlaserDensityAdjust 102/+2 (darker): "<</cupsInteger11 102>>setpagedevice"
+*brlaserDensityAdjust 103/+3 (darker): "<</cupsInteger11 103>>setpagedevice"
+*brlaserDensityAdjust 104/+4 (darker): "<</cupsInteger11 104>>setpagedevice"
+*brlaserDensityAdjust 105/+5 (darker): "<</cupsInteger11 105>>setpagedevice"
+*brlaserDensityAdjust 106/+6 (darker): "<</cupsInteger11 106>>setpagedevice"
+*CloseUI: *brlaserDensityAdjust
 *DefaultFont: Courier
 *Font AvantGarde-Book: Standard "(1.05)" Standard ROM
 *Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
@@ -151,4 +168,4 @@
 *Font Times-Roman: Standard "(1.05)" Standard ROM
 *Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
 *Font ZapfDingbats: Special "(001.005)" Special ROM
-*% End of br2030.ppd, 07990 bytes.
+*% End of br2030.ppd, 09211 bytes.
