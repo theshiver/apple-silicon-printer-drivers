@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Apollo printer driver for Apple Silicon Mac (M1/M2/M3/M4) — 8 models</title>
+<title>Apollo printer drivers for Mac: macOS 27 &amp; Apple Silicon (8 models, free)</title>
 <meta name="description" content="Free native arm64 macOS driver for 8 Apollo printers. Fixes &#x27;The printer software is not compatible with this device&#x27; on macOS 27 without Rosetta. Step-by-step install.">
-<meta name="keywords" content="Apollo driver mac, Apollo apple silicon, Apollo macos 27, printer software not compatible with this device">
+<meta name="keywords" content="Apollo printer driver mac, Apollo driver macos, Apollo apple silicon, Apollo macos 27, printer software not compatible with this device">
 <link rel="canonical" href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/">
-<meta property="og:type" content="website"><meta property="og:title" content="Apollo printer driver for Apple Silicon Mac (M1/M2/M3/M4) — 8 models">
+<meta property="og:type" content="website"><meta property="og:title" content="Apollo printer drivers for Mac: macOS 27 &amp; Apple Silicon (8 models, free)">
 <meta property="og:description" content="Free native arm64 macOS driver for 8 Apollo printers. Fixes &#x27;The printer software is not compatible with this device&#x27; on macOS 27 without Rosetta. Step-by-step install."><meta property="og:url" content="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/">
 <meta property="og:image" content="https://theshiver.github.io/apple-silicon-printer-drivers/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://theshiver.github.io/apple-silicon-printer-drivers/not-compatible.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Apollo printer driver for Apple Silicon Mac (M1/M2/M3/M4) \u2014 8 models","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"name":"Apollo P-2100"},{"@type":"ListItem","position":2,"name":"Apollo P-2150"},{"@type":"ListItem","position":3,"name":"Apollo P-2200"},{"@type":"ListItem","position":4,"name":"Apollo P-2250"},{"@type":"ListItem","position":5,"name":"Apollo P-2500"},{"@type":"ListItem","position":6,"name":"Apollo P-2550"},{"@type":"ListItem","position":7,"name":"Apollo P-2600"},{"@type":"ListItem","position":8,"name":"Apollo P-2650"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Apollo printer drivers for Mac: macOS 27 & Apple Silicon (8 models, free)","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"name":"Apollo P-2100","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2100/"},{"@type":"ListItem","position":2,"name":"Apollo P-2150","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2150/"},{"@type":"ListItem","position":3,"name":"Apollo P-2200","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2200/"},{"@type":"ListItem","position":4,"name":"Apollo P-2250","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2250/"},{"@type":"ListItem","position":5,"name":"Apollo P-2500","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2500/"},{"@type":"ListItem","position":6,"name":"Apollo P-2550","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2550/"},{"@type":"ListItem","position":7,"name":"Apollo P-2600","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2600/"},{"@type":"ListItem","position":8,"name":"Apollo P-2650","url":"https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2650/"}]}</script>
 <style>
 :root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333}
 @media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f}}
@@ -40,7 +40,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 
 <h1>Apollo printer drivers for Apple Silicon Macs</h1>
 <p class="lead">8 Apollo models work again on Apple Silicon Macs with this free driver. Install once, print again.</p>
-<div class="card"><strong>Looking for your exact model?</strong> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Search on the home page</a>.</div>
+<div class="card"><strong>Looking for your exact model?</strong> Pick it in the table below for model-specific instructions, or <a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">search on the home page</a>.</div>
 <h2>Install (same package for every model)</h2>
 
 <ol class="steps">
@@ -51,14 +51,14 @@ footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid v
 <p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see below.</p>
 <h2>Printer not set up automatically?</h2>
 <p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
-<table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody><tr><td>Apollo P-2100</td><td><code>sudo gutenprint-add pcl-apollo-p2100</code></td></tr>
-<tr><td>Apollo P-2150</td><td><code>sudo gutenprint-add pcl-apollo-p2150</code></td></tr>
-<tr><td>Apollo P-2200</td><td><code>sudo gutenprint-add pcl-apollo-p2200</code></td></tr>
-<tr><td>Apollo P-2250</td><td><code>sudo gutenprint-add pcl-apollo-p2250</code></td></tr>
-<tr><td>Apollo P-2500</td><td><code>sudo gutenprint-add pcl-apollo-p2500</code></td></tr>
-<tr><td>Apollo P-2550</td><td><code>sudo gutenprint-add pcl-apollo-p2550</code></td></tr>
-<tr><td>Apollo P-2600</td><td><code>sudo gutenprint-add pcl-apollo-p2600</code></td></tr>
-<tr><td>Apollo P-2650</td><td><code>sudo gutenprint-add pcl-apollo-p2650</code></td></tr></tbody></table>
+<table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody><tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2100/">Apollo P-2100</a></td><td><code>sudo gutenprint-add pcl-apollo-p2100</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2150/">Apollo P-2150</a></td><td><code>sudo gutenprint-add pcl-apollo-p2150</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2200/">Apollo P-2200</a></td><td><code>sudo gutenprint-add pcl-apollo-p2200</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2250/">Apollo P-2250</a></td><td><code>sudo gutenprint-add pcl-apollo-p2250</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2500/">Apollo P-2500</a></td><td><code>sudo gutenprint-add pcl-apollo-p2500</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2550/">Apollo P-2550</a></td><td><code>sudo gutenprint-add pcl-apollo-p2550</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2600/">Apollo P-2600</a></td><td><code>sudo gutenprint-add pcl-apollo-p2600</code></td></tr>
+<tr><td><a href="https://theshiver.github.io/apple-silicon-printer-drivers/apollo/p-2650/">Apollo P-2650</a></td><td><code>sudo gutenprint-add pcl-apollo-p2650</code></td></tr></tbody></table>
 <p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "Apple Silicon" entry.</p>
 <p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">← All brands</a></p>
 
