@@ -1,12 +1,11 @@
-Welcome to Gutenprint 5.3.4!  Please read these release notes
-carefully.  Gutenprint 5.2 is still considered the stable release
-line.
+Welcome to Gutenprint 5.3.5!  Please read these release notes
+carefully.
 
-Gutenprint is a suite of printer drivers for UNIX, Linux, and
-Macintosh OS X systems (10.6 and above) that use CUPS as their
-printing system.  Gutenprint currently supports over 3000 printers.
-It also includes an enhanced Print plug-in for GIMP that replaces the
-print plug-in packaged with the GIMP distribution.
+Gutenprint is a suite of printer drivers for Linux and other UNIX-like
+systems that use CUPS as their printing system, supporting approximately
+3600 different printers models.  It also includes an enhanced Print
+plug-in for GIMP that replaces the print plug-in packaged with the GIMP
+distribution.
 
 *** NOTE TO PACKAGERS: Please read the file README.package for issues
     that are of interest to distributors and packagers of Gutenprint.
@@ -32,11 +31,10 @@ V)    Critical Upgrade Note from Gutenprint 5.0 or Earlier
 
 I) GENERAL REQUIREMENTS
 
-Gutenprint will run on any reasonably modern computer running Linux,
-Macintosh OS X (10.6 through currently 10.14), Solaris, or any other
-UNIX-like operating system.  If you plan to compile this package from
-source, you will also need an ANSI C compiler, such as gcc
-(recommended).  A compiler is not required if you are installing a
+Gutenprint will run on any reasonably modern computer running Linux, or 
+any other UNIX-like operating system.  If you plan to compile this 
+package from source, you will also need an ISO C99 compiler, such as gcc 
+(recommended).  A compiler is not required if you are installing a 
 pre-compiled package.
 
 Processor and memory requirements vary depending upon the printer and
@@ -54,9 +52,9 @@ achieve maximum printing speed.
 For general use, you should have the Common UNIX Printing System, CUPS
 (version 1.1.15 or above).  Please read the rest of the release notes,
 in particular the Exceptions and Workarounds, for full details on
-installation, as there is important information to be aware of.  CUPS
-is the printing system used on Macintosh OS X 10.3 and above, and many
-other systems use it.  The combination of CUPS and Gutenprint provides
+installation, as there is important information to be aware of.  As its
+name implies, CUPS has been the standard printing systems on UNIX-like
+sytems for some time.  The combination of CUPS and Gutenprint provides
 a flexible, general purpose printing system capable of producing the
 highest quality output with any of the printers supported by this
 package.  We strongly recommend using CUPS with Gutenprint as a
@@ -70,19 +68,78 @@ from GIMP at very high resolution, disk space requirements may be
 substantial, and we recommend at least 2 GB of free disk space for
 that purpose.
 
-Users of Macintosh 10.6 (Snow Leopard) and above can use this package.
-For ease of installation, a pre-built package with installer is
-normally supplied a few days after the release of the source package.
-We strongly recommend that OS X users use the pre-built package rather
-than attempt to build it themselves.  Packages are not always supplied
-for development releases.
-
 The README file included with this package provides full instructions
 for building and installing Gutenprint.
 ================================================================
 
 
 II) MAJOR CHANGES FROM PREVIOUS RELEASES
+
+* Changes from Gutenprint 5.3.4
+
+  0) Support for running on MacOS has been deprecated. Unless someone
+     steps up to maintain the MacOS port, there will be no MacOS
+     builds for this (or any future) Gutenprint release.
+
+     MacOS-specific contributions will continue be accepted.
+
+     This includes a workaround for a printer dialog crash on MacOS if
+     the PPD includes support for custom CD/DVD sizes.  This was resolved
+     by removing that option altogether for MacOS builds.
+
+  1) Support for the following Dye-sublimation & thermal printers
+     has been added:
+
+     Canon SELPHY CP1500
+     DNP DS480
+     DNP DS680
+     HiTi P461 Prinhome
+     HiTi P510K / P510L / P510S / P510SI
+     HiTi P518A / P518S (EXPERIMENTAL)
+     HiTi P728L (EXPERIMENTAL)
+     Joyspace U826
+     Mitsubishi CP-W5000 series
+     Mitsubishi CP-D90DW-SL
+     Olmec OP1000
+     Sony UP-CX1
+     Sont UP-D711MD
+     Sony UP-971AD
+     Sony UP-991AD (EXPERIMENTAL)
+
+  2) The following printers have received significant bugfixes or
+     major enhancements:
+
+     Canon SELPHY CP790
+     DNP DS620
+     DNP DS820
+     Fujifilm ASK-2500
+     HiTi P520L
+     HiTi P525L
+     HiTi P720L
+     HiTi P750L (EXPERIMENTAL)
+     Kodak 605
+     Kodak 8800 / 9810
+     Kodak 8810
+     Mitsubishi CP-D70/D707 series
+     Mitsubishi CP-K60 series
+     Mitsubishi CP-M1 & CP-M15 series
+     Nidec Copal DPB-7000
+
+  3) Added CUPS Command filter support for most dyesub models.  This allows
+     querying printer status and media information at any time.
+
+  4) Added support for the following inkjet printer models:
+
+     Epson SureColor P5000 Commercial Edition (EXPERIMENTAL)
+     Epson SureColor P5000 Standard Edition (EXPERIMENTAL)
+     Epson SureLab D700
+     Fujifilm DX100
+
+  5) Added support for the following laser printer models:
+
+     Sharp MX-2600N
+
+  6) Various minor fixes and enhancements
 
 * Changes from Gutenprint 5.3.3
 
@@ -97,17 +154,18 @@ II) MAJOR CHANGES FROM PREVIOUS RELEASES
      versions can continue using the old gamma behaviour, by setting the
      "StpLegacyDyesubGamma" option to "true"
 
-  3) Support for the following dye sublimcation printers has been added:
+  3) Support for the following dye sublimation & thermal printers has been added:
 
      Citizen CX-02W
      Citizen CZ-01
      DNP QW410
      HiTi P520L
      HiTi P525L
-     HiTi P720L (EXPERIMENTAL)
+     HiTi P720L
      HiTi P750L (EXPERIMENTAL)
      Kodak 6900 (EXPERIMENTAL)
      Mitsubishi CP30D series
+     Mitsubishi CP9500-S / CP9600-S / CP9820-S
      Mitsubishi CP-D70DW-S
      Mitsubishi CP-M1 & CP-M15 series
      Stryker SDP1000
@@ -115,12 +173,14 @@ II) MAJOR CHANGES FROM PREVIOUS RELEASES
   4) The following printers have received siginificant bugfixes or
      major enhancements:
 
-     DNP DS820
+     Canon SELPHY CP790
+     DNP DS620
      Kodak 605
      Kodak 6800/6850
      Kodak 7000 series
      Kodak 8810
      Mitsubishi CP-D90 series
+     Mitsubishi CP9800 series
      Sinfonia CHC-S2245/S3
      Sony UP-D898 family
      Sony UP-DR80MD
@@ -183,7 +243,6 @@ II) MAJOR CHANGES FROM PREVIOUS RELEASES
      Brother HL-7050N
      Brother HL-760
      Brother HL-960
-
 
 * Changes from Gutenprint 5.3.1 (Gutenprint 5.3.2 was not released)
 

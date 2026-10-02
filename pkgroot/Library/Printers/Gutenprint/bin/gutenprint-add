@@ -7,7 +7,10 @@ GP=/Library/Printers/Gutenprint
 GEN="$GP/libexec/cups-genppd.5.3"
 PPDDIR=/Library/Printers/PPDs/Contents/Resources
 list_models() {
-  "$GEN" -M -v 2>/dev/null
+  # -M -v pads ids to 20 columns and runs longer ids into the name
+  # ("bjc-Pro9000mk2-seriesCanon ..."); take the ids from -M, same order.
+  "$GEN" -M -v 2>/dev/null | awk -v ids="\"$GEN\" -M 2>/dev/null" '
+    (ids | getline id) > 0 { name = substr($0, length(id) + 1); sub(/^ +/, "", name); print id " " name }'
   for p in "$GP"/share/brlaser/ppd/*.ppd; do
     [ -f "$p" ] || continue
     printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ShortNickName: "\(.*\)"/\1/p' "$p")"

@@ -1552,6 +1552,7 @@
       <printer translate="name" name="Sharp MX-2300FG" driver="sharp-mx-2300fg" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>
       <printer translate="name" name="Sharp MX-2300G" driver="sharp-mx-2300g" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>
       <printer translate="name" name="Sharp MX-2300N" driver="sharp-mx-2300n" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>
+      <printer translate="name" name="Sharp MX-2600N" driver="sharp-mx-2600n" manufacturer="Sharp" model="50001" parameters="pcl_laser_params" />
       <printer translate="name" name="Sharp MX-2700FG" driver="sharp-mx-2700fg" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>
       <printer translate="name" name="Sharp MX-2700G" driver="sharp-mx-2700g" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>
       <printer translate="name" name="Sharp MX-2700N" driver="sharp-mx-2700n" manufacturer="Sharp" model="50001" parameters="pcl_laser_params">UNTESTED Automatically Generated</printer>

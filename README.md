@@ -26,7 +26,7 @@ That's it. The installer finds the printer and sets it up.
 
 ## Supported printers
 
-3,677 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,703 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
 Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
 
@@ -74,14 +74,14 @@ This started as a weekend fix for one printer and grew into something a lot of p
 
 ## Technical details
 
-The package contains [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
+The package contains [Gutenprint 5.3.5](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
 
 | Path | Purpose |
 |---|---|
 | `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, signed) |
 | `/Library/Printers/Gutenprint/libexec/rastertobrlaser` | arm64 Brother laser raster filter ([brlaser 6.2.8](https://github.com/Owl-Maintain/brlaser), the maintained fork) |
 | `/Library/Printers/Gutenprint/share/brlaser` | Brother PPDs, GPL license and exact brlaser source archive |
-| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson` | maintenance commands (head clean, nozzle check) |
+| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson`, `commandtodyesub` | maintenance commands (head clean, nozzle check) and dye-sub status queries |
 | `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator |
 | `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | adds a printer by model id |
 | `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |

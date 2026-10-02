@@ -84,6 +84,7 @@
       <printer translate="name" name="Canon SELPHY CP1000" deviceid="MFG:Canon;CMD:Raster3;MDL:CP1000;CLS:PRINTER;DES:Canon CP1000;VER:1.00;CID:CA_YCC_ICP;" driver="canon-cp1000" manufacturer="Canon" model="1011" />
       <printer translate="name" name="Canon SELPHY CP1200" deviceid="MFG:Canon;CMD:Raster3;MDL:SELPHY CP1200;CLS:PRINTER;DES:Canon SELPHY CP1200;VER:1.00;CID:CA_YCC_ICP;" driver="canon-cp1200" manufacturer="Canon" model="1011"/>
       <printer translate="name" name="Canon SELPHY CP1300" deviceid="MFG:Canon;CMD:Raster3;MDL:SELPHY CP1300;CLS:PRINTER;DES:Canon SELPHY CP1300;VER:1.00;CID:CA_YCC_ICP;" driver="canon-cp1300" manufacturer="Canon" model="1011"/>
+      <printer translate="name" name="Canon SELPHY CP1500" deviceid="MFG:Canon;CMD:Raster3;MDL:SELPHY CP1500;CLS:PRINTER;DES:Canon SELPHY CP1300;VER:1.00;CID:CA_YCC_ICP;" driver="canon-cp1500" manufacturer="Canon" model="1011"/>
       <printer translate="name" name="Canon SELPHY ES1" deviceid="MFG:Canon;CMD:Raster3;MDL:ES1;CLS:PRINTER;DES:Canon SELPHY ES1;VER:1.00;" driver="canon-es1" manufacturer="Canon" model="1003" />
       <printer translate="name" name="Canon SELPHY ES2" deviceid="MFG:Canon;CMD:Raster3;MDL:ES2;CLS:PRINTER;DES:Canon SELPHY ES2;VER:1.00;" driver="canon-es2" manufacturer="Canon" model="1005" />
       <printer translate="name" name="Canon SELPHY ES3" deviceid="MFG:Canon;CMD:Raster3;MDL:ES3;CLS:PRINTER;DES:Canon SELPHY ES3;VER:1.00;" driver="canon-es3" manufacturer="Canon" model="1006" />
@@ -95,7 +96,7 @@
       <printer translate="name" name="Citizen CW-02" driver="citizen-cw-02" manufacturer="Citizen" model="6000" />
       <printer translate="name" name="Citizen CX" driver="citizen-cx" deviceid="MANUFACTURER:CITIZEN SYSTEMS ;MODEL:CX;" manufacturer="Citizen" model="6000" />
       <printer translate="name" name="Citizen CX-02" deviceid="MANUFACTURER:CITIZEN SYSTEMS ;MODEL:CX-02;" driver="citizen-cx-02" manufacturer="Citizen" model="6003" />
-      <printer translate="name" name="Citizen CX-02W" "MANUFACTURER:CITIZEN SYSTEMS ;MODEL:CX-02W;" driver="citizen-cx-02w" manufacturer="Citizen" model="6007" />
+      <printer translate="name" name="Citizen CX-02W" deviceid="MANUFACTURER:CITIZEN SYSTEMS ;MODEL:CX-02W;" driver="citizen-cx-02w" manufacturer="Citizen" model="6007" />
       <printer translate="name" name="Citizen CX-W" driver="citizen-cx-w" manufacturer="Citizen" model="6001" />
       <printer translate="name" name="Citizen CY" driver="citizen-cy" manufacturer="Citizen" model="6002" />
       <printer translate="name" name="Citizen CY-02" driver="citizen-cy-02" manufacturer="Citizen" model="6002" />
@@ -108,34 +109,45 @@
       <printer translate="name" name="Dai Nippon Printing DS620" driver="dnp-ds620" deviceid="MANUFACTURER:Dai Nippon Printing ;MODEL:DP-DS620;" manufacturer="Dai Nippon Printing" model="6003" />
       <printer translate="name" name="Dai Nippon Printing DS820" driver="dnp-ds820" deviceid="MANUFACTURER:Dai Nippon Printing ;MODEL:DP-DS820;" manufacturer="Dai Nippon Printing" model="6007" />
       <printer translate="name" name="Dai Nippon Printing DSRX1" driver="dnp-dsrx1" deviceid="MANUFACTURER:Dai Nippon Printing ;MODEL:DS-RX1;" manufacturer="Dai Nippon Printing" model="6002" />
-      <printer translate="name" name="Dai Nippon Printing SL10" driver="dnp-sl10" manufacturer="Dai Nippon Printing" model="2005">EXPERIMENTAL</printer>
+      <printer translate="name" name="Dai Nippon Printing SL10" driver="dnp-sl10" manufacturer="Dai Nippon Printing" model="2005" />
       <printer translate="name" name="Dai Nippon Printing SL20" driver="dnp-sl20" manufacturer="Dai Nippon Printing" model="2009">EXPERIMENTAL</printer>
       <printer translate="name" name="Dai Nippon Printing QW410" deviceid="MANUFACTURER:Dai Nippon Printing ;MODEL:DP-QW410;" driver="dnp-qw410" manufacturer="Dai Nippon Printing" model="6008" />
+      <printer translate="name" name="Dai Nippon Printing DS480" deviceid="MFG:DNP;CMD:DNP;MDL:DPDS480;CLS:PRINTER;DES:DNP_DPDS480" driver="dnp-ds480" manufacturer="Dai Nippon Printing" model="4121" />
+      <printer translate="name" name="Dai Nippon Printing DS680" deviceid="MFG:DNP;CMD:DNP;MDL:DPDS680;CLS:PRINTER;DES:DNP_DPDS680" driver="dnp-ds680" manufacturer="Dai Nippon Printing" model="4122" />
       <printer translate="name" name="Fujifilm ASK-300" deviceid="MFG:FUJIFILM;CMD:ASK-300;MDL:ASK Printer;CLS:FUJIFILM USB Printer;DES:FUJIFILM ASK Printer" driver="fujifilm-ask-300" manufacturer="Fujifilm" model="4112" />
       <printer translate="name" name="Fujifilm ASK-2000"  driver="fujifilm-ask-2000" manufacturer="Fujifilm" model="4200">EXPERIMENTAL</printer>
-      <printer translate="name" name="Fujifilm ASK-2500"  driver="fujifilm-ask-2500" manufacturer="Fujifilm" model="4200">EXPERIMENTAL</printer>
+      <printer translate="name" name="Fujifilm ASK-2500" deviceid="MFG:FUJIFILM;MDL:-ASK-2500;DES:FUJIFILM-ASK-2500;CMD:ASK250-Original;CLS:PRINTER;" driver="fujifilm-ask-2500" manufacturer="Fujifilm" model="4200">EXPERIMENTAL</printer>
       <printer translate="name" name="Fujifilm ASK-4000"  driver="fujifilm-ask-4000" manufacturer="Fujifilm" model="4201">EXPERIMENTAL</printer>
       <printer translate="name" name="Fujifilm FinePix-NX-500" driver="fujifilm-nx500" manufacturer="Fujifilm" model="3002" />
       <printer translate="name" name="Fujifilm Printpix-CX-400" driver="fujifilm-cx400" manufacturer="Fujifilm" model="3000" />
       <printer translate="name" name="Fujifilm Printpix-CX-550" driver="fujifilm-cx550" manufacturer="Fujifilm" model="3001" />
-      <printer translate="name" name="HiTi P520L" deviceid="MFG:HiTi;CMD:???;MDL:P520L;CLS:PRINTER;" driver="hiti-p520l" manufacturer="HiTi" model="6500" />
-      <printer translate="name" name="HiTi P525L" deviceid="MFG:HiTi;CMD:???;MDL:P525L;CLS:PRINTER;" driver="hiti-p525l" manufacturer="HiTi" model="6500" />
-      <printer translate="name" name="HiTi P720L" deviceid="MFG:HiTi;MDL:HiTi P720L;" driver="hiti-p720l" manufacturer="HiTi" model="6501" >EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi Prinhome P461" deviceid="MFG:HiTi;CMD:???;MDL:Prinhome P461;CLS:PRINTER;" driver="hiti-p461" manufacturer="HiTi" model="6503" />
+      <printer translate="name" name="HiTi P510K" deviceid="MFG:HiTi;MDL:HiTi P510K;CLS:PRINTER;" driver="hiti-p510k" manufacturer="HiTi" model="6502">EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi P510L" deviceid="MFG:HiTi;MDL:HiTi P510L;CLS:PRINTER;" driver="hiti-p510l" manufacturer="HiTi" model="6502" />
+      <printer translate="name" name="HiTi P510S" deviceid="MFG:HiTi;MDL:HiTi P510S;CLS:PRINTER;" driver="hiti-p510s" manufacturer="HiTi" model="6502" />
+      <printer translate="name" name="HiTi P510Si" deviceid="MFG:HiTi;MDL:HiTi P510Si;CLS:PRINTER;" driver="hiti-p510si" manufacturer="HiTi" model="6502">EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi P518A" deviceid="MFG:HiTi;MDL:HiTi P518A;CLS:PRINTER;" driver="hiti-p518a" manufacturer="HiTi" model="6502">EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi P518S" deviceid="MFG:HiTi;MDL:HiTi P518S;CLS:PRINTER;" driver="hiti-p518s" manufacturer="HiTi" model="6502">EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi P520L" deviceid="MFG:HiTi;MDL:P520L;CLS:PRINTER;" driver="hiti-p520l" manufacturer="HiTi" model="6500" />
+      <printer translate="name" name="HiTi P525L" deviceid="MFG:HiTi;MDL:P525L;CLS:PRINTER;" driver="hiti-p525l" manufacturer="HiTi" model="6500" />
+      <printer translate="name" name="HiTi P720L" deviceid="MFG:HiTi;MDL:HiTi HiTi P720L;" driver="hiti-p720l" manufacturer="HiTi" model="6501" >EXPERIMENTAL</printer>
+      <printer translate="name" name="HiTi P728L" deviceid="MFG:HiTi;MDL:HiTi P728L;" driver="hiti-p728l" manufacturer="HiTi" model="6501" >EXPERIMENTAL</printer>
       <printer translate="name" name="HiTi P750L" deviceid="MFG:HiTi;MDL:P750L;" driver="hiti-p750l" manufacturer="HiTi" model="6501" >EXPERIMENTAL</printer>
+      <printer translate="name" name="Joyspace U826L" deviceid="MFG:JoySpace;CMD:???;MDL:U826;CLS:PRINTER;" driver="joyspace-u826" manufacturer="Joyspace" model="6500" />
       <printer translate="name" name="Kodak 305" deviceid="MFG:KODAK;CMD:KODAK305;MDL:305 Photo Printer;CLS:PRINTER;DES:KODAK 305 Photo Printer" driver="kodak-305" manufacturer="Kodak" model="4108" />
       <printer translate="name" name="Kodak 605" deviceid="MFG:Eastman Kodak Company;CMD:SUPCC;MCL:KODAK 605 Photo Printer;CLS:PRINTER;DES:Thermal Dye Photo Printer;" driver="kodak-605" manufacturer="Kodak" model="4003" />
       <printer translate="name" name="Kodak 1400" deviceid="MFG:Eastman Kodak Company;CMD:EK1;MDL: 1400 Printer;CLS:Printer;DES:Kodak 1400 Printer;`" driver="kodak-1400" manufacturer="Kodak" model="4004" />
       <printer translate="name" name="Kodak 6800" deviceid="MFG:Eastman Kodak Company;CMD:ESC;MDL:Photo Printer 6800;CLS:PRINTER;DES:KODAK Photo Printer 6800;" driver="kodak-6800" manufacturer="Kodak" model="4001" />
       <printer translate="name" name="Kodak 6850" deviceid="MFG:Eastman Kodak Company;CMD:ESC;MDL:Photo Printer 6850;CLS:PRINTER;DES:KODAK Photo Printer 6850;" driver="kodak-6850" manufacturer="Kodak" model="4002" />
-      <printer translate="name" name="Kodak 6900" deviceid="MFG:Kodak Alaris Inc.;CMD:SUPCC;MDL:KODAK 6900 Photo Printer;CLS:PRINTER;DES Thermal Dye Photo Printer;"driver="kodak-6900" manufacturer="Kodak" model="4010">EXPERIMENTAL</printer>
+      <printer translate="name" name="Kodak 6900" deviceid="MFG:Kodak Alaris Inc.;CMD:SUPCC;MDL:KODAK 6900 Photo Printer;CLS:PRINTER;DES Thermal Dye Photo Printer;" driver="kodak-6900" manufacturer="Kodak" model="4010">EXPERIMENTAL</printer>
       <printer translate="name" name="Kodak 7000" deviceid="MFG:Eastman Kodak Company;CMD:SUPCC;MDL:KODAK 7000 Photo Printer;CLS:PRINTER;DES:Thermal Dye Photo Printer;" driver="kodak-7000" manufacturer="Kodak" model="4008" />
       <printer translate="name" name="Kodak 7010" deviceid="MFG:Eastman Kodak Company;CMD:SUPCC;MDL:KODAK 7010 Photo Printer;CLS:PRINTER;DES:Thermal Dye Photo Printer;" driver="kodak-7010" manufacturer="Kodak" model="4008">EXPERIMENTAL</printer>
       <printer translate="name" name="Kodak 7015" driver="kodak-7015" manufacturer="Kodak" model="4009">EXPERIMENTAL</printer>
       <printer translate="name" name="Kodak 805" deviceid="MFG:Eastman Kodak Company;CMD:EK2;MDL: KODAK 805 Photo Printer;CLS:Printer;DES:Kodak 805 Photo Printer;" driver="kodak-805" manufacturer="Kodak" model="4005" />
       <printer translate="name" name="Kodak 8500" driver="kodak-8500" manufacturer="Kodak" model="4100">EXPERIMENTAL</printer>
-      <printer translate="name" name="Kodak 8800" deviceid="MFG:Eastman Kodak Company;CMD:EKRTP V001.001;MDL:KODAK Photo Printer 8800;CLS:PRINTER;DES:Thermal Dye Photo Printer;VER:1.00;" driver="kodak-8800" manufacturer="Kodak" model="4006">EXPERIMENTAL</printer>
+      <printer translate="name" name="Kodak 8800" deviceid="MFG:Eastman Kodak Company;CMD:EKRTP V001.001;MDL:KODAK Photo Printer 8800;CLS:PRINTER;DES:Thermal Dye Photo Printer;VER:1.00;" driver="kodak-8800" manufacturer="Kodak" model="4006" />
       <printer translate="name" name="Kodak 8810" deviceid="MFG:Eastman Kodak Company;CMD:SUPCC;MDL:KODAK 8810 Photo Printer;CLS:PRINTER;DES:Thermal Dye Photo Printer;" driver="kodak-8810" manufacturer="Kodak" model="4007" />
-      <printer translate="name" name="Kodak 9810" driver="kodak-9810" manufacturer="Kodak" model="4006">EXPERIMENTAL</printer>
+      <printer translate="name" name="Kodak 9810" driver="kodak-9810" manufacturer="Kodak" model="4006" />
       <printer translate="name" name="Kodak EasyShare-G600-Printer-Dock" driver="kodak-g600-dock" manufacturer="Kodak" model="4000" />
       <printer translate="name" name="Kodak Easyshare-Printer-Dock" driver="kodak-dock" manufacturer="Kodak" model="4000" />
       <printer translate="name" name="Kodak PD-4000" driver="kodak-pd-4000" manufacturer="Kodak" model="4000" />
@@ -165,18 +177,22 @@
       <printer translate="name" name="Mitsubishi CP-9800DZ" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP9800DZ;CLS:PRINTER;DES:MITSUBISHI CP9800DZ;" driver="mitsubishi-9800dz" manufacturer="Mitsubishi" model="4113" />
       <printer translate="name" name="Mitsubishi CP-9810D" driver="mitsubishi-9810d" manufacturer="Mitsubishi" model="4104">EXPERIMENTAL</printer>
       <printer translate="name" name="Mitsubishi CP-9810DW" driver="mitsubishi-9810dw" manufacturer="Mitsubishi" model="4104">EXPERIMENTAL</printer>
+      <printer translate="name" name="Mitsubishi CP-9820DW-AG" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP98DZ;CLS:PRINTER;DES:MITSUBISHI CP98DZ;" driver="mitsubishi-9820dw-ag" manufacturer="Mitsubishi" model="4104">EXPERIMENTAL</printer>
       <printer translate="name" name="Mitsubishi CP-D80DW" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CPD80D;CLS:PRINTER;DES:MITSUBISHI_CPD80D" driver="mitsubishi-d80dw" manufacturer="Mitsubishi" model="4107" />
       <printer translate="name" name="Mitsubishi CP-D90DW" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CPD90D;CLS:PRINTER;DES:MITSUBISHI_CPD90D" driver="mitsubishi-d90dw" manufacturer="Mitsubishi" model="4109" />
+      <printer translate="name" name="Mitsubishi CP-D90DW-SL" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP90SL;CLS:PRINTER;DES:MITSUBISHI_CP90SL" driver="mitsubishi-d90dwsl" manufacturer="Mitsubishi" model="4109">EXPERIMENTAL</printer>
       <printer translate="name" name="Mitsubishi CP-D70DW" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP60D70D707D;CLS:PRINTER;DES:MITSUBISHI CP60D70D707D" driver="mitsubishi-d70dw" manufacturer="Mitsubishi" model="4105" />
       <printer translate="name" name="Mitsubishi CP-D707DW" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP60D70D707D;CLS:PRINTER;DES:MITSUBISHI CP60D70D707D" driver="mitsubishi-d707dw" manufacturer="Mitsubishi" model="4117" />
       <printer translate="name" name="Mitsubishi CP-K60DW-S" driver="mitsubishi-k60dw" manufacturer="Mitsubishi" model="4106" />
       <printer translate="name" name="Mitsubishi CP-M1" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CP-M1;CLS:PRINTER;DES:MITSUBISHI_CP-M1" driver="mitsubishi-cpm1" manufacturer="Mitsubishi" model="4118" />
       <printer translate="name" name="Mitsubishi CP-M15" driver="mitsubishi-cpm15" manufacturer="Mitsubishi" model="4118" />
+      <printer translate="name" name="Mitsubishi CP-W5000" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:CPW5000D;CLS:PRINTER;DES:MITSUBISHI_CPW5000D" driver="mitsubishi-cpw5000" manufacturer="Mitsubishi" model="4120" />
       <printer translate="name" name="Mitsubishi P93D" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:P93D;CLS:PRINTER;DES:MITSUBISHI P93D;" driver="mitsubishi-p93d" manufacturer="Mitsubishi" model="4116" />
       <printer translate="name" name="Mitsubishi P95D" deviceid="MFG:MITSUBISHI;CMD:MEL;MDL:P95D    ;CLS:PRINTER;DES:MITSUBISHI P95D    ;" driver="mitsubishi-p95d" manufacturer="Mitsubishi" model="4114" />
       <printer translate="name" name="Nidac Copal DPB-4000"  driver="nidalcopac-dpb-4000" manufacturer="Nidac Copal" model="4201">EXPERIMENTAL</printer>
       <printer translate="name" name="Nidac Copal DPB-6000"  driver="nidalcopac-dpb-6000" manufacturer="Nidac Copal" model="4200" />
       <printer translate="name" name="Nidac Copal DPB-7000"  driver="nidalcopac-dpb-7000" manufacturer="Nidac Copal" model="4200">EXPERIMENTAL</printer>
+      <printer translate="name" name="Olmec OP1000" driver="olmec-op1000" manufacturer="Olmec" model="5001" />
       <printer translate="name" name="Shinko CHC-S1245" driver="shinko-chcs1245" manufacturer="Shinko" model="5002" />
       <printer translate="name" name="Shinko CHC-S2145" deviceid="MFG:SHINKO;CMD:SUPCC;MDL:CHC-S2145;CLS:PRINTER;DES:SHINKO CHC-S2145;" driver="shinko-chcs2145" manufacturer="Shinko" model="5001" />
       <printer translate="name" name="Shinko CHC-S6145" driver="shinko-chcs6145" manufacturer="Shinko" model="5004" />
@@ -194,10 +210,14 @@
       <printer translate="name" name="Sony UP-DR100" driver="sony-updr100" manufacturer="Sony" model="2003" />
       <printer translate="name" name="Sony UP-DR200" driver="sony-updr200" manufacturer="Sony" model="2004" />
       <printer translate="name" name="Sony UP-CR10L" deviceid="MFG:SONY;MDL:UP-CR10L;DES:Sony UP-CR10L;CMD:SONY-Original;CLS:PRINTER" driver="sony-upcr10l" manufacturer="Sony" model="2005"/>
+      <printer translate="name" name="Sony UP-CX1" deviceid="MFG:SONY;MDL:UP-CX1;DES:Sony UP-CX1;CMD:SONY-Original;CLS:PRINTER" driver="sony-upcx1" manufacturer="Sony" model="2005"/>
+      <printer translate="name" name="Sony UP-D711MD" deviceid="MFG:Sony;MDL:UP-D711MD;DES:Sony UP-D711MD;CMD:SONY-Original;CLS:PRINTER" driver="sony-upd711" manufacturer="Sony" model="2013" />
       <printer translate="name" name="Sony UP-D895" deviceid="MFG:SONY;MDL:UP-D895;DES:Sony UP-D895;CMD:SONY-Original;CLS:PRINTER" driver="sony-upd895" manufacturer="Sony" model="2006" />
       <printer translate="name" name="Sony UP-D897" deviceid="MFG:SONY;MDL:UP-D897;DES:Sony UP-D897;CMD:SONY-Original;CLS:PRINTER" driver="sony-upd897" manufacturer="Sony" model="2007" />
       <printer translate="name" name="Sony UP-D898" driver="sony-upd898" manufacturer="Sony" model="2008" />
       <printer translate="name" name="Sony UP-D898MD" deviceid="MFG:Sony;MDL:UP-D898MD_X898MD;DES:Sony UP-D898MD_X898MD;CMD:SPJL-DS,SPDL-DS2;CLS:PRINTER;" driver="sony-upd898md" manufacturer="Sony" model="2008" />
+      <printer translate="name" name="Sony UP-971AD" deviceid="MFG:Sony;MDL:UP-991AD_971AD;DES:Sony UP-991AD_971AD;CMD:SPJL-DS,SPDL-DS2;CLS:PRINTER;" driver="sony-up971ad" manufacturer="Sony" model="2012" />
+      <printer translate="name" name="Sony UP-991AD" deviceid="MFG:Sony;MDL:UP-991AD_971AD;DES:Sony UP-991AD_971AD;CMD:SPJL-DS,SPDL-DS2;CLS:PRINTER" driver="sony-up991ad" manufacturer="Sony" model="2012">EXPERIMENTAL</printer>
       <printer translate="name" name="Sony UP-CR20L" driver="sony-upcr20l" manufacturer="Sony" model="2009">EXPERIMENTAL</printer>
       <printer translate="name" name="Sony UP-DR80MD" deviceid="MFG:SONY;MDL:UP-DR80MD;DES:Sony UP-DR80MD;CMD:SPJL-DS,SPDL-DS;CLS:PRINTER;" driver="sony-updr80md" manufacturer="Sony" model="2010" />
       <printer translate="name" name="Stryker SDP1000" deviceid="MFG:Stryker;MDL:SDP1000;DES:Stryker SDP1000;CMD:SPJL-DS,SPDL-DS2;CLS:PRINTER;" driver="stryker-sdp1000" manufacturer="Stryker" model="2010" />

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Apple Silicon Printer Drivers — post-install
 #  1. retire vendor Intel-only driver bits that block Apple's generic USB class driver
-#  2. refresh Brother (brlaser) queues left by older packages
+#  2. refresh queues left by older packages with the bundled PPDs
 #  3. auto-detect USB printers and create queues for supported models
 set -u
 GP=/Library/Printers/Gutenprint
@@ -36,20 +36,28 @@ for f in /etc/cups/ppd/*.ppd; do
   fi
 done
 
-# ---- 2) brlaser queues from packages before 1.3.8 hold a brlaser v6 PPD. The 6.2.8 filter reads
-#         options v6 PPDs never set (toner density would go out as -100), so give them the
-#         bundled PPD; lpadmin keeps the device and the chosen defaults.
+# ---- 2) queues created by an older package keep its PPD, which the new filters reject or misread:
+#         rastertogutenprint refuses a PPD from another Gutenprint version, and brlaser 6.2.8 reads
+#         options brlaser v6 PPDs never set (toner density would go out as -100). Reinstall the
+#         bundled PPD on the same device; lpadmin keeps the chosen defaults.
+GPVER=$("$GP/libexec/cups-genppd.5.3" -V 2>/dev/null | sed -n 's/^cups-genppd version \([0-9.]*\),.*/\1/p')
 for f in /etc/cups/ppd/*.ppd; do
   [ -f "$f" ] || continue
-  grep -qs '/Library/Printers/Gutenprint/libexec/rastertobrlaser' "$f" || continue
-  grep -qs 'brlaserDensityAdjust' "$f" && continue
-  q=$(basename "$f" .ppd)
-  ID=brlaser-$(sed -n 's/^\*ShortNickName: "Brother \(.*\)"/\1/p' "$f" | sed 's/ series$//' | tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')
-  URI=$(awk -v q="$q" '$1 ~ /^<(Default)?Printer$/ { sub(/>$/, "", $2); cur = $2 } cur == q && $1 == "DeviceURI" { print $2; exit }' /etc/cups/printers.conf 2>/dev/null)
-  if [ -n "$URI" ] && "$GP/bin/gutenprint-add" "$ID" "$q" "$URI" >/dev/null 2>&1; then
-    log "queue '$q' updated to the brlaser $ID PPD"
+  if grep -qs "$GP/libexec/rastertobrlaser" "$f"; then
+    grep -qs 'brlaserDensityAdjust' "$f" && continue
+    ID=brlaser-$(sed -n 's/^\*ShortNickName: "Brother \(.*\)"/\1/p' "$f" | sed 's/ series$//' | tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')
+  elif grep -qs "$GP/libexec/rastertogutenprint" "$f"; then
+    { [ -z "$GPVER" ] || grep -qs "CUPS+Gutenprint v$GPVER\"" "$f"; } && continue
+    ID=$(sed -n 's/^\*StpDriverName:[[:space:]]*"\(.*\)"/\1/p' "$f")
   else
-    log "could not update queue '$q' — remove it and run: sudo gutenprint-add $ID"
+    continue
+  fi
+  q=$(basename "$f" .ppd)
+  URI=$(awk -v q="$q" '$1 ~ /^<(Default)?Printer$/ { sub(/>$/, "", $2); cur = $2 } cur == q && $1 == "DeviceURI" { print $2; exit }' /etc/cups/printers.conf 2>/dev/null)
+  if [ -n "$ID" ] && [ -n "$URI" ] && "$GP/bin/gutenprint-add" "$ID" "$q" "$URI" >/dev/null 2>&1; then
+    log "queue '$q' updated to the current $ID driver"
+  else
+    log "could not update queue '$q' — remove it in Printers & Scanners and run: sudo gutenprint-add ${ID:-<id>}"
   fi
 done
 

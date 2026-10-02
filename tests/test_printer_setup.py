@@ -29,8 +29,12 @@ class PrinterSetupTest(unittest.TestCase):
             "PPDDIR=/Library/Printers/PPDs/Contents/Resources", f'PPDDIR="{self.root}/ppds"'))
         self.helper.chmod(0o755)
         self.script(self.gp / "libexec/cups-genppd.5.3", '''
-if [ "$1" = -M ]; then
-  printf 'brother-hl-5040 Brother HL-5040\nbrother-hl-5030 Brother HL-5030\nbjc-MP250-series Canon MP250 series\nescp2-r300 Epson Stylus Photo R300\n'
+if [ "$1" = -M ] && [ "${2:-}" = -v ]; then
+  printf '%-20s%s\n' brother-hl-5040 'Brother HL-5040' brother-hl-5030 'Brother HL-5030' \
+    bjc-MP250-series 'Canon MP250 series' escp2-r300 'Epson Stylus Photo R300' \
+    bjc-Pro9000mk2-series 'Canon Pro9000 Mk.II series'
+elif [ "$1" = -M ]; then
+  printf '%s\n' brother-hl-5040 brother-hl-5030 bjc-MP250-series escp2-r300 bjc-Pro9000mk2-series
 elif [ "$3" = bjc-MP250-series ]; then
   printf '*PPD-Adobe: "4.3"\n*ShortNickName: "Canon MP250 series"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*OpenUI *StpCDXAdjustment/CD Adjustment: PickOne\n*StpCDXAdjustment 0/0 mm: ""\n*CloseUI: *StpCDXAdjustment\n*CustomStpCDXAdjustment True: "pop"\n*ParamCustomStpCDXAdjustment Value/Value: 1 points -15 15\n' > "$2/stp.ppd"
 else
@@ -63,6 +67,8 @@ fi
         result = self.run_helper("--list")
         self.assertIn(f"{MODEL} Brother HL-1210W series", result)
         self.assertIn("brother-hl-5040 Brother HL-5040", result)
+        # ids of 20+ characters run into the name in cups-genppd -M -v
+        self.assertIn("bjc-Pro9000mk2-series Canon Pro9000 Mk.II series", result)
         self.assertEqual(self.run_helper("--list", "1210w").strip(), f"{MODEL} Brother HL-1210W series")
 
     def test_usb_names_and_existing_models(self):
@@ -76,6 +82,7 @@ fi
             ("usb://Brother/DCP-1610W%20series?serial=123", "brlaser-dcp-1610w"),
             ("usb://Brother/MFC-7320?serial=123", "brlaser-mfc-7320"),
             ("usb://Canon/MP250%20series?serial=123", "bjc-MP250-series"),
+            ("usb://Canon/Pro9000%20Mk.II%20series?serial=123", "bjc-Pro9000mk2-series"),
             ("usb://EPSON/Stylus%20Photo%20R300?serial=123", "escp2-r300"),
             ("usb://Brother/HL-1212W?serial=123", ""),
             ("usb://Other/HL-1210W?serial=123", ""),

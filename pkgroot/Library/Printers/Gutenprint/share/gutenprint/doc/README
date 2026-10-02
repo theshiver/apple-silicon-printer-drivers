@@ -1,4 +1,4 @@
-Welcome to Gutenprint 5.3.4!  Please read these notes carefully.
+Welcome to Gutenprint 5.3.5!  Please read these notes carefully.
 
 *** NOTE TO PACKAGERS: Please read the file README.package for issues
     that are of interest to distributors and packagers of Gutenprint.
@@ -8,12 +8,11 @@ Welcome to Gutenprint 5.3.4!  Please read these notes carefully.
 
 I) INTRODUCTION
 
-    Gutenprint is a suite of printer drivers for UNIX, Linux, and
-    Macintosh OS X systems (10.6 through currently 10.14) that use
-    CUPS as their printing system.  Gutenprint currently supports over
-    3000 printers.  It also includes an enhanced Print plug-in for
-    GIMP that replaces the print plug-in packaged with the GIMP
-    distribution.
+    Gutenprint is a suite of printer drivers for UNIX, Linux, and other 
+    systems that use CUPS as their printing system.  Gutenprint 
+    currently supports over 3000 printers.  It also includes an enhanced 
+    Print plug-in for GIMP that replaces the print plug-in packaged with 
+    the GIMP distribution.
 
     Gutenprint was renamed from its original name of Gimp-Print in
     order to clearly distinguish it from GIMP.  While this package
@@ -41,7 +40,6 @@ I) INTRODUCTION
     easy to use GUIs.  Please visit http://www.cups.org/ for
     information on downloading and installing CUPS.
 
-
 ================================================================
 
 II) INSTALLATION
@@ -59,9 +57,9 @@ II) INSTALLATION
     administrative actions, we recommend that you not attempt to
     install this package from source.
 
-    If you are building Gutenprint from the CVS repository, you need
+    If you are building Gutenprint from the git repository, you need
     to take some additional steps.  Please read doc/README.maintaining
-    for instructions on how to build from CVS.
+    for instructions on how to build directly from git.
 
     Before beginning, please read the release notes carefully for any
     updates.
@@ -78,7 +76,7 @@ A) OVERVIEW
       - A command-line utility to administer and maintain Epson
         printers
       - An enhanced Print plug-in for GIMP
-      - GTK-based UI libraries (used by the enhanced GIMP plug-in)
+      - GTK2-based UI libraries (used by the enhanced GIMP plug-in)
 
     This package requires the use of GNU Make to compile.  On systems
     with both GNU make and another make installed, GNU make may be
@@ -513,12 +511,20 @@ D) CUPS dye-sublimation backend
 	DNP DS80 / Citizen CX-W
 	DNP DS80DX
 	DNP DS-RX1 / DS-RX1HS / Citizen CY / CY-02
+	DNP DS480
+	DNP DS680
 	DNP DS620 / DS620A / Citizen CX-02
 	DNP DS820 / DS820A / Citizen CX-02W
 	DNP QW410 / Citizen CZ-01
 	Fujifilm ASK-300
-	HiTi P520L
-	HiTi P525L
+	Fujifilm ASK-2000
+	Fujifilm ASK-2500
+	Fujifilm ASK-4000
+	HiTi P461 Prinhome
+	HiTi P510 series
+	HiTi P520L / P525L
+	HiTi P720L / P750L
+	Joyspace U826
 	Kodak Professional 1400
 	Kodak 305 Photo Printer
 	Kodak 605 Photo Printer
@@ -526,29 +532,40 @@ D) CUPS dye-sublimation backend
 	Kodak 6800 Photo Printer
 	Kodak 6850 Photo Printer
 	Kodak 7000 Photo Printer
+	Kodak 8800 Photo Printer
 	Kodak 8810 Photo Printer
+	Kodak 9810 Photo Printer
+	Mitsubishi CP30D
 	Mitsubishi CP-3800DW
 	Mitsubishi CP-9550D/DW/DW-S/DZ/DZ-S
 	Mitsubishi CP-9600D/DW
-	Mitsubishi CP-M1A / CP-M1E
+	Mitsubishi CP-M1A / CP-M1E / CP-M15
 	Mitsubishi CP-9800DW/DW-S
 	Mitsubishi CP-9810DW
 	Mitsubishi CP-K60DW-S
 	Mitsubishi CP-D70DW / CP-D707DW
 	Mitsubishi CP-D70DW-S and P-D707DW-S
 	Mitsubishi CP-D80DW
-	Mitsubishi CP-D90DW
+	Mitsubishi CP-D90DW / CP-D90DW-SL
+	Mitsubishi CP-W5000DW
 	Mitsubishi P93DW
 	Mitsubishi P95DW
 	Shinko CHC-S1245 (aka Sinfonia E1)
 	Shinko CHC-S2145 (aka Sinfonia S2)
 	Shinko CHC-S6145 (aka Sinfonia CS2)
+	Shinko CHC-S6245 (aka Sinfonia CE1)
+	Sinfonia S3
 	Sony UP-CR10L / DNP DS-SL10
+	Sony UP-CX1
 	Sony UP-DR150
 	Sony UP-DR200
+	Sony UP-D711MD
 	Sony UP-DR80MD
 	Sony UP-D895
 	Sony UP-D897
+	Sony UP-D898
+	Sony UP-D971AD
+	Sony UP-D991AD
 	Stryker SDP1000
 
     Although these printers advertise themselves as standard USB Printer
@@ -580,10 +597,10 @@ D) CUPS dye-sublimation backend
     the you plug in one of its supported printers.  No further intervention
     on the your part should be necessary.
 
-    Unfortunately, if you are using an older version of CUPS or a non-Linux
-    system (particularly OSX) then you will probably need to manually
-    configure the use of this backend because the system may attempt to
-    use the default usb backend, which will not work properly with these
+    Unfortunately, if you are using an older version of CUPS or a 
+    non-Linux system then you will probably need to manually configure 
+    the use of this backend because the system may attempt to use the 
+    default usb backend, which will not work properly with these 
     printers.
 
     To check which backend your printers are using, run the 'lpstat
@@ -634,6 +651,7 @@ D) CUPS dye-sublimation backend
     For example, a device URI of
 
       gutenprint53+usb://Canon/SELPHY+ES1?serial=221CD10131&backend=canonselphy
+
     has a proper serial number (221CD10131), and CUPS can uniquely
     identify the printer.
 
@@ -671,30 +689,6 @@ D) CUPS dye-sublimation backend
 
     After changing the user string, you will need to remove and re-create
     the CUPS queue.
-
-  Note on Mitsubishi Dye-Sublimation models with an '-S' and '-U' suffixes
-
-    As well as manufacturing standalone photo printers, Mitsubishi also
-    manufactures photo lab and kiosk solutions which use their printers.
-    However, the printers intended for use with those kiosks are *not*
-    compatible with the standalone models, despite having similar model
-    names.  They are incompatible from a software perspective, and also
-    require different media.
-
-    With two exceptions, if the model ends in '-S' or has a red face-
-    plate, it is intended only for use with a Mitsubishi lab or kiosk, and
-    consequently not supportable by Gutenprint.  For example, see the
-    (non-comprehensive) list below:
-
-      Supported/Compatible   |   Unsupported/Incompatible
-      ---------------------------------------------------
-		 CP-D70DW    |   CP-D70DW-S
-		 CP9600DW    |   CP9600DW-S
-		 CP9550DW    |   CP9550DW-U
-
-    The exceptions to this rule are the CP-K60DW-S, which is sold as a
-    standalone "event" printer, and the CP9550DW-S, which has been
-    successfully reverse-engineered.
 
 ----------------
 
@@ -932,8 +926,8 @@ IV) SOLVING PROBLEMS
 
 ================================================================
 
-V) USE OF THE CVS REPOSITORY
+V) USE OF THE GIT REPOSITORY
 
     Please read doc/README.maintaining for instructions on how to
-    build from the CVS repository.  You will need additional packages
+    build from the GIT repository.  You will need additional packages
     and tools for this purpose.
