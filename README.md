@@ -74,7 +74,9 @@ The installer is signed with an Apple Developer ID and notarized by Apple. Every
 
 ## ☕ Buy me a coffee
 
-This started as a weekend fix for one printer and grew into something a lot of people needed. If it saved you from buying a new printer, you can [sponsor me on GitHub](https://github.com/sponsors/theshiver). A coffee is plenty.
+I build tools like this to fix problems I run into myself, then share them so they can fix the same problems for other people too. It's free, and nothing is locked behind a sponsorship.
+
+If it saved you a headache (or a new printer) and you'd like to say thanks, you can [buy me a coffee on GitHub Sponsors](https://github.com/sponsors/theshiver). It means a lot. Thank you!
 
 ---
 
