@@ -26,11 +26,11 @@ That's it. The installer finds the printer and sets it up.
 
 ## Supported printers
 
-3,608 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,703 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
 Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
 
-Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2300D, DCP-7065DN, MFC-7360N and others) are covered by the bundled brlaser driver.
+Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2300D, DCP-1610W, DCP-7065DN, MFC-7320, MFC-7360N and others, 99 models) are covered by the bundled brlaser driver.
 
 Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
 
@@ -58,6 +58,12 @@ In the print dialog, open Printer Features (Printer Options on macOS 27). Qualit
 **Black doesn't print, or colors look off.**
 First run a nozzle check from the printer itself: an empty or clogged black cartridge is the usual cause, and this driver can't show ink levels like the maker's driver did. Then check in Printer Features that no “color-only” mode is selected under Resolution or Ink Set. Colors can look a little different from the maker's driver because the color tables are different.
 
+**Supply Levels says "Information Not Available".**
+Expected: the open source drivers can't read ink or toner levels from the printer, only the maker's driver could. Check levels on the printer's own screen or with a nozzle check.
+
+**My printer isn't in the list.**
+Many newer printers, including Brother color lasers such as the MFC-L3770CDW, support AirPrint and need no driver: connect the printer to your network (Wi-Fi or Ethernet), then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB.
+
 **Does the scanner work?**
 No, only printing. For scanning use VueScan or SANE.
 
@@ -74,20 +80,20 @@ This started as a weekend fix for one printer and grew into something a lot of p
 
 ## Technical details
 
-The package contains [Gutenprint 5.3.4](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
+The package contains [Gutenprint 5.3.5](https://gimp-print.sourceforge.io/) (GPL-2.0), the open source driver suite that has supported these printers on Linux for 20 years, compiled natively for arm64 and installed under `/Library/Printers/Gutenprint`. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved.
 
 | Path | Purpose |
 |---|---|
 | `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, signed) |
-| `/Library/Printers/Gutenprint/libexec/rastertobrlaser` | arm64 Brother laser raster filter (brlaser v6) |
+| `/Library/Printers/Gutenprint/libexec/rastertobrlaser` | arm64 Brother laser raster filter ([brlaser 6.2.8](https://github.com/Owl-Maintain/brlaser), the maintained fork) |
 | `/Library/Printers/Gutenprint/share/brlaser` | Brother PPDs, GPL license and exact brlaser source archive |
-| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson` | maintenance commands (head clean, nozzle check) |
+| `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson`, `commandtodyesub` | maintenance commands (head clean, nozzle check) and dye-sub status queries |
 | `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator |
 | `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | adds a printer by model id |
 | `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |
 | `/Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd` | PPDs generated on demand, with absolute filter paths |
 
-The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against the combined Gutenprint and brlaser model names (word match, brlaser before Gutenprint, then shortest name wins) and calls `gutenprint-add` for it.
+The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against the combined Gutenprint and brlaser model names (word match, brlaser before Gutenprint, then shortest name wins; HL-2250DN, HL-5040 and HL-5140 stay on Gutenprint's PCL driver) and calls `gutenprint-add` for it.
 
 Things that bit us on macOS 27, for anyone porting another driver:
 

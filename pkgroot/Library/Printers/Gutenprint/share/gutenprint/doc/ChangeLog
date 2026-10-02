@@ -1,12 +1,2169 @@
 ===============================================================================
-Name: gutenprint-5_3_4
+Name: gutenprint-5_3_5
 
-2020-12-06  <Robert Krawitz>	7d80bfebcc3309fe0b6593184fd84f5c178cc60c
+2025-03-11  <Solomon Peachy>	4eb8708b8e5d6cd768863e6498ea57689361909b
+
+	Lines: +3, -3
+	Files:	NEWS (+1, -1)
+		README (+1, -1)
+		configure.ac (+1, -1)
+
+	Time to make 5.3.5 official
+
+2025-03-06  <Solomon Peachy>	1026d33e0bfab355ed3b6bd5e968a6183019426b
+
+	Lines: +55, -57
+	Files:	src/main/canon-media.h (+2, -2)
+		src/main/print-canon.c (+4, -4)
+		src/main/print-escp2.c (+23, -25)
+		src/main/print-escp2.h (+20, -20)
+		src/main/print-version.c (+6, -6)
+
+	Fix up more -Wsign-compare issues, in escp2, canon, and elsewhere.
+
+2025-03-06  <Solomon Peachy>	465434b2a8727cef63ead4d913c40fb1e5704064
+
+	Lines: +27, -28
+	Files:	src/main/dither-ed.c (+3, -3)
+		src/main/dither-eventone.c (+4, -4)
+		src/main/dither-inks.c (+5, -5)
+		src/main/dither-main.c (+8, -8)
+		src/main/dither-ordered.c (+5, -6)
+		src/main/dither-predithered.c (+2, -2)
+
+	Partially revert the -Wsign-compare fixups
+
+	This removes the fixups from the dithering code.
+
+2025-03-05  <Solomon Peachy>	e7424a1052a8164b3294416ca1412abd2c1ba1b5
+
+	Lines: +6, -9
+	Files:	src/cups/backend_mitsud90.c (+2, -3)
+		src/cups/backend_sinfonia.c (+2, -4)
+		src/cups/backend_sinfonia.h (+2, -2)
+
+	dyesub: backend: minor updates to silence build warnings
+
+2025-03-05  <Solomon Peachy>	9451128f2dd01b30ef235fc92eca7ce02f0b4105
+
+	Lines: +109, -112
+	Files:	src/main/buffer-image.c (+0, -1)
+		src/main/canon-modes.h (+3, -3)
+		src/main/dither-ed.c (+3, -3)
+		src/main/dither-eventone.c (+4, -4)
+		src/main/dither-inks.c (+5, -5)
+		src/main/dither-main.c (+8, -8)
+		src/main/dither-ordered.c (+6, -5)
+		src/main/dither-predithered.c (+2, -2)
+		src/main/escp2-channels.c (+2, -2)
+		src/main/module.c (+0, -1)
+		src/main/print-canon.c (+16, -18)
+		src/main/print-color.c (+15, -15)
+		src/main/print-dpl.c (+12, -12)
+		src/main/print-lexmark.c (+4, -4)
+		src/main/print-pcl.c (+15, -15)
+		src/main/print-ps.c (+4, -4)
+		src/main/print-util.c (+1, -1)
+		src/main/print-vars.c (+3, -3)
+		src/main/xml.c (+4, -4)
+		src/main/xmlppd.c (+2, -2)
+
+	misc:  Correct a large pile of -Wsign-compare warnings
+
+	Plenty more to go, but this goes a long way towards cleaning up
+	superflous build warnings.
+
+2025-03-05  <Solomon Peachy>	534b988574587fbb2f039b37a63f4df4a2c3cc55
+
+	Lines: +20, -20
+	Files:	src/main/print-dyesub.c (+20, -20)
+
+	dyesub: flip the "extra" margin for 2x6*2 LANDSCAPE prints
+
+	This moves the margin from the left to the right side, which bypasses
+	a strange corner case causing garbled output under some circumstances.
+
+2025-03-05  <Solomon Peachy>	cd1d4ef8ecd5014cdc31faf25759d4575ca6fa7d
+
+	Lines: +4, -4
+	Files:	src/cups/rastertogutenprint.c (+4, -4)
+
+	cups:  Don't "adjust" margins if it's not needed
+
+	(effectively this is no change except to logging output)
+
+2025-03-04  <Solomon Peachy>	599908e0d56ca248aa19d1a06863cda56941cebd
+
+	Lines: +43, -44
+	Files:	src/main/print-dyesub.c (+43, -44)
+
+	dyesub: Resolve all differing-signed comparison warnings
+
+2025-03-04  <Solomon Peachy>	e157d6f9a5fac98541bbedbf97db7af94ed80f87
+
+	Lines: +66, -86
+	Files:	src/main/print-dyesub.c (+66, -86)
+
+	dyesub: Centralize non-printer-specific resolution definitions
+
+2025-03-04  <Solomon Peachy>	81f4047e85c29a8585f87b035027778ad9be351f
+
+	Lines: +19, -21
+	Files:	src/main/print-dyesub.c (+19, -21)
+
+	dyesub:  Document flags and other constants
+
+2025-02-12  <Solomon Peachy>	678f43f1cb3f2fb8825d42c30c9ed8be85c4126c
+
+	Lines: +1, -2
+	Files:	configure.ac (+1, -2)
+
+	Pull in latest Georgian (ka) translation
+
+	Minor fix for Russian (ru) as well.
+
+2025-02-11  <Solomon Peachy>	146b185f54c068ea50241d070fbda6828e8b592d
+
+	Lines: +1, -0
+	Files:	src/main/print-util.c (+1, -0)
+
+	i18n:  call textdomain() after bindtextdomain()
+
+	Not sure why this wasn't done, but gettext docs show it as necessary.
+
+2025-02-11  <Solomon Peachy>	80e177f61bbc7b4971499299e825589001e462f9
+
+	Lines: +8, -1
+	Files:	src/main/print-util.c (+8, -1)
+
+	i18n:  don't crash if setlocale() fails
+
+	The setlocale(3) man page states that "the return value is NULL if the
+	request cannot be honored"
+
+	It is not clear _why_ the call is failing, but we need to handle it
+	as best we can.
+
+2025-01-22  <Solomon Peachy>	5a352916d91fb8dc98300ae1123831b28858d923
+
+	Lines: +12, -11
+	Files:	src/cups/backend_sonyupdneo.c (+12, -11)
+
+	dyesub: backend: Don't issue a USB reset for the Sony UP-DR80MD
+
+	Only the B&W thermal models need the USB reset, this breaks the others
+
+2025-01-21  <Solomon Peachy>	49953c583c8633aa91073540bc471ea8678e18c8
 
 	Lines: +0, -0
-	Files:	src/testpattern/Checksums/sums.gutenprint-5.3.4.zpaq (added +0)
+	Files:	src/testpattern/Checksums/sums.5.3.5.xz (+0, -0)
 
-	Gutenprint gutenprint-5.3.4 release
+	Update 5.3.5 checksums after some last minute bugfixes
+
+2025-01-15  <Solomon Peachy>	37935022795b087521d26f4c867e2062228a920b
+
+	Lines: +2, -2
+	Files:	src/cups/backend_common.c (+2, -2)
+
+	dyesub: backend:  Fix nasty regression in parsing IEEE1284 data
+
+	This broke all of the newer Sony printers
+
+2025-01-07  <Solomon Peachy>	eb761e474644eb8d46b5e7148a69ccf15e89cdc9
+
+	Lines: +106, -76
+	Files:	src/cups/backend_common.c (+10, -9)
+		src/cups/backend_dnpds40.c (+2, -2)
+		src/cups/backend_hiti.c (+4, -3)
+		src/cups/backend_kodak8800.c (+17, -15)
+		src/cups/backend_magicard.c (+4, -2)
+		src/cups/backend_mitsu70x.c (+10, -3)
+		src/cups/backend_mitsu9550.c (+4, -8)
+		src/cups/backend_mitsud90.c (+22, -4)
+		src/cups/backend_mitsup95d.c (+8, -5)
+		src/cups/backend_shinkos1245.c (+5, -5)
+		src/cups/backend_shinkos2145.c (+1, -1)
+		src/cups/backend_sonyupd.c (+12, -4)
+		src/cups/backend_sonyupdneo.c (+7, -15)
+
+	dyesub: backend:  Resync with upstream
+
+	The updated backend is needed for the copy generation changes
+	in the previous two commits
+
+2025-01-07  <Solomon Peachy>	1f334a2ebda065796967767521884f0ad3613c95
+
+	Lines: +7, -5
+	Files:	src/main/print-dyesub.c (+7, -5)
+
+	dyesub:  Add a 'copy count' to  Mitsubishi D70 and D90 family spool format
+
+2025-01-05  <Solomon Peachy>	cf4efff19671672d450a5bc7ac768c8cd4bbefdd
+
+	Lines: +14, -14
+	Files:	src/main/print-dyesub.c (+14, -14)
+
+	dyesub:  Canon SELPHY, Kodak 1400, and Kodak 805 don't do hardware copies
+
+2025-01-04  <Solomon Peachy>	5575f25b4b9e3662cabe04eb313b5cfe70f05e2d
+
+	Lines: +5, -4
+	Files:	src/cups/backend_dnpds40.c (+5, -4)
+
+	dyesub: backend: dnp: More verbose panorama printing errors
+
+2025-01-04  <Solomon Peachy>	b43f798dd7473bab228d38e22af9907a8c3acf19
+
+	Lines: +44, -0
+	Files:	src/cups/genppd.c (+30, -0)
+		src/main/print-dyesub.c (+14, -0)
+
+	cups:  Add conditional support for the PPD 'Collate' option
+
+	Only supported by dyesub models that have hardware copy
+	support _and_ use the backend.
+
+2025-01-01  <Solomon Peachy>	95e8efcae16eb74897a95fd329c16b8da8719db0
+
+	Lines: +4, -1
+	Files:	src/main/print-dyesub.c (+4, -1)
+
+	dyesub:  Correct copy generation with the Kodak 605.
+
+	It has been broken since support was added.
+
+	I guess this means nobody is actually using this in production.
+
+2024-12-30  <Solomon Peachy>	746420fd0bcafc2679f71685795bf4d0969a08d0
+
+	Lines: +3, -3
+	Files:	src/main/print-dyesub.c (+3, -3)
+
+	dyesub:  Correct size definitions for a few multicut sizes
+
+	Kodak 8810:  8x4*3
+	Mitsu CP-M1: 2x6*2
+	Hiti  P52x:  2x6*4
+
+	..Off-by-one in the border/margin regions
+
+2024-12-27  <Solomon Peachy>	60c540fa475402c22843ef18c22e7dfd2fe6688d
+
+	Lines: +82, -3
+	Files:	src/main/color-conversions.c (+2, -0)
+		src/main/curve.c (+2, -0)
+		src/main/dither-ed.c (+4, -0)
+		src/main/dither-eventone.c (+3, -0)
+		src/main/dither-inks.c (+2, -0)
+		src/main/dither-inlined-functions.h (+1, -0)
+		src/main/dither-main.c (+4, -0)
+		src/main/dither-ordered.c (+4, -0)
+		src/main/dither-predithered.c (+2, -0)
+		src/main/dither-very-fast.c (+3, -0)
+		src/main/escp2-channels.c (+3, -0)
+		src/main/escp2-driver.c (+5, -0)
+		src/main/generic-options.c (+3, -0)
+		src/main/print-canon.c (+13, -3)
+		src/main/print-color.c (+2, -0)
+		src/main/print-dither-matrices.c (+2, -0)
+		src/main/print-dpl.c (+4, -0)
+		src/main/print-dyesub.c (+9, -0)
+		src/main/print-escp2.c (+6, -0)
+		src/main/print-lexmark.c (+1, -0)
+		src/main/print-papers.c (+2, -0)
+		src/main/print-ps.c (+3, -0)
+		src/main/print-weave.c (+2, -0)
+
+	Fix up a large pile of unused-argument warnings
+
+2024-12-27  <Solomon Peachy>	bafd69d0320238df4ba06f298501a3c90b777c67
+
+	Lines: +38, -9
+	Files:	src/main/module.c (+2, -0)
+		src/main/path.c (+1, -1)
+		src/main/print-lexmark.c (+23, -2)
+		src/main/print-raw.c (+4, -0)
+		src/main/printers.c (+2, -0)
+		src/main/sequence.c (+6, -6)
+
+	Another batch of compiler warning fixups.
+
+2024-12-24  <Solomon Peachy>	b3531c2620f208034f2634e4d9a396e31e890169
+
+	Lines: +3, -0
+	Files:	src/cups/backend_common.h (+3, -0)
+
+	dyesub: backend:  Explicitly disable -Wcast-qual
+
+	We intentionally use consts in the public interface but need to
+	manipulate them behind the scenes.  There may be a better way
+	to deal with this but it causes a ton of warnings that drown out
+	legit stuff.
+
+2024-12-24  <Solomon Peachy>	f023bb669ba96358e7dfd91c8a87e8a78fc0eddd
+
+	Lines: +60, -44
+	Files:	src/cups/backend_sinfonia.c (+1, -1)
+		src/cups/backend_sinfonia.h (+59, -43)
+
+	dyesub: backend: Correct a harmless overflow in the common sinfonia code
+
+2024-12-24  <Solomon Peachy>	bed07f0a4ad971bfd5c09c7ecb13320cc9219a1b
+
+	Lines: +1, -1
+	Files:	configure.ac (+1, -1)
+
+	configure:  Don't use -pedantic in developer mode builds
+
+	(it throws a ton of warnings about stuff that violates ISO C90 but we're
+	 explicitly using C99 instead)
+
+2024-12-20  <Solomon Peachy>	a426e7f481da17bf098f93cab7c350545ea97cf1
+
+	Lines: +52, -18
+	Files:	src/cups/cups-calibrate.c (+2, -0)
+		src/cups/genppd.c (+28, -3)
+		src/cups/i18n.c (+2, -2)
+		src/cups/rastertogutenprint.c (+17, -12)
+		src/main/array.c (+1, -1)
+		src/main/bit-ops.c (+2, -0)
+
+	cups:  Clean up all non-backend warnings.
+
+2024-12-19  <Solomon Peachy>	d72fc1e119b65c2e79f5bc505e0de1801c9c1c78
+
+	Lines: +86, -28
+	Files:	include/gutenprintui2/gutenprintui.h (+3, -0)
+		src/gutenprintui2/curve.c (+3, -0)
+		src/gutenprintui2/gammacurve.c (+4, -0)
+		src/gutenprintui2/panel.c (+64, -25)
+		src/gutenprintui2/plist.c (+4, -3)
+		src/gutenprintui2/print-image-thumbnail.c (+5, -0)
+		src/gutenprintui2/ui-utils.c (+3, -0)
+
+	libgutenprintui2:  Cleaning up warnings.
+
+	Notably disable all deprecation warnings that come from the GTK headers
+
+	...They aren't going anywhere in GTK2.
+
+2024-12-19  <Solomon Peachy>	231078f887e664c6206e9fd69ee0f642cbcb6fcb
+
+	Lines: +25, -22
+	Files:	src/escputil/d4lib.c (+2, -0)
+		src/escputil/escputil.c (+23, -22)
+
+	escputil:  Clean up warnings.
+
+2024-12-19  <Solomon Peachy>	cc7784f895fee84f5bd3ecb92f06841eca36483e
+
+	Lines: +23, -10
+	Files:	src/testpattern/printer_options.c (+3, -2)
+		src/testpattern/printers.c (+2, -0)
+		src/testpattern/testpattern.c (+18, -8)
+
+	testpattern:  Clean up signedness comparison warnings
+
+2024-12-19  <Solomon Peachy>	035481586a06a8ddaf8d9729078f46ed59170028
+
+	Lines: +59, -50
+	Files:	test/bjc-unprint.c (+5, -3)
+		test/curve.c (+4, -4)
+		test/escp2-weavetest.c (+2, -0)
+		test/gen-printer-list.c (+3, -0)
+		test/pcl-unprint.c (+9, -6)
+		test/pixma_parse.c (+8, -8)
+		test/testdither.c (+5, -9)
+		test/unprint.c (+23, -20)
+
+	tests:  Clean up a large pile of warnings
+
+	(differing signedness in comparisons and unused variables)
+
+2024-12-17  <Solomon Peachy>	15dc038c1dc127ad3805c827ef8945d6278d8c22
+
+	Lines: +22, -11
+	Files:	NEWS (+1, -1)
+		src/cups/backend_mitsu.c (+6, -2)
+		src/cups/backend_mitsu.h (+1, -1)
+		src/cups/backend_mitsud90.c (+13, -6)
+		src/xml/printers/dyesub.xml (+1, -1)
+
+	dyesub:  The Mitsubishi CP-D90DW-SL is now supported.
+
+2024-12-13  <Solomon Peachy>	fcede0874fa80fe8c4c5a3d5bf00440f534c57dc
+
+	Lines: +0, -0
+	Files:	src/testpattern/Checksums/sums.5.3.5.xz (added +0)
+
+	Add checksums for 5.3.5
+
+2024-11-30  <Solomon Peachy>	55b12dfb2f5908963c8ec7095b504d8cbe9dfd35
+
+	Lines: +1, -1
+	Files:	src/main/escp2-channels.c (+1, -1)
+
+	escp2:  Correct incorrect inkgroup cache element storage
+
+	We were looking things up with:
+
+	   stp_refcache_find_item("escp2Inkgroup", name);
+
+	But storing them with:
+
+	   stp_refcache_add_item("escpInkgroup", name, igl);
+
+	I don't know what performance difference this will make in practice but
+	it's still clearly a bug.  The fix is to make them both use the same key.
+
+	Reported-by: Simon Wang
+
+2024-11-22  <Solomon Peachy>	c891d44b2ae12f70b73e89a003a2bc667c9b3a26
+
+	Lines: +13, -2
+	Files:	NEWS (+1, -0)
+		README (+1, -1)
+		src/cups/backend_mitsud90.c (+4, -1)
+		src/cups/blacklist (+6, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub: Add EXPERIMENTAL support for the Mitsubishi CP-D90DW-SL
+
+	It is not known if the -SL variant needs a tweak to the command stream
+	but this is the first step.
+
+2024-10-24  <Solomon Peachy>	77f0b4dddf1e60e373c41c7f4d922cb7f2a310ab
+
+	Lines: +4375, -1456
+	Files:	.travis.yml (+0, -6)
+		container-build/Dockerfile (+1, -2)
+		doc/developer/cleanwarnings.pl (+1, -1)
+		doc/gutenprint.dox.in (+2186, -645)
+		doc/gutenprintui2.dox.in (+2186, -645)
+		doc/users_guide/Makefile.am (+0, -23)
+		scripts/autogen.sh (+1, -134)
+
+	documentation:  Clean up some obsolete kruft (Eric Beck)
+
+	 * Remove long-obsolete command tests that don't actually do anything but
+	   give warning messages (openjade and related, and sgmltools)
+
+	 * Clean up and update the two .dox.in files, removing the long unsupported
+	   a4wide option and updating other items to modern dox file requirements.
+
+	 * Remove jade and sgmltools from docker and travis build files
+
+2024-10-04  <Solomon Peachy>	bd31a44383a663bfe33578d43dac7020cdca3f9c
+
+	Lines: +2, -1
+	Files:	configure.ac (+2, -1)
+
+	Temporarily disable the new Georgian (ka) translation
+
+	It has numerous strings that cause PPD validation failures.
+
+	PPD has a strict 80 _byte_ limit on translation strings, causing
+	a <80 _character_ string like this...
+
+	   "თუ საჭიროა, საზღვრებში ჩასატევად გვერდის დაპატარავება"
+
+	...to take up _149 bytes_.
+
+	Some of these too-long strings are assembled from smaller ones, making
+	this even omre of a mess.  There is no good solution, so I'm going to
+	punt to get the tree back into working order.
+
+2024-10-02  <Solomon Peachy>	ff7fc1bd9dd21886aa81fb054f848cc580eda3f4
+
+	Lines: +1, -1
+	Files:	configure.ac (+1, -1)
+
+	Resync all translations with https://translationproject.org
+
+	...Didn't realize Gutenprint was set up to use it.  Hopefully now I will
+	get future notifications of updates.
+
+	Three new translations were picked up:  Icelandic, Georgian, and Romanian.
+
+2024-08-22  <Solomon Peachy>	00c23caa38bb9c40e95f7aafe949bb88e3c38e0d
+
+	Lines: +153, -55
+	Files:	src/cups/backend_common.h (+1, -0)
+		src/cups/backend_hiti.c (+149, -55)
+		src/cups/blacklist (+3, -0)
+
+	dyesub:  backend:  Synchronize HiTi backend with upstream
+
+	 * U826 support
+	 * LUT lookup was broken
+	 * Support for additiona print sizes
+	 * Fixes for job/copy combining
+
+2024-08-21  <Solomon Peachy>	f5e885c9a12a14286c78e46d394f547e9103e8e9
+
+	Lines: +4, -0
+	Files:	src/main/print-dyesub.c (+4, -0)
+
+	dyesub: hiti: Add support for a psuedo-6x8-div4 mode.
+
+2024-08-15  <Solomon Peachy>	c6ccc2027f668def4540e6ccd703db195204723e
+
+	Lines: +45, -0
+	Files:	src/main/print-dyesub.c (+45, -0)
+
+	dyesub:  Add media variation support to the Joyspace U826
+
+2024-08-15  <Solomon Peachy>	dc98115d001fff3dbb6848d94c782b268d5c2a02
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub:  Fix regression in 4x6-div2 print size on the HiTi P51x series
+
+2024-08-15  <Solomon Peachy>	8195e33f5de1a7b93262e97707ee50717f5f974a
+
+	Lines: +1, -1
+	Files:	src/xml/printers/dyesub.xml (+1, -1)
+
+	dyesub:  Fix a typo in the U826's definition
+
+2024-08-15  <Solomon Peachy>	0e6779b0e16bf42d46a704940a4a704dd2450a09
+
+	Lines: +3, -0
+	Files:	NEWS (+1, -0)
+		README (+1, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub: Add initial support for the Joyspace U826
+
+	  * Still needs backend merged
+	  * Still no clue media type variations
+
+2024-08-15  <Solomon Peachy>	36f18f7638931aa3923b7991d97b231e5ee16207
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub: Correct 5x6 definition for HiTi models.
+
+2024-08-14  <Solomon Peachy>	d906c9838cd3513cdca9107fdb06a767f876ea65
+
+	Lines: +4, -0
+	Files:	src/main/print-dyesub.c (+4, -0)
+
+	dyesub:  Add support for 6x5" print size to Hiti P52x/P7xx models
+
+2024-08-12  <Solomon Peachy>	ed04346b34bb4ffe4e39996fb39c08e90e326824
+
+	Lines: +4, -0
+	Files:	src/main/print-dyesub.c (+4, -0)
+
+	dyesub:  Add 6x6 print size to HiTi P520L/P525L
+
+2024-08-11  <Solomon Peachy>	49bf3f77ccacaac14c4448a11c2b26f637d9b00e
+
+	Lines: +2, -2
+	Files:	configure.ac (+2, -2)
+
+	configure.ac:  Fix up a mistake in the shared library versioning
+
+2024-08-09  <Solomon Peachy>	c98c2dd89865eff0737a1c3940ee658967f1fc6b
+
+	Lines: +4, -4
+	Files:	src/main/print-dyesub.c (+4, -4)
+
+	dyesub:  Double the the dimension fudging for "identical" sizes.
+
+	IPP strongly recommends sizes differ by at least 0.5mm, but one point
+	(1/72") is only 0.35mm.  So, double it.
+
+	This shouldn't cause any adverse effects because the previous commit
+	reduces the imageable area by the same amount as the increase of the
+	paper dimensions, resulting in an identical image size.
+
+2024-08-09  <Solomon Peachy>	5d6e2b8eb9c322da980028c0ab7eeed09c2b478d
+
+	Lines: +68, -68
+	Files:	src/main/print-dyesub.c (+68, -68)
+
+	dyesub: Fix up a bunch of paper sizes and margins
+
+	 * Missed many cases where multiple sizes had identical dimensions
+	 * Every size that had slightly goosed dimensions needed to have the
+	   nonprintable margin goosed by an equal amount.
+
+	There are still probably some identically-dimensioned sizes in play.
+
+2024-08-07  <Solomon Peachy>	a1d91ddf3599f2492216e09758e8e55b3d0a4f8c
+
+	Lines: +8, -1
+	Files:	NEWS (+6, -0)
+		src/cups/genppd.c (+2, -1)
+
+	genppd:  On Apple targets, disable use of "Custom" dimensions
+
+	Without this, Apple's print dialogs crash completely on any printer
+	that supports custom CD/DVD print sizes.
+
+2024-08-04  <Solomon Peachy>	5865978487bc77970c97d4935c6cf6b86089d19f
+
+	Lines: +2, -2
+	Files:	src/xml/escp2/model/model_137.xml (+1, -1)
+		src/xml/escp2/model/model_138.xml (+1, -1)
+
+	Fix an error in the xml files from the previous commit.
+
+	(This one's entirely on me)
+
+2024-08-03  <Solomon Peachy>	d5d97f71f34f46ebd5bbb9ef15e80aa357d5165d
+
+	Lines: +3239, -1
+	Files:	NEWS (+2, -0)
+		src/xml/escp2/inks/Makefile.am (+2, -0)
+		src/xml/escp2/inks/pro_ultrachrome_t913x_ce.xml (added +620)
+		src/xml/escp2/inks/pro_ultrachrome_t913x_se.xml (added +620)
+		src/xml/escp2/media/Makefile.am (+2, -0)
+		src/xml/escp2/media/pro_ultrachrome_t913x_ce.xml (added +932)
+		src/xml/escp2/media/pro_ultrachrome_t913x_se.xml (added +935)
+		src/xml/escp2/model/Makefile.am (+3, -1)
+		src/xml/escp2/model/base/Makefile.am (+2, -0)
+		src/xml/escp2/model/base/pro_ultrachrome_t913x_ce.xml (added +34)
+		src/xml/escp2/model/base/pro_ultrachrome_t913x_se.xml (added +34)
+		src/xml/escp2/model/model_137.xml (added +25)
+		src/xml/escp2/model/model_138.xml (added +25)
+		src/xml/printers/escp2.xml (+3, -0)
+
+	Add support for the Epson SureColor P5000 series (Eric Beck)
+
+2024-07-14  <Solomon Peachy>	0d2a22395bac2e1ce776ee2b0b6b0ab9ff69ce42
+
+	Lines: +8, -8
+	Files:	src/gutenprintui2/curve.c (+4, -4)
+		src/gutenprintui2/gammacurve.c (+4, -4)
+
+	UI:  Fix incorrect callback function prototypes for Curve & GammaCurve widgets
+
+2024-07-14  <Solomon Peachy>	4528f52852efcf642bbd9128f170df084e2c8cb7
+
+	Lines: +8, -3
+	Files:	src/main/print-dpl.c (+8, -3)
+
+	dpl:  Fix two potentially uninitialized variable scenarios
+
+2024-07-14  <Solomon Peachy>	31df344ebfdf0839fae16e5a7a0ee094961af81b
+
+	Lines: +0, -1
+	Files:	src/main/print-pcl.c (+0, -1)
+
+	pcl:  Get rid of a dangling 'else;' expression
+
+2024-07-14  <Solomon Peachy>	d2323023f82255df879ece0ff4a96885c732c774
+
+	Lines: +1, -1
+	Files:	src/main/dither-ordered.c (+1, -1)
+
+	minor syntax fixup to make the compiler happier.
+
+2024-07-14  <Solomon Peachy>	aa12059a8a5f3ca738da91363e880f9ca2d7d461
+
+	Lines: +2, -2
+	Files:	src/main/print-dyesub.c (+2, -2)
+
+	dyesub:  Fix incorrect signedness in comparsion
+
+	This resulted in illegal characters being allowed in the Mitsu P93/P95
+	commend fields
+
+2024-07-14  <Solomon Peachy>	637876f351dcb2dc2b4e09c2ea0277cb16c62578
+
+	Lines: +3, -3
+	Files:	test/unprint.c (+3, -3)
+
+	unprint:  Comment out a set-but-not-used variable.
+
+2024-07-14  <Solomon Peachy>	2b1a856e83fd99c9b10bcba9bc9f09d5e1994078
+
+	Lines: +1, -0
+	Files:	test/pcl-unprint.c (+1, -0)
+
+	pcl-unprint:  Add a missing break in a switch statement.
+
+2024-07-14  <Solomon Peachy>	59ac6fd2ebf8e904034a287aa702ce18363f3ebd
+
+	Lines: +1, -1
+	Files:	src/gimp2/print.c (+1, -1)
+
+	gimp2:  Document an intentional case statement fallthrough
+
+2024-07-14  <Solomon Peachy>	36f135f5a78ae3b4097bdab414112ad88b88a4e9
+
+	Lines: +3, -3
+	Files:	configure.ac (+3, -3)
+
+	configure:  More regiggering of compiler warnings.
+
+	 * Add -Wno-sign-compare -Wno-unused-parameter to non-maintainer builds
+	 * Move -Winline to maintainer builds
+
+2024-07-13  <Solomon Peachy>	a95751bb91712fb7bc7fcd525bb322275e445459
+
+	Lines: +2, -2
+	Files:	include/gutenprint/printers.h (+1, -1)
+		src/main/printers.c (+1, -1)
+
+	Revert "API: stp_printer_model_count() now returns an 'unsigned int'"
+
+	This reverts commit 85bfd7c08b1cac64dbb1f115322396a3045170a8.
+
+2024-07-13  <Solomon Peachy>	1e3345e3a015b166eddab6f671517d1d3049d80d
+
+	Lines: +251, -308
+	Files:	src/cups/cups-calibrate.c (+0, -2)
+		src/cups/genppd.c (+41, -19)
+		src/cups/i18n.c (+2, -2)
+		src/cups/rastertogutenprint.c (+10, -12)
+		src/escputil/d4lib.c (+0, -3)
+		src/escputil/escputil.c (+7, -8)
+		src/gimp2/print-image-gimp.c (+0, -4)
+		src/gimp2/print.c (+2, -11)
+		src/gutenprintui2/panel.c (+12, -51)
+		src/main/print-dyesub.c (+170, -177)
+		src/testpattern/testpattern.c (+7, -16)
+		src/xml/extract-strings.c (+0, -1)
+		src/xml/printers/check_duplicate_printers.test.c (+0, -2)
+
+	Revert "Fixing up -Wall -Wextra warnings, pass #1"
+
+	This reverts commit 0e126dc4b9c47ced7718856645e07113236f5f5b.
+
+2024-07-13  <Solomon Peachy>	6f8c0fd30b04c87db9c458c48263afbc35546224
+
+	Lines: +266, -274
+	Files:	src/main/canon-media-mode.h (+2, -2)
+		src/main/channel.c (+46, -34)
+		src/main/print-canon.c (+29, -29)
+		src/main/print-color.c (+52, -54)
+		src/main/print-dpl.c (+42, -53)
+		src/main/print-pcl.c (+84, -83)
+		src/main/print-ps.c (+6, -9)
+		src/main/print-raw.c (+3, -8)
+		src/main/xmlppd.c (+2, -2)
+
+	Revert "Fixing up -Wall -Wextra warnings, pass #2"
+
+	This reverts commit 1d6ff6afdb6e462bfd5199f862b80583a3ed1046.
+
+2024-07-12  <Solomon Peachy>	1d6ff6afdb6e462bfd5199f862b80583a3ed1046
+
+	Lines: +274, -266
+	Files:	src/main/canon-media-mode.h (+2, -2)
+		src/main/channel.c (+34, -46)
+		src/main/print-canon.c (+29, -29)
+		src/main/print-color.c (+54, -52)
+		src/main/print-dpl.c (+53, -42)
+		src/main/print-pcl.c (+83, -84)
+		src/main/print-ps.c (+9, -6)
+		src/main/print-raw.c (+8, -3)
+		src/main/xmlppd.c (+2, -2)
+
+	Fixing up -Wall -Wextra warnings, pass #2
+
+2024-07-11  <Solomon Peachy>	75d59af47ee4efe02854a974cce09b8554ea5a9d
+
+	Lines: +10, -0
+	Files:	configure.ac (+2, -0)
+		src/main/print-util.c (+8, -0)
+
+	misc:  Use system strdup/strndup where possible
+
+	If these are defined, make our stp_str[n]dup() functions alias to the
+	system ones.
+
+2024-07-11  <Solomon Peachy>	567f40b9dce785429d0075b1c46981ddf77cec4d
+
+	Lines: +10, -7
+	Files:	src/main/mxml-attr.c (+4, -3)
+		src/main/mxml-file.c (+2, -1)
+		src/main/mxml-node.c (+4, -3)
+
+	mxml: replace strdup() with stp_strdup()
+
+	We have the library function, might as well use it!
+
+2024-07-11  <Solomon Peachy>	0e126dc4b9c47ced7718856645e07113236f5f5b
+
+	Lines: +308, -251
+	Files:	src/cups/cups-calibrate.c (+2, -0)
+		src/cups/genppd.c (+19, -41)
+		src/cups/i18n.c (+2, -2)
+		src/cups/rastertogutenprint.c (+12, -10)
+		src/escputil/d4lib.c (+3, -0)
+		src/escputil/escputil.c (+8, -7)
+		src/gimp2/print-image-gimp.c (+4, -0)
+		src/gimp2/print.c (+11, -2)
+		src/gutenprintui2/panel.c (+51, -12)
+		src/main/print-dyesub.c (+177, -170)
+		src/testpattern/testpattern.c (+16, -7)
+		src/xml/extract-strings.c (+1, -0)
+		src/xml/printers/check_duplicate_printers.test.c (+2, -0)
+
+	Fixing up -Wall -Wextra warnings, pass #1
+
+2024-07-11  <Solomon Peachy>	83457229d3ad52aa3c6f5fe602e7277ba7d0038e
+
+	Lines: +8, -2
+	Files:	configure.ac (+8, -2)
+
+	configure:  Rejigger some of the CFLAGS we pass to the compiler
+
+	 * Add -Wextra
+	 * Drop redundant -Wformat and -Wnested-externs
+	 * Drop -finline-limit=131072
+	 * Move -Wstrict-protoytpes to maintainer builds
+	 * Add -Wno-deprecated-declarations for non-maintainer builds
+	 * Move -std=c99 -D_POSIX_C_SOURCE=200809L into its own line
+
+2024-07-11  <Solomon Peachy>	85bfd7c08b1cac64dbb1f115322396a3045170a8
+
+	Lines: +2, -2
+	Files:	include/gutenprint/printers.h (+1, -1)
+		src/main/printers.c (+1, -1)
+
+	API: stp_printer_model_count() now returns an 'unsigned int'
+
+2024-07-11  <Solomon Peachy>	76f73135550d4a6ca7a0fd082e76e9ef932ea6fd
+
+	Lines: +1, -0
+	Files:	src/gutenprintui2/panel.c (+1, -0)
+
+	libgutenprintui2: Fix missing 'break' when handling STP_PARAMETER_TYPE_CURVE
+
+2024-07-09  <Solomon Peachy>	c194b712fc6b59d881ddeec90d5bee2d0e667c90
+
+	Lines: +2, -2
+	Files:	src/main/print-canon.c (+2, -2)
+
+	Canon: Increase CD horizontal/vertical adjustment range
+
+	Was +- 15, increased to +- 250.
+
+	See https://sourceforge.net/p/gimp-print/bugs/741/
+
+	This is necessary for the Pixma iP7260 and iP8760, and likely others.
+
+2024-07-06  <Solomon Peachy>	e32a4b9496060195aad9776a0ad11f12e51f7cbb
+
+	Lines: +5, -2
+	Files:	NEWS (+5, -2)
+
+	NEWS: Minor corrections
+
+	Naturally these issues were not discovered until after the tag was cut
+	and a tarball uploaded.
+
+2024-07-06  <Solomon Peachy>	b2efe5aecf00e71b04db909668df0306d06702b3
+
+	Lines: +97, -84
+	Files:	NEWS (+67, -41)
+		README (+20, -39)
+		README.package (+6, -0)
+		configure.ac (+4, -4)
+
+	Prep for 5.3.5
+
+	 * Report version as '5.3.5-pre1'
+	 * Bump binary ages of main library and UI library
+	 * Keep API revision the same
+	 * Update NEWS to reflect what was added since 5.3.4 tarball
+	 * Update NEWS to reflect deprecated MacOS support
+
+2024-06-25  <Solomon Peachy>	6665bfaaf0f5e3a82ca657675541787634197009
+
+	Lines: +1, -3
+	Files:	src/cups/commandtodyesub.c (+1, -3)
+
+	Fix two warnings in commandtodyseub
+
+2024-06-25  <Solomon Peachy>	88c7fa3690fd792d7c6a59a41f4f52936fec0e7e
+
+	Lines: +2, -0
+	Files:	configure.ac (+2, -0)
+
+	configure:  Use '-Og' in DEBUG builds (along with '-g')
+
+	(This is per GCC recommendations)
+
+2024-06-25  <Solomon Peachy>	130b23434b0d67a586f2234e4bf6850b976a4efe
+
+	Lines: +1, -1
+	Files:	src/main/channel.c (+1, -1)
+
+	Revert "Fix BUS_ADRALN crash on sparcv9 due to unaligned ULL access (Martin Rehak)"
+
+	This reverts commit d3d008fb9dddf28af67fe23a0b7c67fb12d6bfa6.
+
+	It is subtly wrong, but also exposes what appears to be an unrelated
+	test failure.
+
+2024-06-24  <Solomon Peachy>	d3d008fb9dddf28af67fe23a0b7c67fb12d6bfa6
+
+	Lines: +1, -1
+	Files:	src/main/channel.c (+1, -1)
+
+	Fix BUS_ADRALN crash on sparcv9 due to unaligned ULL access (Martin Rehak)
+
+	Reported in ticket #737, which included a patch.
+
+	Basically we cast a short* to a longlong*, and dereference it.
+
+2024-06-24  <Solomon Peachy>	b29f4976d22316acd57693e488b0ff42f8fc18f5
+
+	Lines: +1, -0
+	Files:	src/xml/printers/pcl.xml (+1, -0)
+
+	PCL:  Add an entry for the Sharp MX-2600N, as a duplicate of the 2300N.
+
+	Reported to work in #751
+
+2024-06-24  <Solomon Peachy>	ea5b922936f5aee3ddca52a5ad1c91b4efe9b0a2
+
+	Lines: +1386, -904
+	Files:	src/cups/backend_canonselphy.c (+31, -30)
+		src/cups/backend_canonselphyneo.c (+15, -13)
+		src/cups/backend_common.c (+86, -26)
+		src/cups/backend_common.h (+34, -14)
+		src/cups/backend_dnpds40.c (+37, -39)
+		src/cups/backend_hiti.c (+365, -174)
+		src/cups/backend_kodak1400.c (+15, -13)
+		src/cups/backend_kodak605.c (+14, -18)
+		src/cups/backend_kodak6800.c (+12, -16)
+		src/cups/backend_kodak8800.c (+10, -8)
+		src/cups/backend_magicard.c (+16, -15)
+		src/cups/backend_mitsu.c (+2, -2)
+		src/cups/backend_mitsu.h (+6, -6)
+		src/cups/backend_mitsu70x.c (+47, -21)
+		src/cups/backend_mitsu9550.c (+23, -20)
+		src/cups/backend_mitsud90.c (+469, -348)
+		src/cups/backend_mitsup95d.c (+9, -7)
+		src/cups/backend_shinkos1245.c (+12, -10)
+		src/cups/backend_shinkos2145.c (+14, -11)
+		src/cups/backend_shinkos6145.c (+22, -23)
+		src/cups/backend_shinkos6245.c (+14, -12)
+		src/cups/backend_sinfonia.c (+41, -32)
+		src/cups/backend_sinfonia.h (+25, -7)
+		src/cups/backend_sonyupd.c (+24, -19)
+		src/cups/backend_sonyupdneo.c (+24, -20)
+		src/cups/blacklist (+19, -0)
+
+	dyesub: backend:  Resync with upstream
+
+	 * HiTi models
+	   * 5" prints now work
+	   * P510 series now uses proper heat tables
+	   * Can report countners for 6x9 and 5x7" prints
+	 * Mitsubishi models
+	   * W5000 fixes
+	   * D90 panorama improvements (untested)
+	   * CP98xx image pipeline fixes
+	   * D80 superfine/rewind fixes
+	 * DNP models
+	   * iSerial reporting for latest D40/D80 firmware
+	 * Static analyzer fixes
+	 * Internal refactoring
+
+2024-04-11  <George Matsumura>	32bc092dcb30406346eceb5641d5c9b38331ef31
+
+	Lines: +10, -70
+	Files:	configure.ac (+9, -69)
+		scripts/global.mk (+1, -1)
+
+	build: Move expansion of pathnames to build time
+
+	This corrects errors in expansion encountered under the previous
+	scheme, and is in line with autoconf recommendations.
+
+2024-04-08  <George Matsumura>	a3c481c9c0eb7ef85719fcc0731b65d824e5753f
+
+	Lines: +3, -1
+	Files:	src/main/printers.c (+3, -1)
+
+	core: Use correct function to find printer list length
+
+	By using stp_printer_model_count instead of stp_list_get_length,
+	the list is created in the case when no modules were found and the
+	list did not exist before. This prevents a segfault and prints a
+	helpful warning message.
+
+2024-03-17  <Solomon Peachy>	bbd5bdb222eaeec5db02f8ab23d6658a880a6654
+
+	Lines: +27, -43
+	Files:	src/cups/backend_mitsu70x.c (+27, -43)
+
+	backend: dyesub:  Fixes for the Mitsubishi D70 familuy of printers
+
+	 * Prevent double-processing of images
+	 * Fix page combining for EK305 and CP-K60
+	 * Get rid of an incorrect non-library-present fallback path.
+
+2024-01-07  <Solomon Peachy>	0cfb70b124ce839e79689bf63ea24b0de651170d
+
+	Lines: +2, -2
+	Files:	src/main/print-dyesub.c (+2, -2)
+
+	dyesub:  Fix panorama size generation for the Mitsubishi CP-D90
+
+	(Needs additional backend work, not yet committed!)
+
+2024-01-03  <Solomon Peachy>	39cd962f01d53f228574c1681048eaebf0aa3125
+
+	Lines: +3, -2
+	Files:	src/cups/backend_mitsu.c (+2, -1)
+		src/cups/backend_mitsu.h (+1, -1)
+
+	dyesub: backend:  Properly report Fujifilm 'N' media variants.
+
+	(eg RK-CF800N is the 'N'ewer version of the RK-CF800 media)
+
+2023-12-31  <Solomon Peachy>	f4c16e43f4afcda3638f44bebaf77f8f50ee1978
+
+	Lines: +12, -1
+	Files:	src/cups/backend_mitsu.c (+11, -0)
+		src/cups/backend_mitsu.h (+1, -1)
+
+	dyesub: backend:  Add fallback media type reporting for mitsubishi-based models
+
+	This way we can report the correct media size even if we don't
+	recognize the media's manufacturer code.  It will be reported as
+	(eg) "Unknown (5x7)"
+
+2023-12-30  <Solomon Peachy>	1de58661ea8b6cc9c78642d05d9890cceb55e61d
+
+	Lines: +1, -1
+	Files:	src/cups/Makefile.am (+1, -1)
+
+	dyesub: backend:  Fix backend_panodata.h not making it into dist tarballs
+
+2023-12-30  <Solomon Peachy>	b80c54f4fb7ead31a9b8f7127abbd36792de04c3
+
+	Lines: +30, -3
+	Files:	src/cups/backend_dnpds40.c (+30, -3)
+
+	dyesub: backend: The Citizen CX-O2 model also supports panorama prints
+
+2023-12-30  <Solomon Peachy>	9a039b331bf2df94a0a9c6b1b19bab356f53493b
+
+	Lines: +2, -2
+	Files:	src/cups/backend_hiti.c (+2, -2)
+
+	dyesub: backend: hiti:  Fix swapped arguments rendering an optimization useless
+
+2023-12-28  <Solomon Peachy>	0662fe031d26e9f187ccc69cd8a6ea3df2675ea4
+
+	Lines: +1371, -166
+	Files:	NEWS (+1, -0)
+		src/cups/backend_dnpds40.c (+1226, -134)
+		src/cups/backend_panodata.h (added +24)
+		src/main/print-dyesub.c (+120, -32)
+
+	dyesub:  Support discrete and continuous panoramas on the DNP DS620 and DS820
+
+2023-12-28  <Solomon Peachy>	f3b0072492a1378803b11aa84b6069e555f06d01
+
+	Lines: +4, -2
+	Files:	src/main/print-dyesub.c (+4, -2)
+
+	dyesub: dnp/citizen:  Fill out the DIB palette header
+
+	Their windows drivers fill out a 256-entry table: ffffff00,
+	fefefe00, ..., 00000000.
+
+	It appears that the hardware completely ignores this data, but the
+	space needs to be allocated regardless.
+
+2023-12-22  <Solomon Peachy>	5808d86419ef34e87e66ae825961f7f05bb94bcd
+
+	Lines: +25, -34
+	Files:	README (+2, -2)
+		doc/README.maintaining (+23, -32)
+
+	docs: Replace all references to CVS with git
+
+2023-12-22  <Solomon Peachy>	75af7caf4d3369de2d0c5432220da15fae64f58b
+
+	Lines: +2, -2
+	Files:	src/gimp2/print.c (+2, -2)
+
+	gimpui:  Fix two implicit-pointer-cast-to-int instances
+
+	(The GIMP API uses an opaque 32-bit "handle")
+
+2023-12-12  <Solomon Peachy>	6a3da77308f29e70d561e9001e067524fffc67ac
+
+	Lines: +914, -891
+	Files:	NEWS (+2, -0)
+		src/cups/backend_common.c (+6, -5)
+		src/cups/backend_common.h (+8, -2)
+		src/cups/backend_hiti.c (+720, -753)
+		src/cups/backend_mitsu.h (+2, -2)
+		src/cups/backend_mitsu9550.c (+167, -129)
+		src/cups/blacklist (+9, -0)
+
+	dyesub: backend: Improvements for the HiTi and Mitsubishi CP98xx families
+
+	 * Newer HiTi models can finally use the v2 heat tables!
+	 * Handle HiTi P52x hardware variations
+	 * Job parsing fixes for CP95xx/CP98xx family
+	 * Support the CP9500-S, CP9600-S, CP9820-S variations
+
+2023-12-09  <Solomon Peachy>	5c659faf40ad761f892180d4057014c48af79611
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub: HiTi P461 now has at least three media "versions" (0,1,2)
+
+2023-12-05  <Solomon Peachy>	2ef8ba2470af4a8b7aeec0399d0f85f8975d3436
+
+	Lines: +63, -58
+	Files:	src/main/print-dyesub.c (+63, -58)
+
+	dyesub:  Differentiate all multicut sizes with slightly different dimensions
+
+	Eg a 4x6" print is w288h432, but a 2x6*2 becomes w288h433 instead.
+
+	This matters because "intelligent" clients like Apple Airprint look up
+	print sizes solely using their dimensions, not the internal name or
+	display string, resulting in a 2x6*2 print being incorrectly treated as
+	a 4x6.
+
+	By using slightly different dimensions for the multicut variations
+	this prevents this problem from occurring.
+
+2023-12-05  <Solomon Peachy>	b07be69429ef23c83a8ec283d3bb0dc7e7846ffd
+
+	Lines: +511, -511
+	Files:	src/main/print-dyesub.c (+511, -511)
+
+	dyesub:  Convert now-defunct use of the 'PT1' macro to normal 'PT'
+
+	Before we could have non-integer point dimensions, we used the PT1
+	macro to round up a given dimension to the next highest integer value.
+	This matters because the dyesub models are nearly all full-bleed, and the
+	truncation/round-down could result in white margins.
+
+	When we added fractional dimensions, the PT1 macro became superfluous, and
+	was #defined to be the same as the original PT macro.
+
+	After that was converted, create a new PT1 macro that is defined as
+	PT(x) + 1 The intent is to use this to differentiate print sizes that
+	have the same on-printer dimensions but act differently, eg having additional
+	cuts.
+
+2023-11-30  <Solomon Peachy>	7e5ec9b690ee821917a509cf9d14f0c2c694149a
+
+	Lines: +11, -6
+	Files:	src/cups/backend_mitsud90.c (+11, -6)
+
+	dyesub: backend:  Pull in latest Mitsubishi W5000/D90/M1/M15 code
+
+	(Picks up a few safety checks)
+
+2023-11-21  <Solomon Peachy>	5d76cb066c7930b1d240a75bbe21fa8bfae1e273
+
+	Lines: +48, -38
+	Files:	src/cups/backend_sonyupd.c (+48, -38)
+
+	dyesub: backend: Fix major issue with ASK-2500 and DPB-7000 printers
+
+2023-11-01  <Solomon Peachy>	376005042fcd27b40a470b1a8cd918e034131a7c
+
+	Lines: +2, -2
+	Files:	src/cups/backend_sonyupd.c (+2, -2)
+
+	dyesub: backend:  sonyupd: Job-specified copy counts weren't working
+
+2023-11-01  <Solomon Peachy>	e29bbc4ca41044cbbd9b2ae57f1cde2ea71cbf1d
+
+	Lines: +13, -7
+	Files:	src/main/print-canon.c (+4, -0)
+		src/main/print-dpl.c (+1, -1)
+		src/main/print-pcl.c (+2, -2)
+		src/main/print-ps.c (+6, -4)
+
+	Silence some build warnings with extra pedandic modern compilers
+
+2023-10-29  <Solomon Peachy>	a583b6a0024dd678a08841f86fa357c845b22e45
+
+	Lines: +52, -51
+	Files:	NEWS (+1, -1)
+		src/cups/backend_common.h (+1, -1)
+		src/cups/backend_sonyupd.c (+27, -27)
+		src/main/print-dyesub.c (+21, -21)
+		src/xml/printers/dyesub.xml (+2, -1)
+
+	dyesub:  It's the Sony UP-D711MD, not 771
+
+2023-10-20  <Solomon Peachy>	08f4473ee0eef9b6a34387e281548c8a85a039f4
+
+	Lines: +604, -35
+	Files:	NEWS (+1, -0)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_sonyupd.c (+263, -35)
+		src/cups/blacklist (+3, -0)
+		src/main/print-dyesub.c (+335, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub:  Support for the Sony UP-D771MD A7 thermal printer
+
+2023-10-17  <Bernhard M. Wiedemann>	cd85016230120da0db71c98e375b37780242ef56
+
+	Lines: +4, -1
+	Files:	configure.ac (+4, -1)
+
+	Allow to override build date with SOURCE_DATE_EPOCH
+
+	in order to make builds reproducible.
+	See https://reproducible-builds.org/ for why this is good
+	and https://reproducible-builds.org/specs/source-date-epoch/
+	for the definition of this variable.
+
+	Also consistently use ISO 8601 date format to be understood everywhere.
+
+	Also use UTC to be independent of timezone.
+
+	This patch was done while working on reproducible builds for openSUSE.
+
+2023-10-08  <Solomon Peachy>	c7cb8cf500a634db11ce0319b85de5da4322a720
+
+	Lines: +2, -2
+	Files:	src/cups/backend_hiti.c (+2, -2)
+
+	dyesub: backend:  Fix matte printing on HiTi models
+
+2023-10-08  <Solomon Peachy>	c7d0a855390bf836a4215649c05b51a4fac81c8a
+
+	Lines: +4, -5
+	Files:	src/cups/backend_mitsu.h (+1, -1)
+		src/cups/backend_mitsu70x.c (+3, -4)
+
+	dyesub: backend:  Correct version strings in mitsu backend
+
+2023-10-08  <Solomon Peachy>	e33f97c0cea65390e84a0874f32e72be3f85b186
+
+	Lines: +34, -5
+	Files:	src/cups/backend_dnpds40.c (+19, -2)
+		src/cups/backend_magicard.c (+8, -2)
+		src/cups/backend_sonyupd.c (+7, -1)
+
+	dyesub: backend:   Prevent some potential buffer overflows with malformed files
+
+	Affecting the DNP/Citizen family, Magicard, and (older) Sony models.
+
+2023-10-05  <Solomon Peachy>	40cc8a6fb32fe7cb8d3c2fc18e247020436ff5ef
+
+	Lines: +209, -55
+	Files:	NEWS (+2, -0)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_sonyupd.c (+199, -52)
+		src/cups/blacklist (+4, -0)
+		src/main/print-dyesub.c (+3, -3)
+
+	dyesub: backend: Support for the Fujifilm ASK-2500
+
+	....the ASK-2000 and ASK-4000 should work.
+
+2023-08-29  <Solomon Peachy>	d1fc7f8316a98446f392d51c18c6ba8ab355792e
+
+	Lines: +1, -1
+	Files:	src/xml/printers/dyesub.xml (+1, -1)
+
+	dyesub:  Add IEEE1284 deviceid for Fujifilm ASK-2500
+
+2023-08-28  <Alexander Guz>	d3a266c999782c5ffc7b5ae7da40b8055b265a51
+
+	Lines: +4, -0
+	Files:	src/main/mxml-attr.c (+2, -0)
+		src/xml/extract-strings.c (+2, -0)
+
+	missed sentinel around config.h
+
+2023-08-27  <Alexander Guz>	3e63389121166f8898271d05f25ca4df44f2b65a
+
+	Lines: +6, -0
+	Files:	src/main/mxml-file.c (+2, -0)
+		src/main/mxml-node.c (+2, -0)
+		src/main/mxml-search.c (+2, -0)
+
+	missed sentinel around config.h
+
+2023-08-27  <Alexander Guz>	ce806f91f68befa0eae957d9085db67c59e6f9c1
+
+	Lines: +8, -6
+	Files:	src/main/printers.c (+8, -6)
+
+	float values should be compared with epsilon
+
+2023-08-21  <Alexander Guz>	418ad87218b8c9071784bffd639aefcfb8d7a274
+
+	Lines: +5, -10
+	Files:	src/main/print-dither-matrices.c (+5, -10)
+
+	load curve file in more common way
+
+2023-08-20  <Alexander Guz>	24bba158c1e04efd139d4ee1af8c4fb328c873c8
+
+	Lines: +6, -6
+	Files:	src/main/print-escp2.c (+1, -1)
+		src/main/print-lexmark.c (+1, -1)
+		src/main/print-pcl.c (+1, -1)
+		src/main/printers.c (+1, -1)
+		test/unprint.c (+2, -2)
+
+	fix possible crashes, unprint, return values
+
+2023-08-14  <Solomon Peachy>	6d69f0f31140683d40a2eacc8c1dfc0956bf3f92
+
+	Lines: +38, -20
+	Files:	src/cups/backend_canonselphy.c (+38, -20)
+
+	dyesub: backend:  Fix paper/media sanity checking for nearly all Canon SELPHY CP models
+
+2023-08-11  <Solomon Peachy>	f3f758005476315cce2515717976129f4388d42e
+
+	Lines: +7, -0
+	Files:	src/gimp2/print.c (+7, -0)
+
+	gimp:  Limit thumbnail size to GIMP's max of 1024px.
+
+2023-08-11  <Solomon Peachy>	7cc1df12ad080808a9f7d71ac952d58575cbbcd8
+
+	Lines: +11, -5
+	Files:	src/gutenprintui2/panel.c (+11, -5)
+
+	gutenprintui:  Limit thumbnail size on the color adjust window
+
+	Use no more than 1/4th of the screen resolution.
+
+2023-07-23  <Solomon Peachy>	4abca4903653c34a15f017e43e807274d0baee50
+
+	Lines: +4, -4
+	Files:	src/main/print-dyesub.c (+2, -2)
+		src/xml/printers/dyesub.xml (+2, -2)
+
+	dyesub:  Fix the modelid for the DS480/DS680
+
+	They collided with other models.
+
+2023-07-23  <Solomon Peachy>	4f1c88c340abc60c33c5cd5e6e97dcd246361de5
+
+	Lines: +1, -0
+	Files:	src/cups/backend_mitsu.c (+1, -0)
+
+	dyesub: backend:  Line was missing from the prior commit
+
+2023-07-23  <Solomon Peachy>	c4932a32da63762a64aa82557cce3454aa7547d2
+
+	Lines: +226, -16
+	Files:	NEWS (+2, -0)
+		README (+2, -0)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_mitsu.c (+8, -1)
+		src/cups/backend_mitsu.h (+3, -3)
+		src/cups/backend_mitsu70x.c (+50, -11)
+		src/cups/blacklist (+9, -0)
+		src/main/print-dyesub.c (+149, -1)
+		src/xml/printers/dyesub.xml (+2, -0)
+
+	DNP:  Add support for the DNP DS480 and DS680
+
+2023-07-15  <Solomon Peachy>	03254422f2559ec156bc4c4afc8379186e648063
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub: Minor fix for CP-W5000
+
+2023-07-15  <Solomon Peachy>	c5e81edaed88b9972786626196ef2743105a6e47
+
+	Lines: +928, -222
+	Files:	NEWS (+1, -0)
+		README (+1, -0)
+		src/cups/backend_mitsu.c (+3, -1)
+		src/cups/backend_mitsud90.c (+626, -221)
+		src/main/print-dyesub.c (+296, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub:  Add support for Mitsubishi CP-W5000 series
+
+	More testing is needed, but 8x12 simplex definitely works.
+
+2023-07-11  <Solomon Peachy>	e76f56a5438240bc6eb2a8a639fc63066ce210d5
+
+	Lines: +11, -4
+	Files:	src/cups/backend_common.c (+8, -4)
+		src/cups/backend_common.h (+3, -0)
+
+	dyesub: backend:  Minor fix in the serial number query code
+
+	(Needed for a printer that will be added later)
+
+2023-07-09  <Solomon Peachy>	48bdc3279d24aadf5712d460716b5a26a678a5eb
+
+	Lines: +3, -3
+	Files:	src/cups/backend_dnpds40.c (+3, -3)
+
+	dyesub: backend:  Silence a warning under GCC13
+
+2023-06-22  <Solomon Peachy>	8d2fbd07bbd4de43042cebf11b3a68d0aab344ec
+
+	Lines: +1, -1
+	Files:	configure.ac (+1, -1)
+
+	Rename "CUPS" to "CUPS driver" in the configuration summary.
+
+2023-06-19  <Solomon Peachy>	c236a7f7d18e2ba61ae717c558c247f589aaf61b
+
+	Lines: +2, -2
+	Files:	src/cups/backend_hiti.c (+2, -2)
+
+	dyesub: backend:  Fix a major regression in the HiTi code.
+
+2023-06-11  <Solomon Peachy>	9360858731e033496b7d93243cd89f8eca7bc954
+
+	Lines: +1, -0
+	Files:	src/main/print-dyesub.c (+1, -0)
+
+	dyesub:  Fix print margins for HiTi P461 Prinhome
+
+2023-05-01  <Solomon Peachy>	417f8d7cc843535e1492404efc750043936a94a6
+
+	Lines: +111, -4
+	Files:	src/main/print-dyesub.c (+111, -4)
+
+	dyesub:  Add ability to specify media version to the HiTi P461
+
+	It's not automatic.  And it's also not clear how the user is supposed
+	to be able to tell the difference...
+
+2023-04-24  <Solomon Peachy>	b955b4c849584199c804ac0a32371bca40a2aab3
+
+	Lines: +14, -1
+	Files:	src/cups/backend_hiti.c (+7, -0)
+		src/main/print-dyesub.c (+7, -1)
+
+	dyesub: hiti:  Make the "Use LUT" option actually do something
+
+2023-04-24  <Solomon Peachy>	c36d6e527c41a272599ae6ed3224d7d93fab106d
+
+	Lines: +33, -11
+	Files:	NEWS (+1, -1)
+		src/cups/backend_hiti.c (+28, -6)
+		src/main/print-dyesub.c (+1, -1)
+		src/xml/printers/dyesub.xml (+3, -3)
+
+	dyesub: Minor updates for the HiTi P461
+
+	 * No longer considered experimental (I know it works)
+	 * Hardcode media version ID (vendor driver does this too)
+
+2023-04-22  <Solomon Peachy>	e257d73eff684c19ba52f427b3464e7ec5272534
+
+	Lines: +438, -68
+	Files:	NEWS (+2, -1)
+		README (+2, -0)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_hiti.c (+388, -64)
+		src/cups/blacklist (+5, -2)
+		src/main/print-dyesub.c (+39, -1)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub:  Initial HiTi P461 support
+
+	 * Successfully prints.
+
+	TODO:
+
+	 * Figure out how to determine media version/type
+	 * Matte/Glossy sanity-checks
+
+2023-03-28  <Solomon Peachy>	66b0a7bc3fd25659a3f295db0ebb39d04e413c01
+
+	Lines: +79, -10
+	Files:	src/cups/backend_kodak605.c (+63, -10)
+		src/main/print-dyesub.c (+16, -0)
+
+	dyesub:  Improvements for the Kodak 605
+
+	 * Added 4x6-div2, 6x6, 6x6-div2, and 8x6-div2 sizes
+	 * Better error code reporting
+
+2023-03-17  <Solomon Peachy>	a59d99151aeab80d16f64143e0af1f68e48c4af7
+
+	Lines: +283, -72
+	Files:	src/cups/backend_common.h (+4, -2)
+		src/cups/backend_hiti.c (+272, -69)
+		src/cups/blacklist (+7, -1)
+
+	dyesub: backend: Major bugfixes for the HiTi P525L
+
+	Apparently it differes just enough from the P520L to make things interesting
+
+2022-12-07  <Solomon Peachy>	0fdbb488d5807e994dec69b173241d0427a40226
+
+	Lines: +6, -1
+	Files:	src/main/print-dyesub.c (+6, -1)
+
+	dyesub:  Add a 3.5x6" print size to the DNP DS620 series
+
+2022-10-10  <Solomon Peachy>	c64d30b9f93dff5d46134d6cb45af177ab1639e4
+
+	Lines: +58, -13
+	Files:	NEWS (+1, -0)
+		src/cups/backend_canonselphyneo.c (+53, -13)
+		src/cups/blacklist (+3, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub:  Add support for new Canon SELPHY CP1500
+
+2022-10-07  <Solomon Peachy>	1a7d9a2694d73c771ae4b350feba4b57f627bcea
+
+	Lines: +17, -6
+	Files:	src/cups/backend_hiti.c (+17, -6)
+
+	dyesub: backend: hiti:  Properly check job status for errors
+
+2022-09-30  <Solomon Peachy>	b43f2d07ab7a39aa0427a2ed76a6402ae96a33e0
+
+	Lines: +255, -104
+	Files:	src/cups/backend_hiti.c (+255, -104)
+
+	dyesub: backend:  Fix mis-identification of 5x7" ribbon types
+
+2022-09-29  <Solomon Peachy>	9b0f1f4a03de32c912a9738031c8c7fc05d60ef1
+
+	Lines: +6, -1
+	Files:	NEWS (+1, -0)
+		src/cups/backend_shinkos2145.c (+2, -1)
+		src/cups/blacklist (+2, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub:  Add support for the Olmec OP1000 printer
+
+	(aka Rebadged Shinko S2145)
+
+2022-06-23  <Solomon Peachy>	8808d602e57b68488e267ca50cf93dafbd9386c8
+
+	Lines: +170, -28
+	Files:	src/cups/backend_hiti.c (+170, -28)
+
+	dyesub: backend: resync with upstream hiti backend.
+
+	Now prints successfully with the P51x series.
+
+2022-05-26  <Solomon Peachy>	e65e4835cdadad117d39324ee80d91b2ce97429b
+
+	Lines: +6, -9
+	Files:	src/cups/backend_common.c (+6, -9)
+
+	dyesub: backend:  Fix crash with libusb 1.0.25
+
+	    Original patch by Ben Berg, but reworked to apply to master code
+
+2022-05-26  <Solomon Peachy>	9d15d4441ae4b005bfd802eee68fc58c18c52c1b
+
+	Lines: +3, -1
+	Files:	src/cups/backend_common.h (+3, -1)
+
+	dyesub: backend:  Use ".dylib" for the shared library suffix on MacOS
+
+2021-11-27  <Solomon Peachy>	8e47dc44dd7738302ba9e8fbc1f918461fed0236
+
+	Lines: +8, -1
+	Files:	src/xml/printers/Makefile.am (+8, -1)
+
+	Don't build check_duplicate_printers.test if BUILD_TEST is not set
+
+	One, it's consististent with the other tests we have in place, and
+	Two, this test doesn't work in cross-compiled environments
+
+2021-10-28  <Solomon Peachy>	4543297967c3c77fa411a819149a02980f576dc6
+
+	Lines: +5, -4
+	Files:	src/cups/backend_common.c (+5, -4)
+
+	dyesub: backend:  Fixes for the FAST_RETURN logic.
+
+	Defaults to not waiting for the final page/copy of the job to finish
+	before returning.  This allows some job/page pipelining to improve
+	print throughput.
+
+	This can be overridden by setting the FAST_RETURN envvar to '0'
+
+2021-10-28  <Solomon Peachy>	5dd6cae7deddf0940840264a73dbbc4a36a1eddf
+
+	Lines: +10, -3
+	Files:	src/escputil/escputil.c (+10, -3)
+
+	escputil:  Report maintenance cartdidge remaining level  (percentage)
+
+	It's now unconditionally displayed in the list of ink levels.
+
+2021-10-27  <Solomon Peachy>	9ef2950819533874eef2639c69ca3e6e58cbdec8
+
+	Lines: +21, -0
+	Files:	src/escputil/escputil.c (+21, -0)
+
+	escputil: Decode paper roll width and remaining on on the Epson D700 / Fujifilm DX100
+
+	 * Raw width is inches * 360
+	 * Remaining value is reported in centimeters
+
+	Remaining value is not exact; for example a new roll reports ~41.5m
+	instead of the expected 65m. I suspect the printer keys off the diameter
+	of the paper roll.
+
+2021-10-14  <Solomon Peachy>	0b8c6c6e98e2bb3e12a93a65f5ffc02316ddc40a
+
+	Lines: +1953, -1011
+	Files:	src/cups/backend_canonselphy.c (+39, -71)
+		src/cups/backend_canonselphyneo.c (+33, -39)
+		src/cups/backend_common.c (+119, -50)
+		src/cups/backend_common.h (+19, -3)
+		src/cups/backend_dnpds40.c (+22, -25)
+		src/cups/backend_hiti.c (+53, -49)
+		src/cups/backend_kodak1400.c (+60, -30)
+		src/cups/backend_kodak605.c (+84, -73)
+		src/cups/backend_kodak6800.c (+11, -16)
+		src/cups/backend_kodak8800.c (+128, -37)
+		src/cups/backend_magicard.c (+19, -22)
+		src/cups/backend_mitsu.c (+3, -3)
+		src/cups/backend_mitsu.h (+3, -3)
+		src/cups/backend_mitsu70x.c (+315, -68)
+		src/cups/backend_mitsu9550.c (+41, -56)
+		src/cups/backend_mitsud90.c (+465, -94)
+		src/cups/backend_mitsup95d.c (+14, -15)
+		src/cups/backend_shinkos1245.c (+12, -19)
+		src/cups/backend_shinkos2145.c (+12, -20)
+		src/cups/backend_shinkos6145.c (+64, -146)
+		src/cups/backend_shinkos6245.c (+112, -128)
+		src/cups/backend_sinfonia.c (+146, -8)
+		src/cups/backend_sinfonia.h (+158, -9)
+		src/cups/backend_sonyupd.c (+11, -13)
+		src/cups/backend_sonyupdneo.c (+10, -14)
+
+	dyesub: backend:  Resync with upstream
+
+	 * common: Improvements in debug output
+	 * common: Better CUPS 'state' messages
+	 * common: "Fast return" done on a per-page basis rather than global/job
+	 * common: Better reporting of device info up to the PPD level
+	 * common: Moved all backends to use a common job structure for basic stuff
+	 * common: Moved to direct numerical VID/PIDs instead of using named #defines everywhere (mirroring Linux's practices)
+	 * canonselphy: Return BACKEND_STOP intead of _HOLD for some error conditions
+	 * dnp: Handle negative media remaining on DS40/DS80
+	 * dnp: return BACKEND_STOP instead of _HOLD (or endlessly looping) for various error conditions
+	 * hiti: Firmware version checks with instructions to update if needed
+	 * kodak1400/805: Much improved error reporting
+	 * kodak605/70xx: Better media detaction
+	 * kodak8800: Much improved error reporting
+	 * kodak8810: Preliminary support for panorama printing
+	 * mitsu70x: Support media subtype on the -S model series and HG media on the K60 family
+	 * mitsu70x: Support generating built-in self-test pages
+	 * mitsud90: Support generating built-in self-test pages
+	 * mitsud90: Preliminary support for panorama printing
+	 * mitsud90: Support for querying/reporting firmware version
+
+2021-09-27  <Solomon Peachy>	ac601ec9c2b5cf6a5874fcd1a4ea6d0c6153e5ee
+
+	Lines: +7, -3
+	Files:	src/cups/backend_dnpds40.c (+7, -3)
+
+	dyesub: backend:  dnp:  STOP the queue when encountering fatal errors
+
+2021-09-26  <Solomon Peachy>	446849de97713cda64e4e1e2056094888eb30dd2
+
+	Lines: +212, -79
+	Files:	.gitignore (+1, -0)
+		src/cups/Makefile.am (+1, -1)
+		src/cups/backend_common.c (+6, -5)
+		src/cups/commandtodyesub.c (added +91)
+		src/main/print-dyesub.c (+113, -73)
+
+	dyesub:  Hook up the existing backend as a cups-command processor
+
+	All dyesub printers that use the backend can report levels!
+
+2021-09-26  <Solomon Peachy>	c1c0a4b076c7cf39c519c781284bfb9245e80cfa
+
+	Lines: +56, -2
+	Files:	src/cups/genppd.c (+23, -2)
+		src/main/print-escp2.c (+33, -0)
+
+	cups-genppd:  Be more intelligent about enabling CUPS command support
+
+	Instead of blindly turning it on for all "EPSON" models in the ppd code,
+	have the driver specify which commands are supported
+
+2021-09-15  <Solomon Peachy>	1010e5c340be1f2fce5b2a35c169b9ca2a9c7101
+
+	Lines: +2, -1
+	Files:	src/escputil/escputil.c (+2, -1)
+
+	escputil:  Include 'Fujifilm' in the model matching logic
+
+	(Now escputil won't complain about the printer being unknown)
+
+2021-09-15  <Solomon Peachy>	907af01d59b23ceca21730981ba309aaea3b0e3d
+
+	Lines: +1, -1
+	Files:	src/xml/printers/escp2.xml (+1, -1)
+
+	escp2:  Update the Fujifilm DX100's 'driverid' to be prefixed with 'escp2-'
+
+	This way it matches the others.
+
+2021-09-08  <Solomon Peachy>	6f019f6eaa65086b9b7e7295388229f322dd439c
+
+	Lines: +253, -59
+	Files:	NEWS (+3, -1)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_sonyupdneo.c (+75, -44)
+		src/cups/blacklist (+3, -0)
+		src/main/print-dyesub.c (+169, -14)
+		src/xml/printers/dyesub.xml (+2, -0)
+
+	dyesub:  Add support for Sony UP-971AD and UP-991AD thermal printers
+
+	Nearly identical to the UP-898 series, only wider.
+
+	UP-971AD is confirmed working.  991 might need a different USB PID,
+	so it remains marked as experimental.
+
+2021-08-21  <Solomon Peachy>	556c364bfe733d42082aceb09dbe436197921b56
+
+	Lines: +1, -1
+	Files:	src/cups/blacklist (+1, -1)
+
+	dyesub: backend:  Put Kodak 8800/9810 back into the usb blacklist
+
+2021-08-19  <Solomon Peachy>	6c420cff081cd436ca29ee208bd730e30c20d96a
+
+	Lines: +16, -0
+	Files:	src/main/print-dyesub.c (+16, -0)
+
+	dyesub: Kodak 7015 apparently supports additional sizes
+
+2021-08-19  <Solomon Peachy>	e7c28167b7061e59a094cf9d248a7a1b1bc7f251
+
+	Lines: +96, -92
+	Files:	src/cups/backend_dnpds40.c (+96, -92)
+
+	dyesub: backend: dnp/citizen:  Resync with upstream
+
+	 * Handle sticker media on Citizen CX-02S
+	 * When media is depleted, report the error properly instead of as an
+	   obscure job parsing error.
+	 * Internal cleanups
+
+2021-08-16  <Solomon Peachy>	2a241dff139f324f77d328a1cf2f580e3d00a6e3
+
+	Lines: +6, -7
+	Files:	src/main/print-dyesub.c (+6, -7)
+
+	dyesub:  most Sony UP-CR10L/UP-CX1 sizes are portrait-oriented
+
+2021-08-16  <Solomon Peachy>	597efe256b6e0ea8ffc48d780371cd67983a4e4c
+
+	Lines: +611, -2
+	Files:	NEWS (+1, -0)
+		src/main/escp2-driver.c (+3, -0)
+		src/main/print-escp2.c (+6, -1)
+		src/xml/escp2/inks/Makefile.am (+1, -0)
+		src/xml/escp2/inks/pro_ultrachrome_d6s.xml (added +283)
+		src/xml/escp2/inputslots/Makefile.am (+1, -0)
+		src/xml/escp2/inputslots/cutter_roll_only.xml (added +27)
+		src/xml/escp2/media/Makefile.am (+1, -0)
+		src/xml/escp2/media/pro_ultrachrome_d6s.xml (added +151)
+		src/xml/escp2/model/Makefile.am (+2, -1)
+		src/xml/escp2/model/model_136.xml (added +93)
+		src/xml/escp2/qualitypresets/Makefile.am (+1, -0)
+		src/xml/escp2/qualitypresets/surelab.xml (added +39)
+		src/xml/printers/escp2.xml (+2, -0)
+
+	escp2:  Add support for the Epson SureLab-D700 and the Fujifilm DX100
+
+	Focused on commercial minilab use, these rollfed-only models utilize a
+	bespoke 6-color Ultrachrome D6-s inkset.
+
+	Tuned to look pretty decent in HQ mode on Luster paper.
+	Other qualities & papers need further tuning
+
+	There are two non-printer-specific changes:
+
+	 * Added "escp2_roll_lb" parameter for the otherwise-unknown
+	   REMOTE LB command that changes based on installed media type
+	 * Bypass ESC(U special case for these models
+
+2021-08-16  <Solomon Peachy>	af984e540980a1cf2cac41701a2862e8f79f029d
+
+	Lines: +1, -1
+	Files:	src/main/print-escp2.c (+1, -1)
+
+	escp2: make argument to get_privdata() const
+
+2021-08-16  <Solomon Peachy>	87bec13c94b0cce22607def7b830d5058853e08d
+
+	Lines: +15, -0
+	Files:	src/escputil/escputil.c (+15, -0)
+
+	escputil:  Add in a few more status & error codes
+
+	Pulled from various docs, but some are relevant for the D700/DX100
+
+2021-08-16  <Solomon Peachy>	dd78e5bd79c71d5f545f86627cc78457552660b5
+
+	Lines: +19, -9
+	Files:	src/cups/backend_sonyupd.c (+19, -9)
+
+	dyesub: backend:  Further updates to the Sony UPD backend.
+
+	 * Fix media identification on the UP-CX1
+	 * Properly pass remaining media level up as a marker attribute
+
+2021-08-16  <Solomon Peachy>	671bc2d085a9e2efcd6271bed793024fff394450
+
+	Lines: +6, -0
+	Files:	src/escputil/escputil.c (+6, -0)
+
+	escputil:  Report serial number in status dump
+
+	(This is quite useful for when you have more than one printer; it makes
+	 disambiguating the output a lot easier)
+
+2021-08-16  <Solomon Peachy>	6b054bb33216eeac52fe4fe0003b8ce04e386691
+
+	Lines: +12, -0
+	Files:	src/escputil/escputil.c (+12, -0)
+
+	escputil:  Add some status&error messages generated by the D700/DX100
+
+2021-08-16  <Solomon Peachy>	54432595430c82b61eb1b8538ab435a38d7d9bb2
+
+	Lines: +5, -0
+	Files:	src/escputil/escputil.c (+5, -0)
+
+	escputil:  Fix extended ink parsing for SL-D700
+
+	 * The data returned starts with 'ii:' not 'II:'
+	 * parsing string format wasn't quite right
+
+2021-08-16  <Solomon Peachy>	f80fc252051f1aa1e810a8c0f623458b797dbe15
+
+	Lines: +3, -1
+	Files:	src/escputil/escputil.c (+3, -1)
+
+	escputil:  Fix ink level parsing in extended ink info mode
+
+2021-08-13  <Solomon Peachy>	6eeeef61dc912e07cc45160e63fd1503d9ec7a72
+
+	Lines: +17, -7
+	Files:	src/main/print-dyesub.c (+17, -7)
+
+	dyesub:  Fix two errors in the UP-CX1 data stream.
+
+	 * 4x8" media used the wrong code
+	 * Missing a control sequence
+
+2021-08-13  <Solomon Peachy>	d3439a4f6671e92b899904b85722582400b4630a
+
+	Lines: +43, -3
+	Files:	src/main/print-dyesub.c (+43, -3)
+
+	dyesub:  Add Matte/Glossy support to Sony UP-CX1
+
+2021-08-13  <Solomon Peachy>	1d80bafd60bafa54d51e35d1aa666afebb1206f6
+
+	Lines: +2, -0
+	Files:	src/main/print-dyesub.c (+2, -0)
+
+	dyesub: Shinko S2145: Add support for 4x6" sticker media
+
+2021-08-13  <Solomon Peachy>	d882f7196e932cc1cef4c06252a667ad0e07e29b
+
+	Lines: +141, -30
+	Files:	NEWS (+1, -0)
+		README (+1, -0)
+		src/cups/backend_sonyupd.c (+94, -29)
+		src/cups/blacklist (+40, -1)
+		src/main/print-dyesub.c (+4, -0)
+		src/xml/printers/dyesub.xml (+1, -0)
+
+	dyesub: Add support for Sony UP-CX1
+
+	It's essentially the print engine out of the UP-CR10L
+
+	4" or 5" roll media.
+
+2021-08-10  <Solomon Peachy>	1ebff9641187c122d682041aed04d51574166f8a
+
+	Lines: +48, -1
+	Files:	doc/developer/escp2.xml (+17, -1)
+		src/main/escp2-driver.c (+21, -0)
+		src/main/print-escp2-data.c (+3, -0)
+		src/main/print-escp2.c (+1, -0)
+		src/main/print-escp2.h (+6, -0)
+
+	escp2:  Add support for roll-only printers such as the SureLab D700
+
+	 * Add a <rollOnly/> model.xml flag
+	 * Roll-only printers do not send ESC(c or ESC(C
+	 * Roll-only printers require ESC(g
+
+2021-08-10  <Solomon Peachy>	455647c4433c7617580aab23ed7fdf8bc71af84d
+
+	Lines: +8, -1
+	Files:	src/main/print-escp2-data.c (+2, -0)
+		src/main/print-escp2.c (+5, -1)
+		src/main/print-escp2.h (+1, -0)
+
+	escp2:  allow printing_initial_vertical_offset to be set via XML files
+
+	This value is used to provide a fixed vertical offset for the first
+	printed row on the page. It had previously been hardcoded to 0, but now
+	it can be specified in the model.xml file using the
+	<printingInitialVerticalOffset> tag.
+
+	It is specified in base_separation units, so if base_separation is 360
+	and the value specified is 180, this will result in the first printed
+	row starting 0.5 inches into the page. If not specified it will continue
+	to default to 0.
+
+	The (not yet committed) Epson SureLab D700 will require this feature.
+
+2021-08-04  <Solomon Peachy>	73475024465ddff21c041323cd3694a046e10655
+
+	Lines: +1037, -4
+	Files:	NEWS (+1, -0)
+		README (+2, -0)
+		src/cups/Makefile.am (+1, -1)
+		src/cups/backend_common.c (+2, -0)
+		src/cups/backend_common.h (+1, -0)
+		src/cups/backend_kodak8800.c (added +1027)
+		src/cups/blacklist (+1, -1)
+		src/xml/printers/dyesub.xml (+2, -2)
+
+	dyesub: backend:  Add a custom backend for the Kodak 8800 / 9810
+
+	These models are no longer considered experimental!
+
+2021-08-04  <Solomon Peachy>	9d26dd26e4e87f869d0da869cc55cd1b56335b7b
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub: Kodak 8800/9810 expects BGR data, not YMC!
+
+	Expect a backend for this thing soon, and it can be marked as supported!
+
+2021-07-31  <Solomon Peachy>	07284a60fc21873fd9326dc0db96c959eb90a746
+
+	Lines: +1, -1
+	Files:	src/cups/blacklist (+1, -1)
+
+	dyesub: backend:  Un-blacklist the Kodak 8800/9810
+
+	It's not clear that a custom backend is necessary to print, but given
+	that said backend doesn't yet exist, there's no point in it being
+	blacklisted.
+
+2021-07-30  <Solomon Peachy>	448fcf1c5b7836c61feb6aa9ae9ad759cbaf27a7
+
+	Lines: +2, -2
+	Files:	src/cups/backend_mitsud90.c (+2, -2)
+
+	dyesub: backend:  mitsu_m1: Don't overflow on full-size RAW prints
+
+	(This should only be triggerable when printing directly from a Windows
+	 system that uses Mitsubishi's official drivers...)
+
+2021-07-23  <Solomon Peachy>	c059667b36d62b1e3c17100f934caffdaa34de7f
+
+	Lines: +7, -3
+	Files:	README (+7, -3)
+
+	README:  Update the printer list handled by the dyesub backend
+
+2021-07-15  <Solomon Peachy>	3c4928edf10d10f5b1d9d8fbedd5d72647e6d13d
+
+	Lines: +2, -2
+	Files:	src/xml/escp2/inks/claria_xp.xml (+1, -1)
+		src/xml/printers/dyesub.xml (+1, -1)
+
+	Fix errors in XML files  (Zdenek Dohnal)
+
+	We ran XML linter as a part of rpminspect project[1] on any package
+	containing XML files during CentOS Stream development and found out the
+	linter reports errors (attached file 'errors') for several XML files in
+	Gutenprint 5.3.4.
+
+	The attached patch applies cleanly on current GIT master of gutenprint
+	and linter in rpminspect doesn't report errors for XML files anymore.
+
+2021-07-12  <Solomon Peachy>	e2e22f251cab8ed067f1a1e60fa569764f912155
+
+	Lines: +22, -12
+	Files:	src/main/print-dyesub.c (+22, -12)
+
+	dyesub;  Add panorama sizes to Mitsubishi D90
+
+	Requires backend improvements, WIP.
+
+2021-07-12  <Solomon Peachy>	b71887da93183f2af340b368edeabc593655a8c0
+
+	Lines: +6, -6
+	Files:	src/main/print-dyesub.c (+6, -6)
+
+	dyesub: Fix panorama sizes on the Kodak 8810
+
+2021-06-11  <Solomon Peachy>	74d2b901ce2f049e07395cb1a356ce69f8034c13
+
+	Lines: +16, -1
+	Files:	src/main/print-dyesub.c (+16, -1)
+
+	dyesub: Add 6x2", 6x3.375", and 6x3.75" print sizes
+
+	Note that using these will consume an entire 6x4" panel!
+
+2021-06-11  <Solomon Peachy>	2779cc9d9fd23b20e5a74853ea282de649ab0f76
+
+	Lines: +66, -44
+	Files:	src/cups/backend_dnpds40.c (+66, -44)
+
+	dyesub: backend:  Fix printing 2x6" strips on Citizen CX-02 series
+
+	Citizen CX-02/CX-02W models diverge from DNP printers with respect
+	to firmware version numbers/capabilities
+
+2021-05-26  <Gernot Hassenpflug>	db3c362ddcdedb88e198d424fbff9bd98c8c3003
+
+	Lines: +1, -1
+	Files:	src/main/canon-printers.h (+1, -1)
+
+	Canon E400 margin fix submitted by user
+
+2021-04-15  <Solomon Peachy>	9eefba9ca9a6dba96cdfac1babaefdbc36e657bf
+
+	Lines: +156, -72
+	Files:	src/cups/backend_common.c (+1, -1)
+		src/cups/backend_hiti.c (+146, -62)
+		src/xml/printers/dyesub.xml (+9, -9)
+
+	dyesub: Add support for the HiTi P510/P518/P728 series
+
+	Along with most IEEE1284 IDs.
+
+2021-03-30  <Solomon Peachy>	7d8b6d8c96605465b575a6d65d548320b2b71ce3
+
+	Lines: +2, -1
+	Files:	src/main/print-dyesub.c (+2, -1)
+
+	dyesub:  fix warning introduced in last commit
+
+2021-03-30  <Solomon Peachy>	6b7869ab8cfc6e198baf5900c05781019782a0c2
+
+	Lines: +17, -8
+	Files:	src/main/print-dyesub.c (+17, -8)
+
+	dyesub:  Minor cutter control fixes for various DNP models
+
+	Specifically, the DS620, DS820, QW410
+
+	If the data stream includes 'CNTRL FULL_CUTTER_SET' then 'CNTRL CUTTER'
+	will be ignored.  The backend already filters this out (and emits a
+	warning) so make sure we don't actually generate this stuff.
+
+	In practical terms this means 'No Cut-Waste' mods are now explicitly
+	ignored for certian multi-cut print sizes.  Nothing to be done
+	about that, alas.
+
+2021-03-15  <Solomon Peachy>	94908376aaa9dee6b5ded34a66bcca4f8e65014f
+
+	Lines: +1, -1
+	Files:	src/main/print-dyesub.c (+1, -1)
+
+	dyesub:  Fix a missing line in the EK8810 commit.
+
+2021-03-15  <Solomon Peachy>	9500ccac265e381e45a5db6752d1fa8be5f50fcc
+
+	Lines: +61, -4
+	Files:	src/cups/backend_shinkos6245.c (+23, -4)
+		src/main/print-dyesub.c (+38, -0)
+
+	dyesub:  Kodak 8810 supports print sizes > 8x12
+
+	It does this by seamlessly stitching together multiple print panels.
+
+	(Note, this is untested!)
+
+2021-02-26  <Solomon Peachy>	cf87644c0457baea76a76a3c81b10addacc3f290
+
+	Lines: +2, -2
+	Files:	src/main/print-dyesub.c (+2, -2)
+
+	dyesub: Fix paper list for HiTi P510 series
+
+2021-02-26  <Solomon Peachy>	1d4bdd28e2a85f6486fd252443356b0163f6deac
+
+	Lines: +65, -2
+	Files:	NEWS (+4, -2)
+		src/main/print-dyesub.c (+54, -0)
+		src/xml/printers/dyesub.xml (+7, -0)
+
+	dyesub:  Add experimental support for the HiTi P510/P518 series
+
+	(Updated backend will follow once the kinks are worked out)
+
+2021-02-23  <Solomon Peachy>	4b00b79010d161213f7f72bf8d47143a66e70d6e
+
+	Lines: +0, -7
+	Files:	src/xml/papers/standard.xml (+0, -7)
+
+	papers:  Delete the dyesub-specific 'CP_L' paper from the global list
+
+	(It's specific to the Canon SELPHY CP/ES series)
+
+2021-02-10  <Solomon Peachy>	efe74c464fd41945c1c0f62a96b694b2ba45a36b
+
+	Lines: +1, -0
+	Files:	NEWS (+1, -0)
+
+	NEWS:  Add Selphy CP790 bugfixes to the change list
+
+2021-02-09  <Solomon Peachy>	078c0fe3b68e21f42a1f76982cec65e19bef1ec3
+
+	Lines: +85, -84
+	Files:	src/cups/backend_canonselphy.c (+81, -78)
+		src/cups/backend_common.h (+4, -6)
+
+	dyesub: backend:  Fix paper size sanity checks on the SELPHY CP790
+
+	(Also report the size/type properly in the CUPS marker messages)
+
+2021-02-09  <Solomon Peachy>	b9d3011274a57428187f1b6941d3315d418aad94
+
+	Lines: +34, -30
+	Files:	src/cups/Makefile.am (+1, -1)
+		src/cups/backend_common.c (+33, -29)
+
+	dyesub: backend: ditch compile-time URI_PREFIX in favor of using argv[0]
+
+2020-12-25  <Solomon Peachy>	81910dcd7de9e52b4a4ea66c5d99a3d4924f1a73
+
+	Lines: +35, -12
+	Files:	src/cups/backend_mitsud90.c (+4, -1)
+		src/main/print-dyesub.c (+31, -11)
+
+	dyesub:  Add support for "vivid" color mode for Mitsubhishi CP-M1 family
 
 2020-12-06  <Robert Krawitz>	fc5bfc8ceebae8a33049e4e9cfc40f5b1f8b0cf0
 

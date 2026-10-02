@@ -1,7 +1,8 @@
 #!/bin/sh
 # Apple Silicon Printer Drivers — post-install
 #  1. retire vendor Intel-only driver bits that block Apple's generic USB class driver
-#  2. auto-detect USB printers and create queues for supported models
+#  2. refresh queues left by older packages with the bundled PPDs
+#  3. auto-detect USB printers and create queues for supported models
 set -u
 GP=/Library/Printers/Gutenprint
 B="/Users/Shared/printer-driver-backup"
@@ -35,7 +36,32 @@ for f in /etc/cups/ppd/*.ppd; do
   fi
 done
 
-# ---- 2) auto-detect USB printers
+# ---- 2) queues created by an older package keep its PPD, which the new filters reject or misread:
+#         rastertogutenprint refuses a PPD from another Gutenprint version, and brlaser 6.2.8 reads
+#         options brlaser v6 PPDs never set (toner density would go out as -100). Reinstall the
+#         bundled PPD on the same device; lpadmin keeps the chosen defaults.
+GPVER=$("$GP/libexec/cups-genppd.5.3" -V 2>/dev/null | sed -n 's/^cups-genppd version \([0-9.]*\),.*/\1/p')
+for f in /etc/cups/ppd/*.ppd; do
+  [ -f "$f" ] || continue
+  if grep -qs "$GP/libexec/rastertobrlaser" "$f"; then
+    grep -qs 'brlaserDensityAdjust' "$f" && continue
+    ID=brlaser-$(sed -n 's/^\*ShortNickName: "Brother \(.*\)"/\1/p' "$f" | sed 's/ series$//' | tr 'A-Z' 'a-z' | tr -c 'a-z0-9\n' '-')
+  elif grep -qs "$GP/libexec/rastertogutenprint" "$f"; then
+    { [ -z "$GPVER" ] || grep -qs "CUPS+Gutenprint v$GPVER\"" "$f"; } && continue
+    ID=$(sed -n 's/^\*StpDriverName:[[:space:]]*"\(.*\)"/\1/p' "$f")
+  else
+    continue
+  fi
+  q=$(basename "$f" .ppd)
+  URI=$(awk -v q="$q" '$1 ~ /^<(Default)?Printer$/ { sub(/>$/, "", $2); cur = $2 } cur == q && $1 == "DeviceURI" { print $2; exit }' /etc/cups/printers.conf 2>/dev/null)
+  if [ -n "$ID" ] && [ -n "$URI" ] && "$GP/bin/gutenprint-add" "$ID" "$q" "$URI" >/dev/null 2>&1; then
+    log "queue '$q' updated to the current $ID driver"
+  else
+    log "could not update queue '$q' — remove it in Printers & Scanners and run: sudo gutenprint-add ${ID:-<id>}"
+  fi
+done
+
+# ---- 3) auto-detect USB printers
 #  lpinfo -v prints: direct usb://Vendor/Model%20name?serial=XXX
 #  Match through the helper so Gutenprint and brlaser use the same catalog.
 lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r URI; do

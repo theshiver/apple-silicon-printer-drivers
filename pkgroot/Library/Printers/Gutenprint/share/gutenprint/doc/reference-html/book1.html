@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The Developer's Guide to Gutenprint</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Preface"
+HREF="f14.html"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>The Developer's Guide to Gutenprint</A
+></H1
+><H3
+CLASS="corpauthor"
+>&#13;    The Gutenprint Project
+  </H3
+><P
+CLASS="copyright"
+><A
+HREF="ln10.html"
+>Copyright</A
+> &copy; 2003 The Gutenprint Project</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="f14.html"
+>Preface</A
+></DT
+><DT
+><A
+HREF="c38.html"
+>Copying, modification and redistribution</A
+></DT
+><DT
+><A
+HREF="c47.html"
+>Using libgutenprint</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c47.html#AEN50"
+>Code prerequisites</A
+></DT
+><DT
+><A
+HREF="x66.html"
+>Linking with libgutenprint</A
+></DT
+><DT
+><A
+HREF="x78.html"
+>Integrating libgutenprint</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x78.html#AEN85"
+><B
+CLASS="command"
+>pkg-config</B
+></A
+></DT
+><DT
+><A
+HREF="x78.html#AEN122"
+><B
+CLASS="command"
+>make</B
+></A
+></DT
+><DT
+><A
+HREF="x78.html#AEN132"
+><B
+CLASS="command"
+>autoconf</B
+></A
+></DT
+><DT
+><A
+HREF="x78.html#AEN149"
+><B
+CLASS="command"
+>automake</B
+></A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c193.html"
+>Reporting Bugs</A
+></DT
+><DT
+><A
+HREF="c199.html"
+>Adding a new printer</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c199.html#AEN216"
+><TT
+CLASS="filename"
+>printers.xml</TT
+></A
+></DT
+><DT
+><A
+HREF="x270.html"
+>The driver file</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x270.html#AEN280"
+>Epson inkjet printers</A
+></DT
+><DT
+><A
+HREF="x270.html#AEN402"
+>Tuning the printer</A
+></DT
+><DT
+><A
+HREF="x270.html#AEN432"
+>Canon inkjet printers</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c463.html"
+>ESC/P2</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c463.html#AEN474"
+>Standard commands</A
+></DT
+><DT
+><A
+HREF="x961.html"
+>Remote Mode Commands</A
+></DT
+><DT
+><A
+HREF="x1675.html"
+>Appropriate Remote Commands</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="c1723.html"
+>Weaving for inkjet printers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1723.html#AEN1725"
+>Introduction</A
+></DT
+><DT
+><A
+HREF="x1740.html"
+>Weaving algorithms</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1740.html#AEN1746"
+>Simple weaving algorithms</A
+></DT
+><DT
+><A
+HREF="x1740.html#AEN1763"
+>Perfect weaving</A
+></DT
+><DT
+><A
+HREF="x1740.html#AEN1797"
+>Weaving collisions</A
+></DT
+><DT
+><A
+HREF="x1740.html#AEN1815"
+>What makes a &#8220;perfect&#8221; weave?</A
+></DT
+><DT
+><A
+HREF="x1740.html#AEN1943"
+>Oversampling</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c1974.html"
+>Dithering</A
+></DT
+><DT
+><A
+HREF="a2128.html"
+>GNU General Public License</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a2128.html#gpl-preamble"
+>Preamble</A
+></DT
+><DT
+><A
+HREF="x2159.html"
+>TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2159.html#gpl-sect0"
+>Section 0</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect1"
+>Section 1</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect2"
+>Section 2</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect3"
+>Section 3</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect4"
+>Section 4</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect5"
+>Section 5</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect6"
+>Section 6</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect7"
+>Section 7</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect8"
+>Section 8</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect9"
+>Section 9</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect10"
+>Section 10</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect11"
+>NO WARRANTY</A
+></DT
+><DT
+><A
+HREF="x2159.html#gpl-sect12"
+>Section 12</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="f14.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Preface</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

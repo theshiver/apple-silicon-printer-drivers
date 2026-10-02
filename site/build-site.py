@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.7.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.8.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -143,6 +143,10 @@ faq = [
   'In the print dialog, open Printer Features (Printer Options on macOS 27). Quality is under Resolution, not Print Quality: Automatic, Draft, High, Photo modes and so on, depending on the printer. For black & white set Color Model to Grayscale. Presets offers Text and Photograph tuning.'),
  ("Black doesn't print, or colors look off.",
   "First run a nozzle check from the printer itself: an empty or clogged black cartridge is the usual cause, and this driver can't show ink levels like the maker's driver did. Then check in Printer Features that no “color-only” mode is selected under Resolution or Ink Set. Colors can look a little different from the maker's driver because the color tables are different."),
+ ("Supply Levels says “Information Not Available”.",
+  "Expected: the open source drivers can't read ink or toner levels from the printer, only the maker's driver could. Check levels on the printer's own screen or with a nozzle check."),
+ ("My printer isn't in the list.",
+  "Many newer printers, including Brother color lasers such as the MFC-L3770CDW, support AirPrint and need no driver: connect the printer to your network (Wi-Fi or Ethernet), then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB."),
  ("Does the scanner on my all-in-one work?",
   "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical); both run natively on Apple Silicon."),
  ("Is it safe? Will macOS complain?",
@@ -185,7 +189,7 @@ home = f"""
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
 
 <h2>How it works</h2>
-<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.4</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/pdewacht/brlaser">brlaser v6</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
+<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/Owl-Maintain/brlaser">brlaser 6.2.8</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
 
 <script>
 const BASE={json.dumps(BASE)};let MODELS=null,sel=-1;
