@@ -49,6 +49,8 @@ for p in "$W"/all/*.ppd; do
   # PCL models that already print through Gutenprint stay there; brlaser
   # would win the USB match and silently swap a working driver on upgrade.
   case "$ID" in hl-2250dn|hl-5040|hl-5140) continue;; esac
+  # upstream test-suite profiles, not printers
+  case "$ID" in test-driver*) continue;; esac
   ppd_fixup "$p" > "$OUT/share/brlaser/ppd/brlaser-$ID.ppd"
 done
 # HL-1210W: the trimmed profile replaces the generic one written above.
