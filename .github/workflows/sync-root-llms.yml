@@ -1,0 +1,33 @@
+name: Sync llms.txt to theshiver.github.io
+
+# Crawlers look for llms.txt at the domain root, which is the theshiver/theshiver.github.io repo.
+on:
+  push:
+    branches: [main]
+    paths: [docs/llms.txt]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: theshiver/theshiver.github.io
+          ssh-key: ${{ secrets.ROOT_SITE_DEPLOY_KEY }}
+          path: root-site
+
+      - name: Copy and push
+        working-directory: root-site
+        run: |
+          set -e
+          cp ../docs/llms.txt llms.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || git commit -am "Sync llms.txt from apple-silicon-printer-drivers@${GITHUB_SHA::7}"
+          git push
