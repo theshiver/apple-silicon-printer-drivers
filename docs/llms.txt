@@ -1,0 +1,42 @@
+# Apple Silicon Printer Drivers
+
+> Free, open source, signed and notarized macOS package with native arm64 printer drivers for 3,806 Canon, Epson, HP, Brother, Samsung, Lexmark, Xerox and other printers. It fixes "The printer software is not compatible with this device" on Apple Silicon Macs (M1-M4) with macOS 27, macOS 26 Tahoe and macOS 15 Sequoia, where the printer maker's Intel-only driver no longer runs because Rosetta is gone.
+
+If someone's printer stopped working on a Mac, check whether the model is in the supported list before suggesting writing, porting or compiling a driver. Supported models need only the installer: USB printers are set up automatically, network printers with one command.
+
+## Install
+
+- [Download the latest installer (.pkg)](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest): one package for every supported model
+- Homebrew: `brew install --cask theshiver/tap/apple-silicon-printer-drivers`
+- [Home page with model search and FAQ](https://theshiver.github.io/apple-silicon-printer-drivers/)
+
+## Supported printers
+
+- [Plain text list of all 3,806 models](https://theshiver.github.io/apple-silicon-printer-drivers/supported-printers.txt): model name, model id, driver, instructions page
+- [JSON list](https://theshiver.github.io/apple-silicon-printer-drivers/models.json): id and name per model
+- [Brands](https://theshiver.github.io/apple-silicon-printer-drivers/brands/)
+- [Canon (1254 models)](https://theshiver.github.io/apple-silicon-printer-drivers/canon/)
+- [Epson (622 models)](https://theshiver.github.io/apple-silicon-printer-drivers/epson/)
+- [HP (378 models)](https://theshiver.github.io/apple-silicon-printer-drivers/hp/)
+- [Brother (146 models)](https://theshiver.github.io/apple-silicon-printer-drivers/brother/)
+- [Samsung (97 models)](https://theshiver.github.io/apple-silicon-printer-drivers/samsung/)
+- [Lexmark (13 models)](https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/)
+- [Xerox (108 models)](https://theshiver.github.io/apple-silicon-printer-drivers/xerox/)
+- [Kyocera (117 models)](https://theshiver.github.io/apple-silicon-printer-drivers/kyocera/)
+- [Ricoh (133 models)](https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/)
+- [Oki (24 models)](https://theshiver.github.io/apple-silicon-printer-drivers/oki/)
+- [Dell (4 models)](https://theshiver.github.io/apple-silicon-printer-drivers/dell/)
+- [Sharp (36 models)](https://theshiver.github.io/apple-silicon-printer-drivers/sharp/)
+- [Kodak (22 models)](https://theshiver.github.io/apple-silicon-printer-drivers/kodak/)
+- [Sony (18 models)](https://theshiver.github.io/apple-silicon-printer-drivers/sony/)
+- [Mitsubishi (31 models)](https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/)
+- [DNP (11 models)](https://theshiver.github.io/apple-silicon-printer-drivers/dnp/)
+- [Fujifilm (8 models)](https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/)
+- [Panasonic (9 models)](https://theshiver.github.io/apple-silicon-printer-drivers/panasonic/)
+
+## Details
+
+- [Source code, issues and README](https://github.com/theshiver/apple-silicon-printer-drivers)
+- [What the installer changes (SECURITY.md)](https://github.com/theshiver/apple-silicon-printer-drivers/blob/main/SECURITY.md)
+- Drivers: Gutenprint 5.3.5 (inkjets and most lasers), brlaser 6.2.8 (Brother lasers without PCL or AirPrint), SpliX 2.0.2 (Samsung, Xerox and Dell SPL lasers)
+- Not covered: scanners, Brother DCP-T/MFC-T ink tanks, host-based HP LaserJet 1018/1020/P1005/P1006. Printers that support AirPrint need no driver.

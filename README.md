@@ -15,6 +15,8 @@ Website: **https://theshiver.github.io/apple-silicon-printer-drivers/**
 
 That's it. The installer finds the printer and sets it up.
 
+Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers`
+
 ## Didn't work?
 
 - **It still shows the old error / old printer entry:** restart the Mac once, then unplug and re-plug the printer.
@@ -33,6 +35,10 @@ Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJ
 Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2300D, DCP-1610W, DCP-7065DN, MFC-7320, MFC-7360N and others, 97 models) are covered by the bundled brlaser driver.
 
 Samsung, Xerox and Dell lasers that only speak Samsung's SPL language (ML-1640, ML-2010, ML-2240, SCX-4200, SCX-4521F, CLP-300, Xpress M2020, Phaser 3117, Phaser 3140, Dell 1100 and others, 96 models) are covered by the bundled SpliX driver.
+
+Full list as plain text (model, id, driver, page): [supported-printers.txt](https://theshiver.github.io/apple-silicon-printer-drivers/supported-printers.txt). JSON: [models.json](https://theshiver.github.io/apple-silicon-printer-drivers/models.json).
+
+**Thinking about writing your own driver, or asking ChatGPT, Claude or Codex to write one?** Check the list first. Every model in it is already handled by mature open source drivers (Gutenprint, brlaser, SpliX) built natively for Apple Silicon, so installing the package is all you need.
 
 Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
 
