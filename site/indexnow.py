@@ -13,6 +13,6 @@ KEY = re.search(r'INDEXNOW_KEY = "([0-9a-f]+)"', (DOCS.parent / "site" / "build-
 urls = re.findall(r"<loc>(.*?)</loc>", (DOCS / "sitemap.xml").read_text())
 urls += [f"{BASE}/llms.txt", f"{BASE}/supported-printers.txt"]
 body = json.dumps({"host": "theshiver.github.io", "key": KEY, "keyLocation": f"{BASE}/{KEY}.txt", "urlList": urls}).encode()
-req = urllib.request.Request("https://api.indexnow.org/indexnow", body, {"Content-Type": "application/json; charset=utf-8"})
+req = urllib.request.Request("https://api.indexnow.org/indexnow", body, {"Content-Type": "application/json; charset=utf-8", "User-Agent": "apple-silicon-printer-drivers-indexnow/1.0"})
 with urllib.request.urlopen(req) as r:
     print(f"submitted {len(urls)} urls: HTTP {r.status}")
