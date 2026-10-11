@@ -1,0 +1,72 @@
+name: Post-release (Homebrew cask, IndexNow)
+
+# Runs when a release is published (the notarized .pkg is attached locally before publishing).
+# Re-run by hand for a tag with: gh workflow run post-release.yml -f tag=v1.3.9
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag, e.g. v1.3.9
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  TAG: ${{ inputs.tag || github.event.release.tag_name }}
+  SITE: https://theshiver.github.io/apple-silicon-printer-drivers
+
+jobs:
+  cask:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checksum the released package
+        id: pkg
+        run: |
+          set -e
+          VER=${TAG#v}
+          URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/$TAG/AppleSilicon-Printer-Drivers-$VER.pkg"
+          curl -fsSL --retry 10 --retry-delay 30 --retry-all-errors -o pkg "$URL"
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "sha256=$(sha256sum pkg | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          repository: theshiver/homebrew-tap
+          ssh-key: ${{ secrets.TAP_DEPLOY_KEY }}
+
+      - name: Update and push the cask
+        env:
+          VER: ${{ steps.pkg.outputs.version }}
+          SHA: ${{ steps.pkg.outputs.sha256 }}
+        run: |
+          set -e
+          F=Casks/apple-silicon-printer-drivers.rb
+          sed -i -E "s/^(  version )\"[^\"]*\"/\1\"$VER\"/; s/^(  sha256 )\"[^\"]*\"/\1\"$SHA\"/" "$F"
+          git diff
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || git commit -am "apple-silicon-printer-drivers $VER"
+          git push
+
+  indexnow:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for the site to show the new version
+        run: |
+          VER=${TAG#v}
+          for i in $(seq 60); do
+            curl -fsS "$SITE/" | grep -q "\"softwareVersion\":\"$VER\"" && exit 0
+            sleep 30
+          done
+          echo "::error::$SITE/ still doesn't show $VER after 30 minutes: was PKG in site/build-site.py bumped and docs/ rebuilt?"
+          exit 1
+
+      - name: Submit all URLs to IndexNow
+        run: python3 site/indexnow.py
