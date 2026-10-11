@@ -11,7 +11,7 @@ list_models() {
   # ("bjc-Pro9000mk2-seriesCanon ..."); take the ids from -M, same order.
   "$GEN" -M -v 2>/dev/null | awk -v ids="\"$GEN\" -M 2>/dev/null" '
     (ids | getline id) > 0 { name = substr($0, length(id) + 1); sub(/^ +/, "", name); print id " " name }'
-  for p in "$GP"/share/brlaser/ppd/*.ppd; do
+  for p in "$GP"/share/brlaser/ppd/*.ppd "$GP"/share/splix/ppd/*.ppd; do
     [ -f "$p" ] || continue
     printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ShortNickName: "\(.*\)"/\1/p' "$p")"
   done
@@ -44,6 +44,10 @@ case "$MODEL" in
     SRC="$GP/share/brlaser/ppd/$MODEL.ppd"
     [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
     [ -x "$GP/libexec/rastertobrlaser" ] || { echo "brlaser filter missing; reinstall the package"; exit 1; };;
+  splix-*)
+    SRC="$GP/share/splix/ppd/$MODEL.ppd"
+    [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
+    [ -x "$GP/libexec/rastertoqpdl" ] || { echo "SpliX filter missing; reinstall the package"; exit 1; };;
   *)
     "$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
     SRC=$(ls "$T"/*.ppd* | head -1); [ -n "$SRC" ] || { echo "PPD not generated"; exit 1; };;
@@ -64,7 +68,7 @@ if [ -z "$URI" ]; then
   # try to auto-match a USB printer by manufacturer word of the model id
   BRAND=$(grep '^\*Manufacturer' "$OUT" | cut -d'"' -f2 | awk '{print $1}')
   case "$MODEL" in
-    brlaser-*)
+    brlaser-*|splix-*)
       URI=$(lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r device; do
         if [ "$("$0" --match-usb "$device")" = "$MODEL" ]; then printf '%s\n' "$device"; break; fi
       done);;

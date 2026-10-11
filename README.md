@@ -4,7 +4,7 @@
 
 ![macOS error: The printer software is not compatible with this device](docs/not-compatible.png)
 
-Free fix for 3,500+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
+Free fix for 3,800+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
 Website: **https://theshiver.github.io/apple-silicon-printer-drivers/**
 
 ## Fix it
@@ -26,11 +26,13 @@ That's it. The installer finds the printer and sets it up.
 
 ## Supported printers
 
-3,701 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,806 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
 Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
 
 Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2300D, DCP-1610W, DCP-7065DN, MFC-7320, MFC-7360N and others, 97 models) are covered by the bundled brlaser driver.
+
+Samsung, Xerox and Dell lasers that only speak Samsung's SPL language (ML-1640, ML-2010, ML-2240, SCX-4200, SCX-4521F, CLP-300, Xpress M2020, Phaser 3117, Phaser 3140, Dell 1100 and others, 96 models) are covered by the bundled SpliX driver.
 
 Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
 
@@ -64,6 +66,12 @@ Expected: the open source drivers can't read ink or toner levels from the printe
 **My printer isn't in the list.**
 Many newer printers, including Brother color lasers such as the MFC-L3770CDW, support AirPrint and need no driver: connect the printer to your network (Wi-Fi or Ethernet), then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB.
 
+**My Brother ink tank printer (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) isn't supported.**
+Brother's DCP-T and MFC-T ink tank printers have no open source driver, and Brother's Linux driver for them is closed source and Intel-only, so this package can't add them. Check your model's Downloads page on support.brother.com for a current macOS driver. If the printer supports AirPrint, connect it to your network and add it in System Settings → Printers & Scanners with Use: AirPrint.
+
+**My HP LaserJet 1018, 1020, P1005 or P1006 isn't supported.**
+These are host-based printers: they don't understand PCL, and they need HP's firmware sent to them every time they are switched on. Gutenprint can't drive them, so they aren't supported. Picking a similar model such as the LaserJet 1022 doesn't work either: the job goes through, but nothing prints.
+
 **Does the scanner work?**
 No, only printing. For scanning use VueScan or SANE.
 
@@ -89,13 +97,15 @@ The package contains [Gutenprint 5.3.5](https://gimp-print.sourceforge.io/) (GPL
 | `/Library/Printers/Gutenprint/libexec/rastertogutenprint.5.3` | arm64 CUPS raster filter (static Gutenprint, signed) |
 | `/Library/Printers/Gutenprint/libexec/rastertobrlaser` | arm64 Brother laser raster filter ([brlaser 6.2.8](https://github.com/Owl-Maintain/brlaser), the maintained fork) |
 | `/Library/Printers/Gutenprint/share/brlaser` | Brother PPDs, GPL license and exact brlaser source archive |
+| `/Library/Printers/Gutenprint/libexec/rastertoqpdl` | arm64 Samsung / Xerox / Dell SPL raster filter ([SpliX 2.0.2](https://github.com/OpenPrinting/splix), with [jbigkit 2.1](https://www.cl.cam.ac.uk/~mgk25/jbigkit/)) |
+| `/Library/Printers/Gutenprint/share/splix` | SPL PPDs, GPL license and exact SpliX and jbigkit source archives |
 | `/Library/Printers/Gutenprint/libexec/commandtocanon`, `commandtoepson`, `commandtodyesub` | maintenance commands (head clean, nozzle check) and dye-sub status queries |
 | `/Library/Printers/Gutenprint/libexec/cups-genppd.5.3` | PPD generator |
 | `/Library/Printers/Gutenprint/bin/gutenprint-add` (+ symlink in `/usr/local/bin`) | adds a printer by model id |
 | `/Library/Printers/Gutenprint/share/gutenprint/5.3/xml` | printer / dither / paper definitions |
 | `/Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd` | PPDs generated on demand, with absolute filter paths |
 
-The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against the combined Gutenprint and brlaser model names (word match, brlaser before Gutenprint, then shortest name wins; HL-2250DN, HL-5040 and HL-5140 stay on Gutenprint's PCL driver) and calls `gutenprint-add` for it.
+The post-install script matches each `usb://Vendor/Model` device from `lpinfo -v` against the combined Gutenprint, brlaser and SpliX model names (word match, brlaser before Gutenprint, then shortest name wins; HL-2250DN, HL-5040, HL-5140 and Samsung ML-1750, ML-2150, ML-2250, ML-2550 stay on Gutenprint's PCL driver) and calls `gutenprint-add` for it.
 
 Things that bit us on macOS 27, for anyone porting another driver:
 
@@ -103,8 +113,9 @@ Things that bit us on macOS 27, for anyone porting another driver:
 - Gutenprint needs `CFLAGS="-O2 -D_DARWIN_C_SOURCE"` or `netinet/ip.h` fails on `u_char`.
 - Canon's IJ driver ships a codeless `AppleUSBMergeNub` kext (`/Library/Extensions/BJUSBLoad.kext`) that pins its x86_64 USB class-driver plugin to the printer in the I/O Registry. While it is loaded the `usb` backend won't fall back to Apple's generic class driver. Other vendors' leftovers: open an issue with `ls /Library/Extensions` output.
 - macOS 27 marks any queue whose filters lack an arm64 slice as *Software Incompatible* on every `cupsd` start, even when the job would still run under Rosetta.
+- SpliX 2.0.2 swaps pages beyond its 30-page memory cache to a hard-coded `/tmp`, which the `cupsd` sandbox blocks, and hangs on manual-duplex jobs longer than that cache. `build/splix-cache.patch` swaps into the job's `$TMPDIR` and fixes the hang; output is otherwise byte-identical to upstream.
 
-Build: `build/build-gutenprint.sh` (Xcode CLT + Homebrew `gettext`), then `build/build-brlaser.sh` (Homebrew `cmake`), then `build/make-pkg.sh <version>` (signs and notarizes when Developer ID certs are present). Validate with `python3 -m unittest discover -s tests -v` and `build/test-brlaser.sh`. Website: `python3 site/build-site.py` → `docs/`.
+Build: `build/build-gutenprint.sh` (Xcode CLT + Homebrew `gettext`), then `build/build-brlaser.sh` (Homebrew `cmake`), then `build/build-splix.sh`, then `build/make-pkg.sh <version>` (signs and notarizes when Developer ID certs are present). Validate with `python3 -m unittest discover -s tests -v`, `build/test-brlaser.sh` and `build/test-splix.sh`. Website: `python3 site/build-site.py` → `docs/`.
 
 This project started as a fix for one Canon PIXMA MP250 on a MacBook Air. Contributions welcome.
 
@@ -112,6 +123,6 @@ Drivers other than Gutenprint are community-supported. Models from the upstream 
 
 ## License
 
-Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. Scripts, installer and site: MIT (`LICENSE`).
+Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. SpliX: GPL-2.0, statically linked with jbigkit (GPL-2.0-or-later) (`pkgroot/Library/Printers/Gutenprint/share/splix/COPYING`); both source archives are shipped in the same directory. Scripts, installer and site: MIT (`LICENSE`).
 
 Made by [Can Çetin](https://cancetin.com/).
