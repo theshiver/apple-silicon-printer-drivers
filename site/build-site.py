@@ -59,7 +59,7 @@ table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;
 footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
 """
 
-def page(title, desc, canonical, body, jsonld=None, keywords=""):
+def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, separators=(",",":"))}</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -69,6 +69,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords=""):
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 {f'<meta name="keywords" content="{html.escape(keywords)}">' if keywords else ''}
+{f'<meta name="robots" content="{robots}">' if robots else ''}
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
@@ -94,14 +95,29 @@ INSTALL_STEPS = f"""
 </ol>
 <p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see below.</p>"""
 
+MACOS = "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia"
+
+def brand_faq(b, n):
+    return [
+     (f"Is there a {b} printer driver for macOS 27 and Apple Silicon?",
+      f"{b} never released Apple Silicon versions of the Mac drivers for many of its older printers; they ran through Rosetta, which macOS 27 no longer allows. This free package adds native arm64 drivers for {n} {b} models, so they print on M1, M2, M3 and M4 Macs without Rosetta."),
+     (f"Why does my {b} printer say “The printer software is not compatible with this device”?",
+      f"The {b} driver installed on the Mac is Intel-only. Install this package, restart the Mac once, then unplug and re-plug the printer."),
+     ("Does it work on macOS 26 Tahoe and macOS 15 Sequoia?",
+      "Yes. It runs on macOS 12 and later on Apple Silicon Macs, and keeps working after you update to macOS 27."),
+    ]
+
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
     rows = "\n".join(f'<tr><td><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
-    title = f"{b} printer drivers for Mac: macOS 27 & Apple Silicon ({len(ms)} models, free)"
-    desc = f"Free native arm64 macOS driver for {len(ms)} {b} printers. Fixes 'The printer software is not compatible with this device' on macOS 27 without Rosetta. Step-by-step install."
+    title = f"{b} Printer Driver for Mac (macOS 27, Tahoe, M1–M4): {len(ms)} models, free"
+    desc = f"Free {b} printer driver for Mac: native Apple Silicon (M1–M4) driver for {len(ms)} {b} printers on {MACOS}. Fixes “The printer software is not compatible with this device” without Rosetta."
+    qa = brand_faq(b, len(ms))
+    others = " ".join(f'<a href="{BASE}/{slug(o)}/">{html.escape(o)}</a>' for o in POPULAR if o in BRANDS and o != b)
     body = f"""
-<h1>{html.escape(b)} printer drivers for Apple Silicon Macs</h1>
-<p class="lead">{len(ms)} {html.escape(b)} models work again on Apple Silicon Macs with this free driver. Install once, print again.</p>
+<p class="note"><a href="{BASE}/">Home</a> › <a href="{BASE}/brands/">Brands</a> › {html.escape(b)}</p>
+<h1>{html.escape(b)} printer driver for Mac (Apple Silicon, macOS 27)</h1>
+<p class="lead">{len(ms)} {html.escape(b)} printers work again on M1, M2, M3 and M4 Macs with {MACOS}. Free native driver, no Rosetta. Install once, print again.</p>
 <div class="card"><strong>Looking for your exact model?</strong> Pick it in the table below for model-specific instructions, or <a href="{BASE}/#search">search on the home page</a>.</div>
 <h2>Install (same package for every model)</h2>
 {INSTALL_STEPS}
@@ -109,11 +125,15 @@ def brand_page(b):
 <p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody>{rows}</tbody></table>
 <p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "Apple Silicon" entry.</p>
-<p><a href="{BASE}/brands/">← All brands</a></p>
+<h2>Questions</h2>
+{"".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in qa)}
+<p>Other brands: <span class="brands">{others} <a href="{BASE}/brands/">all brands →</a></span></p>
 """
-    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": title,
-          "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]}
-    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, keywords=f"{b} printer driver mac, {b} driver macos, {b} apple silicon, {b} macos 27, printer software not compatible with this device")
+    ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": title,
+          "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]},
+          {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i+1, "name": n, "item": u} for i, (n, u) in enumerate([("Home", f"{BASE}/"), ("Brands", f"{BASE}/brands/"), (b, f"{BASE}/{slug(b)}/")])]}]
+    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, keywords=f"{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device")
 
 def model_page(m, b, siblings):
     name, mid = m["name"], m["id"]
@@ -131,13 +151,13 @@ def model_page(m, b, siblings):
     if brlaser:
         notes.append(f"<p>The {esc} is a Brother laser without PCL or AirPrint, so it uses the bundled native arm64 brlaser driver rather than Gutenprint. Duplex, toner save and resolution are in the print dialog under Printer Features.</p>")
     sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
-    title = f"{name} driver for Mac: macOS 27 & Apple Silicon (free)"
+    title = f"{name} Driver for Mac (macOS 27, Tahoe, M1–M4) – Free"
     desc = (f"Free native driver for the {name} on Apple Silicon Macs (M1–M4). Fixes “The printer software is not compatible "
-            f"with this device” on macOS 27 without Rosetta. USB sets up automatically; Wi-Fi in one command.")
+            f"with this device” on {MACOS} without Rosetta. USB sets up automatically; Wi-Fi in one command.")
     body = f"""
 <p class="note"><a href="{BASE}/">Home</a> › <a href="{brand_url}">{html.escape(brand_label)}</a> › {esc}</p>
 <h1>{esc} driver for Mac</h1>
-<p class="lead">The {esc} works on Apple Silicon Macs and macOS 27 with this free, native arm64 macOS printer driver. No Rosetta, no Intel-only software from the printer maker.</p>
+<p class="lead">The {esc} works on Apple Silicon Macs (M1–M4) with {MACOS} with this free, native arm64 macOS printer driver. No Rosetta, no Intel-only software from the printer maker.</p>
 <div class="card">✅ <strong>{esc}</strong> is supported. Driver: {driver}. Model id: <code>{html.escape(mid)}</code></div>
 <h2>Install the {esc} driver</h2>
 {INSTALL_STEPS}
@@ -165,7 +185,7 @@ def model_page(m, b, siblings):
             [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]},
     ]
     return page(title, desc, url, body, ld,
-                keywords=f"{name} driver mac, {name} macos 27, {name} apple silicon, {name} m1, {b} printer driver mac")
+                keywords=f"{name} driver mac, {name} mac driver, {name} macos 27, {name} mac tahoe, {name} apple silicon, {name} m1, {b} printer driver mac")
 
 # ---- write model pages
 model_urls = []
@@ -203,7 +223,7 @@ faq = [
   "The printer maker's driver was built for Intel Macs only. On Apple Silicon it ran through Rosetta until macOS 27, which no longer allows that, and the maker never released an Apple Silicon version. This installer replaces it with a native driver."),
  ("I had the printer maker's old driver installed. Anything to do?",
   "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension behind that blocks macOS's own USB printer driver; the installer moves the old driver aside (to /Users/Shared/printer-driver-backup, nothing is deleted) and macOS needs one restart to notice. Other makers' drivers are left in place."),
- ("Still on macOS 26 or earlier?",
+ ("Still on macOS 26 Tahoe or earlier?",
   "Your printer works now, but it will stop after you update if it uses one of those old drivers. You can install this before or after updating."),
  ("My printer is on Wi-Fi, not USB.",
   "Install the package, then add the printer in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry ending in “Apple Silicon”."),
@@ -237,7 +257,7 @@ home_ld = [
            {"@type": "HowToStep", "text": "Print. The installer sets the printer up automatically; otherwise search the model on the site for the one command to add it."}]},
 ]
 home = f"""
-<h1>Printer stopped working after the macOS update?</h1>
+<h1>Printer not working on your Mac after the macOS update?</h1>
 <p class="lead">Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon (M1–M4). No Rosetta. Install once, print again.</p>
 
 <figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
@@ -253,7 +273,7 @@ home = f"""
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in by_brand)} <a href="{BASE}/brands/">all brands →</a></span></p>
 
-<h2>Questions</h2>
+<h2 id="faq">Questions</h2>
 {faq_html}
 
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
@@ -288,10 +308,10 @@ wire();
 </script>
 """
 (DOCS / "index.html").write_text(page(
-    f"Free Mac Printer Drivers for macOS 27 & Apple Silicon: {len(models):,} printers",
-    f"Fix “The printer software is not compatible with this device” on macOS 27 and M1–M4 Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
+    "“Printer Software Is Not Compatible With This Device” on Mac? Free Driver Fix",
+    f"Fix “The printer software is not compatible with this device” on macOS 27, Tahoe and M1–M4 Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
     f"{BASE}/", home, home_ld,
-    keywords="mac printer drivers, macos printer driver, macos 27 printer driver, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"))
+    keywords="mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"))
 urls.insert(0, f"{BASE}/")
 
 # ---- sitemap / robots / 404
@@ -300,5 +320,5 @@ urls.insert(0, f"{BASE}/")
     "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>0.5</priority></url>\n" for u in model_urls) + "</urlset>\n")
 (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 (DOCS / ".nojekyll").write_text("")
-(DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>'))
+(DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>', robots="noindex"))
 print(f"wrote {len(urls)} pages for {len(BRANDS)} brands and {len(model_urls)} model pages")
