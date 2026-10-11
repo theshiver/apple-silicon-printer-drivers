@@ -1660,6 +1660,19 @@
       <printer translate="name" name="Xerox WorkCentre 7345" driver="xerox-workcentre_7345" manufacturer="Xerox" model="50001" parameters="pcl_laser_params">EXPERIMENTAL</printer>
       <printer translate="name" name="Xerox WorkCentre C2424" driver="xerox-workcentre_c2424" manufacturer="Xerox" model="50001" parameters="pcl_laser_params">EXPERIMENTAL</printer>
       <printer translate="name" name="Xerox WorkCentre M118" deviceid="MFG:XEROX;MDL:WorkCentre M118;DES:XEROX WorkCentre M118;" driver="xerox-wc_m118" manufacturer="Xerox" model="61" parameters="pcl_laser_params" />
+      <!-- Added by apple-silicon-printer-drivers (build/add-pcl-models.sh): PCL lasers not in upstream Gutenprint. -->
+      <!-- PCL6 + GDI; same PCL engine generation as the HL-2250DN entry. -->
+      <printer translate="name" name="Brother HL-2170W" driver="brother-hl-2170w" manufacturer="Brother" model="62" parameters="pcl_laser_params" />
+      <!-- HP LaserJet Pro 200 series: PCL6, PCL5c and PostScript, same class as the P2015 entry. -->
+      <printer translate="name" name="HP LaserJet Pro M201n" driver="hp-lj_pro_m201n" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro M201dw" driver="hp-lj_pro_m201dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro M202n" driver="hp-lj_pro_m202n" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro M202dw" driver="hp-lj_pro_m202dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro MFP M225dn" driver="hp-lj_pro_m225dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro MFP M225dw" driver="hp-lj_pro_m225dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro MFP M226dn" driver="hp-lj_pro_m226dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro MFP M226dw" driver="hp-lj_pro_m226dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+
     </family>
   </printdef>
 </gutenprint>

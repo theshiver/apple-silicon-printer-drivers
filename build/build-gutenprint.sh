@@ -20,6 +20,7 @@ OUT="$ROOT/pkgroot/Library/Printers/Gutenprint"
 rm -rf "$OUT/share/gutenprint"
 mkdir -p "$OUT/libexec" "$OUT/share"
 cp -R "$W/stage/Library/Printers/Gutenprint/share/gutenprint" "$OUT/share/"
+"$HERE/add-pcl-models.sh" "$OUT/share/gutenprint/5.3/xml/printers/pcl.xml"
 cp "$W/stage/usr/libexec/cups/filter/rastertogutenprint.5.3" "$W/stage/usr/libexec/cups/filter/commandtocanon" "$W/stage/usr/libexec/cups/filter/commandtoepson" "$W/stage/usr/libexec/cups/filter/commandtodyesub" "$W/stage/usr/sbin/cups-genppd.5.3" "$OUT/libexec/"
 codesign -s - -f "$OUT/libexec/"*
 echo "done -> $OUT"

@@ -30,17 +30,21 @@ jobs:
       - name: Build brlaser (arm64) from source
         run: build/build-brlaser.sh
 
-      - name: Test printer setup and Brother filter chain
+      - name: Build SpliX (arm64) from source
+        run: build/build-splix.sh
+
+      - name: Test printer setup and Brother / Samsung filter chains
         run: |
           python3 -m unittest discover -s tests -v
           build/test-brlaser.sh
+          build/test-splix.sh
 
       - name: Smoke test — generated PPD must pass through the real filter chain
         run: |
           set -e
           GP=$PWD/pkgroot/Library/Printers/Gutenprint
           T=$(mktemp -d)
-          for M in bjc-MP250-series escp2-r300 hp-lj_1010 dnp-ds620; do
+          for M in bjc-MP250-series escp2-r300 hp-lj_1010 dnp-ds620 brother-hl-2170w hp-lj_pro_m201dw; do
             STP_DATA_PATH=$GP/share/gutenprint/5.3/xml "$GP/libexec/cups-genppd.5.3" -p "$T" "$M" >/dev/null
           done
           for Z in "$T"/*.ppd.gz; do

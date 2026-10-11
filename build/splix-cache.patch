@@ -1,0 +1,83 @@
+--- a/src/cache.cpp
++++ b/src/cache.cpp
+@@ -20,6 +20,7 @@
+  */
+ #ifndef DISABLE_THREADS
+ #include "cache.h"
++#include <string>
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+@@ -201,7 +202,6 @@
+ static void* _cacheControllerThread(void *_exitVar)
+ {
+     bool *needToExit = (bool *)_exitVar;
+-    bool whatToDo = true;
+ 
+     DEBUGMSG(_("Cache controller thread loaded and is waiting for a job"));
+     while (!(*needToExit)) {
+@@ -228,7 +228,29 @@
+         if (*needToExit)
+             break;
+ 
++        // The main thread waits for a page that was swapped to disk: restore
++        // it now. Otherwise, with the memory cache full and no new page
++        // waiting, nothing below runs and getNextPage() waits forever
++        // (manual duplex jobs longer than CACHESIZE pages).
++        {
++            CacheEntry *entry;
+ 
++            _pageTableLock.lock();
++            if (_pageRequested && _pageRequested <= _maxPagesInTable &&
++                (entry = _pages[_pageRequested - 1]) && entry->isSwapped()) {
++                entry->restoreIntoMemory();
++                // Handed over directly, outside the in-memory list (like a
++                // freshly stored page the main thread is waiting for)
++                entry->setNext(NULL);
++                entry->setPrevious(NULL);
++                _pageAvailable++;
++                _pageTableLock.unlock();
++                continue;
++            }
++            _pageTableLock.unlock();
++        }
++
++
+         /*
+          * Check what action to do
+          */
+@@ -236,16 +258,11 @@
+         if (!_waitingList && (_pagesInMemory == CACHESIZE || 
+             _pagesInMemory == _pagesInTable))
+             continue;
+-        // new page to append and pages to preload?
+-        // Choose one action of them to do (and inverse the action to do at 
+-        // each loop)
+-        if (_waitingList && !(_pagesInMemory == CACHESIZE || 
+-            _pagesInMemory == _pagesInTable)) {
+-            preloadPage = whatToDo;
+-            whatToDo = ~whatToDo;
+-        // One of the two thing to do
+-        } else
+-            preloadPage = (_waitingList == NULL);
++        // New pages are stored first: each one comes with its own _work
++        // token. Alternating with preloads (whatToDo = ~whatToDo, which
++        // never flips a bool) could leave the last page in the waiting list
++        // while the main thread waits for it.
++        preloadPage = (_waitingList == NULL);
+ 
+         /*
+          * Preload a page
+@@ -528,7 +545,11 @@
+ 
+ bool CacheEntry::swapToDisk()
+ {
+-    const char *path = "/tmp/splixV2-pageXXXXXX";
++    // The job's TMPDIR (the CUPS spool); Apple's cupsd sandbox doesn't let
++    // filters write to /tmp
++    std::string tmpl = std::string(getenv("TMPDIR") ? getenv("TMPDIR") :
++        "/tmp") + "/splixV2-pageXXXXXX";
++    const char *path = tmpl.c_str();
+     int fd;
+ 
+     if (_tempFile) {

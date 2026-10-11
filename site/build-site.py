@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-1.3.8.pkg"
+PKG = "AppleSilicon-Printer-Drivers-1.3.9.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -29,7 +29,7 @@ for m in models:
 BRANDS = sorted([b for b, l in by_brand.items() if len(l) >= 4], key=lambda b: -len(by_brand[b]))
 POPULAR = ["Canon","Epson","HP","Brother","Samsung","Lexmark","Xerox","Kyocera","Ricoh","Oki","Dell","Sharp","Kodak","Sony","Mitsubishi","DNP","Fujifilm","Panasonic"]
 slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.replace("+", " plus").lower()).strip("-")
-GUTENPRINT, BRLASER = "5.3.5", "6.2.8"
+GUTENPRINT, BRLASER, SPLIX = "5.3.5", "6.2.8", "2.0.2"
 VERSION = re.search(r"-(\d+(?:\.\d+)+)\.pkg$", PKG).group(1)
 
 def model_path(m):
@@ -83,7 +83,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
 <nav style="display:inline"><a href="{RELEASE}">Download</a><a href="{BASE}/#search">Is my printer supported?</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 {body}
-<footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+<footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, SpliX GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
 </main>
 </body></html>"""
 
@@ -138,8 +138,9 @@ def brand_page(b):
 def model_page(m, b, siblings):
     name, mid = m["name"], m["id"]
     esc = html.escape(name)
-    brlaser = mid.startswith("brlaser-")
+    brlaser, splix = mid.startswith("brlaser-"), mid.startswith("splix-")
     driver = (f'<a href="https://github.com/Owl-Maintain/brlaser">brlaser {BRLASER}</a>' if brlaser
+              else f'<a href="https://github.com/OpenPrinting/splix">SpliX {SPLIX}</a>' if splix
               else f'<a href="https://gimp-print.sourceforge.io/">Gutenprint {GUTENPRINT}</a>')
     brand_url = f"{BASE}/{slug(b)}/" if b in BRANDS else f"{BASE}/brands/"
     brand_label = f"{b} printers" if b in BRANDS else "All brands"
@@ -150,6 +151,8 @@ def model_page(m, b, siblings):
         notes.append("<p><strong>Black missing or faint?</strong> Run a nozzle check from the printer first: a clogged or empty black cartridge is the usual cause, and this driver can't read ink levels like Epson's did. Then make sure no color-only mode is picked under Resolution or Ink Set in Printer Features.</p>")
     if brlaser:
         notes.append(f"<p>The {esc} is a Brother laser without PCL or AirPrint, so it uses the bundled native arm64 brlaser driver rather than Gutenprint. Duplex, toner save and resolution are in the print dialog under Printer Features.</p>")
+    if splix:
+        notes.append(f"<p>The {esc} speaks Samsung's SPL printer language rather than PCL or PostScript, so it uses the bundled native arm64 SpliX driver rather than Gutenprint. Toner save, density and resolution are in the print dialog under Printer Features.</p>")
     sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
     title = f"{name} Driver for Mac (macOS 27, Tahoe, M1–M4) – Free"
     desc = (f"Free native driver for the {name} on Apple Silicon Macs (M1–M4). Fixes “The printer software is not compatible "
@@ -209,7 +212,7 @@ brand_links = "\n".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)} ({len(by_
 (DOCS / "brands").mkdir(exist_ok=True)
 (DOCS / "brands" / "index.html").write_text(page(
     "Supported printer brands — Apple Silicon Mac drivers",
-    f"{len(models)} printer models from {len(BRANDS)} brands supported by native arm64 Gutenprint and brlaser drivers for macOS.",
+    f"{len(models)} printer models from {len(BRANDS)} brands supported by native arm64 Gutenprint, brlaser and SpliX drivers for macOS.",
     f"{BASE}/brands/",
     f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"))
 urls.append(f"{BASE}/brands/")
@@ -237,6 +240,10 @@ faq = [
   "Expected: the open source drivers can't read ink or toner levels from the printer, only the maker's driver could. Check levels on the printer's own screen or with a nozzle check."),
  ("My printer isn't in the list.",
   "Many newer printers, including Brother color lasers such as the MFC-L3770CDW, support AirPrint and need no driver: connect the printer to your network (Wi-Fi or Ethernet), then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB."),
+ ("My Brother ink tank printer (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) isn't supported.",
+  "Brother's DCP-T and MFC-T ink tank printers have no open source driver, and Brother's Linux driver for them is closed source and Intel-only, so this package can't add them. Check your model's Downloads page on support.brother.com for a current macOS driver. If the printer supports AirPrint, connect it to your network and add it in System Settings → Printers & Scanners with Use: AirPrint."),
+ ("My HP LaserJet 1018, 1020, P1005 or P1006 isn't supported.",
+  "These are host-based printers: they don't understand PCL, and they need HP's firmware sent to them every time they are switched on. Gutenprint can't drive them, so they aren't supported. Picking a similar model such as the LaserJet 1022 doesn't work either: the job goes through, but nothing prints."),
  ("Does the scanner on my all-in-one work?",
   "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical); both run natively on Apple Silicon."),
  ("Is it safe? Will macOS complain?",
@@ -279,7 +286,7 @@ home = f"""
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
 
 <h2>How it works</h2>
-<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/Owl-Maintain/brlaser">brlaser 6.2.8</a> driver. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
+<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/Owl-Maintain/brlaser">brlaser 6.2.8</a> driver, and Samsung, Xerox and Dell lasers that speak SPL (ML-1640, ML-2010, SCX-4200, Phaser 3117 and similar) use <a href="https://github.com/OpenPrinting/splix">SpliX 2.0.2</a>. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
 
 <script>
 const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1;
