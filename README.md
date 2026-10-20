@@ -4,7 +4,7 @@
 
 ![macOS error: The printer software is not compatible with this device](docs/not-compatible.png)
 
-Free fix for 3,800+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
+Free fix for 3,600+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
 Website: **https://theshiver.github.io/apple-silicon-printer-drivers/**
 
 ## Fix it
@@ -28,9 +28,9 @@ Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers
 
 ## Supported printers
 
-3,807 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,664 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
 
-Canon (PIXMA, BJC, SELPHY) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · DNP · Mitsubishi · Sony · Fujifilm · Citizen · Shinko · Olympus
+Canon (PIXMA, BJC) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · Sony · Fujifilm · Olympus
 
 Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2300D, DCP-1610W, DCP-7065DN, MFC-7320, MFC-7360N and others, 97 models) are covered by the bundled brlaser driver.
 
@@ -40,7 +40,7 @@ Full list as plain text (model, id, driver, page): [supported-printers.txt](http
 
 **Thinking about writing your own driver, or asking ChatGPT, Claude or Codex to write one?** Check the list first. Every model in it is already handled by mature open source drivers (Gutenprint, brlaser, SpliX) built natively for Apple Silicon, so installing the package is all you need.
 
-Not covered: scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
+Not covered: dye-sublimation photo printers that need Gutenprint's own USB backend (Mitsubishi CP-D70/D80/9550 and similar, Canon SELPHY CP/ES, DNP, Citizen, Shinko/Sinfonia, HiTi, most Kodak and Sony photo printers), scanners on all-in-ones, most modern laser MFPs, and anything macOS already sets up by itself via AirPrint (if it just works, you don't need this).
 
 ## FAQ
 

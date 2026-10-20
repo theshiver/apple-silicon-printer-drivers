@@ -1,4 +1,4 @@
-# Apple Silicon Printer Drivers: 3807 supported printer models (version 1.3.9)
+# Apple Silicon Printer Drivers: 3664 supported printer models (version 1.3.9)
 # Every model below works on Apple Silicon Macs (M1-M4) with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -190,12 +190,6 @@ Canon BJC-80 | bjc-80 | Gutenprint | https://theshiver.github.io/apple-silicon-p
 Canon BJC-8200 | bjc-8200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/bjc-8200/
 Canon BJC-85 | bjc-85 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/bjc-85/
 Canon BJC-8500 | bjc-8500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/bjc-8500/
-Canon CP-10 | canon-cp10 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-10/
-Canon CP-100 | canon-cp100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-100/
-Canon CP-200 | canon-cp200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-200/
-Canon CP-220 | canon-cp220 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-220/
-Canon CP-300 | canon-cp300 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-300/
-Canon CP-330 | canon-cp330 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/cp-330/
 Canon E3100 series | bjc-E3100-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/e3100-series/
 Canon E400 series | bjc-E400-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/e400-series/
 Canon E410 series | bjc-E410-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/e410-series/
@@ -1370,38 +1364,8 @@ Canon S820 | bjc-s820 | Gutenprint | https://theshiver.github.io/apple-silicon-p
 Canon S830D | bjc-s830 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/s830d/
 Canon S900 | bjc-s900 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/s900/
 Canon S9000 | bjc-s9000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/s9000/
-Canon SELPHY CP1000 | canon-cp1000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp1000/
-Canon SELPHY CP1200 | canon-cp1200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp1200/
-Canon SELPHY CP1300 | canon-cp1300 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp1300/
-Canon SELPHY CP1500 | canon-cp1500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp1500/
-Canon SELPHY CP400 | canon-cp400 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp400/
-Canon SELPHY CP500 | canon-cp500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp500/
-Canon SELPHY CP510 | canon-cp510 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp510/
-Canon SELPHY CP520 | canon-cp520 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp520/
-Canon SELPHY CP530 | canon-cp530 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp530/
-Canon SELPHY CP600 | canon-cp600 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp600/
-Canon SELPHY CP710 | canon-cp710 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp710/
-Canon SELPHY CP720 | canon-cp720 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp720/
-Canon SELPHY CP730 | canon-cp730 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp730/
-Canon SELPHY CP740 | canon-cp740 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp740/
-Canon SELPHY CP750 | canon-cp750 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp750/
-Canon SELPHY CP760 | canon-cp760 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp760/
-Canon SELPHY CP770 | canon-cp770 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp770/
-Canon SELPHY CP780 | canon-cp780 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp780/
-Canon SELPHY CP790 | canon-cp790 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp790/
-Canon SELPHY CP800 | canon-cp800 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp800/
-Canon SELPHY CP810 | canon-cp810 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp810/
-Canon SELPHY CP820 | canon-cp820 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp820/
-Canon SELPHY CP900 | canon-cp900 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp900/
-Canon SELPHY CP910 | canon-cp910 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-cp910/
 Canon SELPHY DS700 | bjc-SELPHY-DS700 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-ds700/
 Canon SELPHY DS810 | bjc-SELPHY-DS810 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-ds810/
-Canon SELPHY ES1 | canon-es1 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es1/
-Canon SELPHY ES2 | canon-es2 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es2/
-Canon SELPHY ES20 | canon-es20 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es20/
-Canon SELPHY ES3 | canon-es3 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es3/
-Canon SELPHY ES30 | canon-es30 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es30/
-Canon SELPHY ES40 | canon-es40 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/selphy-es40/
 Canon SmartBase MP360 | bjc-SmartBase-MP360 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/smartbase-mp360/
 Canon SmartBase MP360S | bjc-SmartBase-MP360S | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/smartbase-mp360s/
 Canon SmartBase MP370 | bjc-SmartBase-MP370 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/smartbase-mp370/
@@ -1415,18 +1379,6 @@ Canon TS5000 series | bjc-TS5000-series | Gutenprint | https://theshiver.github.
 Canon TS6000 series | bjc-TS6000-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/ts6000-series/
 Canon TS8000 series | bjc-TS8000-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/ts8000-series/
 Canon TS9000 series | bjc-TS9000-series | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/canon/ts9000-series/
-CIAAT Brava 21 | ciaat-brava-21 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ciaat/brava-21/
-Citizen CW-01 | citizen-cw-01 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cw-01/
-Citizen CW-02 | citizen-cw-02 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cw-02/
-Citizen CX | citizen-cx | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cx/
-Citizen CX-02 | citizen-cx-02 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cx-02/
-Citizen CX-02W | citizen-cx-02w | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cx-02w/
-Citizen CX-W | citizen-cx-w | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cx-w/
-Citizen CY | citizen-cy | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cy/
-Citizen CY-02 | citizen-cy-02 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cy-02/
-Citizen CZ-01 | citizen-cz-01 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/cz-01/
-Citizen OP900 | citizen-op900 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/op900/
-Citizen OP900II | citizen-op900ii | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/op900ii/
 Citizen ProJet II | citizen-projet_ii | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/citizen/projet-ii/
 Compaq IJ1200 | compaq-ij1200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/compaq/ij1200/
 Datamax-ONeil E4204B Mark III | datamax_oneil_E4204B | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/datamax/e4204b-mark-iii/
@@ -1470,15 +1422,6 @@ Dell 1100 | splix-dell-1100 | SpliX | https://theshiver.github.io/apple-silicon-
 Dell 1110 | splix-dell-1110 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/dell/1110/
 Dell 3000cn | dell-3000cn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dell/3000cn/
 Dell 3100cn | dell-3100cn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dell/3100cn/
-Dai Nippon Printing DS40 | dnp-ds40 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds40/
-Dai Nippon Printing DS480 | dnp-ds480 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds480/
-Dai Nippon Printing DS620 | dnp-ds620 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds620/
-Dai Nippon Printing DS680 | dnp-ds680 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds680/
-Dai Nippon Printing DS80 | dnp-ds80 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds80/
-Dai Nippon Printing DS80DX | dnp-ds80dx | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds80dx/
-Dai Nippon Printing DS820 | dnp-ds820 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-ds820/
-Dai Nippon Printing DSRX1 | dnp-dsrx1 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-dsrx1/
-Dai Nippon Printing QW410 | dnp-qw410 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-qw410/
 Dai Nippon Printing SL10 | dnp-sl10 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-sl10/
 Dai Nippon Printing SL20 | dnp-sl20 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/dnp/nippon-printing-sl20/
 Epson ActionLaser 1100 | epson-actl_1100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/epson/actionlaser-1100/
@@ -2103,10 +2046,6 @@ Epson WorkForce 633 | escp2-wf633 | Gutenprint | https://theshiver.github.io/app
 Epson WorkForce 635 | escp2-wf636 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/epson/workforce-635/
 Epson WorkForce 645 | escp2-wf645 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/epson/workforce-645/
 Epson XP-15000 Series | escp2-xp15000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/epson/xp-15000-series/
-Fujifilm ASK-2000 | fujifilm-ask-2000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/ask-2000/
-Fujifilm ASK-2500 | fujifilm-ask-2500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/ask-2500/
-Fujifilm ASK-300 | fujifilm-ask-300 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/ask-300/
-Fujifilm ASK-4000 | fujifilm-ask-4000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/ask-4000/
 Fujifilm DX100 | escp2-fujifilm-dx100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/dx100/
 Fujifilm FinePix-NX-500 | fujifilm-nx500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/finepix-nx-500/
 Fujifilm Printpix-CX-400 | fujifilm-cx400 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/printpix-cx-400/
@@ -2257,18 +2196,6 @@ Gestetner MPC3500/DSc535 | gestetner-mpc3500_dsc535 | Gutenprint | https://thesh
 Gestetner MPC4500/DSc545 | gestetner-mpc4500_dsc545 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mpc4500-dsc545/
 Gestetner Pro C5200S | gestetner-pro_c5200s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/pro-c5200s/
 Gestetner Pro C5210S | gestetner-pro_c5210s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/pro-c5210s/
-HiTi P510K | hiti-p510k | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p510k/
-HiTi P510L | hiti-p510l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p510l/
-HiTi P510S | hiti-p510s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p510s/
-HiTi P510Si | hiti-p510si | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p510si/
-HiTi P518A | hiti-p518a | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p518a/
-HiTi P518S | hiti-p518s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p518s/
-HiTi P520L | hiti-p520l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p520l/
-HiTi P525L | hiti-p525l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p525l/
-HiTi P720L | hiti-p720l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p720l/
-HiTi P728L | hiti-p728l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p728l/
-HiTi P750L | hiti-p750l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/p750l/
-HiTi Prinhome P461 | hiti-p461 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hiti/prinhome-p461/
 Honeywell RP2 | honeywell_rp2 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/honeywell/rp2/
 Honeywell RP4 | honeywell_rp4 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/honeywell/rp4/
 HP Business Inkjet 2200 | hp-bij_2200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/hp/business-inkjet-2200/
@@ -2776,21 +2703,7 @@ Infotec Pro C7100 | infotec-pro_c7100 | Gutenprint | https://theshiver.github.io
 Infotec Pro C7100S | infotec-pro_c7100s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/infotec/pro-c7100s/
 Infotec Pro C7110 | infotec-pro_c7110 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/infotec/pro-c7110/
 Infotec Pro C7110S | infotec-pro_c7110s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/infotec/pro-c7110s/
-Joyspace U826L | joyspace-u826 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/joyspace/u826l/
-Kodak 1400 | kodak-1400 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/1400/
-Kodak 305 | kodak-305 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/305/
-Kodak 605 | kodak-605 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/605/
-Kodak 6800 | kodak-6800 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/6800/
-Kodak 6850 | kodak-6850 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/6850/
-Kodak 6900 | kodak-6900 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/6900/
-Kodak 7000 | kodak-7000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/7000/
-Kodak 7010 | kodak-7010 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/7010/
-Kodak 7015 | kodak-7015 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/7015/
-Kodak 805 | kodak-805 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/805/
 Kodak 8500 | kodak-8500 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/8500/
-Kodak 8800 | kodak-8800 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/8800/
-Kodak 8810 | kodak-8810 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/8810/
-Kodak 9810 | kodak-9810 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/9810/
 Kodak EasyShare-G600-Printer-Dock | kodak-g600-dock | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/easyshare-g600-printer-dock/
 Kodak Easyshare-Printer-Dock | kodak-dock | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/easyshare-printer-dock/
 Kodak PD-4000 | kodak-pd-4000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/kodak/pd-4000/
@@ -3053,45 +2966,12 @@ Lexmark Z42 | lexmark-z42 | Gutenprint | https://theshiver.github.io/apple-silic
 Lexmark Z43 | lexmark-z43 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/z43/
 Lexmark Z52 | lexmark-z52 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/z52/
 Lexmark Z53 | lexmark-z53 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/z53/
-Magicard Rio 2E | magicard-rio-2e | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/magicard/rio-2e/
-Magicard Tango 2E | magicard-tango-2e | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/magicard/tango-2e/
 Minolta PagePro 1100 | minolta-pp_1100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-1100/
 Minolta PagePro 6 | minolta-pp_6 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-6/
 Minolta PagePro 6e | minolta-pp_6e | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-6e/
 Minolta PagePro 6ex | minolta-pp_6ex | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-6ex/
 Minolta PagePro 8 | minolta-pp_8 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-8/
 Minolta PagePro 8L | minolta-pp_8l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/minolta/pagepro-8l/
-Mitsubishi CP-3020D | mitsubishi-3020d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3020d/
-Mitsubishi CP-3020DA | mitsubishi-3020da | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3020da/
-Mitsubishi CP-3020DAE | mitsubishi-3020dae | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3020dae/
-Mitsubishi CP-3020DE | mitsubishi-3020de | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3020de/
-Mitsubishi CP-3020DU | mitsubishi-3020du | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3020du/
-Mitsubishi CP-3800DW | mitsubishi-cp-3800dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-3800dw/
-Mitsubishi CP-9500DW | mitsubishi-9500dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9500dw/
-Mitsubishi CP-9550D | mitsubishi-9550d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9550d/
-Mitsubishi CP-9550DW | mitsubishi-9550dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9550dw/
-Mitsubishi CP-9550DW-S | mitsubishi-9550dw-s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9550dw-s/
-Mitsubishi CP-9550DZ | mitsubishi-9550dz | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9550dz/
-Mitsubishi CP-9600DW | mitsubishi-9600dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9600dw/
-Mitsubishi CP-9800D | mitsubishi-9800d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9800d/
-Mitsubishi CP-9800DW | mitsubishi-9800dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9800dw/
-Mitsubishi CP-9800DW-S | mitsubishi-9800dw-s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9800dw-s/
-Mitsubishi CP-9800DZ | mitsubishi-9800dz | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9800dz/
-Mitsubishi CP-9810D | mitsubishi-9810d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9810d/
-Mitsubishi CP-9810DW | mitsubishi-9810dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9810dw/
-Mitsubishi CP-9820DW-AG | mitsubishi-9820dw-ag | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-9820dw-ag/
-Mitsubishi CP-D707DW | mitsubishi-d707dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-d707dw/
-Mitsubishi CP-D70DW | mitsubishi-d70dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-d70dw/
-Mitsubishi CP-D80DW | mitsubishi-d80dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-d80dw/
-Mitsubishi CP-D90DW | mitsubishi-d90dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-d90dw/
-Mitsubishi CP-D90DW-SL | mitsubishi-d90dwsl | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-d90dw-sl/
-Mitsubishi CP-K60DW-S | mitsubishi-k60dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-k60dw-s/
-Mitsubishi CP-M1 | mitsubishi-cpm1 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-m1/
-Mitsubishi CP-M15 | mitsubishi-cpm15 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-m15/
-Mitsubishi CP-W5000 | mitsubishi-cpw5000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp-w5000/
-Mitsubishi CP30DW | mitsubishi-cp30dw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/cp30dw/
-Mitsubishi P93D | mitsubishi-p93d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/p93d/
-Mitsubishi P95D | mitsubishi-p95d | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/mitsubishi/p95d/
 NEC SuperScript 1260 | nec-ssc_1260 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/nec/superscript-1260/
 NEC SuperScript 1400 | nec-ssc_1400 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/nec/superscript-1400/
 NEC SuperScript 1800 | nec-ssc_1800 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/nec/superscript-1800/
@@ -3251,7 +3131,6 @@ Oki OL810ex | okidata-ol810ex | Gutenprint | https://theshiver.github.io/apple-s
 Oki Super 6e | okidata-super_6e | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/oki/super-6e/
 Olivetti JP350S | olivetti-jp350s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olivetti/jp350s/
 Olivetti PG 306 | olivetti-pg_306 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olivetti/pg-306/
-Olmec OP1000 | olmec-op1000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olmec/op1000/
 Olympus P-10 | olympus-p10 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olympus/p-10/
 Olympus P-11 | olympus-p11 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olympus/p-11/
 Olympus P-200 | olympus-p200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/olympus/p-200/
@@ -3658,37 +3537,15 @@ Sharp MX-4500FN | sharp-mx-4500fn | Gutenprint | https://theshiver.github.io/app
 Sharp MX-4500N | sharp-mx-4500n | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sharp/mx-4500n/
 Sharp MX-4501FN | sharp-mx-4501fn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sharp/mx-4501fn/
 Sharp MX-4501N | sharp-mx-4501n | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sharp/mx-4501n/
-Shinko CHC-S1245 | shinko-chcs1245 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/shinko/chc-s1245/
-Shinko CHC-S2145 | shinko-chcs2145 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/shinko/chc-s2145/
-Shinko CHC-S6145 | shinko-chcs6145 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/shinko/chc-s6145/
-Shinko CHC-S6245 | shinko-chcs6245 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/shinko/chc-s6245/
 Shinko CHC-S9045 | shinko-chcs9045 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/shinko/chc-s9045/
-Sinfonia CHC-S1245/E1 | sinfonia-chcs1245 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sinfonia/chc-s1245-e1/
-Sinfonia CHC-S2145/S2 | sinfonia-chcs2145 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sinfonia/chc-s2145-s2/
-Sinfonia CHC-S2245/S3 | sinfonia-chcs2245 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sinfonia/chc-s2245-s3/
-Sinfonia CHC-S6145/CS2 | sinfonia-chcs6145 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sinfonia/chc-s6145-cs2/
-Sinfonia CHC-S6245/CE1 | sinfonia-chcs6245 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sinfonia/chc-s6245-ce1/
 Sony DPP-EX5 | sony-dppex5 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/dpp-ex5/
 Sony DPP-EX7 | sony-dppex7 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/dpp-ex7/
 Sony IJP-V100 | sony-ijp-v100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/ijp-v100/
-Sony UP-971AD | sony-up971ad | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-971ad/
 Sony UP-991AD | sony-up991ad | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-991ad/
-Sony UP-CR10L | sony-upcr10l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-cr10l/
-Sony UP-CR20L | sony-upcr20l | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-cr20l/
-Sony UP-CX1 | sony-upcx1 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-cx1/
-Sony UP-D711MD | sony-upd711 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-d711md/
-Sony UP-D895 | sony-upd895 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-d895/
-Sony UP-D897 | sony-upd897 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-d897/
-Sony UP-D898 | sony-upd898 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-d898/
-Sony UP-D898MD | sony-upd898md | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-d898md/
 Sony UP-DP10 | sony-updp10 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-dp10/
 Sony UP-DR100 | sony-updr100 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-dr100/
-Sony UP-DR150 | sony-updr150 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-dr150/
-Sony UP-DR200 | sony-updr200 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-dr200/
-Sony UP-DR80MD | sony-updr80md | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/sony/up-dr80md/
 Star LaserPrinter 8 | star-lp_8 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/star/laserprinter-8/
 Star LS-04 | star-ls-04 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/star/ls-04/
-Stryker SDP1000 | stryker-sdp1000 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/stryker/sdp1000/
 Tally MT908 | tally-mt908 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/tally/mt908/
 Tektronix Phaser 750DP | tektronix-phaser_750dp | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/tektronix/phaser-750dp/
 Tektronix Phaser 750DX | tektronix-phaser_750dx | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/tektronix/phaser-750dx/

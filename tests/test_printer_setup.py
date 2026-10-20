@@ -25,6 +25,7 @@ class PrinterSetupTest(unittest.TestCase):
         (self.gp / "libexec").mkdir()
         shutil.copytree(PAYLOAD / "share/brlaser/ppd", self.gp / "share/brlaser/ppd")
         shutil.copytree(PAYLOAD / "share/splix/ppd", self.gp / "share/splix/ppd")
+        shutil.copy(PAYLOAD / "share/dyesub-backend-only.txt", self.gp / "share")
         self.helper = self.gp / "bin/gutenprint-add"
         self.helper.write_text((PAYLOAD / "bin/gutenprint-add").read_text().replace(
             "GP=/Library/Printers/Gutenprint", f'GP="{self.gp}"').replace(
@@ -36,10 +37,10 @@ if [ "$1" = -M ] && [ "${2:-}" = -v ]; then
     bjc-MP250-series 'Canon MP250 series' escp2-r300 'Epson Stylus Photo R300' \
     bjc-Pro9000mk2-series 'Canon Pro9000 Mk.II series' brother-hl-2170w 'Brother HL-2170W' \
     hp-lj_p2015 'HP LaserJet P2015' hp-lj_pro_m201dw 'HP LaserJet Pro M201dw' \
-    hp-lj_pro_m225dw 'HP LaserJet Pro MFP M225dw'
+    hp-lj_pro_m225dw 'HP LaserJet Pro MFP M225dw' mitsubishi-d70dw 'Mitsubishi CP-D70DW'
 elif [ "$1" = -M ]; then
   printf '%s\n' brother-hl-5040 brother-hl-5030 bjc-MP250-series escp2-r300 bjc-Pro9000mk2-series \
-    brother-hl-2170w hp-lj_p2015 hp-lj_pro_m201dw hp-lj_pro_m225dw
+    brother-hl-2170w hp-lj_p2015 hp-lj_pro_m201dw hp-lj_pro_m225dw mitsubishi-d70dw
 elif [ "$3" = bjc-MP250-series ]; then
   printf '*PPD-Adobe: "4.3"\n*ShortNickName: "Canon MP250 series"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*OpenUI *StpCDXAdjustment/CD Adjustment: PickOne\n*StpCDXAdjustment 0/0 mm: ""\n*CloseUI: *StpCDXAdjustment\n*CustomStpCDXAdjustment True: "pop"\n*ParamCustomStpCDXAdjustment Value/Value: 1 points -15 15\n' > "$2/stp.ppd"
 else
@@ -168,6 +169,14 @@ fi
             with self.subTest(model=model):
                 self.run_helper(model, success=False)
         self.assertFalse((self.root / "ppds").exists())
+
+    def test_backend_only_dyesubs_are_hidden_and_refused(self):
+        self.assertNotIn("mitsubishi-d70dw", self.run_helper("--list"))
+        self.assertEqual(self.run_helper("--match-usb", "usb://Mitsubishi/CP-D70DW?serial=1"), "")
+        self.assertIn("not supported yet", self.run_helper("mitsubishi-d70dw", "Q", "usb://Mitsubishi/CP-D70DW", success=False))
+        self.assertFalse((self.root / "lpadmin.log").exists())
+        catalog = {m["id"] for m in json.loads((ROOT / "docs/models.json").read_text())}
+        self.assertFalse(catalog & set((PAYLOAD / "share/dyesub-backend-only.txt").read_text().split()))
 
     def test_website_catalog_and_ppd_agree(self):
         models = json.loads((ROOT / "docs/models.json").read_text())
