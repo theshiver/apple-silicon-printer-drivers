@@ -297,7 +297,7 @@ home = f"""
 <ul id="results"></ul>
 <div id="answer" class="card hidden"></div>
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
-<p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in by_brand)} <a href="{BASE}/brands/">all brands →</a></span></p>
+<p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></span></p>
 
 <h2 id="faq">Questions</h2>
 {faq_html}

@@ -6,7 +6,12 @@
 GP=/Library/Printers/Gutenprint
 GEN="$GP/libexec/cups-genppd.5.3"
 PPDDIR=/Library/Printers/PPDs/Contents/Resources
+# Dye-subs that only print through Gutenprint's own USB backend, which this package doesn't ship (issue #18)
+NOBACKEND="$GP/share/dyesub-backend-only.txt"
 list_models() {
+  all_models | awk -v f="$NOBACKEND" 'BEGIN { while ((getline l < f) > 0) skip[l] = 1 } !($1 in skip)'
+}
+all_models() {
   # -M -v pads ids to 20 columns and runs longer ids into the name
   # ("bjc-Pro9000mk2-seriesCanon ..."); take the ids from -M, same order.
   "$GEN" -M -v 2>/dev/null | awk -v ids="\"$GEN\" -M 2>/dev/null" '
@@ -37,6 +42,10 @@ case "${1:-}" in
 esac
 MODEL=$1; QUEUE=${2:-}; URI=${3:-}
 case "$MODEL" in *[!A-Za-z0-9_-]*) echo "invalid model id"; exit 1;; esac
+if grep -qsx -- "$MODEL" "$NOBACKEND"; then
+  echo "$MODEL is not supported yet: it needs Gutenprint's dye-sub USB backend, which this package doesn't include"
+  exit 1
+fi
 [ "$(id -u)" = 0 ] || { echo "run with sudo"; exit 1; }
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
 case "$MODEL" in
