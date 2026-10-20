@@ -1,4 +1,4 @@
-# Apple Silicon Printer Drivers: 3664 supported printer models (version 1.3.9)
+# Apple Silicon Printer Drivers: 3664 supported printer models (version 1.3.10)
 # Every model below works on Apple Silicon Macs (M1-M4) with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
