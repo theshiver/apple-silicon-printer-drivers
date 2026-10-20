@@ -1,4 +1,4 @@
-# Apple Silicon Printer Drivers: 3806 supported printer models (version 1.3.9)
+# Apple Silicon Printer Drivers: 3807 supported printer models (version 1.3.9)
 # Every model below works on Apple Silicon Macs (M1-M4) with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -3799,6 +3799,7 @@ Xerox Phaser 8550DP | xerox-phaser_8550dp | Gutenprint | https://theshiver.githu
 Xerox Phaser 8550DT | xerox-phaser_8550dt | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/phaser-8550dt/
 Xerox Phaser 8550DX | xerox-phaser_8550dx | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/phaser-8550dx/
 Xerox Phaser 8560DN | xerox-phaser_8560dn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/phaser-8560dn/
+Xerox Phaser 8560N | xerox-phaser_8560n | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/phaser-8560n/
 Xerox Phaser 8860 | xerox-phaser_8860 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/phaser-8860/
 Xerox WorkCentre 3025 | splix-xerox-workcentre-3025 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/workcentre-3025/
 Xerox WorkCentre 3119 | splix-xerox-workcentre-3119 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/xerox/workcentre-3119/

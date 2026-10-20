@@ -1672,6 +1672,8 @@
       <printer translate="name" name="HP LaserJet Pro MFP M225dw" driver="hp-lj_pro_m225dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
       <printer translate="name" name="HP LaserJet Pro MFP M226dn" driver="hp-lj_pro_m226dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
       <printer translate="name" name="HP LaserJet Pro MFP M226dw" driver="hp-lj_pro_m226dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <!-- Xerox Phaser 8560N: the no-duplex config of the 8560DN, same PCL 5c engine. -->
+      <printer translate="name" name="Xerox Phaser 8560N" driver="xerox-phaser_8560n" manufacturer="Xerox" model="6" parameters="pcl_laser_params" />
 
     </family>
   </printdef>
