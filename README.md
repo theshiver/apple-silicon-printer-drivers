@@ -1,4 +1,4 @@
-# Apple Silicon Printer Drivers
+# Mac Printer Drivers for Apple Silicon
 
 **Your printer stopped working after a macOS update? "The printer software is not compatible with this device"?**
 

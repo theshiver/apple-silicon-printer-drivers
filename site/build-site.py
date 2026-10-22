@@ -83,7 +83,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
 <style>{CSS}</style>
 </head>
 <body>
-<header><a href="{BASE}/">🖨 Apple Silicon Printer Drivers</a>
+<header><a href="{BASE}/">🖨 Mac Printer Drivers</a>
 <nav style="display:inline"><a href="{RELEASE}">Download</a><a href="{BASE}/#search">Is my printer supported?</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
 <main>
 {body}
@@ -227,7 +227,7 @@ for b in BRANDS:
 brand_links = "\n".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)} ({len(by_brand[b])})</a>' for b in BRANDS)
 (DOCS / "brands").mkdir(exist_ok=True)
 (DOCS / "brands" / "index.html").write_text(page(
-    "Supported printer brands — Apple Silicon Mac drivers",
+    "Supported printer brands — Mac printer drivers for Apple Silicon",
     f"{len(models)} printer models from {len(BRANDS)} brands supported by native arm64 Gutenprint, brlaser and SpliX drivers for macOS.",
     f"{BASE}/brands/",
     f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"))
@@ -271,7 +271,7 @@ faq = [
 ]
 faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in faq)
 home_ld = [
- {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Apple Silicon Printer Drivers (Gutenprint arm64)",
+ {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Mac Printer Drivers for Apple Silicon (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
   "downloadUrl": RELEASE, "softwareVersion": VERSION, "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
   "image": f"{BASE}/not-compatible.png", "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
@@ -349,13 +349,13 @@ urls.insert(0, f"{BASE}/")
 (DOCS / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
 ordered = sorted(models, key=lambda m: (brand_of(m).lower(), m["name"].lower()))
 (DOCS / "supported-printers.txt").write_text(
-    f"# Apple Silicon Printer Drivers: {len(models)} supported printer models (version {VERSION})\n"
+    f"# Mac Printer Drivers for Apple Silicon: {len(models)} supported printer models (version {VERSION})\n"
     f"# Every model below works on Apple Silicon Macs with macOS 12 or later, including macOS 26 Tahoe and macOS 27.\n"
     f"# One signed and notarized installer covers all of them: {RELEASE}\n"
     f"# USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]\n"
     f"# Columns: model name | model id | driver | instructions page\n" +
     "".join(f"{m['name']} | {m['id']} | {driver_name(m['id'])} | {BASE}/{model_path(m)}/\n" for m in ordered))
-(DOCS / "llms.txt").write_text(f"""# Apple Silicon Printer Drivers
+(DOCS / "llms.txt").write_text(f"""# Mac Printer Drivers for Apple Silicon
 
 > Free, open source, signed and notarized macOS package with native arm64 printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark, Xerox and other printers. It fixes "The printer software is not compatible with this device" on Apple Silicon Macs with macOS 27, macOS 26 Tahoe and macOS 15 Sequoia, where the printer maker's Intel-only driver no longer runs because Rosetta is gone.
 
