@@ -43,6 +43,9 @@ elif [ "$1" = -M ]; then
     brother-hl-2170w hp-lj_p2015 hp-lj_pro_m201dw hp-lj_pro_m225dw mitsubishi-d70dw
 elif [ "$3" = bjc-MP250-series ]; then
   printf '*PPD-Adobe: "4.3"\n*ShortNickName: "Canon MP250 series"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*OpenUI *StpCDXAdjustment/CD Adjustment: PickOne\n*StpCDXAdjustment 0/0 mm: ""\n*CloseUI: *StpCDXAdjustment\n*CustomStpCDXAdjustment True: "pop"\n*ParamCustomStpCDXAdjustment Value/Value: 1 points -15 15\n' > "$2/stp.ppd"
+  # like the real genppd, a comma-decimal locale changes the number format
+  if [ "${LC_ALL:-}" = C ]; then n=612.000; else n=612,000; fi
+  printf '*StpDriverName: "bjc-MP250-series"\n*PageSize Letter/Letter: "<</PageSize[%s 792.000]>>setpagedevice"\n' "$n" >> "$2/stp.ppd"
 else
   exit 1
 fi
@@ -153,6 +156,30 @@ fi
         ppd = Path(args[args.index("-P") + 1]).read_text()
         self.assertIn("*StpCDXAdjustment 0/0 mm", ppd)
         self.assertNotIn("CustomStp", ppd)  # macOS 27 Printer Features OK breaks on these (#1)
+
+    def test_ppd_numbers_ignore_comma_decimal_locale(self):
+        self.env["LC_ALL"] = "de_DE.UTF-8"
+        self.run_helper("bjc-MP250-series", "Canon", "usb://Canon/MP250")
+        args = (self.root / "lpadmin.log").read_text().splitlines()
+        ppd = Path(args[args.index("-P") + 1]).read_text()
+        self.assertIn("PageSize[612.000 792.000]", ppd)
+
+    def test_postinstall_refreshes_comma_decimal_queues(self):
+        src = (ROOT / "scripts/postinstall").read_text()
+        step2 = src[src.index("# ---- 2)"):src.index("# ---- 3)")]
+        cups = self.root / "cups"
+        (cups / "ppd").mkdir(parents=True)
+        step2 = step2.replace("/etc/cups", str(cups))
+        (cups / "printers.conf").write_text("".join(
+            f"<Printer {q}>\nDeviceURI usb://Canon/{q}\n</Printer>\n" for q in ("Bad", "Good")))
+        for q, n in (("Bad", "612,000"), ("Good", "612.000")):
+            (cups / f"ppd/{q}.ppd").write_text(
+                f'*StpDriverName: "bjc-MP250-series"\n*cupsFilter: "application/vnd.cups-raster 100 {self.gp}/libexec/rastertogutenprint.5.3"\n'
+                f'*PageSize Letter/Letter: "<</PageSize[{n} 792.000]>>setpagedevice"\n')
+        subprocess.run(["/bin/sh", "-c", f'GP="{self.gp}"; log() {{ echo "$*"; }}\n{step2}'],
+                       env=self.env, check=True, capture_output=True)
+        args = (self.root / "lpadmin.log").read_text().splitlines()
+        self.assertEqual(args[args.index("-p") + 1], "Bad")  # Good is left alone
 
     def test_queue_failure_is_reported(self):
         self.env["TEST_FAIL"] = "1"

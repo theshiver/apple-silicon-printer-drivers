@@ -58,7 +58,8 @@ case "$MODEL" in
     [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
     [ -x "$GP/libexec/rastertoqpdl" ] || { echo "SpliX filter missing; reinstall the package"; exit 1; };;
   *)
-    "$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
+    # LC_ALL=C: genppd honors LC_NUMERIC, and a comma-decimal locale writes "PageSize[612,000 ..." (CUPS: Unknown operator)
+    LC_ALL=C "$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
     SRC=$(ls "$T"/*.ppd* | head -1); [ -n "$SRC" ] || { echo "PPD not generated"; exit 1; };;
 esac
 mkdir -p "$PPDDIR" || exit 1
