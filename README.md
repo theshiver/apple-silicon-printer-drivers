@@ -45,7 +45,7 @@ Not covered: dye-sublimation photo printers that need Gutenprint's own USB backe
 ## FAQ
 
 **Why did my printer stop working?**
-The printer maker's driver was built for Intel Macs only. It ran on Apple Silicon through Rosetta until macOS 27, which no longer allows that. The maker never released an Apple Silicon version. This installer replaces it with a native driver.
+The printer maker's driver was built for Intel Macs only. It ran on Apple Silicon through Rosetta, which the macOS 27 upgrade removes. Reinstalling Rosetta helps only some printers, and Apple ends it for apps in macOS 28. The maker never released an Apple Silicon version. This installer replaces it with a native driver.
 
 **Still on macOS 26 or earlier?**
 Your printer works now, but will break when you update if it uses one of those drivers. Install this before or after, either way.
