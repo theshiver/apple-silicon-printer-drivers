@@ -43,6 +43,11 @@ BRANDS = sorted([b for b, l in by_brand.items() if len(l) >= 4], key=lambda b: -
 POPULAR = ["Canon","Epson","HP","Brother","Samsung","Lexmark","Xerox","Kyocera","Ricoh","Oki","Dell","Sharp","Kodak","Sony","Mitsubishi","DNP","Fujifilm","Panasonic"]
 slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.replace("+", " plus").lower()).strip("-")
 GUTENPRINT, BRLASER, SPLIX = "5.3.5", "6.2.8", "2.0.2"
+# German pages: Germany sends the most clicks; start with home and the three brands people search for
+DE_BRANDS = ["Brother", "Canon", "Epson"]
+def alts_for(path):
+    return {"en": f"{BASE}/{path}", "de": f"{BASE}/de/{path}"}
+de_num = lambda n: f"{n:,}".replace(",", ".")
 VERSION = re.search(r"-(\d+(?:\.\d+)+)\.pkg$", PKG).group(1)
 
 INDEXNOW_KEY = "a3007c2aad3307cf8925b08255b5b513"
@@ -76,10 +81,20 @@ table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;
 footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
 """
 
-def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
+NAV = {"en": ("Download", "Is my printer supported?", "Brands", "Buy me a coffee"),
+       "de": ("Download", "Wird mein Drucker unterstützt?", "Marken", "Spendier mir einen Kaffee")}
+LANG_NAME = {"en": "English", "de": "Deutsch"}
+
+def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None):
+    """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
+    dl, sup, brands, coffee = NAV[lang]
+    hreflang = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in (alts or {}).items())
+    if alts:
+        hreflang += f'<link rel="alternate" hreflang="x-default" href="{alts["en"]}">'
+    switch = "".join(f'<a href="{u}" hreflang="{l}" lang="{l}">{LANG_NAME[l]}</a>' for l, u in (alts or {}).items() if l != lang)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, separators=(",",":"))}</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -87,7 +102,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
 <meta name="description" content="{html.escape(desc)}">
 {f'<meta name="keywords" content="{html.escape(keywords)}">' if keywords else ''}
 {f'<meta name="robots" content="{robots}">' if robots else ''}
-<link rel="canonical" href="{canonical}">
+<link rel="canonical" href="{canonical}">{hreflang}
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{BASE}/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/not-compatible.png">
@@ -97,7 +112,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots=""):
 </head>
 <body>
 <header><a href="{BASE}/">🖨 Mac Printer Drivers</a>
-<nav style="display:inline"><a href="{RELEASE}">Download</a><a href="{BASE}/#search">Is my printer supported?</a><a href="{BASE}/brands/">Brands</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
+<nav style="display:inline"><a href="{RELEASE}">{dl}</a><a href="{BASE}/#search">{sup}</a><a href="{BASE}/brands/">{brands}</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ {coffee}</a>{switch}</nav></header>
 <main>
 {body}
 <footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, SpliX GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
@@ -153,7 +168,7 @@ def brand_page(b):
           "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]},
           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i+1, "name": n, "item": u} for i, (n, u) in enumerate([("Home", f"{BASE}/"), ("Brands", f"{BASE}/brands/"), (b, f"{BASE}/{slug(b)}/")])]}]
-    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, keywords=f"{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device")
+    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, alts=alts_for(f"{slug(b)}/") if b in DE_BRANDS else None, keywords=f"{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device")
 
 def model_page(m, b, siblings):
     name, mid = m["name"], m["id"]
@@ -389,9 +404,102 @@ wire();
 write_page(DOCS, page(
     "“Printer Software Is Not Compatible With This Device” on Mac? Free Driver Fix",
     f"Fix “The printer software is not compatible with this device” on macOS 27, Tahoe and Apple Silicon Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
-    f"{BASE}/", home, home_ld,
+    f"{BASE}/", home, home_ld, alts=alts_for(""),
     keywords="mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"), f"{BASE}/")
 urls.insert(0, f"{BASE}/")
+
+# ---- German pages (home + DE_BRANDS); model pages stay English and are linked from the tables
+DE_INSTALL = f"""
+<ol class="steps">
+<li>Drucker per USB-Kabel an den Mac anschließen und einschalten.</li>
+<li><a href="{RELEASE}"><strong>Installationspaket (.pkg) herunterladen</strong></a> und öffnen. Durchklicken und das Mac-Passwort eingeben. Das Paket ist mit einer Apple Developer ID signiert und von Apple notarisiert, es erscheinen also keine Sicherheitswarnungen.</li>
+<li>Drucken. Das Installationsprogramm erkennt den Drucker und richtet ihn als Standarddrucker ein.</li>
+</ol>
+<p class="note">Druckt es immer noch nicht? Den Mac einmal neu starten und den Drucker aus- und wieder einstecken. Weitere Hilfe: <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (auf Englisch).</p>"""
+DE_MACOS = "macOS 27, macOS 26 Tahoe und macOS 15 Sequoia"
+DE_ROSETTA_A = ("Manchmal, und nur vorübergehend. Mit softwareupdate --install-rosetta im Terminal kommt Rosetta zurück, und manche Intel-Druckertreiber funktionieren wieder, "
+                "nachdem man den Drucker entfernt und neu hinzugefügt hat; andere bleiben als inkompatibel markiert. Apple beendet Rosetta für Programme mit macOS 28, "
+                "dann hört der Intel-Treiber des Herstellers wieder auf zu funktionieren. Dieses Paket ist nativ für Apple Silicon gebaut und braucht kein Rosetta.")
+def de_faq_ld(qa):
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}
+de_qa_html = lambda qa: "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in qa)
+
+de_home_qa = [
+ ("Warum druckt mein Drucker nach dem macOS-Update nicht mehr?",
+  "Der Treiber des Druckerherstellers wurde nur für Intel-Macs gebaut. Auf Apple-Silicon-Macs lief er über Rosetta, das beim Update auf macOS 27 entfernt wird, und der Hersteller hat nie eine Apple-Silicon-Version veröffentlicht. "
+  "macOS meldet dann, dass die Druckersoftware nicht kompatibel ist. Dieses Paket ersetzt den alten Treiber durch einen nativen."),
+ ("Hilft es, Rosetta neu zu installieren?", DE_ROSETTA_A),
+ ("Nach der Installation steht der Drucker immer noch als inkompatibel da.",
+  "Das ist der alte Druckereintrag mit dem Intel-Treiber. Das Installationsprogramm legt daneben einen neuen Eintrag an, dessen Name auf „Apple Silicon“ endet. "
+  "In den Systemeinstellungen unter Drucker & Scanner den alten Eintrag entfernen (auswählen, auf − klicken) und über den neuen drucken."),
+ ("Mein Drucker ist im WLAN, nicht per USB angeschlossen.",
+  "Paket installieren, dann in den Systemeinstellungen unter Drucker & Scanner auf Hinzufügen klicken, bei Verwenden „Software auswählen…“ wählen und den Eintrag für das Modell nehmen, der auf „Apple Silicon“ endet."),
+ ("Mein Drucker ist nicht in der Liste.",
+  "Viele neuere Drucker unterstützen AirPrint und brauchen keinen Treiber: Drucker ins Netzwerk bringen und in Drucker & Scanner mit Verwenden: AirPrint hinzufügen. AirPrint funktioniert nicht über USB."),
+ ("Ist das sicher?",
+  "Das Installationsprogramm ist mit einer Apple Developer ID signiert und von Apple notarisiert. Alles, was es tut, steht in SECURITY.md auf GitHub, und das Installationsskript ist lesbarer Klartext."),
+ ("Kostet das etwas?", "Nein. Kostenlos und Open Source, ohne Konto, es werden keine Daten gesammelt."),
+]
+de_brand_links = " ".join(f'<a href="{BASE}/de/{slug(b)}/">{b}</a>' for b in DE_BRANDS) + " " + " ".join(f'<a href="{BASE}/{slug(b)}/">{b}</a>' for b in POPULAR if b in BRANDS and b not in DE_BRANDS)
+de_home = f"""
+<h1>Drucker funktioniert nach dem macOS-Update nicht mehr?</h1>
+<p class="lead">Kostenlose native Mac-Druckertreiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother-, Samsung-, Lexmark- und andere Drucker auf macOS 27 und Apple-Silicon-Macs. Ohne Rosetta. Einmal installieren, wieder drucken.</p>
+<figure style="margin:20px 0"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="eager"><figcaption class="note">Meldet macOS unter Drucker &amp; Scanner, dass die Druckersoftware nicht kompatibel ist? Diese Seite behebt das.</figcaption></figure>
+<h2>Installieren</h2>
+{DE_INSTALL}
+<p class="note">Mit Homebrew: <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
+<h2>Wird mein Drucker unterstützt?</h2>
+<p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen: <span class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></span></p>
+<h2>Fragen</h2>
+{de_qa_html(de_home_qa)}
+<div class="card" style="text-align:center"><strong>☕ Hat das deinen Drucker gerettet?</strong><br>Es ist kostenlos und bleibt es. Wer Danke sagen möchte: <a href="https://github.com/sponsors/theshiver">ein Kaffee über GitHub Sponsors</a>.</div>
+"""
+write_page(DOCS / "de", page(
+    "Druckersoftware nicht kompatibel auf dem Mac? Kostenloser Treiber für macOS 27",
+    f"Drucker druckt nach dem Update auf macOS 27 nicht mehr und die Druckersoftware ist angeblich nicht kompatibel? Kostenlose native Treiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother- und Samsung-Drucker auf Apple-Silicon-Macs, ohne Rosetta.",
+    f"{BASE}/de/", de_home,
+    [home_ld[0], de_faq_ld(de_home_qa)],
+    keywords="druckersoftware nicht kompatibel mac, drucker druckt nicht nach macos update, macos 27 druckertreiber, mac druckertreiber apple silicon, drucker treiber macos tahoe",
+    lang="de", alts=alts_for("")), f"{BASE}/de/")
+urls.append(f"{BASE}/de/")
+
+for b in DE_BRANDS:
+    ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
+    n = de_num(len(ms))
+    qa = [
+     (f"Gibt es einen {b}-Druckertreiber für macOS 27 und Apple Silicon?",
+      f"{b} hat für viele ältere Drucker nie eine Apple-Silicon-Version des Mac-Treibers veröffentlicht; sie brauchen Rosetta, das beim Update auf macOS 27 entfernt wird und mit macOS 28 für Programme endet. "
+      f"Dieses kostenlose Paket bringt native Treiber für {n} {b}-Modelle, die damit auf jedem Apple-Silicon-Mac ohne Rosetta drucken."),
+     (f"Warum meldet mein {b}-Drucker, dass die Druckersoftware nicht kompatibel ist?",
+      f"Der installierte {b}-Treiber ist nur für Intel-Macs gebaut. Dieses Paket installieren, den Mac einmal neu starten, dann den Drucker aus- und wieder einstecken."),
+     ("Hilft es, Rosetta neu zu installieren?", DE_ROSETTA_A),
+     ("Funktioniert es auch unter macOS 26 Tahoe und macOS 15 Sequoia?",
+      "Ja. Es läuft ab macOS 12 auf Apple-Silicon-Macs und funktioniert nach dem Update auf macOS 27 weiter."),
+    ]
+    rows = "\n".join(f'<tr><td><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
+    title = f"{b} Druckertreiber für Mac (macOS 27, Apple Silicon): {n} Modelle, kostenlos"
+    body = f"""
+<p class="note"><a href="{BASE}/de/">Start</a> › {b}</p>
+<h1>{b} Druckertreiber für Mac (Apple Silicon, macOS 27)</h1>
+<p class="lead">{n} {b}-Drucker funktionieren wieder auf Apple-Silicon-Macs mit {DE_MACOS}. Kostenloser nativer Treiber, ohne Rosetta. Einmal installieren, wieder drucken.</p>
+<h2>Installieren (ein Paket für alle Modelle)</h2>
+{DE_INSTALL}
+<h2>Drucker nicht automatisch eingerichtet?</h2>
+<p>USB-Drucker erkennt das Installationsprogramm normalerweise selbst. Falls nicht (oder bei WLAN): das Modell unten suchen, das Terminal öffnen (⌘+Leertaste, <em>Terminal</em> eingeben), den Befehl einfügen und Enter drücken. Die Modellseiten sind auf Englisch.</p>
+<table><thead><tr><th>Modell</th><th>Befehl</th></tr></thead><tbody>{rows}</tbody></table>
+<p class="note">Netzwerk- oder WLAN-Drucker: Adresse anhängen, z. B. <code>sudo gutenprint-add &lt;id&gt; MeinDrucker socket://192.168.1.50</code> (<code>lpinfo -v</code> zeigt, was macOS sieht).</p>
+<h2>Fragen</h2>
+{de_qa_html(qa)}
+<p>Andere Marken: <span class="brands">{" ".join(f'<a href="{BASE}/de/{slug(o)}/">{o}</a>' for o in DE_BRANDS if o != b)} <a href="{BASE}/brands/">alle Marken →</a></span></p>
+"""
+    ld = [de_faq_ld(qa), {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Start", "item": f"{BASE}/de/"}, {"@type": "ListItem", "position": 2, "name": b, "item": f"{BASE}/de/{slug(b)}/"}]}]
+    write_page(DOCS / "de" / slug(b), page(title,
+        f"Kostenloser {b}-Druckertreiber für Mac: nativer Apple-Silicon-Treiber für {n} {b}-Drucker unter {DE_MACOS}. Behebt die Meldung, dass die Druckersoftware nicht kompatibel ist, ohne Rosetta.",
+        f"{BASE}/de/{slug(b)}/", body, ld,
+        keywords=f"{b} druckertreiber mac, {b} treiber macos 27, {b} drucker apple silicon, {b} druckersoftware nicht kompatibel",
+        lang="de", alts=alts_for(f"{slug(b)}/")), f"{BASE}/de/{slug(b)}/")
+    urls.append(f"{BASE}/de/{slug(b)}/")
 
 # ---- sitemap / robots / 404
 # sitemap.xml is an index: home + brand pages and model pages get separate coverage numbers in Search Console
