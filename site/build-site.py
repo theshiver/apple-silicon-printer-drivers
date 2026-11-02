@@ -15,6 +15,19 @@ TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
 
+# lastmod moves only when a page's HTML actually changes; a sitemap where every URL is "today" gets ignored
+OLD_LASTMOD = {}
+for f in DOCS.glob("sitemap*.xml"):
+    OLD_LASTMOD.update(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>", f.read_text()))
+LASTMOD = {}
+def write_page(d, text, url):
+    d.mkdir(parents=True, exist_ok=True)
+    f = d / "index.html"
+    changed = not f.exists() or f.read_text() != text
+    if changed:
+        f.write_text(text)
+    LASTMOD[url] = TODAY if changed else OLD_LASTMOD.get(url, TODAY)
+
 # brand normalisation: first word of the display name, with a few fixes
 ALIAS = {"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox",
          "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera"}
@@ -212,25 +225,23 @@ for b, ms in by_brand.items():
     ms = sorted(ms, key=lambda m: m["name"].lower())
     for i, m in enumerate(ms):
         siblings = ms[max(0, i - 6):i] + ms[i + 1:i + 7]
-        d = DOCS / model_path(m); d.mkdir(parents=True, exist_ok=True)
-        (d / "index.html").write_text(model_page(m, b, siblings))
-        model_urls.append(f"{BASE}/{model_path(m)}/")
+        url = f"{BASE}/{model_path(m)}/"
+        write_page(DOCS / model_path(m), model_page(m, b, siblings), url)
+        model_urls.append(url)
 
 # ---- write brand pages
 urls = []
 for b in BRANDS:
-    d = DOCS / slug(b); d.mkdir(parents=True, exist_ok=True)
-    (d / "index.html").write_text(brand_page(b))
+    write_page(DOCS / slug(b), brand_page(b), f"{BASE}/{slug(b)}/")
     urls.append(f"{BASE}/{slug(b)}/")
 
 # ---- brands index
 brand_links = "\n".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)} ({len(by_brand[b])})</a>' for b in BRANDS)
-(DOCS / "brands").mkdir(exist_ok=True)
-(DOCS / "brands" / "index.html").write_text(page(
+write_page(DOCS / "brands", page(
     "Supported printer brands — Mac printer drivers for Apple Silicon",
     f"{len(models)} printer models from {len(BRANDS)} brands supported by native arm64 Gutenprint, brlaser and SpliX drivers for macOS.",
     f"{BASE}/brands/",
-    f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"))
+    f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"), f"{BASE}/brands/")
 urls.append(f"{BASE}/brands/")
 
 # ---- home
@@ -333,17 +344,22 @@ wire();
 (async()=>{{const h=decodeURIComponent(location.hash.slice(1));if(h){{await load();const m=MODELS.find(x=>x.id===h);if(m)show(m)}}}})();
 </script>
 """
-(DOCS / "index.html").write_text(page(
+write_page(DOCS, page(
     "“Printer Software Is Not Compatible With This Device” on Mac? Free Driver Fix",
     f"Fix “The printer software is not compatible with this device” on macOS 27, Tahoe and Apple Silicon Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
     f"{BASE}/", home, home_ld,
-    keywords="mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"))
+    keywords="mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"), f"{BASE}/")
 urls.insert(0, f"{BASE}/")
 
 # ---- sitemap / robots / 404
-(DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if u == BASE + '/' else '0.7'}</priority></url>\n" for u in urls) +
-    "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>0.5</priority></url>\n" for u in model_urls) + "</urlset>\n")
+# sitemap.xml is an index: home + brand pages and model pages get separate coverage numbers in Search Console
+XML = '<?xml version="1.0" encoding="UTF-8"?>\n'
+SM = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+parts = {"sitemap-pages.xml": urls, "sitemap-models.xml": model_urls}
+for fn, us in parts.items():
+    (DOCS / fn).write_text(XML + f"<urlset {SM}>\n" + "".join(f"<url><loc>{u}</loc><lastmod>{LASTMOD[u]}</lastmod></url>\n" for u in us) + "</urlset>\n")
+(DOCS / "sitemap.xml").write_text(XML + f"<sitemapindex {SM}>\n" +
+    "".join(f"<sitemap><loc>{BASE}/{fn}</loc><lastmod>{max(LASTMOD[u] for u in us)}</lastmod></sitemap>\n" for fn, us in parts.items()) + "</sitemapindex>\n")
 (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 (DOCS / ".nojekyll").write_text("")
 (DOCS / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
