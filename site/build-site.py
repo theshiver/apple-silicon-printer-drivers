@@ -110,9 +110,10 @@ INSTALL_STEPS = f"""
 <li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
 <li>Print something. The installer recognised the printer and set it up as the default.</li>
 </ol>
-<p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see below.</p>"""
+<p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>"""
 
 MACOS = "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia"
+ROSETTA_A = "Sometimes, and only for now. Running softwareupdate --install-rosetta in Terminal brings Rosetta back, and some Intel-only printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's Intel-only driver will stop again then. This package is native arm64 and doesn't need Rosetta."
 
 def brand_faq(b, n):
     return [
@@ -121,7 +122,7 @@ def brand_faq(b, n):
      (f"Why does my {b} printer say “The printer software is not compatible with this device”?",
       f"The {b} driver installed on the Mac is Intel-only. Install this package, restart the Mac once, then unplug and re-plug the printer."),
      ("Will reinstalling Rosetta fix it?",
-      "Sometimes, and only for now. Running softwareupdate --install-rosetta in Terminal brings Rosetta back, and some Intel-only printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's Intel-only driver will stop again then. This package is native arm64 and doesn't need Rosetta."),
+      ROSETTA_A),
      ("Does it work on macOS 26 Tahoe and macOS 15 Sequoia?",
       "Yes. It runs on macOS 12 and later on Apple Silicon Macs, and keeps working after you update to macOS 27."),
     ]
@@ -246,6 +247,42 @@ write_page(DOCS / "brands", page(
     f"<h1>Supported brands</h1><p class='lead'>{len(models):,} models. Click a brand for the full model list.</p><p class='brands'>{brand_links}</p>"), f"{BASE}/brands/")
 urls.append(f"{BASE}/brands/")
 
+# ---- troubleshooting: the follow-up questions people ask after installing
+trouble = [
+ ("It still says “The printer software is not compatible with this device” after installing.",
+  "That message belongs to the old printer entry, which still uses the maker's Intel-only driver. The installer adds a new entry next to it, named after the model and ending in “Apple Silicon”. "
+  "In System Settings → Printers & Scanners, remove the old entry (select it, click −), then print to the “Apple Silicon” one. If there is no such entry, restart the Mac once, unplug and re-plug the printer, and check the next question."),
+ ("My printer doesn't show up in the list.",
+  "Search your model on the home page first: if it isn't supported, no entry will appear. If it is supported and connected over USB, restart the Mac once and unplug / re-plug the printer, and connect it directly rather than through a hub or dock. "
+  "Then open Terminal (⌘+Space, type Terminal) and run lpinfo -v: a line starting with usb:// means macOS sees the printer. Add it with sudo gutenprint-add <model id>, using the id the home page search shows for your model."),
+ ("“Software for this printer isn't available from Apple”.",
+  "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model ending in “Apple Silicon”."),
+ ("“No AirPrint printers found”, or AirPrint isn't offered.",
+  "Older printers don't support AirPrint, and AirPrint never works over USB. For those printers, add them with Use: Select Software… and the “Apple Silicon” entry (after installing this package), or with sudo gutenprint-add <model id>."),
+ ("My printer is on Wi-Fi or Ethernet.",
+  "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry, "
+  "or in Terminal with sudo gutenprint-add <model id> MyPrinter socket://<printer IP address>. The printer's IP address is usually on its own display or network status page."),
+ ("Will reinstalling Rosetta fix it?", ROSETTA_A),
+ ("The job goes through but nothing prints, or only blank pages.",
+  "Check that the queue uses your exact model: a similar model's driver can send data the printer silently ignores. Some printers, such as the HP LaserJet 1018, 1020, P1005 and P1006, can't be supported at all because they need the maker's firmware sent on every power-up."),
+ ("How do I see what the installer did?",
+  "Open Terminal and run grep printer-drivers /var/log/install.log. It lists every printer it set up or couldn't match, with the exact command to run next."),
+ ("Nothing here helped.",
+  f"Open an issue on GitHub ({REPO}/issues) with your printer model, how it's connected (USB or network), your macOS version and the output of grep printer-drivers /var/log/install.log."),
+]
+trouble_html = "\n".join(f"<h2>{html.escape(q)}</h2><p>{html.escape(a)}</p>" for q, a in trouble)
+trouble_title = "Mac Printer Still Not Working After Installing? Troubleshooting for macOS 27"
+write_page(DOCS / "troubleshooting", page(
+    trouble_title,
+    "Printer still “not compatible”, missing from the list, on Wi-Fi, or printing blank pages after installing the Apple Silicon printer drivers? Step-by-step fixes for macOS 27, Tahoe and Sequoia.",
+    f"{BASE}/troubleshooting/",
+    f"<p class='note'><a href='{BASE}/'>Home</a> › Troubleshooting</p><h1>Printer still not working after installing?</h1>"
+    f"<p class='lead'>Fixes for the problems people hit after installing the driver package, in the order they usually happen.</p>{trouble_html}",
+    [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in trouble]},
+     {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"}, {"@type": "ListItem", "position": 2, "name": "Troubleshooting", "item": f"{BASE}/troubleshooting/"}]}],
+    keywords="printer software is not compatible with this device after install, printer not showing up mac, software for this printer isn't available from apple, no airprint printers found, mac printer wifi driver, macos 27 printer troubleshooting"), f"{BASE}/troubleshooting/")
+urls.append(f"{BASE}/troubleshooting/")
+
 # ---- home
 examples = [("Canon PIXMA MP250", "bjc-MULTIPASS-MP250"), ("Canon PIXMA iP4300", "bjc-PIXMA-iP4300"), ("Epson Stylus Photo R300", "escp2-r300"),
             ("HP LaserJet 1010", "hp-lj_1010"), ("Brother HL-5040", "brother-hl-5040"), ("Samsung ML-2150", "samsung-ml-2150")]
@@ -254,7 +291,7 @@ faq = [
  ("Why did my printer stop working?",
   "The printer maker's driver was built for Intel Macs only. On Apple Silicon it ran through Rosetta, which the macOS 27 upgrade removes, and the maker never released an Apple Silicon version. This installer replaces it with a native driver."),
  ("Will reinstalling Rosetta fix it?",
-  "Sometimes, and only for now. Running softwareupdate --install-rosetta in Terminal brings Rosetta back, and some Intel-only printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's Intel-only driver will stop again then. This package is native arm64 and doesn't need Rosetta."),
+  ROSETTA_A),
  ("I had the printer maker's old driver installed. Anything to do?",
   "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension behind that blocks macOS's own USB printer driver; the installer moves the old driver aside (to /Users/Shared/printer-driver-backup, nothing is deleted) and macOS needs one restart to notice. Other makers' drivers are left in place."),
  ("Still on macOS 26 Tahoe or earlier?",
@@ -315,6 +352,7 @@ home = f"""
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></span></p>
 
 <h2 id="faq">Questions</h2>
+<p>Installed but still not printing? See <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>
 {faq_html}
 
 <div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
