@@ -12,3 +12,11 @@
       <printer translate="name" name="HP LaserJet Pro MFP M226dw" driver="hp-lj_pro_m226dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
       <!-- Xerox Phaser 8560N: the no-duplex config of the 8560DN, same PCL 5c engine. -->
       <printer translate="name" name="Xerox Phaser 8560N" driver="xerox-phaser_8560n" manufacturer="Xerox" model="6" parameters="pcl_laser_params" />
+      <!-- Ricoh SP C250DN: A4 color laser, PCL 5c/6 and PostScript 3 emulation; color PCL class like the HP Color LaserJet 2500 entry. -->
+      <printer translate="name" name="Ricoh SP C250DN" driver="ricoh-sp_c250dn" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <!-- Ricoh SP C250/C252/C261 family: same A4 color PCL 5c/6 + PS3 class as the SP C250DN. SP C260 is GDI, left out. -->
+      <printer translate="name" name="Ricoh SP C250SF" driver="ricoh-sp_c250sf" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <printer translate="name" name="Ricoh SP C252DN" driver="ricoh-sp_c252dn" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <printer translate="name" name="Ricoh SP C252SF" driver="ricoh-sp_c252sf" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <printer translate="name" name="Ricoh SP C261DNw" driver="ricoh-sp_c261dnw" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <printer translate="name" name="Ricoh SP C261SFNw" driver="ricoh-sp_c261sfnw" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />

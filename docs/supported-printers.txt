@@ -1,4 +1,4 @@
-# Mac Printer Drivers for Apple Silicon: 3664 supported printer models (version 1.3.11)
+# Mac Printer Drivers for Apple Silicon: 3670 supported printer models (version 1.3.12)
 # Every model below works on Apple Silicon Macs with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -3286,6 +3286,12 @@ Ricoh Pro C7100S | ricoh-pro_c7100s | Gutenprint | https://theshiver.github.io/a
 Ricoh Pro C7110 | ricoh-pro_c7110 | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/pro-c7110/
 Ricoh Pro C7110S | ricoh-pro_c7110s | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/pro-c7110s/
 Ricoh SG3120BSFNw | ricoh-sg3120bsfnw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sg3120bsfnw/
+Ricoh SP C250DN | ricoh-sp_c250dn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c250dn/
+Ricoh SP C250SF | ricoh-sp_c250sf | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c250sf/
+Ricoh SP C252DN | ricoh-sp_c252dn | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c252dn/
+Ricoh SP C252SF | ricoh-sp_c252sf | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c252sf/
+Ricoh SP C261DNw | ricoh-sp_c261dnw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c261dnw/
+Ricoh SP C261SFNw | ricoh-sp_c261sfnw | Gutenprint | https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/sp-c261sfnw/
 Samsung CLP-200 | splix-samsung-clp-200 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/samsung/clp-200/
 Samsung CLP-300 | splix-samsung-clp-300 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/samsung/clp-300/
 Samsung CLP-310 | splix-samsung-clp-310 | SpliX | https://theshiver.github.io/apple-silicon-printer-drivers/samsung/clp-310/
