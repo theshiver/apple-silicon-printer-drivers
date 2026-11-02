@@ -52,6 +52,7 @@ def fit(*titles, limit=65):
     return next((t for t in titles if len(t) <= limit), titles[-1])
 de_num = lambda n: f"{n:,}".replace(",", ".")
 VERSION = re.search(r"-(\d+(?:\.\d+)+)\.pkg$", PKG).group(1)
+PKG_URL = f"{REPO}/releases/download/v{VERSION}/{PKG}"  # the file itself, not the GitHub release page
 
 INDEXNOW_KEY = "a3007c2aad3307cf8925b08255b5b513"
 def driver_name(mid):
@@ -64,8 +65,8 @@ def model_path(m):
 assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
 
 CSS = """
-:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333}
-@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f}}
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333;--btn-bg:#0a66c2;--btn-fg:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f;--btn-bg:#6cb4ff;--btn-fg:#0b1a2b}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
 main{max-width:860px;margin:0 auto;padding:24px 16px 64px}header{padding:12px 16px;border-bottom:1px solid var(--line)}
 header a{color:var(--fg);text-decoration:none;font-weight:600}header nav a{margin-left:16px;font-weight:400;color:var(--muted)}
@@ -81,6 +82,15 @@ button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;
 ol.steps li{margin:.6em 0}.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
 .hidden{display:none}.note{color:var(--muted);font-size:.95rem}.brands a{display:inline-block;margin:4px 8px 4px 0}
 table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.dl{border:2px solid var(--accent);border-radius:14px;padding:18px 20px;margin:20px 0}
+.dl .ok{font-size:1.15rem;font-weight:600;margin:0 0 12px}
+a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:10px}
+a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.dl .trust{color:var(--muted);font-size:.9rem;margin:10px 0 14px}
+ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;padding:0;margin:0;counter-reset:q}
+ol.quick li{counter-increment:q;background:var(--code);border-radius:10px;padding:10px 12px;font-size:.95rem}
+ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
+@media(max-width:600px){ol.quick{grid-template-columns:1fr}a.btn{display:block;text-align:center}}
 footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
 """
 
@@ -115,20 +125,26 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 </head>
 <body>
 <header><a href="{BASE}/">🖨 Mac Printer Drivers</a>
-<nav style="display:inline"><a href="{RELEASE}">{dl}</a><a href="{BASE}/#search">{sup}</a><a href="{BASE}/brands/">{brands}</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ {coffee}</a>{switch}</nav></header>
+<nav style="display:inline"><a href="{PKG_URL}">{dl}</a><a href="{BASE}/#search">{sup}</a><a href="{BASE}/brands/">{brands}</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ {coffee}</a>{switch}</nav></header>
 <main>
 {body}
 <footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, SpliX GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
 </main>
 </body></html>"""
 
-INSTALL_STEPS = f"""
-<ol class="steps">
-<li>Plug the printer into the Mac with a USB cable and switch it on.</li>
-<li><a href="{RELEASE}"><strong>Download the installer (.pkg)</strong></a> and open it. Click through, enter your Mac password. It is signed and notarized by Apple, so there are no security warnings.</li>
-<li>Print something. The installer recognised the printer and set it up as the default.</li>
-</ol>
-<p class="note">Still not printing? Restart the Mac once and unplug / re-plug the printer. Then see <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>"""
+DL_TEXT = {
+    "en": ("Download the free driver (.pkg)", f"Free · Signed and notarized by Apple · Version {VERSION} · Any Apple Silicon Mac, macOS 12 or later",
+           ("Plug the printer in with USB and switch it on", "Open the downloaded file and click through", "Print. The printer is set up for you"),
+           f'Still not printing? Restart the Mac once and re-plug the printer, then see <a href="{BASE}/troubleshooting/">troubleshooting</a>. Wi-Fi printer? See below.'),
+    "de": ("Kostenlosen Treiber herunterladen (.pkg)", f"Kostenlos · Von Apple signiert und notarisiert · Version {VERSION} · Jeder Apple-Silicon-Mac ab macOS 12",
+           ("Drucker per USB anschließen und einschalten", "Heruntergeladene Datei öffnen und durchklicken", "Drucken. Der Drucker wird automatisch eingerichtet"),
+           f'Druckt es nicht? Mac einmal neu starten, Drucker neu einstecken, dann <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (englisch). WLAN-Drucker? Siehe unten.'),
+}
+def download_card(ok="", lang="en"):
+    """The answer people came for, above everything else: one button, three steps."""
+    btn, trust, steps, after = DL_TEXT[lang]
+    return (f'<div class="dl">{f"<p class=ok>✅ {ok}</p>" if ok else ""}<a class="btn" href="{PKG_URL}">⬇ {btn}</a>'
+            f'<p class="trust">{trust}</p><ol class="quick">{"".join(f"<li>{t}</li>" for t in steps)}</ol></div>\n<p class="note">{after}</p>')
 
 MACOS = "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia"
 ROSETTA_A = "Sometimes, and only for now. Running softwareupdate --install-rosetta in Terminal brings Rosetta back, and some Intel-only printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's Intel-only driver will stop again then. This package is native arm64 and doesn't need Rosetta."
@@ -155,10 +171,9 @@ def brand_page(b):
     body = f"""
 <p class="note"><a href="{BASE}/">Home</a> › <a href="{BASE}/brands/">Brands</a> › {html.escape(b)}</p>
 <h1>{html.escape(b)} printer driver for Mac (Apple Silicon, macOS 27)</h1>
-<p class="lead">{len(ms)} {html.escape(b)} printers work again on Apple Silicon Macs with {MACOS}. Free native driver, no Rosetta. Install once, print again.</p>
-<div class="card"><strong>Looking for your exact model?</strong> Pick it in the table below for model-specific instructions, or <a href="{BASE}/#search">search on the home page</a>.</div>
-<h2>Install (same package for every model)</h2>
-{INSTALL_STEPS}
+<p class="lead">{len(ms)} {html.escape(b)} printers work again on Apple Silicon Macs with {MACOS}. One free installer for all of them, no Rosetta.</p>
+{download_card(f"{len(ms)} {html.escape(b)} printers supported")}
+<p>Want model-specific instructions? Pick your printer in the table below or <a href="{BASE}/#search">search on the home page</a>.</p>
 <h2>Printer not set up automatically?</h2>
 <p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
 <table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody>{rows}</tbody></table>
@@ -207,10 +222,9 @@ def model_page(m, b, siblings):
     body = f"""
 <p class="note"><a href="{BASE}/">Home</a> › <a href="{brand_url}">{html.escape(brand_label)}</a> › {esc}</p>
 <h1>{esc} driver for Mac</h1>
-<p class="lead">Yes, the {esc} works on Apple Silicon Macs with {MACOS}. Install this free, signed, native arm64 driver package and print again. No Rosetta, no Intel-only software from the printer maker, and no need to write or compile a driver yourself.</p>
-<div class="card">✅ <strong>{esc}</strong> is supported. Driver: {driver}. Model id: <code>{html.escape(mid)}</code></div>
-<h2>Install the {esc} driver</h2>
-{INSTALL_STEPS}
+<p class="lead">Works on Apple Silicon Macs with {MACOS}. One free installer, no Rosetta, nothing to compile.</p>
+{download_card(f"The {esc} is supported")}
+<p class="note">Driver: {driver} · Model id: <code>{html.escape(mid)}</code></p>
 <h2>Wi-Fi, network, or not detected over USB</h2>
 <p>After installing, open Terminal (⌘+Space, type <em>Terminal</em>), paste this and press Enter:</p>
 <pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)}</code></pre>
@@ -232,7 +246,7 @@ def model_page(m, b, siblings):
     ld = [
         {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{name} driver for macOS (Apple Silicon)",
          "operatingSystem": "macOS 12 or later (Apple Silicon)", "applicationCategory": "DriverApplication",
-         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "downloadUrl": RELEASE, "softwareVersion": VERSION},
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "downloadUrl": PKG_URL, "softwareVersion": VERSION},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement":
             [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(crumbs)]},
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity":
@@ -344,7 +358,7 @@ faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, 
 home_ld = [
  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Mac Printer Drivers for Apple Silicon (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-  "downloadUrl": RELEASE, "softwareVersion": VERSION, "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+  "downloadUrl": PKG_URL, "softwareVersion": VERSION, "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
   "image": f"{BASE}/not-compatible.png", "description": f"Native arm64 macOS printer driver package for {len(models)} Canon, Epson, HP, Brother, Samsung and other printers. Auto-detects USB printers."},
  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
  {"@context": "https://schema.org", "@type": "HowTo", "name": "Install a printer driver on an Apple Silicon Mac",
@@ -356,19 +370,20 @@ home = f"""
 <h1>Printer not working on your Mac after the macOS update?</h1>
 <p class="lead">Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon. No Rosetta. Install once, print again.</p>
 
-<figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
 
-<h2>Install</h2>
-{INSTALL_STEPS}
-<p class="note">Using Homebrew? <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
 
-<h2 id="search">Is my printer supported?</h2>
+{download_card()}
+
+<h2 id="search">Not sure your printer is supported?</h2>
 <p>Type your model to check.</p>
 <form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off"></form>
 <ul id="results"></ul>
 <div id="answer" class="card hidden"></div>
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></span></p>
+
+<figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
+<p class="note">Using Homebrew? <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
 
 <h2 id="faq">Questions</h2>
 <p>Installed but still not printing? See <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>
@@ -393,7 +408,7 @@ async function search(){{await load();const terms=norm(q.value).split(' ').filte
  for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong> <small>${{m.id}}</small>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
 function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');
  ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>
- <p><strong>Plugged in over USB?</strong> Just <a href="{RELEASE}">install the package</a>, it sets the printer up by itself.</p>
+ <p><strong>Plugged in over USB?</strong> Just <a href="{PKG_URL}">download and open the installer</a>, it sets the printer up by itself.</p>
  <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p><p><a href="${{BASE}}/${{modelPath(m)}}/">Full ${{m.name}} driver instructions →</a></p>`;
  wire();history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
 q.addEventListener('input',search);q.addEventListener('keydown',e=>{{const items=[...res.children];if(e.key==='ArrowDown'){{sel=Math.min(sel+1,items.length-1)}}else if(e.key==='ArrowUp'){{sel=Math.max(sel-1,0)}}else if(e.key==='Enter'){{if(items[sel]||items[0])(items[sel]||items[0]).click();return}}else return;items.forEach((li,i)=>li.classList.toggle('sel',i===sel));e.preventDefault()}});
@@ -413,13 +428,6 @@ write_page(DOCS, page(
 urls.insert(0, f"{BASE}/")
 
 # ---- German pages (home + DE_BRANDS); model pages stay English and are linked from the tables
-DE_INSTALL = f"""
-<ol class="steps">
-<li>Drucker per USB-Kabel an den Mac anschließen und einschalten.</li>
-<li><a href="{RELEASE}"><strong>Installationspaket (.pkg) herunterladen</strong></a> und öffnen. Durchklicken und das Mac-Passwort eingeben. Das Paket ist mit einer Apple Developer ID signiert und von Apple notarisiert, es erscheinen also keine Sicherheitswarnungen.</li>
-<li>Drucken. Das Installationsprogramm erkennt den Drucker und richtet ihn als Standarddrucker ein.</li>
-</ol>
-<p class="note">Druckt es immer noch nicht? Den Mac einmal neu starten und den Drucker aus- und wieder einstecken. Weitere Hilfe: <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (auf Englisch).</p>"""
 DE_MACOS = "macOS 27, macOS 26 Tahoe und macOS 15 Sequoia"
 DE_ROSETTA_A = ("Manchmal, und nur vorübergehend. Mit softwareupdate --install-rosetta im Terminal kommt Rosetta zurück, und manche Intel-Druckertreiber funktionieren wieder, "
                 "nachdem man den Drucker entfernt und neu hinzugefügt hat; andere bleiben als inkompatibel markiert. Apple beendet Rosetta für Programme mit macOS 28, "
@@ -448,12 +456,12 @@ de_brand_links = " ".join(f'<a href="{BASE}/de/{slug(b)}/">{b}</a>' for b in DE_
 de_home = f"""
 <h1>Drucker funktioniert nach dem macOS-Update nicht mehr?</h1>
 <p class="lead">Kostenlose native Mac-Druckertreiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother-, Samsung-, Lexmark- und andere Drucker auf macOS 27 und Apple-Silicon-Macs. Ohne Rosetta. Einmal installieren, wieder drucken.</p>
-<figure style="margin:20px 0"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="eager"><figcaption class="note">Meldet macOS unter Drucker &amp; Scanner, dass die Druckersoftware nicht kompatibel ist? Diese Seite behebt das.</figcaption></figure>
-<h2>Installieren</h2>
-{DE_INSTALL}
-<p class="note">Mit Homebrew: <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
+
+{download_card(lang="de")}
 <h2>Wird mein Drucker unterstützt?</h2>
 <p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen: <span class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></span></p>
+<figure style="margin:20px 0"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="eager"><figcaption class="note">Meldet macOS unter Drucker &amp; Scanner, dass die Druckersoftware nicht kompatibel ist? Diese Seite behebt das.</figcaption></figure>
+<p class="note">Mit Homebrew: <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
 <h2>Fragen</h2>
 {de_qa_html(de_home_qa)}
 <div class="card" style="text-align:center"><strong>☕ Hat das deinen Drucker gerettet?</strong><br>Es ist kostenlos und bleibt es. Wer Danke sagen möchte: <a href="https://github.com/sponsors/theshiver">ein Kaffee über GitHub Sponsors</a>.</div>
@@ -485,9 +493,8 @@ for b in DE_BRANDS:
     body = f"""
 <p class="note"><a href="{BASE}/de/">Start</a> › {b}</p>
 <h1>{b} Druckertreiber für Mac (Apple Silicon, macOS 27)</h1>
-<p class="lead">{n} {b}-Drucker funktionieren wieder auf Apple-Silicon-Macs mit {DE_MACOS}. Kostenloser nativer Treiber, ohne Rosetta. Einmal installieren, wieder drucken.</p>
-<h2>Installieren (ein Paket für alle Modelle)</h2>
-{DE_INSTALL}
+<p class="lead">{n} {b}-Drucker funktionieren wieder auf Apple-Silicon-Macs mit {DE_MACOS}. Ein kostenloses Paket für alle, ohne Rosetta.</p>
+{download_card(f"{n} {b}-Drucker werden unterstützt", "de")}
 <h2>Drucker nicht automatisch eingerichtet?</h2>
 <p>USB-Drucker erkennt das Installationsprogramm normalerweise selbst. Falls nicht (oder bei WLAN): das Modell unten suchen, das Terminal öffnen (⌘+Leertaste, <em>Terminal</em> eingeben), den Befehl einfügen und Enter drücken. Die Modellseiten sind auf Englisch.</p>
 <table><thead><tr><th>Modell</th><th>Befehl</th></tr></thead><tbody>{rows}</tbody></table>
