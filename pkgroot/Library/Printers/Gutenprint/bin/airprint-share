@@ -1,5 +1,5 @@
 #!/bin/sh
-# Shares printers set up by this package with iPhones and iPads over AirPrint.
+# Shares the printers on this Mac with iPhones and iPads over AirPrint.
 # Off until someone turns it on. Runs per user, as one LaunchAgent per printer, while that user is logged in.
 #   airprint-share list          printers that can be shared
 #   airprint-share shared        printers shared right now
@@ -14,11 +14,11 @@ AGENTS="$HOME/Library/LaunchAgents"
 SPOOL="$HOME/Library/Caches/$LABEL"
 DOMAIN="gui/$(id -u)"
 
+# Every queue on this Mac, except one made from our own "<name> (Mac)" announcement: sharing that would loop.
+# LC_ALL=C because lpstat translates the word "printer".
 printers() {
-  for f in "$PPDS"/*.ppd; do
-    [ -f "$f" ] || continue
-    if grep -qsE 'rastertogutenprint|rastertobrlaser|rastertoqpdl' "$f"; then basename "$f" .ppd; fi
-  done
+  LC_ALL=C lpstat -p 2>/dev/null | awk '$1 == "printer" { print $2 }' | grep -v '__Mac_$'
+  return 0
 }
 
 shared() {
@@ -42,7 +42,8 @@ free_port() {
 
 start() {
   q=$1; port=$(free_port); plist="$AGENTS/$LABEL.$q.plist"; ppd="$PPDS/$q.ppd"
-  speed=10; grep -qs '^\*ColorDevice:[[:space:]]*True' "$ppd" && speed=10,5
+  # two speeds announce a color printer; a queue without a PPD counts as color, CUPS handles the rest
+  speed=10,5; grep -qs '^\*ColorDevice:[[:space:]]*False' "$ppd" && speed=10
   duplex=; grep -qs '^\*OpenUI \*Duplex' "$ppd" && duplex='<string>-2</string>'
   mkdir -p "$AGENTS" "$SPOOL/$q"
   cat > "$plist" <<PLIST
@@ -74,7 +75,7 @@ case "$cmd" in
   set)
     known=$(printers)
     for q in "$@"; do
-      echo "$known" | grep -qxF -- "$q" || { echo "not a printer from this package: $q" >&2; exit 1; }
+      echo "$known" | grep -qxF -- "$q" || { echo "no such printer: $q" >&2; exit 1; }
     done
     for s in $(shared); do
       keep=0; for w in "$@"; do [ "$w" = "$s" ] && keep=1; done

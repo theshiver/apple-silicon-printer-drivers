@@ -10,7 +10,6 @@ import xml.dom.minidom
 
 ROOT = Path(__file__).resolve().parents[1]
 BIN = ROOT / "pkgroot/Library/Printers/Gutenprint/bin"
-OURS = '*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n'
 
 
 class AirPrintTest(unittest.TestCase):
@@ -23,9 +22,17 @@ class AirPrintTest(unittest.TestCase):
         fake = self.root / "commands"
         for d in (self.home, self.ppds, fake):
             d.mkdir()
-        (self.ppds / "Canon_MP250.ppd").write_text(OURS + "*ColorDevice: True\n")
-        (self.ppds / "Brother_HL.ppd").write_text('*cupsFilter: "x 0 /Library/Printers/Gutenprint/libexec/rastertobrlaser"\n*OpenUI *Duplex/2-Sided: PickOne\n')
-        (self.ppds / "Office.ppd").write_text("*NickName: other\n")
+        (self.ppds / "Canon_MP250.ppd").write_text("*ColorDevice: True\n")
+        (self.ppds / "Brother_HL.ppd").write_text("*ColorDevice: False\n*OpenUI *Duplex/2-Sided: PickOne\n")
+        lpstat = fake / "lpstat"
+        lpstat.write_text("""#!/bin/sh
+echo "printer Canon_MP250 is idle.  enabled since Wed Nov  4 20:18:50 2026"
+echo "printer Brother_HL disabled since Wed Nov  4 20:18:50 2026 -"
+echo "	reason unknown"
+echo "printer Office is idle.  enabled since Fri Sep 19 14:43:48 2025"
+echo "printer Canon_MP250__Mac_ is idle.  enabled since Fri Sep 19 14:43:48 2025"
+""")
+        lpstat.chmod(0o755)
         self.calls = self.root / "calls"
         launchctl = fake / "launchctl"
         launchctl.write_text(f'#!/bin/sh\necho "$@" >> "{self.calls}"\n')
@@ -45,15 +52,21 @@ class AirPrintTest(unittest.TestCase):
         with open(self.agents / f"com.github.apple-silicon-printer-drivers.airprint.{queue}.plist", "rb") as f:
             return plistlib.load(f)
 
-    def test_lists_only_printers_from_this_package(self):
-        self.assertEqual(sorted(self.run_share("list")), ["Brother_HL", "Canon_MP250"])
+    def test_lists_every_printer_except_our_own_announcement(self):
+        self.assertEqual(sorted(self.run_share("list")), ["Brother_HL", "Canon_MP250", "Office"])
 
     def test_off_by_default(self):
         self.assertEqual(self.run_share("shared"), [])
 
-    def test_refuses_a_printer_from_elsewhere(self):
-        self.run_share("set", "Office", ok=False)
+    def test_refuses_an_unknown_printer_and_its_own_announcement(self):
+        self.run_share("set", "Nope", ok=False)
+        self.run_share("set", "Canon_MP250__Mac_", ok=False)
         self.assertFalse(self.agents.exists())
+
+    def test_a_queue_without_a_ppd_counts_as_color(self):
+        self.run_share("set", "Office")
+        args = self.agent("Office")["ProgramArguments"]
+        self.assertEqual(args[args.index("-s") + 1], "10,5")
 
     def test_set_starts_agents_with_the_right_settings(self):
         self.run_share("set", "Canon_MP250", "Brother_HL")
