@@ -366,13 +366,35 @@ home_ld = [
            {"@type": "HowToStep", "text": "Download the .pkg installer and open it (signed and notarized by Apple)."},
            {"@type": "HowToStep", "text": "Print. The installer sets the printer up automatically; otherwise search the model on the site for the one command to add it."}]},
 ]
+def table(head, rows, stack=False):
+    th = "".join(f"<th>{h}</th>" for h in head)
+    tr = "".join("<tr>" + "".join(f'<td data-l="{h}">{c}</td>' for h, c in zip(head, r)) + "</tr>" for r in rows)
+    return f'<table{" class=stack" if stack else ""}><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
+# Home pages only: in CSS it would rewrite all 3,700 pages and move their lastmod. Four columns don't fit a phone, so rows become cards
+STACK_CSS = ("<style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,.stack td{display:block}.stack thead{display:none}"
+             ".stack tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:10px 0}.stack td{border:0;padding:4px 0}"
+             ".stack td:first-child{font-weight:600}.stack td:not(:first-child)::before{content:attr(data-l);display:block;color:var(--muted);font-size:.85rem}}</style>")
+# ponytail: hand-kept floors (.pkg downloads across all releases, GitHub stars), refresh at release time
+DOWNLOADS, STARS = 7300, 65
+symptoms = table(("What you see", "What it means and what to do"), [
+ ("“The printer software is not compatible with this device” or “Software Incompatible”", "The maker's driver is Intel-only. Install the package, then print to the new entry ending in “Apple Silicon”."),
+ ("“Software for this printer isn't available from Apple”", "macOS has no driver for this printer. Install the package, then add the printer with Use: Select Software…"),
+ ("“Generic PostScript Printer” or “Generic PCL Printer”, with blank pages or missing options", "macOS picked a generic driver. Install the package, then add the printer again and pick the entry ending in “Apple Silicon”."),
+ ("The printer disappeared from the list", f'Search your model above, then follow <a href="{BASE}/troubleshooting/">troubleshooting</a>.'),
+])
+options = table(("Option", "Cost", "Works on macOS 28?", "Older inkjets like Canon PIXMA?"), [
+ ("<strong>This package</strong>", "<strong>Free</strong>", "<strong>Yes, native on Apple Silicon</strong>", f"<strong>Yes, among {len(models):,} models</strong>"),
+ ("Reinstall Rosetta", "Free", "No, Apple ends Rosetta for apps in macOS 28", "Only some printers, and only until then"),
+ ("The maker's driver", "Free", "Only if the maker built one for Apple Silicon", "Older models usually have none"),
+ ("A paid replacement driver", "Paid, can be per printer", "Check with the vendor", "Often not: many only drive PCL or PostScript printers"),
+ ("A new printer", "The price of a printer", "Yes", "Yes, and your old one goes to waste"),
+], stack=True)
 home = f"""
 <h1>Printer not working on your Mac after the macOS update?</h1>
-<p class="lead">Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon. No Rosetta. Install once, print again.</p>
-
-
+<p class="lead">Your printer isn't broken, and you don't need a new one. Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon. No Rosetta. Install once, print again.</p>
 
 {download_card()}
+<p class="note">{DOWNLOADS:,}+ downloads · {STARS} stars on <a href="{REPO}">GitHub</a> · Open source · No account, nothing collected</p>
 
 <h2 id="search">Not sure your printer is supported?</h2>
 <p>Type your model to check.</p>
@@ -382,8 +404,14 @@ home = f"""
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
 <p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></span></p>
 
+<h2 id="symptoms">Does this look familiar?</h2>
 <figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
+{symptoms}
 <p class="note">Using Homebrew? <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
+
+<h2 id="options">Your options</h2>
+{STACK_CSS}{options}
+<p class="note">What this package doesn't do: it can't show ink or toner levels, it doesn't scan, and the installer only sets up USB printers by itself. Wi-Fi printers take one extra step.</p>
 
 <h2 id="faq">Questions</h2>
 <p>Installed but still not printing? See <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>
@@ -453,15 +481,34 @@ de_home_qa = [
  ("Kostet das etwas?", "Nein. Kostenlos und Open Source, ohne Konto, es werden keine Daten gesammelt."),
 ]
 de_brand_links = " ".join(f'<a href="{BASE}/de/{slug(b)}/">{b}</a>' for b in DE_BRANDS) + " " + " ".join(f'<a href="{BASE}/{slug(b)}/">{b}</a>' for b in POPULAR if b in BRANDS and b not in DE_BRANDS)
+de_symptoms = table(("Was du siehst", "Was es bedeutet und was zu tun ist"), [
+ ("Die Druckersoftware ist nicht mit diesem Gerät kompatibel", "Der Treiber des Herstellers ist nur für Intel gebaut. Paket installieren und über den neuen Eintrag drucken, der auf „Apple Silicon“ endet."),
+ ("Für diesen Drucker ist keine Software von Apple verfügbar", "macOS hat keinen Treiber für diesen Drucker. Paket installieren, dann den Drucker mit Verwenden: „Software auswählen…“ hinzufügen."),
+ ("„Generic PostScript Printer“ oder „Generic PCL Printer“, leere Seiten oder fehlende Optionen", "macOS hat einen generischen Treiber gewählt. Paket installieren, den Drucker neu hinzufügen und den Eintrag wählen, der auf „Apple Silicon“ endet."),
+ ("Der Drucker ist aus der Liste verschwunden", f'Modell oben suchen, dann <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (englisch).'),
+])
+de_options = table(("Möglichkeit", "Kosten", "Läuft unter macOS 28?", "Ältere Tintenstrahldrucker wie Canon PIXMA?"), [
+ ("<strong>Dieses Paket</strong>", "<strong>Kostenlos</strong>", "<strong>Ja, nativ auf Apple Silicon</strong>", f"<strong>Ja, unter {de_num(len(models))} Modellen</strong>"),
+ ("Rosetta neu installieren", "Kostenlos", "Nein, Apple beendet Rosetta für Programme mit macOS 28", "Nur manche Drucker, und nur bis dahin"),
+ ("Treiber des Herstellers", "Kostenlos", "Nur wenn der Hersteller einen für Apple Silicon gebaut hat", "Für ältere Modelle meist nicht vorhanden"),
+ ("Kostenpflichtiger Ersatztreiber", "Kostenpflichtig, teils pro Drucker", "Beim Anbieter nachfragen", "Oft nicht: viele steuern nur PCL- oder PostScript-Drucker an"),
+ ("Neuer Drucker", "Der Preis eines Druckers", "Ja", "Ja, und der alte wird zu Elektroschrott"),
+], stack=True)
 de_home = f"""
 <h1>Drucker funktioniert nach dem macOS-Update nicht mehr?</h1>
-<p class="lead">Kostenlose native Mac-Druckertreiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother-, Samsung-, Lexmark- und andere Drucker auf macOS 27 und Apple-Silicon-Macs. Ohne Rosetta. Einmal installieren, wieder drucken.</p>
+<p class="lead">Dein Drucker ist nicht kaputt, und du brauchst keinen neuen. Kostenlose native Mac-Druckertreiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother-, Samsung-, Lexmark- und andere Drucker auf macOS 27 und Apple-Silicon-Macs. Ohne Rosetta. Einmal installieren, wieder drucken.</p>
 
 {download_card(lang="de")}
+<p class="note">{de_num(DOWNLOADS)}+ Downloads · {STARS} Sterne auf <a href="{REPO}">GitHub</a> · Open Source · Kein Konto, keine Datensammlung</p>
 <h2>Wird mein Drucker unterstützt?</h2>
 <p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen: <span class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></span></p>
+<h2 id="symptome">Kommt dir das bekannt vor?</h2>
 <figure style="margin:20px 0"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="eager"><figcaption class="note">Meldet macOS unter Drucker &amp; Scanner, dass die Druckersoftware nicht kompatibel ist? Diese Seite behebt das.</figcaption></figure>
+{de_symptoms}
 <p class="note">Mit Homebrew: <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
+<h2 id="optionen">Deine Möglichkeiten</h2>
+{STACK_CSS}{de_options}
+<p class="note">Was dieses Paket nicht kann: Es zeigt keine Tinten- oder Tonerstände an, es scannt nicht, und das Installationsprogramm richtet nur USB-Drucker selbst ein. WLAN-Drucker brauchen einen Schritt mehr.</p>
 <h2>Fragen</h2>
 {de_qa_html(de_home_qa)}
 <div class="card" style="text-align:center"><strong>☕ Hat das deinen Drucker gerettet?</strong><br>Es ist kostenlos und bleibt es. Wer Danke sagen möchte: <a href="https://github.com/sponsors/theshiver">ein Kaffee über GitHub Sponsors</a>.</div>
