@@ -103,11 +103,12 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 """
 
 # Owner's decision (2026-11-05): GA runs for every visitor, no consent bar. Advertising features stay off.
+# The automatic page_view ignores custom params, so brand and model pages send their own printer_page event.
 TRACK_JS = """(function(){var G='%s',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
-gtag('js',new Date());gtag('config',G,Object.assign({allow_google_signals:false,allow_ad_personalization_signals:false},JSON.parse(d.body.dataset.track||'{}')));
-window.track=function(n,p){gtag('event',n,p||{})};
+var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
+window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
