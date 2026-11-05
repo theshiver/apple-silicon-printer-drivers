@@ -99,34 +99,27 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
-footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}footer button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
-.cc{position:fixed;left:12px;right:12px;bottom:12px;max-width:560px;margin:auto;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:.9rem;box-shadow:0 6px 24px #0003}
-.cc span{flex:1 1 240px}.cc button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 """
 
-# Google Analytics loads only after Accept, so visitors who don't choose send Google nothing (most search clicks come from the EU)
-TRACK_JS = """(function(){var G='%s',K='analytics-consent',d=document,bar=d.getElementById('cc'),on=false;
-function get(){try{return localStorage.getItem(K)}catch(e){return null}}
-function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+# Owner's decision (2026-11-05): GA runs for every visitor, no consent bar. Advertising features stay off.
+TRACK_JS = """(function(){var G='%s',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
-function start(){if(on)return;on=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);gtag('js',new Date());gtag('config',G,JSON.parse(d.body.dataset.track||'{}'))}
-window.track=function(n,p){if(on)gtag('event',n,p||{})};
-var c=get();if(c==='1')start();else if(c===null)bar.hidden=false;
-bar.addEventListener('click',function(e){var v=e.target.dataset.consent;if(!v)return;put(v);bar.hidden=true;if(v==='1')start();else if(on){d.cookie.split(';').forEach(function(x){var n=x.split('=')[0].trim();if(n.indexOf('_ga')===0)d.cookie=n+'=;Max-Age=0;path=/;domain=.'+location.hostname;});location.reload()}});
-d.getElementById('cc-open').addEventListener('click',function(){bar.hidden=false});
+var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
+gtag('js',new Date());gtag('config',G,Object.assign({allow_google_signals:false,allow_ad_personalization_signals:false},JSON.parse(d.body.dataset.track||'{}')));
+window.track=function(n,p){gtag('event',n,p||{})};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
 
 NAV = {"en": ("Check my printer", "Help"), "de": ("Drucker prüfen", "Hilfe")}
-CONSENT = {"en": ("Can we count visits with Google Analytics? It helps us see which printers people need.", "Accept", "No thanks", "Cookie settings", "Privacy"),
-           "de": ("Dürfen wir Besuche mit Google Analytics zählen? So sehen wir, welche Drucker gebraucht werden.", "Akzeptieren", "Nein danke", "Cookie-Einstellungen", "Datenschutz (englisch)")}
+PRIVACY = {"en": "Privacy", "de": "Datenschutz (englisch)"}
 LANG_NAME = {"en": "English", "de": "Deutsch"}
 
 def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None, track=None):
     """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
     sup, helplink = NAV[lang]
-    ask, yes, no, settings, privacy = CONSENT[lang]
+    privacy = PRIVACY[lang]
     data = html.escape(json.dumps({"page_type": "other", **(track or {})}), quote=True)
     hreflang = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in (alts or {}).items())
     if alts:
@@ -155,9 +148,8 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 <nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/troubleshooting/">{helplink}</a>{switch}</nav></header>
 <main>
 {body}
-<footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{BASE}/privacy/">{privacy}</a> · <button id="cc-open" type="button">{settings}</button><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
+<footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{BASE}/privacy/">{privacy}</a><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
 </main>
-<div id="cc" class="cc" role="region" aria-label="{settings}" hidden><span>{ask}</span><button type="button" data-consent="1">{yes}</button><button type="button" data-consent="0">{no}</button></div>
 <script>{TRACK_JS}</script>
 </body></html>"""
 
@@ -601,10 +593,9 @@ for b in DE_BRANDS:
 # ---- privacy
 write_page(DOCS / "privacy", page("Privacy – Mac Printer Drivers", "What this website and the printer driver collect.", f"{BASE}/privacy/", f"""
 <h1>Privacy</h1>
-<p class="lead">The printer driver collects nothing. This website only measures visits if you choose Accept.</p>
+<p class="lead">The printer driver collects nothing. This website counts visits with Google Analytics.</p>
 <h2>Website analytics</h2>
-<p>If you click Accept, this site loads Google Analytics, which sets cookies and sends Google anonymous usage data: pages viewed, your approximate country, clicks on the download button, the questions you open and the printer models you type in the search box. Please don't type personal information there.</p>
-<p>If you click No thanks, or choose nothing, Google Analytics isn't loaded. Change your mind any time with Cookie settings at the bottom of every page.</p>
+<p>This site uses Google Analytics to see which pages and printers people need. It sets cookies on your device and runs for every visitor. Google receives usage data: pages viewed, your approximate country, clicks on the download button, the questions you open and the printer models you type in the search box. Please don't type personal information there. Advertising features are off. To stop this, block cookies for this site or use a browser add-on that blocks Google Analytics.</p>
 <h2>Hosting</h2>
 <p>This site runs on GitHub Pages. GitHub may log technical data such as IP addresses to run the service. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a> and <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
 <h2>Questions</h2>

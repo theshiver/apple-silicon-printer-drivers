@@ -47,9 +47,7 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
-footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}footer button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
-.cc{position:fixed;left:12px;right:12px;bottom:12px;max-width:560px;margin:auto;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:.9rem;box-shadow:0 6px 24px #0003}
-.cc span{flex:1 1 240px}.cc button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 </style>
 </head>
 <body data-track="{&quot;page_type&quot;: &quot;model&quot;, &quot;printer_brand&quot;: &quot;Canon&quot;, &quot;printer_model&quot;: &quot;Canon MB5300 series&quot;}">
@@ -82,18 +80,13 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/">← Canon printers</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)})</script>
 
-<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a> · <button id="cc-open" type="button">Cookie settings</button><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
+<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
 </main>
-<div id="cc" class="cc" role="region" aria-label="Cookie settings" hidden><span>Can we count visits with Google Analytics? It helps us see which printers people need.</span><button type="button" data-consent="1">Accept</button><button type="button" data-consent="0">No thanks</button></div>
-<script>(function(){var G='G-RL7H0KSZYM',K='analytics-consent',d=document,bar=d.getElementById('cc'),on=false;
-function get(){try{return localStorage.getItem(K)}catch(e){return null}}
-function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+<script>(function(){var G='G-RL7H0KSZYM',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
-function start(){if(on)return;on=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);gtag('js',new Date());gtag('config',G,JSON.parse(d.body.dataset.track||'{}'))}
-window.track=function(n,p){if(on)gtag('event',n,p||{})};
-var c=get();if(c==='1')start();else if(c===null)bar.hidden=false;
-bar.addEventListener('click',function(e){var v=e.target.dataset.consent;if(!v)return;put(v);bar.hidden=true;if(v==='1')start();else if(on){d.cookie.split(';').forEach(function(x){var n=x.split('=')[0].trim();if(n.indexOf('_ga')===0)d.cookie=n+'=;Max-Age=0;path=/;domain=.'+location.hostname;});location.reload()}});
-d.getElementById('cc-open').addEventListener('click',function(){bar.hidden=false});
+var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
+gtag('js',new Date());gtag('config',G,Object.assign({allow_google_signals:false,allow_ad_personalization_signals:false},JSON.parse(d.body.dataset.track||'{}')));
+window.track=function(n,p){gtag('event',n,p||{})};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>
