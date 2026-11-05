@@ -19,7 +19,7 @@
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
-header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}header nav a.coffee{color:var(--accent);font-weight:600}
 main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
 h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
 h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
@@ -52,7 +52,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 </head>
 <body data-track="{&quot;page_type&quot;: &quot;brand&quot;, &quot;printer_brand&quot;: &quot;Epson&quot;}">
 <header><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">🖨 Mac Printer Drivers</a>
-<nav><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Check my printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">Help</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/de/epson/" hreflang="de" lang="de">Deutsch</a></nav></header>
+<nav><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Check my printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">Help</a><a class="coffee" href="https://github.com/sponsors/theshiver" data-loc="header">☕ Buy me a coffee</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/de/epson/" hreflang="de" lang="de">Deutsch</a></nav></header>
 <main>
 
 <p class="note"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">Home</a> › <a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a> › Epson</p>
@@ -69,9 +69,10 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <details><summary>Will reinstalling Rosetta fix it?</summary><p>Sometimes, and only for now. Reinstalling Rosetta makes some old printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker&#x27;s old driver will stop again then. This driver doesn&#x27;t need Rosetta.</p></details>
 <details><summary>Does it work on macOS 26 Tahoe and macOS 15 Sequoia?</summary><p>Yes. It runs on macOS 12 and later on Apple Silicon Macs, and keeps working after you update to macOS 27.</p></details>
 <details><summary>My printer is on Wi-Fi, or wasn&#x27;t set up automatically.</summary><p>Install the driver, then open System Settings → Printers &amp; Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”.</p></details>
+<div class="card"><strong>☕ Printing again?</strong><br>This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee. <a href="https://github.com/sponsors/theshiver" data-loc="card">Buy me a coffee →</a></div>
 <p>Other brands: <span class="brands"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/">Canon</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/hp/">HP</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/brother/">Brother</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/samsung/">Samsung</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/">Lexmark</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/xerox/">Xerox</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/kyocera/">Kyocera</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/">Ricoh</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/oki/">Oki</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/dell/">Dell</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/sharp/">Sharp</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/kodak/">Kodak</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/sony/">Sony</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/">Fujifilm</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/panasonic/">Panasonic</a> <a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">all brands →</a></span></p>
 
-<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
+<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver" data-loc="footer">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
 </main>
 <script>(function(){var G='G-RL7H0KSZYM',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
@@ -79,6 +80,7 @@ var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>
 </body></html>

@@ -71,7 +71,7 @@ CSS = """
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
-header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}header nav a.coffee{color:var(--accent);font-weight:600}
 main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
 h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
 h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
@@ -110,16 +110,23 @@ var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
 
-NAV = {"en": ("Check my printer", "Help"), "de": ("Drucker prüfen", "Hilfe")}
+NAV = {"en": ("Check my printer", "Help", "☕ Buy me a coffee"), "de": ("Drucker prüfen", "Hilfe", "☕ Spendier mir einen Kaffee")}
+COFFEE = "https://github.com/sponsors/theshiver"
+COFFEE_CARD = {"en": ("☕ Printing again?", "This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee.", "Buy me a coffee"),
+               "de": ("☕ Druckt es wieder?", "Dieser Treiber ist kostenlos und bleibt es. Hat er dir einen neuen Drucker erspart, kannst du mit einem Kaffee Danke sagen.", "Spendier mir einen Kaffee")}
+def coffee_card(lang="en"):
+    t, d, b = COFFEE_CARD[lang]
+    return f'<div class="card"><strong>{t}</strong><br>{d} <a href="{COFFEE}" data-loc="card">{b} →</a></div>'
 PRIVACY = {"en": "Privacy", "de": "Datenschutz (englisch)"}
 LANG_NAME = {"en": "English", "de": "Deutsch"}
 
 def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None, track=None):
     """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
-    sup, helplink = NAV[lang]
+    sup, helplink, coffee = NAV[lang]
     privacy = PRIVACY[lang]
     data = html.escape(json.dumps({"page_type": "other", **(track or {})}), quote=True)
     hreflang = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in (alts or {}).items())
@@ -146,10 +153,10 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 </head>
 <body data-track="{data}">
 <header><a href="{BASE}/{'de/' if lang == 'de' else ''}">🖨 Mac Printer Drivers</a>
-<nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/troubleshooting/">{helplink}</a>{switch}</nav></header>
+<nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/troubleshooting/">{helplink}</a><a class="coffee" href="{COFFEE}" data-loc="header">{coffee}</a>{switch}</nav></header>
 <main>
 {body}
-<footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{BASE}/privacy/">{privacy}</a><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
+<footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="{COFFEE}" data-loc="footer">{coffee}</a> · <a href="{BASE}/privacy/">{privacy}</a><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
 </main>
 <script>{TRACK_JS}</script>
 </body></html>"""
@@ -212,6 +219,7 @@ def brand_page(b):
 {rows}
 <h2>Questions</h2>
 {faq_list(qa)}
+{coffee_card()}
 <p>Other brands: <span class="brands">{others} <a href="{BASE}/brands/">all brands →</a></span></p>
 """
     ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": title,
@@ -270,6 +278,7 @@ def model_page(m, b, siblings):
 <p>Network printer, with a name and its address:</p>
 <pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)} MyPrinter socket://192.168.1.50</code></pre>
 </details>
+{coffee_card()}
 {f'<h2>Similar {html.escape(b)} models</h2><p>{sib}</p>' if sib else ''}
 <p><a href="{brand_url}">← {html.escape(brand_label)}</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})</script>
@@ -342,7 +351,7 @@ write_page(DOCS / "troubleshooting", page(
     "Printer still “not compatible”, missing from the list, on Wi-Fi, or printing blank pages after installing the Apple Silicon printer drivers? Step-by-step fixes for macOS 27, Tahoe and Sequoia.",
     f"{BASE}/troubleshooting/",
     f"<p class='note'><a href='{BASE}/'>Home</a> › Troubleshooting</p><h1>Printer still not working after installing?</h1>"
-    f"<p class='lead'>Fixes for the problems people hit after installing the driver package, in the order they usually happen.</p>{trouble_html}",
+    f"<p class='lead'>Fixes for the problems people hit after installing the driver package, in the order they usually happen.</p>{trouble_html}{coffee_card()}",
     [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in trouble]},
      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"}, {"@type": "ListItem", "position": 2, "name": "Troubleshooting", "item": f"{BASE}/troubleshooting/"}]}],
     keywords="printer software is not compatible with this device after install, printer not showing up mac, software for this printer isn't available from apple, no airprint printers found, mac printer wifi driver, macos 27 printer troubleshooting"), f"{BASE}/troubleshooting/")
@@ -451,6 +460,7 @@ home = f"""
 <h2 id="faq">Questions</h2>
 {faq_html}
 <p><a href="{BASE}/troubleshooting/">More help →</a></p>
+{coffee_card()}
 
 <script>
 const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1,st;
@@ -544,6 +554,7 @@ de_home = f"""
 <p class="note">Was dieser Treiber nicht kann: Er zeigt keine Tinten- oder Tonerstände an, er scannt nicht, und WLAN-Drucker brauchen einen Schritt mehr.</p>
 <h2>Fragen</h2>
 {de_qa_html(de_home_qa)}
+{coffee_card("de")}
 """
 write_page(DOCS / "de", page(
     "Druckersoftware nicht kompatibel? Kostenloser Mac-Treiber (macOS 27)",
@@ -580,6 +591,7 @@ for b in DE_BRANDS:
 {rows}
 <h2>Fragen</h2>
 {de_qa_html(qa)}
+{coffee_card("de")}
 <p>Andere Marken: <span class="brands">{" ".join(f'<a href="{BASE}/de/{slug(o)}/">{o}</a>' for o in DE_BRANDS if o != b)} <a href="{BASE}/brands/">alle Marken →</a></span></p>
 """
     ld = [de_faq_ld(qa), {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [

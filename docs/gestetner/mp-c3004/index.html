@@ -19,7 +19,7 @@
 *{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
-header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}header nav a.coffee{color:var(--accent);font-weight:600}
 main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
 h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
 h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
@@ -52,7 +52,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 </head>
 <body data-track="{&quot;page_type&quot;: &quot;model&quot;, &quot;printer_brand&quot;: &quot;Gestetner&quot;, &quot;printer_model&quot;: &quot;Gestetner MP C3004&quot;}">
 <header><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">🖨 Mac Printer Drivers</a>
-<nav><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Check my printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">Help</a></nav></header>
+<nav><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Check my printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">Help</a><a class="coffee" href="https://github.com/sponsors/theshiver" data-loc="header">☕ Buy me a coffee</a></nav></header>
 <main>
 
 <p class="note"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">Home</a> › <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/">Gestetner printers</a> › Gestetner MP C3004</p>
@@ -76,11 +76,12 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <p>Network printer, with a name and its address:</p>
 <pre><button class="copy">Copy</button><code>sudo gutenprint-add gestetner-mp_c3004 MyPrinter socket://192.168.1.50</code></pre>
 </details>
+<div class="card"><strong>☕ Printing again?</strong><br>This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee. <a href="https://github.com/sponsors/theshiver" data-loc="card">Buy me a coffee →</a></div>
 <h2>Similar Gestetner models</h2><p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c2551/">Gestetner MP C2551</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c2800/">Gestetner MP C2800</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c300/">Gestetner MP C300</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3001/">Gestetner MP C3001</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3002/">Gestetner MP C3002</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3003/">Gestetner MP C3003</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c300sr/">Gestetner MP C300SR</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3300/">Gestetner MP C3300</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3501/">Gestetner MP C3501</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3502/">Gestetner MP C3502</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3503/">Gestetner MP C3503</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/mp-c3504/">Gestetner MP C3504</a></p>
 <p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/gestetner/">← Gestetner printers</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)})</script>
 
-<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
+<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver" data-loc="footer">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
 </main>
 <script>(function(){var G='G-RL7H0KSZYM',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
@@ -88,6 +89,7 @@ var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>
 </body></html>
