@@ -1,0 +1,22 @@
+#!/bin/sh
+# ippeveprinter runs this once per AirPrint job, with the spooled file as $1.
+# Hands the job to the macOS queue, where the normal driver prints it.
+set -u
+LP=/usr/bin/lp
+# macOS has no filter from Apple's URF raster format to PDF, so only these can go on to the queue
+case "${CONTENT_TYPE:-}" in
+  application/pdf|image/jpeg) ;;
+  *) echo "airprint-forward: can't print ${CONTENT_TYPE:-unknown type}" >&2; exit 1 ;;
+esac
+set -- -d "$AIRPRINT_QUEUE" -n "${IPP_COPIES:-1}" "$1"
+# iPhones send the paper as media-col: media-size={x-dimension=10160 y-dimension=15240}, in 1/100 mm
+w=$(printf %s "${IPP_MEDIA_COL:-}" | sed -n 's/.*x-dimension=\([0-9]*\).*/\1/p')
+h=$(printf %s "${IPP_MEDIA_COL:-}" | sed -n 's/.*y-dimension=\([0-9]*\).*/\1/p')
+if [ -n "${IPP_MEDIA:-}" ]; then
+  set -- -o "media=$IPP_MEDIA" "$@"
+elif [ -n "$w" ] && [ -n "$h" ]; then
+  set -- -o "media=Custom.$(LC_ALL=C awk "BEGIN { printf \"%gx%g\", $w / 100, $h / 100 }")mm" "$@"
+fi
+[ -n "${IPP_SIDES:-}" ] && set -- -o "sides=$IPP_SIDES" "$@"
+[ "${IPP_PRINT_COLOR_MODE:-}" = monochrome ] && set -- -o ColorModel=Gray "$@"
+exec "$LP" "$@"

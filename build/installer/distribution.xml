@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+  <title>Mac Printer Drivers</title>
+  <!-- hostArchitectures: without arm64 here, macOS asks for Rosetta on Apple Silicon -->
+  <options customize="never" require-scripts="false" hostArchitectures="arm64"/>
+  <domains enable_localSystem="true"/>
+  <conclusion file="conclusion.html" mime-type="text/html"/>
+  <choices-outline><line choice="default"/></choices-outline>
+  <choice id="default" title="Mac Printer Drivers"><pkg-ref id="com.github.apple-silicon-printer-drivers"/></choice>
+  <pkg-ref id="com.github.apple-silicon-printer-drivers" version="@VER@" onConclusion="none">component.pkg</pkg-ref>
+</installer-gui-script>

@@ -5,6 +5,9 @@
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"; ROOT="$HERE/.."; VER=${1:-1.0.0}
 OUT="$ROOT/dist/AppleSilicon-Printer-Drivers-$VER.pkg"
+APP="$ROOT/pkgroot/Applications/Share Printers with iPhone.app"
+mkdir -p "$ROOT/pkgroot/Applications"; rm -rf "${APP:?}"
+osacompile -o "$APP" "$HERE/airprint-share.applescript"
 xattr -cr "$ROOT/pkgroot" 2>/dev/null; find "$ROOT/pkgroot" -name "._*" -delete
 mkdir -p "$ROOT/dist"
 
@@ -16,14 +19,20 @@ if [ -n "$APP_ID" ]; then
   for f in "$ROOT"/pkgroot/Library/Printers/Gutenprint/libexec/*; do
     codesign --force --sign "$APP_ID" --options runtime --timestamp "$f"
   done
+  codesign --force --sign "$APP_ID" --options runtime --timestamp "$APP"
 else
   echo "no Developer ID Application cert — ad-hoc signing"
-  codesign -s - -f "$ROOT"/pkgroot/Library/Printers/Gutenprint/libexec/*
+  codesign -s - -f "$ROOT"/pkgroot/Library/Printers/Gutenprint/libexec/* "$APP"
 fi
 
 TMP="$OUT.unsigned"
+WORK=$(mktemp -d)
 pkgbuild --root "$ROOT/pkgroot" --scripts "$ROOT/scripts" --install-location / \
-  --identifier com.github.apple-silicon-printer-drivers --version "$VER" "$TMP"
+  --identifier com.github.apple-silicon-printer-drivers --version "$VER" "$WORK/component.pkg"
+# a product archive, because only those can show the closing screen in build/installer
+sed "s/@VER@/$VER/" "$HERE/installer/distribution.xml" > "$WORK/distribution.xml"
+productbuild --distribution "$WORK/distribution.xml" --resources "$HERE/installer" --package-path "$WORK" "$TMP"
+rm -rf "${WORK:?}"
 
 if [ -n "$INST_ID" ]; then
   echo "signing package with: $INST_ID"

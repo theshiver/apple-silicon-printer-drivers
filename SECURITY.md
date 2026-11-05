@@ -13,6 +13,8 @@ The `.pkg` copies files to `/Library/Printers/Gutenprint/` and then runs
 
 It does not touch anything else, does not phone home, and needs no network.
 
+The package also adds an app, `Share Printers with iPhone`, to `/Applications`. Sharing stays off until you turn it on there. Turned on, each printer you pick gets a LaunchAgent in `~/Library/LaunchAgents` that runs Apple's `ippeveprinter` as your user and announces the printer on your network. Anyone on that network can print to it. Turn it off in the same app.
+
 ## Verifying a release
 
 The release package is signed with a Developer ID Installer certificate and notarized by Apple. Check it with:
