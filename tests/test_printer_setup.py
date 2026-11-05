@@ -208,13 +208,13 @@ fi
     def test_website_catalog_and_ppd_agree(self):
         models = json.loads((ROOT / "docs/models.json").read_text())
         self.assertEqual([m["name"] for m in models if m["id"] == MODEL], ["Brother HL-1210W series"])
-        self.assertIn(MODEL, (ROOT / "docs/brother/index.html").read_text())
+        self.assertIn(MODEL, (ROOT / "docs/brother/hl-1210w-series/index.html").read_text())
         ppds = sorted(p.stem for p in (PAYLOAD / "share/brlaser/ppd").glob("*.ppd"))
         self.assertEqual(sorted(m["id"] for m in models if m["id"].startswith("brlaser-")), ppds)
         splix = {p.stem: re.search(r'\*ShortNickName: "(.*)"', p.read_text()).group(1)
                  for p in (PAYLOAD / "share/splix/ppd").glob("*.ppd")}
         self.assertEqual({m["id"]: m["name"] for m in models if m["id"].startswith("splix-")}, splix)
-        self.assertIn("splix-samsung-ml-1640", (ROOT / "docs/samsung/index.html").read_text())
+        self.assertIn("splix-samsung-ml-1640", (ROOT / "docs/samsung/ml-1640/index.html").read_text())
         self.assertFalse(any("unreleased" in m for m in models))
 
     def test_extra_pcl_models_are_shipped_and_listed(self):

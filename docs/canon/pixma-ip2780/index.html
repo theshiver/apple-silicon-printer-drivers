@@ -4,72 +4,97 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Canon PIXMA iP2780 Driver for Mac (macOS 27, Apple Silicon)</title>
-<meta name="description" content="Free native driver for the Canon PIXMA iP2780 on Apple Silicon Macs. Fixes “The printer software is not compatible with this device” on macOS 27, macOS 26 Tahoe and macOS 15 Sequoia without Rosetta. USB sets up automatically; Wi-Fi in one command.">
+<meta name="description" content="Free native driver for the Canon PIXMA iP2780 on Apple Silicon Macs. Fixes “The printer software is not compatible with this device” on macOS 27, macOS 26 Tahoe and macOS 15 Sequoia without Rosetta. USB sets up automatically; Wi-Fi in a few clicks.">
 <meta name="keywords" content="Canon PIXMA iP2780 driver mac, Canon PIXMA iP2780 mac driver, Canon PIXMA iP2780 macos 27, Canon PIXMA iP2780 mac tahoe, Canon PIXMA iP2780 apple silicon, Canon PIXMA iP2780 m1, Canon printer driver mac">
 
 <link rel="canonical" href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2780/">
 <meta property="og:type" content="website"><meta property="og:title" content="Canon PIXMA iP2780 Driver for Mac (macOS 27, Apple Silicon)">
-<meta property="og:description" content="Free native driver for the Canon PIXMA iP2780 on Apple Silicon Macs. Fixes “The printer software is not compatible with this device” on macOS 27, macOS 26 Tahoe and macOS 15 Sequoia without Rosetta. USB sets up automatically; Wi-Fi in one command."><meta property="og:url" content="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2780/">
+<meta property="og:description" content="Free native driver for the Canon PIXMA iP2780 on Apple Silicon Macs. Fixes “The printer software is not compatible with this device” on macOS 27, macOS 26 Tahoe and macOS 15 Sequoia without Rosetta. USB sets up automatically; Wi-Fi in a few clicks."><meta property="og:url" content="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2780/">
 <meta property="og:image" content="https://theshiver.github.io/apple-silicon-printer-drivers/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://theshiver.github.io/apple-silicon-printer-drivers/not-compatible.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Canon PIXMA iP2780 driver for macOS (Apple Silicon)","operatingSystem":"macOS 12 or later (Apple Silicon)","applicationCategory":"DriverApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v1.3.12/AppleSilicon-Printer-Drivers-1.3.12.pkg","softwareVersion":"1.3.12"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://theshiver.github.io/apple-silicon-printer-drivers/"},{"@type":"ListItem","position":2,"name":"Canon printers","item":"https://theshiver.github.io/apple-silicon-printer-drivers/canon/"},{"@type":"ListItem","position":3,"name":"Canon PIXMA iP2780","item":"https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2780/"}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the Canon PIXMA iP2780 work on macOS 27, macOS 26 Tahoe and Apple Silicon?","acceptedAnswer":{"@type":"Answer","text":"Yes. This free package adds a native arm64 Gutenprint driver for the Canon PIXMA iP2780. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27, without Rosetta."}},{"@type":"Question","name":"Do I need to write my own Canon PIXMA iP2780 driver?","acceptedAnswer":{"@type":"Answer","text":"No. The Canon PIXMA iP2780 is already supported by Gutenprint, an open source driver with years of tuning for this printer. Install the package; there is nothing to write, compile or patch."}},{"@type":"Question","name":"Why does my Canon PIXMA iP2780 say \u201cThe printer software is not compatible with this device\u201d?","acceptedAnswer":{"@type":"Answer","text":"Canon's Mac driver for the Canon PIXMA iP2780 is Intel-only, and macOS 27 marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer."}}]}]</script>
 <style>
-:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333;--btn-bg:#0a66c2;--btn-fg:#fff}
-@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f;--btn-bg:#6cb4ff;--btn-fg:#0b1a2b}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-main{max-width:860px;margin:0 auto;padding:24px 16px 64px}header{padding:12px 16px;border-bottom:1px solid var(--line)}
-header a{color:var(--fg);text-decoration:none;font-weight:600}header nav a{margin-left:16px;font-weight:400;color:var(--muted)}
-h1{font-size:1.9rem;line-height:1.2;margin:.4em 0}h2{margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.25em}
-a{color:var(--accent)}p.lead{font-size:1.1rem;color:var(--muted)}
-input[type=search]{width:100%;font-size:1.15rem;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
-input[type=search]:focus{outline:none;border-color:var(--accent)}
-#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-top:8px;cursor:pointer}
-#results li:hover,#results li.sel{border-color:var(--accent)}#results small{color:var(--muted)}
-pre,code{font:.95em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow:auto;position:relative}
-code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
-button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
-ol.steps li{margin:.6em 0}.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
-.hidden{display:none}.note{color:var(--muted);font-size:.95rem}.brands a{display:inline-block;margin:4px 8px 4px 0}
-table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.dl{border:2px solid var(--accent);border-radius:14px;padding:18px 20px;margin:20px 0}
-.dl .ok{font-size:1.15rem;font-weight:600;margin:0 0 12px}
-a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:10px}
-a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
-.dl .trust{color:var(--muted);font-size:.9rem;margin:10px 0 14px}
-ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;padding:0;margin:0;counter-reset:q}
-ol.quick li{counter-increment:q;background:var(--code);border-radius:10px;padding:10px 12px;font-size:.95rem}
-ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
+:root{color-scheme:light dark;--bg:#fff;--soft:#f5f6f8;--fg:#14171f;--muted:#5b6472;--line:#e4e7ec;--accent:#1d5fd1;--code:#f1f2f5;--ok:#127a3e;--ok-soft:#e7f6ed;--bad:#c5342b;--bad-soft:#fdeceb;--btn-bg:#1d5fd1;--btn-fg:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#101216;--soft:#191c22;--fg:#eef0f3;--muted:#a3abb8;--line:#2b2f37;--accent:#7db0ff;--code:#1f2229;--ok:#6fd694;--ok-soft:#14291c;--bad:#ff8f87;--bad-soft:#331a18;--btn-bg:#7db0ff;--btn-fg:#0b1a2b}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}
+main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
+h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
+a{color:var(--accent)}p.lead{font-size:1.2rem;color:var(--muted);margin-top:0}.note{color:var(--muted);font-size:.93rem}
+.hero{display:grid;gap:32px;align-items:center;padding:24px 0 8px}@media(min-width:800px){.hero{grid-template-columns:1.45fr 1fr}}
+.mock{background:var(--soft);border-radius:18px;padding:18px;display:grid;gap:8px;justify-items:center}
+.mock div{width:100%;background:var(--bg);border-radius:12px;padding:12px 14px;line-height:1.3}.mock small{display:block;font-weight:600}
+.mock .bad small{color:var(--bad)}.mock .good small{color:var(--ok)}.mock span{color:var(--muted)}
+.dl{background:var(--soft);border-radius:16px;padding:20px 22px;margin:20px 0}.hero .dl{background:none;padding:0;margin:0}
+.dl .ok{font-size:1.1rem;font-weight:600;margin:0 0 12px;color:var(--ok)}
+a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:15px 30px;border-radius:12px}
+a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.dl .trust{color:var(--muted);font-size:.92rem;margin:12px 0 14px}.hero .trust{margin-bottom:6px}
+ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;padding:0;margin:0;counter-reset:q}
+ol.quick li{counter-increment:q;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.97rem}
+ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
 @media(max-width:600px){ol.quick{grid-template-columns:1fr}a.btn{display:block;text-align:center}}
-footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
+input[type=search]{width:100%;font-size:1.15rem;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}input[type=search]:focus{outline:none;border-color:var(--accent)}
+#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-top:8px;cursor:pointer}#results li:hover,#results li.sel{border-color:var(--accent)}
+.card{background:var(--soft);border-radius:16px;padding:18px 22px;margin:18px 0}.brands a{display:inline-block;margin:4px 12px 4px 0}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.cards div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}.cards strong{display:block;margin-bottom:4px}
+.models{columns:3 220px;list-style:none;padding:0;margin:0}.models li{padding:3px 0;break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.9rem;color:var(--muted)}tbody tr:first-child{background:var(--ok-soft)}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 .2em}
+pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+.hidden{display:none}ol.steps li{margin:.4em 0}
+footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}footer button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
+.cc{position:fixed;left:12px;right:12px;bottom:12px;max-width:560px;margin:auto;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:.9rem;box-shadow:0 6px 24px #0003}
+.cc span{flex:1 1 240px}.cc button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
 </style>
 </head>
-<body>
+<body data-track="{&quot;page_type&quot;: &quot;model&quot;, &quot;printer_brand&quot;: &quot;Canon&quot;, &quot;printer_model&quot;: &quot;Canon PIXMA iP2780&quot;}">
 <header><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">🖨 Mac Printer Drivers</a>
-<nav style="display:inline"><a href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v1.3.12/AppleSilicon-Printer-Drivers-1.3.12.pkg">Download</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Is my printer supported?</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">Brands</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a></nav></header>
+<nav><a href="https://theshiver.github.io/apple-silicon-printer-drivers/#search">Check my printer</a><a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">Help</a></nav></header>
 <main>
 
 <p class="note"><a href="https://theshiver.github.io/apple-silicon-printer-drivers/">Home</a> › <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/">Canon printers</a> › Canon PIXMA iP2780</p>
 <h1>Canon PIXMA iP2780 driver for Mac</h1>
 <p class="lead">Works on Apple Silicon Macs with macOS 27, macOS 26 Tahoe and macOS 15 Sequoia. One free installer, no Rosetta, nothing to compile.</p>
-<div class="dl"><p class=ok>✅ The Canon PIXMA iP2780 is supported</p><a class="btn" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v1.3.12/AppleSilicon-Printer-Drivers-1.3.12.pkg">⬇ Download the free driver (.pkg)</a><p class="trust">Free · Signed and notarized by Apple · Version 1.3.12 · Any Apple Silicon Mac, macOS 12 or later</p><ol class="quick"><li>Plug the printer in with USB and switch it on</li><li>Open the downloaded file and click through</li><li>Print. The printer is set up for you</li></ol></div>
+<div class="dl"><p class=ok>✅ The Canon PIXMA iP2780 is supported</p><a class="btn" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v1.3.12/AppleSilicon-Printer-Drivers-1.3.12.pkg" data-loc="card">⬇ Download the free driver</a><p class="trust">Free · Signed and notarized by Apple · Any Apple Silicon Mac, macOS 12 or later</p><ol class="quick"><li>Plug the printer in with USB and switch it on</li><li>Open the downloaded file and click through</li><li>Print. The printer is set up for you</li></ol></div>
 <p class="note">Still not printing? Restart the Mac once and re-plug the printer, then see <a href="https://theshiver.github.io/apple-silicon-printer-drivers/troubleshooting/">troubleshooting</a>. Wi-Fi printer? See below.</p>
-<p class="note">Driver: <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a> · Model id: <code>bjc-PIXMA-iP2780</code></p>
 <h2>Wi-Fi, network, or not detected over USB</h2>
-<p>After installing, open Terminal (⌘+Space, type <em>Terminal</em>), paste this and press Enter:</p>
-<pre><button class="copy">Copy</button><code>sudo gutenprint-add bjc-PIXMA-iP2780</code></pre>
-<p>For a network printer, add a name and the printer's address (<code>lpinfo -v</code> lists what macOS can see):</p>
-<pre><button class="copy">Copy</button><code>sudo gutenprint-add bjc-PIXMA-iP2780 MyPrinter socket://192.168.1.50</code></pre>
-<p class="note">Or without Terminal: System Settings → Printers &amp; Scanners → Add → Use: Select Software… and pick “Canon PIXMA iP2780” ending in “Apple Silicon”.</p>
+<ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Pick “Canon PIXMA iP2780” ending in “Apple Silicon” and click Add.</li></ol>
 <h2>Why did my Canon PIXMA iP2780 stop working?</h2>
 <p>Canon's own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, compiled natively for Apple Silicon.</p>
-<p><strong>Had Canon's own driver installed?</strong> It leaves a small kernel extension behind that blocks macOS's USB printer driver. The installer moves it aside (to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted); restart the Mac once afterwards, then unplug and re-plug the printer.</p>
+<p><strong>Had Canon's own driver installed?</strong> It leaves a small kernel extension behind that blocks macOS's USB printer driver. The installer moves it aside, nothing is deleted; restart the Mac once afterwards, then unplug and re-plug the printer.</p>
 <p><strong>Print quality and black &amp; white:</strong> in the print dialog open Printer Features (Printer Options on macOS 27). Quality is under Resolution; for black &amp; white set Color Model to Grayscale. Ink and toner levels can't be shown by open source drivers.</p>
 <h2>Questions</h2>
-<h3>Does the Canon PIXMA iP2780 work on macOS 27, macOS 26 Tahoe and Apple Silicon?</h3><p>Yes. This free package adds a native arm64 Gutenprint driver for the Canon PIXMA iP2780. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27, without Rosetta.</p><h3>Do I need to write my own Canon PIXMA iP2780 driver?</h3><p>No. The Canon PIXMA iP2780 is already supported by Gutenprint, an open source driver with years of tuning for this printer. Install the package; there is nothing to write, compile or patch.</p><h3>Why does my Canon PIXMA iP2780 say “The printer software is not compatible with this device”?</h3><p>Canon&#x27;s Mac driver for the Canon PIXMA iP2780 is Intel-only, and macOS 27 marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer.</p>
+<details><summary>Does the Canon PIXMA iP2780 work on macOS 27, macOS 26 Tahoe and Apple Silicon?</summary><p>Yes. This free package adds a native arm64 Gutenprint driver for the Canon PIXMA iP2780. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27, without Rosetta.</p></details>
+<details><summary>Do I need to write my own Canon PIXMA iP2780 driver?</summary><p>No. The Canon PIXMA iP2780 is already supported by Gutenprint, an open source driver with years of tuning for this printer. Install the package; there is nothing to write, compile or patch.</p></details>
+<details><summary>Why does my Canon PIXMA iP2780 say “The printer software is not compatible with this device”?</summary><p>Canon&#x27;s Mac driver for the Canon PIXMA iP2780 is Intel-only, and macOS 27 marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer.</p></details>
+<details><summary>Advanced: set it up from Terminal</summary>
+<p>Driver: <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a> · Model id: <code>bjc-PIXMA-iP2780</code></p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add bjc-PIXMA-iP2780</code></pre>
+<p>Network printer, with a name and its address:</p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add bjc-PIXMA-iP2780 MyPrinter socket://192.168.1.50</code></pre>
+</details>
 <h2>Similar Canon models</h2><p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2701/">Canon PIXMA iP2701</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2702/">Canon PIXMA iP2702</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2740/">Canon PIXMA iP2740</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2760/">Canon PIXMA iP2760</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2770/">Canon PIXMA iP2770</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2772/">Canon PIXMA iP2772</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2788/">Canon PIXMA iP2788</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2810/">Canon PIXMA iP2810</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2820/">Canon PIXMA iP2820</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2840/">Canon PIXMA iP2840</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2850/">Canon PIXMA iP2850</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/pixma-ip2870/">Canon PIXMA iP2870</a></p>
 <p><a href="https://theshiver.github.io/apple-silicon-printer-drivers/canon/">← Canon printers</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)})</script>
 
-<footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, SpliX GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+<footer><a href="https://theshiver.github.io/apple-silicon-printer-drivers/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="https://theshiver.github.io/apple-silicon-printer-drivers/privacy/">Privacy</a> · <button id="cc-open" type="button">Cookie settings</button><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
 </main>
+<div id="cc" class="cc" role="region" aria-label="Cookie settings" hidden><span>Can we count visits with Google Analytics? It helps us see which printers people need.</span><button type="button" data-consent="1">Accept</button><button type="button" data-consent="0">No thanks</button></div>
+<script>(function(){var G='G-RL7H0KSZYM',K='analytics-consent',d=document,bar=d.getElementById('cc'),on=false;
+function get(){try{return localStorage.getItem(K)}catch(e){return null}}
+function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+function start(){if(on)return;on=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);gtag('js',new Date());gtag('config',G,JSON.parse(d.body.dataset.track||'{}'))}
+window.track=function(n,p){if(on)gtag('event',n,p||{})};
+var c=get();if(c==='1')start();else if(c===null)bar.hidden=false;
+bar.addEventListener('click',function(e){var v=e.target.dataset.consent;if(!v)return;put(v);bar.hidden=true;if(v==='1')start();else if(on){d.cookie.split(';').forEach(function(x){var n=x.split('=')[0].trim();if(n.indexOf('_ga')===0)d.cookie=n+'=;Max-Age=0;path=/;domain=.'+location.hostname;});location.reload()}});
+d.getElementById('cc-open').addEventListener('click',function(){bar.hidden=false});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
+})();</script>
 </body></html>

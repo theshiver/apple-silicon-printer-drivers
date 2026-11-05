@@ -64,43 +64,70 @@ def model_path(m):
     return f"{slug(ALIAS.get(w, w))}/{slug(m['name'][len(w):]) or slug(m['name'])}"
 assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
 
+GA_ID = "G-RL7H0KSZYM"
 CSS = """
-:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#e5e5e5;--accent:#0a66c2;--code:#f4f4f6;--ok:#137333;--btn-bg:#0a66c2;--btn-fg:#fff}
-@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#2a2a2a;--accent:#6cb4ff;--code:#1c1c1f;--ok:#7bd88f;--btn-bg:#6cb4ff;--btn-fg:#0b1a2b}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-main{max-width:860px;margin:0 auto;padding:24px 16px 64px}header{padding:12px 16px;border-bottom:1px solid var(--line)}
-header a{color:var(--fg);text-decoration:none;font-weight:600}header nav a{margin-left:16px;font-weight:400;color:var(--muted)}
-h1{font-size:1.9rem;line-height:1.2;margin:.4em 0}h2{margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.25em}
-a{color:var(--accent)}p.lead{font-size:1.1rem;color:var(--muted)}
-input[type=search]{width:100%;font-size:1.15rem;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
-input[type=search]:focus{outline:none;border-color:var(--accent)}
-#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-top:8px;cursor:pointer}
-#results li:hover,#results li.sel{border-color:var(--accent)}#results small{color:var(--muted)}
-pre,code{font:.95em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow:auto;position:relative}
-code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
-button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
-ol.steps li{margin:.6em 0}.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
-.hidden{display:none}.note{color:var(--muted);font-size:.95rem}.brands a{display:inline-block;margin:4px 8px 4px 0}
-table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.dl{border:2px solid var(--accent);border-radius:14px;padding:18px 20px;margin:20px 0}
-.dl .ok{font-size:1.15rem;font-weight:600;margin:0 0 12px}
-a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:10px}
-a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
-.dl .trust{color:var(--muted);font-size:.9rem;margin:10px 0 14px}
-ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;padding:0;margin:0;counter-reset:q}
-ol.quick li{counter-increment:q;background:var(--code);border-radius:10px;padding:10px 12px;font-size:.95rem}
-ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.6em;height:1.6em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
+:root{color-scheme:light dark;--bg:#fff;--soft:#f5f6f8;--fg:#14171f;--muted:#5b6472;--line:#e4e7ec;--accent:#1d5fd1;--code:#f1f2f5;--ok:#127a3e;--ok-soft:#e7f6ed;--bad:#c5342b;--bad-soft:#fdeceb;--btn-bg:#1d5fd1;--btn-fg:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#101216;--soft:#191c22;--fg:#eef0f3;--muted:#a3abb8;--line:#2b2f37;--accent:#7db0ff;--code:#1f2229;--ok:#6fd694;--ok-soft:#14291c;--bad:#ff8f87;--bad-soft:#331a18;--btn-bg:#7db0ff;--btn-fg:#0b1a2b}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}
+main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
+h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
+a{color:var(--accent)}p.lead{font-size:1.2rem;color:var(--muted);margin-top:0}.note{color:var(--muted);font-size:.93rem}
+.hero{display:grid;gap:32px;align-items:center;padding:24px 0 8px}@media(min-width:800px){.hero{grid-template-columns:1.45fr 1fr}}
+.mock{background:var(--soft);border-radius:18px;padding:18px;display:grid;gap:8px;justify-items:center}
+.mock div{width:100%;background:var(--bg);border-radius:12px;padding:12px 14px;line-height:1.3}.mock small{display:block;font-weight:600}
+.mock .bad small{color:var(--bad)}.mock .good small{color:var(--ok)}.mock span{color:var(--muted)}
+.dl{background:var(--soft);border-radius:16px;padding:20px 22px;margin:20px 0}.hero .dl{background:none;padding:0;margin:0}
+.dl .ok{font-size:1.1rem;font-weight:600;margin:0 0 12px;color:var(--ok)}
+a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:15px 30px;border-radius:12px}
+a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.dl .trust{color:var(--muted);font-size:.92rem;margin:12px 0 14px}.hero .trust{margin-bottom:6px}
+ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;padding:0;margin:0;counter-reset:q}
+ol.quick li{counter-increment:q;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.97rem}
+ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
 @media(max-width:600px){ol.quick{grid-template-columns:1fr}a.btn{display:block;text-align:center}}
-footer{color:var(--muted);font-size:.9rem;margin-top:48px;border-top:1px solid var(--line);padding-top:16px}
+input[type=search]{width:100%;font-size:1.15rem;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}input[type=search]:focus{outline:none;border-color:var(--accent)}
+#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-top:8px;cursor:pointer}#results li:hover,#results li.sel{border-color:var(--accent)}
+.card{background:var(--soft);border-radius:16px;padding:18px 22px;margin:18px 0}.brands a{display:inline-block;margin:4px 12px 4px 0}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.cards div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}.cards strong{display:block;margin-bottom:4px}
+.models{columns:3 220px;list-style:none;padding:0;margin:0}.models li{padding:3px 0;break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.9rem;color:var(--muted)}tbody tr:first-child{background:var(--ok-soft)}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 .2em}
+pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+.hidden{display:none}ol.steps li{margin:.4em 0}
+footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}footer button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
+.cc{position:fixed;left:12px;right:12px;bottom:12px;max-width:560px;margin:auto;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:.9rem;box-shadow:0 6px 24px #0003}
+.cc span{flex:1 1 240px}.cc button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
 """
 
-NAV = {"en": ("Download", "Is my printer supported?", "Brands", "Buy me a coffee"),
-       "de": ("Download", "Wird mein Drucker unterstützt?", "Marken", "Spendier mir einen Kaffee")}
+# Google Analytics loads only after Accept, so visitors who don't choose send Google nothing (most search clicks come from the EU)
+TRACK_JS = """(function(){var G='%s',K='analytics-consent',d=document,bar=d.getElementById('cc'),on=false;
+function get(){try{return localStorage.getItem(K)}catch(e){return null}}
+function put(v){try{localStorage.setItem(K,v)}catch(e){}}
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+function start(){if(on)return;on=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);gtag('js',new Date());gtag('config',G,JSON.parse(d.body.dataset.track||'{}'))}
+window.track=function(n,p){if(on)gtag('event',n,p||{})};
+var c=get();if(c==='1')start();else if(c===null)bar.hidden=false;
+bar.addEventListener('click',function(e){var v=e.target.dataset.consent;if(!v)return;put(v);bar.hidden=true;if(v==='1')start();else if(on){d.cookie.split(';').forEach(function(x){var n=x.split('=')[0].trim();if(n.indexOf('_ga')===0)d.cookie=n+'=;Max-Age=0;path=/;domain=.'+location.hostname;});location.reload()}});
+d.getElementById('cc-open').addEventListener('click',function(){bar.hidden=false});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
+})();""" % GA_ID
+
+NAV = {"en": ("Check my printer", "Help"), "de": ("Drucker prüfen", "Hilfe")}
+CONSENT = {"en": ("Can we count visits with Google Analytics? It helps us see which printers people need.", "Accept", "No thanks", "Cookie settings", "Privacy"),
+           "de": ("Dürfen wir Besuche mit Google Analytics zählen? So sehen wir, welche Drucker gebraucht werden.", "Akzeptieren", "Nein danke", "Cookie-Einstellungen", "Datenschutz (englisch)")}
 LANG_NAME = {"en": "English", "de": "Deutsch"}
 
-def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None):
+def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None, track=None):
     """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
-    dl, sup, brands, coffee = NAV[lang]
+    sup, helplink = NAV[lang]
+    ask, yes, no, settings, privacy = CONSENT[lang]
+    data = html.escape(json.dumps({"page_type": "other", **(track or {})}), quote=True)
     hreflang = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in (alts or {}).items())
     if alts:
         hreflang += f'<link rel="alternate" hreflang="x-default" href="{alts["en"]}">'
@@ -123,32 +150,42 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 {ld}
 <style>{CSS}</style>
 </head>
-<body>
-<header><a href="{BASE}/">🖨 Mac Printer Drivers</a>
-<nav style="display:inline"><a href="{PKG_URL}">{dl}</a><a href="{BASE}/#search">{sup}</a><a href="{BASE}/brands/">{brands}</a><a href="{REPO}">GitHub</a><a href="https://github.com/sponsors/theshiver">☕ {coffee}</a>{switch}</nav></header>
+<body data-track="{data}">
+<header><a href="{BASE}/{'de/' if lang == 'de' else ''}">🖨 Mac Printer Drivers</a>
+<nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/troubleshooting/">{helplink}</a>{switch}</nav></header>
 <main>
 {body}
-<footer>Open source (Gutenprint GPL-2.0, brlaser GPL-2.0-or-later, SpliX GPL-2.0, scripts MIT) · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{REPO}">Source &amp; issues on GitHub</a> · Not affiliated with Canon, Epson, HP or Apple. Product names are trademarks of their owners.</footer>
+<footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="https://github.com/sponsors/theshiver">☕ Buy me a coffee</a> · <a href="{BASE}/privacy/">{privacy}</a> · <button id="cc-open" type="button">{settings}</button><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
 </main>
+<div id="cc" class="cc" role="region" aria-label="{settings}" hidden><span>{ask}</span><button type="button" data-consent="1">{yes}</button><button type="button" data-consent="0">{no}</button></div>
+<script>{TRACK_JS}</script>
 </body></html>"""
 
 DL_TEXT = {
-    "en": ("Download the free driver (.pkg)", f"Free · Signed and notarized by Apple · Version {VERSION} · Any Apple Silicon Mac, macOS 12 or later",
+    "en": ("Download the free driver", f"Free · Signed and notarized by Apple · Any Apple Silicon Mac, macOS 12 or later",
            ("Plug the printer in with USB and switch it on", "Open the downloaded file and click through", "Print. The printer is set up for you"),
            f'Still not printing? Restart the Mac once and re-plug the printer, then see <a href="{BASE}/troubleshooting/">troubleshooting</a>. Wi-Fi printer? See below.'),
-    "de": ("Kostenlosen Treiber herunterladen (.pkg)", f"Kostenlos · Von Apple signiert und notarisiert · Version {VERSION} · Jeder Apple-Silicon-Mac ab macOS 12",
+    "de": ("Kostenlosen Treiber herunterladen", f"Kostenlos · Von Apple signiert und notarisiert · Jeder Apple-Silicon-Mac ab macOS 12",
            ("Drucker per USB anschließen und einschalten", "Heruntergeladene Datei öffnen und durchklicken", "Drucken. Der Drucker wird automatisch eingerichtet"),
            f'Druckt es nicht? Mac einmal neu starten, Drucker neu einstecken, dann <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (englisch). WLAN-Drucker? Siehe unten.'),
 }
-def download_card(ok="", lang="en"):
+def quick_steps(lang="en"):
+    return f'<ol class="quick">{"".join(f"<li>{t}</li>" for t in DL_TEXT[lang][2])}</ol>'
+def download_card(ok="", lang="en", steps=True):
     """The answer people came for, above everything else: one button, three steps."""
-    btn, trust, steps, after = DL_TEXT[lang]
-    return (f'<div class="dl">{f"<p class=ok>✅ {ok}</p>" if ok else ""}<a class="btn" href="{PKG_URL}">⬇ {btn}</a>'
-            f'<p class="trust">{trust}</p><ol class="quick">{"".join(f"<li>{t}</li>" for t in steps)}</ol></div>\n<p class="note">{after}</p>')
+    btn, trust, _, after = DL_TEXT[lang]
+    return (f'<div class="dl">{f"<p class=ok>✅ {ok}</p>" if ok else ""}<a class="btn" href="{PKG_URL}" data-loc="card">⬇ {btn}</a>'
+            f'<p class="trust">{trust}</p>{quick_steps(lang) if steps else ""}</div>\n' + (f'<p class="note">{after}</p>' if steps else ""))
+def faq_list(qa):
+    """Questions stay in the HTML for search engines and find-in-page, but the page reads short."""
+    return "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in qa)
+def cards(rows):
+    return '<div class="cards">' + "".join(f"<div><strong>{t}</strong>{d}</div>" for t, d in rows) + "</div>"
 
 MACOS = "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia"
-ROSETTA_A = "Sometimes, and only for now. Running softwareupdate --install-rosetta in Terminal brings Rosetta back, and some Intel-only printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's Intel-only driver will stop again then. This package is native arm64 and doesn't need Rosetta."
+ROSETTA_A = "Sometimes, and only for now. Reinstalling Rosetta makes some old printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's old driver will stop again then. This driver doesn't need Rosetta."
 
+WIFI_A = "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
 def brand_faq(b, n):
     return [
      (f"Is there a {b} printer driver for macOS 27 and Apple Silicon?",
@@ -159,11 +196,15 @@ def brand_faq(b, n):
       ROSETTA_A),
      ("Does it work on macOS 26 Tahoe and macOS 15 Sequoia?",
       "Yes. It runs on macOS 12 and later on Apple Silicon Macs, and keeps working after you update to macOS 27."),
+     ("My printer is on Wi-Fi, or wasn't set up automatically.", WIFI_A),
     ]
+
+def model_list(ms):
+    return '<ul class="models">' + "".join(f'<li><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></li>' for m in ms) + "</ul>"
 
 def brand_page(b):
     ms = sorted(by_brand[b], key=lambda m: m["name"].lower())
-    rows = "\n".join(f'<tr><td><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
+    rows = model_list(ms)
     title = fit(f"{b} Printer Driver for Mac (macOS 27, Apple Silicon) – Free", f"{b} Printer Driver for Mac (macOS 27, Apple Silicon)")
     desc = f"Free {b} printer driver for Mac: native Apple Silicon driver for {len(ms)} {b} printers on {MACOS}. Fixes “The printer software is not compatible with this device” without Rosetta."
     qa = brand_faq(b, len(ms))
@@ -173,20 +214,18 @@ def brand_page(b):
 <h1>{html.escape(b)} printer driver for Mac (Apple Silicon, macOS 27)</h1>
 <p class="lead">{len(ms)} {html.escape(b)} printers work again on Apple Silicon Macs with {MACOS}. One free installer for all of them, no Rosetta.</p>
 {download_card(f"{len(ms)} {html.escape(b)} printers supported")}
-<p>Want model-specific instructions? Pick your printer in the table below or <a href="{BASE}/#search">search on the home page</a>.</p>
-<h2>Printer not set up automatically?</h2>
-<p>USB printers are normally detected by the installer. If yours wasn't (or it's on Wi-Fi), find it below, open Terminal (⌘+Space, type <em>Terminal</em>), paste its command and press Enter.</p>
-<table><thead><tr><th>Model</th><th>Command</th></tr></thead><tbody>{rows}</tbody></table>
-<p class="note">Network / Wi-Fi printer? Add the device address: <code>sudo gutenprint-add &lt;id&gt; MyPrinter socket://192.168.1.50</code> (<code>lpinfo -v</code> lists what macOS sees), or add it in System Settings → Printers &amp; Scanners → Use: Select Software… and pick the "Apple Silicon" entry.</p>
+<h2>Supported {html.escape(b)} printers</h2>
+<p>Pick your printer for model-specific help.</p>
+{rows}
 <h2>Questions</h2>
-{"".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in qa)}
+{faq_list(qa)}
 <p>Other brands: <span class="brands">{others} <a href="{BASE}/brands/">all brands →</a></span></p>
 """
     ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": title,
           "numberOfItems": len(ms), "itemListElement": [{"@type": "ListItem", "position": i+1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]},
           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i+1, "name": n, "item": u} for i, (n, u) in enumerate([("Home", f"{BASE}/"), ("Brands", f"{BASE}/brands/"), (b, f"{BASE}/{slug(b)}/")])]}]
-    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, alts=alts_for(f"{slug(b)}/") if b in DE_BRANDS else None, keywords=f"{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device")
+    return page(title, desc, f"{BASE}/{slug(b)}/", body, ld, alts=alts_for(f"{slug(b)}/") if b in DE_BRANDS else None, keywords=f"{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device", track={"page_type": "brand", "printer_brand": b})
 
 def model_page(m, b, siblings):
     name, mid = m["name"], m["id"]
@@ -199,7 +238,7 @@ def model_page(m, b, siblings):
     brand_label = f"{b} printers" if b in BRANDS else "All brands"
     notes = []
     if b == "Canon":
-        notes.append("<p><strong>Had Canon's own driver installed?</strong> It leaves a small kernel extension behind that blocks macOS's USB printer driver. The installer moves it aside (to <code>/Users/Shared/printer-driver-backup</code>, nothing is deleted); restart the Mac once afterwards, then unplug and re-plug the printer.</p>")
+        notes.append("<p><strong>Had Canon's own driver installed?</strong> It leaves a small kernel extension behind that blocks macOS's USB printer driver. The installer moves it aside, nothing is deleted; restart the Mac once afterwards, then unplug and re-plug the printer.</p>")
     if b == "Epson" or mid.startswith("escp2-"):
         notes.append("<p><strong>Black missing or faint?</strong> Run a nozzle check from the printer first: a clogged or empty black cartridge is the usual cause, and this driver can't read ink levels like Epson's did. Then make sure no color-only mode is picked under Resolution or Ink Set in Printer Features.</p>")
     if brlaser:
@@ -210,7 +249,7 @@ def model_page(m, b, siblings):
     title = fit(f"{name} Driver for Mac (macOS 27, Apple Silicon) – Free", f"{name} Driver for Mac (macOS 27, Apple Silicon)",
                 f"{name} Driver for Mac (macOS 27)", f"{name} Mac Driver")
     desc = (f"Free native driver for the {name} on Apple Silicon Macs. Fixes “The printer software is not compatible "
-            f"with this device” on {MACOS} without Rosetta. USB sets up automatically; Wi-Fi in one command.")
+            f"with this device” on {MACOS} without Rosetta. USB sets up automatically; Wi-Fi in a few clicks.")
     qa = [
         (f"Does the {name} work on macOS 27, macOS 26 Tahoe and Apple Silicon?",
          f"Yes. This free package adds a native arm64 {driver_name(mid)} driver for the {name}. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27, without Rosetta."),
@@ -224,19 +263,20 @@ def model_page(m, b, siblings):
 <h1>{esc} driver for Mac</h1>
 <p class="lead">Works on Apple Silicon Macs with {MACOS}. One free installer, no Rosetta, nothing to compile.</p>
 {download_card(f"The {esc} is supported")}
-<p class="note">Driver: {driver} · Model id: <code>{html.escape(mid)}</code></p>
 <h2>Wi-Fi, network, or not detected over USB</h2>
-<p>After installing, open Terminal (⌘+Space, type <em>Terminal</em>), paste this and press Enter:</p>
-<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)}</code></pre>
-<p>For a network printer, add a name and the printer's address (<code>lpinfo -v</code> lists what macOS can see):</p>
-<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)} MyPrinter socket://192.168.1.50</code></pre>
-<p class="note">Or without Terminal: System Settings → Printers &amp; Scanners → Add → Use: Select Software… and pick “{esc}” ending in “Apple Silicon”.</p>
+<ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Pick “{esc}” ending in “Apple Silicon” and click Add.</li></ol>
 <h2>Why did my {esc} stop working?</h2>
 <p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>
 {"".join(notes)}
 <p><strong>Print quality and black &amp; white:</strong> in the print dialog open Printer Features (Printer Options on macOS 27). Quality is under Resolution; for black &amp; white set Color Model to Grayscale. Ink and toner levels can't be shown by open source drivers.</p>
 <h2>Questions</h2>
-{"".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in qa)}
+{faq_list(qa)}
+<details><summary>Advanced: set it up from Terminal</summary>
+<p>Driver: {driver} · Model id: <code>{html.escape(mid)}</code></p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)}</code></pre>
+<p>Network printer, with a name and its address:</p>
+<pre><button class="copy">Copy</button><code>sudo gutenprint-add {html.escape(mid)} MyPrinter socket://192.168.1.50</code></pre>
+</details>
 {f'<h2>Similar {html.escape(b)} models</h2><p>{sib}</p>' if sib else ''}
 <p><a href="{brand_url}">← {html.escape(brand_label)}</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})</script>
@@ -253,7 +293,8 @@ def model_page(m, b, siblings):
             [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
     ]
     return page(title, desc, url, body, ld,
-                keywords=f"{name} driver mac, {name} mac driver, {name} macos 27, {name} mac tahoe, {name} apple silicon, {name} m1, {b} printer driver mac")
+                keywords=f"{name} driver mac, {name} mac driver, {name} macos 27, {name} mac tahoe, {name} apple silicon, {name} m1, {b} printer driver mac",
+                track={"page_type": "model", "printer_brand": b, "printer_model": name})
 
 # ---- write model pages
 model_urls = []
@@ -287,23 +328,21 @@ trouble = [
   "In System Settings → Printers & Scanners, remove the old entry (select it, click −), then print to the “Apple Silicon” one. If there is no such entry, restart the Mac once, unplug and re-plug the printer, and check the next question."),
  ("My printer doesn't show up in the list.",
   "Search your model on the home page first: if it isn't supported, no entry will appear. If it is supported and connected over USB, restart the Mac once and unplug / re-plug the printer, and connect it directly rather than through a hub or dock. "
-  "Then open Terminal (⌘+Space, type Terminal) and run lpinfo -v: a line starting with usb:// means macOS sees the printer. Add it with sudo gutenprint-add <model id>, using the id the home page search shows for your model."),
+  "Then add it in System Settings → Printers & Scanners → Add, with Use: Select Software… and the entry for your model ending in “Apple Silicon”."),
  ("“Software for this printer isn't available from Apple”.",
   "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model ending in “Apple Silicon”."),
  ("“No AirPrint printers found”, or AirPrint isn't offered.",
-  "Older printers don't support AirPrint, and AirPrint never works over USB. For those printers, add them with Use: Select Software… and the “Apple Silicon” entry (after installing this package), or with sudo gutenprint-add <model id>."),
+  "Older printers don't support AirPrint, and AirPrint never works over USB. For those printers, add them with Use: Select Software… and the “Apple Silicon” entry, after installing this package."),
  ("My printer is on Wi-Fi or Ethernet.",
-  "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry, "
-  "or in Terminal with sudo gutenprint-add <model id> MyPrinter socket://<printer IP address>. The printer's IP address is usually on its own display or network status page."),
+  "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry. "
+  "If the printer doesn't appear, connect it to the same network as the Mac and switch it off and on."),
  ("Will reinstalling Rosetta fix it?", ROSETTA_A),
  ("The job goes through but nothing prints, or only blank pages.",
   "Check that the queue uses your exact model: a similar model's driver can send data the printer silently ignores. Some printers, such as the HP LaserJet 1018, 1020, P1005 and P1006, can't be supported at all because they need the maker's firmware sent on every power-up."),
- ("How do I see what the installer did?",
-  "Open Terminal and run grep printer-drivers /var/log/install.log. It lists every printer it set up or couldn't match, with the exact command to run next."),
  ("Nothing here helped.",
-  f"Open an issue on GitHub ({REPO}/issues) with your printer model, how it's connected (USB or network), your macOS version and the output of grep printer-drivers /var/log/install.log."),
+  f"Open an issue on GitHub ({REPO}/issues) with your printer model, how it's connected (USB or network) and your macOS version. Terminal steps for advanced users are in the README on GitHub."),
 ]
-trouble_html = "\n".join(f"<h2>{html.escape(q)}</h2><p>{html.escape(a)}</p>" for q, a in trouble)
+trouble_html = faq_list(trouble)
 trouble_title = "Mac Printer Still Not Working After Installing? Troubleshooting"
 write_page(DOCS / "troubleshooting", page(
     trouble_title,
@@ -317,44 +356,36 @@ write_page(DOCS / "troubleshooting", page(
 urls.append(f"{BASE}/troubleshooting/")
 
 # ---- home
-examples = [("Canon PIXMA MP250", "bjc-MULTIPASS-MP250"), ("Canon PIXMA iP4300", "bjc-PIXMA-iP4300"), ("Epson Stylus Photo R300", "escp2-r300"),
-            ("HP LaserJet 1010", "hp-lj_1010"), ("Brother HL-5040", "brother-hl-5040"), ("Samsung ML-2150", "samsung-ml-2150")]
-ex_rows = "\n".join(f'<tr><td>{n}</td><td><code>sudo gutenprint-add {i}</code></td></tr>' for n, i in examples)
 faq = [
  ("Why did my printer stop working?",
-  "The printer maker's driver was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 marks Intel-only printer drivers as incompatible, and upgrades before macOS 27.2 also removed Rosetta. The maker never released an Apple Silicon version. This installer replaces it with a native driver."),
- ("Will reinstalling Rosetta fix it?",
-  ROSETTA_A),
+  "The printer maker's Mac driver was built for older Intel Macs and never updated. macOS 27 marks those drivers as incompatible, so the printer stops, even though nothing is wrong with it. This free driver replaces the old one."),
+ ("Will reinstalling Rosetta fix it?", ROSETTA_A),
  ("I had the printer maker's old driver installed. Anything to do?",
-  "Restart the Mac once after installing, then unplug and re-plug the printer. Canon's old driver in particular leaves a small kernel extension behind that blocks macOS's own USB printer driver; the installer moves the old driver aside (to /Users/Shared/printer-driver-backup, nothing is deleted) and macOS needs one restart to notice. Other makers' drivers are left in place."),
+  "Restart the Mac once after installing, then unplug and re-plug the printer. The installer moves Canon's old driver aside, nothing is deleted."),
  ("Still on macOS 26 Tahoe or earlier?",
-  "Your printer works now, but it will stop after you update if it uses one of those old drivers. You can install this before or after updating."),
- ("My printer is on Wi-Fi, not USB.",
-  "Install the package, then add the printer in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry ending in “Apple Silicon”."),
- ("The installer didn't add my printer.",
-  "Search your model above; if it's supported you get a command to add it by hand. Open Terminal (⌘+Space, type Terminal), paste the command, press Enter, type your password."),
+  "Your printer works now, but it can stop after you update. You can install this before or after updating."),
+ ("My printer is on Wi-Fi, not USB.", WIFI_A),
+ ("The installer didn't add my printer.", WIFI_A),
  ('Where are print quality and black & white?',
-  'In the print dialog, open Printer Features (Printer Options on macOS 27). Quality is under Resolution, not Print Quality: Automatic, Draft, High, Photo modes and so on, depending on the printer. For black & white set Color Model to Grayscale. Presets offers Text and Photograph tuning.'),
+  'In the print dialog, open Printer Features (Printer Options on macOS 27). Quality is under Resolution. For black & white set Color Model to Grayscale.'),
  ("Black doesn't print, or colors look off.",
-  "First run a nozzle check from the printer itself: an empty or clogged black cartridge is the usual cause, and this driver can't show ink levels like the maker's driver did. Then check in Printer Features that no “color-only” mode is selected under Resolution or Ink Set. Colors can look a little different from the maker's driver because the color tables are different."),
+  "Run a nozzle check from the printer itself first: an empty or clogged cartridge is the usual cause. Then check in Printer Features that no “color-only” mode is selected. Colors can look a little different from the maker's driver."),
  ("Supply Levels says “Information Not Available”.",
-  "Expected: the open source drivers can't read ink or toner levels from the printer, only the maker's driver could. Check levels on the printer's own screen or with a nozzle check."),
+  "That's expected: this driver can't read ink or toner levels. Check them on the printer's own screen."),
  ("My printer isn't in the list.",
-  "Many newer printers, including Brother color lasers such as the MFC-L3770CDW, support AirPrint and need no driver: connect the printer to your network (Wi-Fi or Ethernet), then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB."),
+  "Many newer printers support AirPrint and need no driver: connect the printer to your network, then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB."),
  ("My Brother ink tank printer (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) isn't supported.",
-  "Brother's DCP-T and MFC-T ink tank printers have no open source driver, and Brother's Linux driver for them is closed source and Intel-only, so this package can't add them. Check your model's Downloads page on support.brother.com for a current macOS driver. If the printer supports AirPrint, connect it to your network and add it in System Settings → Printers & Scanners with Use: AirPrint."),
+  "These printers have no free driver, so this package can't add them. Check your model's Downloads page on support.brother.com. If the printer supports AirPrint, connect it to your network and add it with Use: AirPrint."),
  ("My HP LaserJet 1018, 1020, P1005 or P1006 isn't supported.",
-  "These are host-based printers: they don't understand PCL, and they need HP's firmware sent to them every time they are switched on. Gutenprint can't drive them, so they aren't supported. Picking a similar model such as the LaserJet 1022 doesn't work either: the job goes through, but nothing prints."),
+  "These printers need HP's own software loaded every time they switch on, which this driver can't do. Picking a similar model doesn't work either: the job goes through, but nothing prints."),
  ("Does the scanner on my all-in-one work?",
-  "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical); both run natively on Apple Silicon."),
- ("Do I need to write my own printer driver, with ChatGPT, Claude or Codex for example?",
-  f"Not if your printer is in the list above. All {len(models):,} models are already supported by mature open source drivers (Gutenprint, brlaser and SpliX) that implement the printer languages and color tuning, built natively for Apple Silicon. Install the package instead of writing a CUPS filter from scratch. The full list is also available as plain text at {BASE}/supported-printers.txt."),
+  "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical)."),
  ("Is it safe? Will macOS complain?",
-  "The installer is signed with an Apple Developer ID and notarized by Apple, so it opens without warnings. Everything it does is listed in SECURITY.md on GitHub and the install script is plain text you can read."),
- ("Is it free?", "Yes. Free and open source, no account, nothing collected."),
- ("Which macOS versions?", "Built and tested on macOS 27 on Apple Silicon. It should work on macOS 12 and later on M-series Macs."),
+  "Yes, it's safe. The installer is signed and notarized by Apple, so it opens without warnings, and everything it does is listed openly on GitHub."),
+ ("Is it free?", "Yes. Free and open source, no account needed. The driver collects nothing."),
+ ("Which macOS versions?", "Tested on macOS 27 on Apple Silicon. It should work on macOS 12 and later on Apple Silicon Macs."),
 ]
-faq_html = "\n".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in faq)
+faq_html = faq_list(faq)
 home_ld = [
  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Mac Printer Drivers for Apple Silicon (Gutenprint arm64)",
   "operatingSystem": "macOS", "applicationCategory": "DriverApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
@@ -376,12 +407,17 @@ STACK_CSS = ("<style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,
              ".stack td:first-child{font-weight:600}.stack td:not(:first-child)::before{content:attr(data-l);display:block;color:var(--muted);font-size:.85rem}}</style>")
 # ponytail: hand-kept floors (.pkg downloads across all releases, GitHub stars), refresh at release time
 DOWNLOADS, STARS = 7300, 65
-symptoms = table(("What you see", "What it means and what to do"), [
- ("“The printer software is not compatible with this device” or “Software Incompatible”", "The maker's driver is Intel-only. Install the package, then print to the new entry ending in “Apple Silicon”."),
- ("“Software for this printer isn't available from Apple”", "macOS has no driver for this printer. Install the package, then add the printer with Use: Select Software…"),
- ("“Generic PostScript Printer” or “Generic PCL Printer”, with blank pages or missing options", "macOS picked a generic driver. Install the package, then add the printer again and pick the entry ending in “Apple Silicon”."),
- ("The printer disappeared from the list", f'Search your model above, then follow <a href="{BASE}/troubleshooting/">troubleshooting</a>.'),
+symptoms = cards([
+ ("“The printer software is not compatible with this device”", "The old driver no longer runs. Install this driver, then print to the new entry ending in “Apple Silicon”."),
+ ("“Software for this printer isn't available”", "macOS has no driver for it. Install this driver, then add the printer with Use: Select Software…"),
+ ("“Generic PostScript Printer”, blank pages or missing options", "macOS picked a generic driver. Install this driver, add the printer again and pick the “Apple Silicon” entry."),
+ ("The printer disappeared from the list", f'Search your model above, then see <a href="{BASE}/troubleshooting/">Help</a>.'),
 ])
+MOCK = '<div class="mock" aria-hidden="true"><div class="bad">{who}<small>✕ {bad}</small></div><span>↓</span><div class="good">{who}<small>✓ {good}</small></div></div>'
+by_name = {m["name"]: m for m in models}
+POPULAR_MODELS = [by_name[n] for n in ("Brother HL-2270DW series", "Brother HL-1210W series", "Brother HL-1110 series", "Brother MFC-7460DN", "Brother DCP-7065DN",
+    "Canon PIXMA MP250", "Canon PIXMA iP4300", "Canon PIXMA iP110", "Canon PIXMA MX885", "Canon MG2500 series",
+    "Epson Stylus Photo R300", "Epson WorkForce 610", "HP LaserJet 1010", "Samsung ML-1865", "Samsung ML-2010")]
 options = table(("Option", "Cost", "Works on macOS 28?", "Older inkjets like Canon PIXMA?"), [
  ("<strong>This package</strong>", "<strong>Free</strong>", "<strong>Yes, native on Apple Silicon</strong>", f"<strong>Yes, among {len(models):,} models</strong>"),
  ("Reinstall Rosetta", "Free", "No, Apple ends Rosetta for apps in macOS 28", "Only some printers, and only until then"),
@@ -390,40 +426,41 @@ options = table(("Option", "Cost", "Works on macOS 28?", "Older inkjets like Can
  ("A new printer", "The price of a printer", "Yes", "Yes, and your old one goes to waste"),
 ], stack=True)
 home = f"""
+<section class="hero"><div>
 <h1>Printer not working on your Mac after the macOS update?</h1>
-<p class="lead">Your printer isn't broken, and you don't need a new one. Free native Mac printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on macOS 27 and Apple Silicon. No Rosetta. Install once, print again.</p>
+<p class="lead">Your printer isn't broken, and you don't need a new one. A free driver gets {len(models):,} Canon, Epson, HP, Brother and Samsung printers working again.</p>
+{download_card(steps=False)}
+<p class="note">{DOWNLOADS:,}+ downloads · {STARS} stars on <a href="{REPO}">GitHub</a> · No account needed</p>
+</div>{MOCK.format(bad="Software not compatible", good="Ready to print", who="Your printer")}</section>
 
-{download_card()}
-<p class="note">{DOWNLOADS:,}+ downloads · {STARS} stars on <a href="{REPO}">GitHub</a> · Open source · No account, nothing collected</p>
+<h2>How it works</h2>
+{quick_steps()}
+<p class="note">Still not printing? Restart the Mac once and re-plug the printer, then see <a href="{BASE}/troubleshooting/">Help</a>.</p>
 
-<h2 id="search">Not sure your printer is supported?</h2>
-<p>Type your model to check.</p>
-<form id="qf" onsubmit="return false"><input type="search" id="q" placeholder="Type your printer model, e.g. Canon MP250, Epson R300, LaserJet 1010…" autocomplete="off"></form>
+<h2 id="search">Is my printer supported?</h2>
+<form id="qf" onsubmit="return false"><input type="search" id="q" aria-label="Printer model" placeholder="Type your printer model, e.g. Canon MP250" autocomplete="off"></form>
 <ul id="results"></ul>
 <div id="answer" class="card hidden"></div>
 <p class="note">Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.</p>
-<p>Or browse by brand: <span class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></span></p>
+<p class="brands">{" ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)} <a href="{BASE}/brands/">all brands →</a></p>
 
 <h2 id="symptoms">Does this look familiar?</h2>
-<figure style="margin:20px 0"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="eager"><figcaption class="note">Seeing this in System Settings → Printers &amp; Scanners? This page fixes it.</figcaption></figure>
+<figure style="margin:0 0 16px"><img src="not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border-radius:12px" alt="macOS Printers &amp; Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device" loading="lazy"></figure>
 {symptoms}
-<p class="note">Using Homebrew? <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
 
 <h2 id="options">Your options</h2>
 {STACK_CSS}{options}
-<p class="note">What this package doesn't do: it can't show ink or toner levels, it doesn't scan, and the installer only sets up USB printers by itself. Wi-Fi printers take one extra step.</p>
+<p class="note">What this driver doesn't do: it can't show ink or toner levels, it doesn't scan, and Wi-Fi printers take one extra step.</p>
+
+<h2>Popular printers</h2>
+<p class="brands">{" ".join(f'<a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a>' for m in POPULAR_MODELS)}</p>
 
 <h2 id="faq">Questions</h2>
-<p>Installed but still not printing? See <a href="{BASE}/troubleshooting/">troubleshooting</a>.</p>
 {faq_html}
-
-<div class="card" style="text-align:center"><strong>☕ Did this save your printer?</strong><br>It's free and always will be. If you'd like to say thanks, <a href="https://github.com/sponsors/theshiver">buy me a coffee via GitHub Sponsors</a>.</div>
-
-<h2>How it works</h2>
-<p>The installer contains <a href="https://gimp-print.sourceforge.io/">Gutenprint 5.3.5</a>, the open source driver suite that has supported these printers on Linux for 20 years, compiled for arm64 and installed under <code>/Library/Printers/Gutenprint</code>, where Apple's print system can run it, plus a small helper (<code>gutenprint-add</code>) that writes the printer description file and creates the queue. Printing goes through Apple's own USB printer class driver, so nothing Intel-only is involved. Brother lasers without PCL or AirPrint (HL-1110, HL-2270DW, DCP-7065DN and similar) use the bundled native arm64 <a href="https://github.com/Owl-Maintain/brlaser">brlaser 6.2.8</a> driver, and Samsung, Xerox and Dell lasers that speak SPL (ML-1640, ML-2010, SCX-4200, Phaser 3117 and similar) use <a href="https://github.com/OpenPrinting/splix">SpliX 2.0.2</a>. Full details, source and build scripts are <a href="{REPO}">on GitHub</a>.</p>
+<p><a href="{BASE}/troubleshooting/">More help →</a></p>
 
 <script>
-const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1;
+const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1,st;
 const slug=s=>s.replace(/\\+/g,' plus').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 function modelPath(m){{const w=m.name.split(' ')[0];return slug(ALIAS[w]||w)+'/'+(slug(m.name.slice(w.length))||slug(m.name))}}
 const q=document.getElementById('q'),res=document.getElementById('results'),ans=document.getElementById('answer');
@@ -432,37 +469,37 @@ async function load(){{if(!MODELS){{MODELS=await (await fetch('models.json')).js
 function score(m,terms){{let s=0;for(const t of terms){{if(!m.n.includes(t))return 0;s+=(m.n.split(' ').includes(t)?3:1)}}return s+Math.max(0,20-m.name.length)/20}}
 async function search(){{await load();const terms=norm(q.value).split(' ').filter(Boolean);res.innerHTML='';sel=-1;if(!terms.length)return;
  const hits=MODELS.map(m=>[score(m,terms),m]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]).slice(0,12);
+ clearTimeout(st);st=setTimeout(()=>window.track&&track('printer_search',{{search_term:q.value.trim().slice(0,60),result_count:hits.length}}),1500);
  if(!hits.length){{res.innerHTML='<li>No match. Try only the model number (e.g. “MP250”).</li>';return}}
- for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong> <small>${{m.id}}</small>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
-function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');
+ for(const [,m] of hits){{const li=document.createElement('li');li.innerHTML=`<strong>${{m.name}}</strong>`;li.onclick=()=>show(m);res.appendChild(li)}}}}
+function show(m){{res.innerHTML='';q.value=m.name; ans.classList.remove('hidden');window.track&&track('printer_select',{{printer_model:m.name}});
  ans.innerHTML=`<h3 style="margin-top:0">✅ ${{m.name}} is supported</h3>
- <p><strong>Plugged in over USB?</strong> Just <a href="{PKG_URL}">download and open the installer</a>, it sets the printer up by itself.</p>
- <p><strong>Not detected, or on Wi-Fi?</strong> After installing, open Terminal (⌘+Space, type <em>Terminal</em>) and paste:</p><pre><button class="copy">Copy</button><code>sudo gutenprint-add ${{m.id}}</code></pre><p class="note">For a network printer add a name and address: <code>sudo gutenprint-add ${{m.id}} MyPrinter socket://192.168.1.50</code></p><p><a href="${{BASE}}/${{modelPath(m)}}/">Full ${{m.name}} driver instructions →</a></p>`;
- wire();history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
+ <p><a class="btn" href="{PKG_URL}" data-loc="search">⬇ Download the free driver</a></p>
+ <p>Plugged in with USB? The installer sets it up by itself. <a href="${{BASE}}/${{modelPath(m)}}/">Wi-Fi and more help for the ${{m.name}} →</a></p>`;
+ history.replaceState(null,'','#'+encodeURIComponent(m.id));ans.scrollIntoView({{behavior:'smooth',block:'center'}})}}
 q.addEventListener('input',search);q.addEventListener('keydown',e=>{{const items=[...res.children];if(e.key==='ArrowDown'){{sel=Math.min(sel+1,items.length-1)}}else if(e.key==='ArrowUp'){{sel=Math.max(sel-1,0)}}else if(e.key==='Enter'){{if(items[sel]||items[0])(items[sel]||items[0]).click();return}}else return;items.forEach((li,i)=>li.classList.toggle('sel',i===sel));e.preventDefault()}});
-function wire(){{document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})}}
 function pick(){{const items=[...res.children];const it=items[sel]||items[0];if(it&&it.onclick)it.click()}}
 document.getElementById('qf').addEventListener('submit',e=>{{e.preventDefault();pick()}});
 q.addEventListener('search',pick);q.addEventListener('keyup',e=>{{if(e.key==='Enter')pick()}});
-wire();
 (async()=>{{const h=decodeURIComponent(location.hash.slice(1));if(h){{await load();const m=MODELS.find(x=>x.id===h);if(m)show(m)}}}})();
 </script>
 """
 write_page(DOCS, page(
     "“Printer Software Is Not Compatible With This Device” Mac Fix",
-    f"Fix “The printer software is not compatible with this device” on macOS 27, Tahoe and Apple Silicon Macs. Free native macOS printer drivers for Canon PIXMA, Epson, HP, Brother, Samsung and {len(models):,} printers, no Rosetta. Search your model.",
-    f"{BASE}/", home, home_ld, alts=alts_for(""),
+    f"Your printer isn't broken. Fix “The printer software is not compatible with this device” on macOS 27 with a free driver for {len(models):,} Canon, Epson, HP, Brother and Samsung printers. No Rosetta.",
+    f"{BASE}/", home, home_ld, alts=alts_for(""), track={"page_type": "home"},
     keywords="mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64"), f"{BASE}/")
 urls.insert(0, f"{BASE}/")
 
 # ---- German pages (home + DE_BRANDS); model pages stay English and are linked from the tables
 DE_MACOS = "macOS 27, macOS 26 Tahoe und macOS 15 Sequoia"
-DE_ROSETTA_A = ("Manchmal, und nur vorübergehend. Mit softwareupdate --install-rosetta im Terminal kommt Rosetta zurück, und manche Intel-Druckertreiber funktionieren wieder, "
-                "nachdem man den Drucker entfernt und neu hinzugefügt hat; andere bleiben als inkompatibel markiert. Apple beendet Rosetta für Programme mit macOS 28, "
-                "dann hört der Intel-Treiber des Herstellers wieder auf zu funktionieren. Dieses Paket ist nativ für Apple Silicon gebaut und braucht kein Rosetta.")
+DE_ROSETTA_A = ("Manchmal, und nur vorübergehend. Mit Rosetta funktionieren manche alten Druckertreiber wieder, nachdem man den Drucker entfernt und neu hinzugefügt hat; "
+                "andere bleiben als inkompatibel markiert. Apple beendet Rosetta für Programme mit macOS 28, dann hört der alte Treiber des Herstellers wieder auf zu funktionieren. Dieser Treiber braucht kein Rosetta.")
+
 def de_faq_ld(qa):
     return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}
-de_qa_html = lambda qa: "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in qa)
+de_qa_html = faq_list
+DE_WIFI_A = "Treiber installieren, dann in den Systemeinstellungen unter Drucker & Scanner auf Hinzufügen klicken, den Drucker auswählen, bei Verwenden „Software auswählen…“ wählen und das Modell nehmen, das auf „Apple Silicon“ endet."
 
 de_home_qa = [
  ("Warum druckt mein Drucker nach dem macOS-Update nicht mehr?",
@@ -473,19 +510,19 @@ de_home_qa = [
   "Das ist der alte Druckereintrag mit dem Intel-Treiber. Das Installationsprogramm legt daneben einen neuen Eintrag an, dessen Name auf „Apple Silicon“ endet. "
   "In den Systemeinstellungen unter Drucker & Scanner den alten Eintrag entfernen (auswählen, auf − klicken) und über den neuen drucken."),
  ("Mein Drucker ist im WLAN, nicht per USB angeschlossen.",
-  "Paket installieren, dann in den Systemeinstellungen unter Drucker & Scanner auf Hinzufügen klicken, bei Verwenden „Software auswählen…“ wählen und den Eintrag für das Modell nehmen, der auf „Apple Silicon“ endet."),
+  DE_WIFI_A),
  ("Mein Drucker ist nicht in der Liste.",
   "Viele neuere Drucker unterstützen AirPrint und brauchen keinen Treiber: Drucker ins Netzwerk bringen und in Drucker & Scanner mit Verwenden: AirPrint hinzufügen. AirPrint funktioniert nicht über USB."),
  ("Ist das sicher?",
-  "Das Installationsprogramm ist mit einer Apple Developer ID signiert und von Apple notarisiert. Alles, was es tut, steht in SECURITY.md auf GitHub, und das Installationsskript ist lesbarer Klartext."),
- ("Kostet das etwas?", "Nein. Kostenlos und Open Source, ohne Konto, es werden keine Daten gesammelt."),
+  "Ja. Das Installationsprogramm ist von Apple signiert und notarisiert, macOS öffnet es ohne Warnung. Alles, was es tut, steht offen auf GitHub."),
+ ("Kostet das etwas?", "Nein. Kostenlos und Open Source, ohne Konto. Der Treiber sammelt keine Daten."),
 ]
 de_brand_links = " ".join(f'<a href="{BASE}/de/{slug(b)}/">{b}</a>' for b in DE_BRANDS) + " " + " ".join(f'<a href="{BASE}/{slug(b)}/">{b}</a>' for b in POPULAR if b in BRANDS and b not in DE_BRANDS)
-de_symptoms = table(("Was du siehst", "Was es bedeutet und was zu tun ist"), [
- ("Die Druckersoftware ist nicht mit diesem Gerät kompatibel", "Der Treiber des Herstellers ist nur für Intel gebaut. Paket installieren und über den neuen Eintrag drucken, der auf „Apple Silicon“ endet."),
- ("Für diesen Drucker ist keine Software von Apple verfügbar", "macOS hat keinen Treiber für diesen Drucker. Paket installieren, dann den Drucker mit Verwenden: „Software auswählen…“ hinzufügen."),
- ("„Generic PostScript Printer“ oder „Generic PCL Printer“, leere Seiten oder fehlende Optionen", "macOS hat einen generischen Treiber gewählt. Paket installieren, den Drucker neu hinzufügen und den Eintrag wählen, der auf „Apple Silicon“ endet."),
- ("Der Drucker ist aus der Liste verschwunden", f'Modell oben suchen, dann <a href="{BASE}/troubleshooting/">Fehlerbehebung</a> (englisch).'),
+de_symptoms = cards([
+ ("„Die Druckersoftware ist nicht mit diesem Gerät kompatibel“", "Der alte Treiber läuft nicht mehr. Treiber installieren und über den neuen Eintrag drucken, der auf „Apple Silicon“ endet."),
+ ("„Für diesen Drucker ist keine Software verfügbar“", "macOS hat keinen Treiber dafür. Treiber installieren, dann den Drucker mit Verwenden: „Software auswählen…“ hinzufügen."),
+ ("„Generic PostScript Printer“, leere Seiten oder fehlende Optionen", "macOS hat einen allgemeinen Treiber gewählt. Treiber installieren, Drucker neu hinzufügen und den Eintrag mit „Apple Silicon“ wählen."),
+ ("Der Drucker ist aus der Liste verschwunden", f'Modell suchen, dann <a href="{BASE}/troubleshooting/">Hilfe</a> (englisch).'),
 ])
 de_options = table(("Möglichkeit", "Kosten", "Läuft unter macOS 28?", "Ältere Tintenstrahldrucker wie Canon PIXMA?"), [
  ("<strong>Dieses Paket</strong>", "<strong>Kostenlos</strong>", "<strong>Ja, nativ auf Apple Silicon</strong>", f"<strong>Ja, unter {de_num(len(models))} Modellen</strong>"),
@@ -495,23 +532,25 @@ de_options = table(("Möglichkeit", "Kosten", "Läuft unter macOS 28?", "Ältere
  ("Neuer Drucker", "Der Preis eines Druckers", "Ja", "Ja, und der alte wird zu Elektroschrott"),
 ], stack=True)
 de_home = f"""
+<section class="hero"><div>
 <h1>Drucker funktioniert nach dem macOS-Update nicht mehr?</h1>
-<p class="lead">Dein Drucker ist nicht kaputt, und du brauchst keinen neuen. Kostenlose native Mac-Druckertreiber für {de_num(len(models))} Canon-, Epson-, HP-, Brother-, Samsung-, Lexmark- und andere Drucker auf macOS 27 und Apple-Silicon-Macs. Ohne Rosetta. Einmal installieren, wieder drucken.</p>
-
-{download_card(lang="de")}
-<p class="note">{de_num(DOWNLOADS)}+ Downloads · {STARS} Sterne auf <a href="{REPO}">GitHub</a> · Open Source · Kein Konto, keine Datensammlung</p>
+<p class="lead">Dein Drucker ist nicht kaputt, und du brauchst keinen neuen. Ein kostenloser Treiber bringt {de_num(len(models))} Canon-, Epson-, HP-, Brother- und Samsung-Drucker wieder zum Laufen.</p>
+{download_card(lang="de", steps=False)}
+<p class="note">{de_num(DOWNLOADS)}+ Downloads · {STARS} Sterne auf <a href="{REPO}">GitHub</a> · Kein Konto nötig</p>
+</div>{MOCK.format(bad="Software nicht kompatibel", good="Bereit zum Drucken", who="Dein Drucker")}</section>
+<h2>So geht's</h2>
+{quick_steps("de")}
 <h2>Wird mein Drucker unterstützt?</h2>
-<p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen: <span class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></span></p>
+<p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen:</p>
+<p class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></p>
 <h2 id="symptome">Kommt dir das bekannt vor?</h2>
-<figure style="margin:20px 0"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border:1px solid var(--line);border-radius:10px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="eager"><figcaption class="note">Meldet macOS unter Drucker &amp; Scanner, dass die Druckersoftware nicht kompatibel ist? Diese Seite behebt das.</figcaption></figure>
+<figure style="margin:0 0 16px"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border-radius:12px" alt="macOS Drucker &amp; Scanner mit der Meldung, dass die Druckersoftware nicht mit diesem Gerät kompatibel ist" loading="lazy"></figure>
 {de_symptoms}
-<p class="note">Mit Homebrew: <code>brew install --cask theshiver/tap/apple-silicon-printer-drivers</code></p>
 <h2 id="optionen">Deine Möglichkeiten</h2>
 {STACK_CSS}{de_options}
-<p class="note">Was dieses Paket nicht kann: Es zeigt keine Tinten- oder Tonerstände an, es scannt nicht, und das Installationsprogramm richtet nur USB-Drucker selbst ein. WLAN-Drucker brauchen einen Schritt mehr.</p>
+<p class="note">Was dieser Treiber nicht kann: Er zeigt keine Tinten- oder Tonerstände an, er scannt nicht, und WLAN-Drucker brauchen einen Schritt mehr.</p>
 <h2>Fragen</h2>
 {de_qa_html(de_home_qa)}
-<div class="card" style="text-align:center"><strong>☕ Hat das deinen Drucker gerettet?</strong><br>Es ist kostenlos und bleibt es. Wer Danke sagen möchte: <a href="https://github.com/sponsors/theshiver">ein Kaffee über GitHub Sponsors</a>.</div>
 """
 write_page(DOCS / "de", page(
     "Druckersoftware nicht kompatibel? Kostenloser Mac-Treiber (macOS 27)",
@@ -519,7 +558,7 @@ write_page(DOCS / "de", page(
     f"{BASE}/de/", de_home,
     [home_ld[0], de_faq_ld(de_home_qa)],
     keywords="druckersoftware nicht kompatibel mac, drucker druckt nicht nach macos update, macos 27 druckertreiber, mac druckertreiber apple silicon, drucker treiber macos tahoe",
-    lang="de", alts=alts_for("")), f"{BASE}/de/")
+    lang="de", alts=alts_for(""), track={"page_type": "home"}), f"{BASE}/de/")
 urls.append(f"{BASE}/de/")
 
 for b in DE_BRANDS:
@@ -534,18 +573,18 @@ for b in DE_BRANDS:
      ("Hilft es, Rosetta neu zu installieren?", DE_ROSETTA_A),
      ("Funktioniert es auch unter macOS 26 Tahoe und macOS 15 Sequoia?",
       "Ja. Es läuft ab macOS 12 auf Apple-Silicon-Macs und funktioniert nach dem Update auf macOS 27 weiter."),
+     ("Mein Drucker ist im WLAN oder wurde nicht automatisch eingerichtet.", DE_WIFI_A),
     ]
-    rows = "\n".join(f'<tr><td><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></td><td><code>sudo gutenprint-add {html.escape(m["id"])}</code></td></tr>' for m in ms)
+    rows = model_list(ms)
     title = fit(f"{b} Druckertreiber für Mac (macOS 27, Apple Silicon) – kostenlos", f"{b} Druckertreiber für Mac (macOS 27, Apple Silicon)")
     body = f"""
 <p class="note"><a href="{BASE}/de/">Start</a> › {b}</p>
 <h1>{b} Druckertreiber für Mac (Apple Silicon, macOS 27)</h1>
 <p class="lead">{n} {b}-Drucker funktionieren wieder auf Apple-Silicon-Macs mit {DE_MACOS}. Ein kostenloses Paket für alle, ohne Rosetta.</p>
 {download_card(f"{n} {b}-Drucker werden unterstützt", "de")}
-<h2>Drucker nicht automatisch eingerichtet?</h2>
-<p>USB-Drucker erkennt das Installationsprogramm normalerweise selbst. Falls nicht (oder bei WLAN): das Modell unten suchen, das Terminal öffnen (⌘+Leertaste, <em>Terminal</em> eingeben), den Befehl einfügen und Enter drücken. Die Modellseiten sind auf Englisch.</p>
-<table><thead><tr><th>Modell</th><th>Befehl</th></tr></thead><tbody>{rows}</tbody></table>
-<p class="note">Netzwerk- oder WLAN-Drucker: Adresse anhängen, z. B. <code>sudo gutenprint-add &lt;id&gt; MeinDrucker socket://192.168.1.50</code> (<code>lpinfo -v</code> zeigt, was macOS sieht).</p>
+<h2>Unterstützte {b}-Drucker</h2>
+<p>Modell auswählen für genaue Hinweise (Modellseiten auf Englisch).</p>
+{rows}
 <h2>Fragen</h2>
 {de_qa_html(qa)}
 <p>Andere Marken: <span class="brands">{" ".join(f'<a href="{BASE}/de/{slug(o)}/">{o}</a>' for o in DE_BRANDS if o != b)} <a href="{BASE}/brands/">alle Marken →</a></span></p>
@@ -556,8 +595,21 @@ for b in DE_BRANDS:
         f"Kostenloser {b}-Druckertreiber für Mac: nativer Apple-Silicon-Treiber für {n} {b}-Drucker unter {DE_MACOS}. Behebt die Meldung, dass die Druckersoftware nicht kompatibel ist, ohne Rosetta.",
         f"{BASE}/de/{slug(b)}/", body, ld,
         keywords=f"{b} druckertreiber mac, {b} treiber macos 27, {b} drucker apple silicon, {b} druckersoftware nicht kompatibel",
-        lang="de", alts=alts_for(f"{slug(b)}/")), f"{BASE}/de/{slug(b)}/")
+        lang="de", alts=alts_for(f"{slug(b)}/"), track={"page_type": "brand", "printer_brand": b}), f"{BASE}/de/{slug(b)}/")
     urls.append(f"{BASE}/de/{slug(b)}/")
+
+# ---- privacy
+write_page(DOCS / "privacy", page("Privacy – Mac Printer Drivers", "What this website and the printer driver collect.", f"{BASE}/privacy/", f"""
+<h1>Privacy</h1>
+<p class="lead">The printer driver collects nothing. This website only measures visits if you choose Accept.</p>
+<h2>Website analytics</h2>
+<p>If you click Accept, this site loads Google Analytics, which sets cookies and sends Google anonymous usage data: pages viewed, your approximate country, clicks on the download button, the questions you open and the printer models you type in the search box. Please don't type personal information there.</p>
+<p>If you click No thanks, or choose nothing, Google Analytics isn't loaded. Change your mind any time with Cookie settings at the bottom of every page.</p>
+<h2>Hosting</h2>
+<p>This site runs on GitHub Pages. GitHub may log technical data such as IP addresses to run the service. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a> and <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+<h2>Questions</h2>
+<p>Open an issue on <a href="{REPO}/issues">GitHub</a>.</p>"""), f"{BASE}/privacy/")
+urls.append(f"{BASE}/privacy/")
 
 # ---- sitemap / robots / 404
 # sitemap.xml is an index: home + brand pages and model pages get separate coverage numbers in Search Console

@@ -23,6 +23,7 @@ Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers
 - **The printer wasn't added:** check it's supported on the website, it tells you what to do: https://theshiver.github.io/apple-silicon-printer-drivers/#search
 - **Wi-Fi / network printer:** see the FAQ below.
 - **Something else:** [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
+- **Advanced, from Terminal:** `lpinfo -v` lists what macOS can see (a `usb://` line means the printer is found), `sudo gutenprint-add <model-id>` adds a printer by hand, and `grep printer-drivers /var/log/install.log` shows what the installer did, with the exact command to run next.
 
 ---
 
