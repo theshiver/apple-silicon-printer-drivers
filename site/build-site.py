@@ -438,6 +438,7 @@ home = f"""
 <h2>How it works</h2>
 {quick_steps()}
 <p class="note">Still not printing? Restart the Mac once and re-plug the printer, then see <a href="{BASE}/troubleshooting/">Help</a>.</p>
+<p><a href="{BASE}/print-from-iphone/">Want to print from your iPhone or iPad too? →</a></p>
 
 <h2 id="search">Is my printer supported?</h2>
 <form id="qf" onsubmit="return false"><input type="search" id="q" aria-label="Printer model" placeholder="Type your printer model, e.g. Canon MP250" autocomplete="off"></form>
@@ -543,6 +544,7 @@ de_home = f"""
 </div>{MOCK.format(bad="Software nicht kompatibel", good="Bereit zum Drucken", who="Dein Drucker")}</section>
 <h2>So geht's</h2>
 {quick_steps("de")}
+<p><a href="{BASE}/de/print-from-iphone/">Auch mit iPhone oder iPad drucken? →</a></p>
 <h2>Wird mein Drucker unterstützt?</h2>
 <p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen:</p>
 <p class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></p>
@@ -602,6 +604,47 @@ for b in DE_BRANDS:
         keywords=f"{b} druckertreiber mac, {b} treiber macos 27, {b} drucker apple silicon, {b} druckersoftware nicht kompatibel",
         lang="de", alts=alts_for(f"{slug(b)}/"), track={"page_type": "brand", "printer_brand": b}), f"{BASE}/de/{slug(b)}/")
     urls.append(f"{BASE}/de/{slug(b)}/")
+
+# ---- print from iPhone: wording follows Google Trends (iPhone first, iPad named, AirPrint leads in Germany)
+IPHONE_QA = [
+ ("What is AirPrint?", "AirPrint is Apple's way to print from an iPhone or iPad with no app or driver on the phone. Older printers don't have it. This driver lets your Mac add it for them."),
+ ("Can I print from my iPhone to a printer without AirPrint?", "Yes. Set the printer up on your Mac, turn it on in Print from iPhone & iPad, and it shows up in the Print menu on your iPhone."),
+ ("Does it work with HP, Canon, Brother and Epson printers?", "Yes, with any printer set up on your Mac, including USB printers. Printers that already have AirPrint don't need this."),
+ ("Does my Mac have to stay on?", "Yes. Your iPhone prints through your Mac, so the Mac has to be on and awake, on the same Wi-Fi."),
+ ("Can other people print to it?", "Anyone on the same Wi-Fi can. It's off until you turn it on, and you pick which printers to share."),
+]
+DE_IPHONE_QA = [
+ ("Was ist AirPrint?", "AirPrint ist Apples Art, vom iPhone oder iPad ohne App oder Treiber zu drucken. Ältere Drucker können das nicht. Mit diesem Treiber ergänzt dein Mac es für sie."),
+ ("Kann ich vom iPhone auf einem Drucker ohne AirPrint drucken?", "Ja. Richte den Drucker auf dem Mac ein, schalte ihn in Print from iPhone & iPad ein, und er erscheint im Drucken-Menü deines iPhones."),
+ ("Funktioniert das mit HP-, Canon-, Brother- und Epson-Druckern?", "Ja, mit jedem Drucker, der auf deinem Mac eingerichtet ist, auch per USB. Drucker mit AirPrint brauchen das nicht."),
+ ("Muss mein Mac eingeschaltet bleiben?", "Ja. Das iPhone druckt über den Mac, er muss also eingeschaltet und wach sein und im selben WLAN."),
+ ("Können andere darauf drucken?", "Alle im selben WLAN. Die Funktion ist aus, bis du sie einschaltest, und du wählst die Drucker selbst aus."),
+]
+def iphone_page(lang):
+    en = lang == "en"
+    h1, lead, how, steps, need, needs, faqh, qa = (
+        ("Print from your iPhone or iPad to any printer", "Adds AirPrint to printers that don't have it. Free, and nothing to install on your iPhone.", "How to print from iPhone or iPad",
+         ("Install the free driver on your Mac", "Open Print from iPhone &amp; iPad and turn your printer on", "On your iPhone or iPad, tap Share, then Print"),
+         "What you need", "The printer has to be set up on your Mac, and the Mac has to stay on and awake, on the same Wi-Fi as your iPhone.", "Questions", IPHONE_QA) if en else
+        ("Mit iPhone oder iPad auf jedem Drucker drucken", "Macht jeden Drucker AirPrint-fähig. Kostenlos, ohne App auf dem iPhone.", "So druckst du mit iPhone oder iPad",
+         ("Den kostenlosen Treiber auf dem Mac installieren", "Print from iPhone &amp; iPad öffnen und den Drucker einschalten", "Auf iPhone oder iPad auf Teilen und dann Drucken tippen"),
+         "Das brauchst du", "Der Drucker muss auf dem Mac eingerichtet sein, und der Mac muss eingeschaltet und wach sein, im selben WLAN wie dein iPhone.", "Fragen", DE_IPHONE_QA))
+    ol = '<ol class="quick">' + "".join(f"<li>{x}</li>" for x in steps) + "</ol>"
+    body = f"""<h1>{h1}</h1><p class="lead">{lead}</p>
+{download_card(lang=lang, steps=False)}
+<h2>{how}</h2>{ol}
+<h2>{need}</h2><p>{needs}</p>
+<h2>{faqh}</h2>{faq_list(qa)}
+{coffee_card(lang)}"""
+    path = "print-from-iphone/" if en else "de/print-from-iphone/"
+    ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}]
+    title = "How to Print from iPhone or iPad to Any Printer (AirPrint)" if en else "iPhone & iPad: Auf jedem Drucker drucken (AirPrint)"
+    desc = ("Print from your iPhone or iPad to any printer on your Mac, even without AirPrint. Free for HP, Canon, Brother and Epson printers." if en else
+            "Mit iPhone oder iPad auf jedem Drucker drucken, auch ohne AirPrint. Kostenlos für HP-, Canon-, Brother- und Epson-Drucker am Mac.")
+    url = f"{BASE}/{path}"
+    write_page(DOCS / path.rstrip("/"), page(title, desc, url, body, ld, lang=lang, alts=alts_for("print-from-iphone/")), url)
+    urls.append(url)
+iphone_page("en"); iphone_page("de")
 
 # ---- privacy
 write_page(DOCS / "privacy", page("Privacy – Mac Printer Drivers", "What this website and the printer driver collect.", f"{BASE}/privacy/", f"""

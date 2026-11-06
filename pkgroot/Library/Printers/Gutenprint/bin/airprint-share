@@ -3,6 +3,7 @@
 # Off until someone turns it on. Runs per user, as one LaunchAgent per printer, while that user is logged in.
 #   airprint-share list          printers that can be shared
 #   airprint-share shared        printers shared right now
+#   airprint-share info          queue, name, shared, reachable: one tab-separated line per printer
 #   airprint-share set [q ...]   share exactly these queues; no queues turns sharing off
 set -u
 GP=/Library/Printers/Gutenprint
@@ -19,6 +20,27 @@ DOMAIN="gui/$(id -u)"
 printers() {
   LC_ALL=C lpstat -p 2>/dev/null | awk '$1 == "printer" { print $2 }' | grep -v '__Mac_$'
   return 0
+}
+
+# The name people know from System Settings
+title() {
+  d=$(LC_ALL=C lpstat -l -p "$1" 2>/dev/null | sed -n 's/^[[:space:]]*Description: //p' | sed 's/ - Apple Silicon$//' | head -1)
+  [ -n "$d" ] && echo "$d" || echo "$1" | tr '_' ' '
+}
+
+# 1 if this Mac can reach the printer now, as far as it can tell
+reachable() {
+  uri=$(LC_ALL=C lpstat -v "$1" 2>/dev/null | sed 's/^device for [^:]*: //')
+  case "$uri" in
+    usb:*) if lpoptions -p "$1" 2>/dev/null | grep -q offline-report; then echo 0; else echo 1; fi; return ;;
+    ipp://*|ipps://*|http://*|https://*) port=631 ;;
+    socket://*) port=9100 ;;
+    lpd://*) port=515 ;;
+    *) echo 1; return ;;
+  esac
+  hp=${uri#*://}; hp=${hp%%/*}; hp=${hp%%\?*}; host=${hp%%:*}
+  case "$hp" in *:*) port=${hp##*:} ;; esac
+  if nc -z -G 1 "$host" "$port" >/dev/null 2>&1; then echo 1; else echo 0; fi
 }
 
 shared() {
@@ -61,7 +83,7 @@ start() {
 <string>-p</string><string>$port</string>
 <string>-r</string><string>_universal</string>
 <string>-s</string><string>$speed</string>$duplex
-<string>$(echo "$q" | tr '_' ' ') (Mac)</string>
+<string>$(title "$q" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g') (Mac)</string>
 </array>
 </dict></plist>
 PLIST
@@ -72,6 +94,13 @@ cmd=${1:-}; [ $# -gt 0 ] && shift
 case "$cmd" in
   list) printers ;;
   shared) shared ;;
+  info)
+    on=$(shared)
+    for q in $(printers); do
+      s=0; echo "$on" | grep -qxF -- "$q" && s=1
+      printf '%s\t%s\t%s\t%s\n' "$q" "$(title "$q")" "$s" "$(reachable "$q")"
+    done
+    ;;
   set)
     known=$(printers)
     for q in "$@"; do
@@ -86,5 +115,5 @@ case "$cmd" in
       echo "$running" | grep -qxF -- "$w" || start "$w"
     done
     ;;
-  *) echo "usage: airprint-share list | shared | set [queue ...]" >&2; exit 2 ;;
+  *) echo "usage: airprint-share list | shared | info | set [queue ...]" >&2; exit 2 ;;
 esac

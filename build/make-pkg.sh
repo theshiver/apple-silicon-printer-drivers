@@ -5,9 +5,9 @@
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"; ROOT="$HERE/.."; VER=${1:-1.0.0}
 OUT="$ROOT/dist/AppleSilicon-Printer-Drivers-$VER.pkg"
-APP="$ROOT/pkgroot/Applications/Share Printers with iPhone.app"
+APP="$ROOT/pkgroot/Applications/Print from iPhone & iPad.app"
 mkdir -p "$ROOT/pkgroot/Applications"; rm -rf "${APP:?}"
-osacompile -o "$APP" "$HERE/airprint-share.applescript"
+"$HERE/build-airprint-app.sh" "$APP"
 xattr -cr "$ROOT/pkgroot" 2>/dev/null; find "$ROOT/pkgroot" -name "._*" -delete
 mkdir -p "$ROOT/dist"
 

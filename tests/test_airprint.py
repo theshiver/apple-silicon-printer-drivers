@@ -26,6 +26,8 @@ class AirPrintTest(unittest.TestCase):
         (self.ppds / "Brother_HL.ppd").write_text("*ColorDevice: False\n*OpenUI *Duplex/2-Sided: PickOne\n")
         lpstat = fake / "lpstat"
         lpstat.write_text("""#!/bin/sh
+if [ "$1" = -v ]; then echo "device for $2: socket://127.0.0.1:9/"; exit; fi
+if [ "$1" = -l ]; then echo "printer $3 is idle."; [ "$3" = Office ] && printf '\\tDescription: Office & Co\\n'; exit; fi
 echo "printer Canon_MP250 is idle.  enabled since Wed Nov  4 20:18:50 2026"
 echo "printer Brother_HL disabled since Wed Nov  4 20:18:50 2026 -"
 echo "	reason unknown"
@@ -62,6 +64,16 @@ echo "printer Canon_MP250__Mac_ is idle.  enabled since Fri Sep 19 14:43:48 2025
         self.run_share("set", "Nope", ok=False)
         self.run_share("set", "Canon_MP250__Mac_", ok=False)
         self.assertFalse(self.agents.exists())
+
+    def test_uses_the_printer_name_and_escapes_it(self):
+        self.run_share("set", "Office")
+        self.assertEqual(self.agent("Office")["ProgramArguments"][-1], "Office & Co (Mac)")
+
+    def test_info_reports_name_state_and_reach(self):
+        self.run_share("set", "Office")
+        r = subprocess.run([str(self.share), "info"], env=self.env, capture_output=True, text=True)
+        self.assertIn("Office\tOffice & Co\t1\t0", r.stdout.splitlines())
+        self.assertIn("Canon_MP250\tCanon MP250\t0\t0", r.stdout.splitlines())
 
     def test_a_queue_without_a_ppd_counts_as_color(self):
         self.run_share("set", "Office")
@@ -132,10 +144,11 @@ class InstallerTest(unittest.TestCase):
         self.assertIn('<conclusion file="conclusion.html"', text)
         self.assertIn("sponsors/theshiver", (ROOT / "build/installer/conclusion.html").read_text())
 
-    @unittest.skipUnless(shutil.which("osacompile"), "macOS only")
-    def test_app_compiles(self):
+    @unittest.skipUnless(shutil.which("swiftc"), "macOS only")
+    def test_app_builds(self):
         with tempfile.TemporaryDirectory() as d:
-            subprocess.run(["osacompile", "-o", f"{d}/a.app", str(ROOT / "build/airprint-share.applescript")], check=True)
+            subprocess.run([str(ROOT / "build/build-airprint-app.sh"), f"{d}/a.app"], check=True)
+            self.assertTrue(Path(f"{d}/a.app/Contents/MacOS/SharePrinters").exists())
 
 
 if __name__ == "__main__":

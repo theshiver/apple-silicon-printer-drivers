@@ -8,7 +8,7 @@ for f in /etc/cups/ppd/*.ppd; do
   grep -qsE 'rastertogutenprint|/Library/Printers/Gutenprint/libexec/rastertobrlaser|/Library/Printers/Gutenprint/libexec/rastertoqpdl' "$f" && lpadmin -x "$q" && echo "removed queue $q"
 done
 rm -f /usr/local/bin/gutenprint-add
-rm -rf "/Applications/Share Printers with iPhone.app"
+rm -rf "/Applications/Print from iPhone & iPad.app"
 rm -rf /Library/Printers/Gutenprint /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd
 pkgutil --forget com.github.apple-silicon-printer-drivers >/dev/null 2>&1
 echo "removed"
