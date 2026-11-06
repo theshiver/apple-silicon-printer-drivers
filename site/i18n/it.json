@@ -1,0 +1,308 @@
+{
+ "lang_name": "Italiano",
+ "macos": "macOS 27, macOS 26 Tahoe e macOS 15 Sequoia",
+ "nav_check": "Controlla la mia stampante",
+ "nav_help": "Aiuto",
+ "nav_coffee": "☕ Offrimi un caffè",
+ "privacy": "Privacy",
+ "all_brands": "Tutte le marche",
+ "footer_note": "Gratuito e open source. Nessun legame con Canon, Epson, HP, Brother o Apple. I nomi dei prodotti sono marchi dei rispettivi proprietari.",
+ "crumb_home": "Home",
+ "crumb_brands": "Marche",
+ "crumb_help": "Risoluzione dei problemi",
+ "dl_btn": "Scarica il driver gratuito",
+ "dl_trust": "Gratuito · Firmato e autenticato da Apple · Qualsiasi Mac con Apple Silicon, macOS 12 o successivo",
+ "steps": [
+  "Collega la stampante con il cavo USB e accendila",
+  "Apri il file scaricato e segui i passaggi",
+  "Stampa. La stampante è già configurata"
+ ],
+ "dl_after": "Non stampa ancora? Riavvia il Mac una volta e ricollega la stampante, poi vai alla <a href=\"{help_url}\">risoluzione dei problemi</a>. Stampante Wi-Fi? Guarda qui sotto.",
+ "coffee_title": "☕ Stampi di nuovo?",
+ "coffee_body": "Questo driver è gratuito e lo resterà. Se ti ha evitato di comprare una stampante nuova, puoi dirmi grazie con un caffè.",
+ "coffee_btn": "Offrimi un caffè",
+ "app_on": "Pronta su iPhone e iPad",
+ "app_off": "Non condivisa",
+ "promo_title": "Novità: stampa da iPhone e iPad",
+ "promo_body": "Aggiunge AirPrint alla tua stampante, anche via USB. Gratuito, senza installare nulla sull'iPhone.",
+ "promo_link": "Scopri come funziona →",
+ "home_title": "“Il software della stampante non è compatibile” su Mac: soluzione",
+ "home_desc": "La tua stampante non è rotta. Risolvi “Il software della stampante non è compatibile con questo dispositivo” su macOS 27 con un driver gratuito per {n} stampanti Canon, Epson, HP, Brother e Samsung. Senza Rosetta.",
+ "home_keywords": "driver stampante mac, driver stampante macos, driver stampante macos 27, driver stampante macos tahoe, stampante non funziona dopo aggiornamento mac, il software della stampante non è compatibile con questo dispositivo, driver canon mp250 mac, driver stampante apple silicon, driver stampante m1, stampante macos 27, driver stampante rosetta, gutenprint mac arm64",
+ "home_h1": "La stampante non funziona sul Mac dopo l'aggiornamento di macOS?",
+ "home_lead": "La tua stampante non è rotta e non ti serve una nuova. Un driver gratuito fa tornare a funzionare {n} stampanti Canon, Epson, HP, Brother e Samsung.",
+ "proof": "Oltre {downloads} download · {stars} stelle su <a href=\"{repo}\">GitHub</a> · Nessun account necessario",
+ "mock_who": "La tua stampante",
+ "mock_bad": "Software non compatibile",
+ "mock_good": "Pronta per la stampa",
+ "how_h2": "Come funziona",
+ "still_note": "Non stampa ancora? Riavvia il Mac una volta e ricollega la stampante, poi vai all'<a href=\"{help_url}\">Aiuto</a>.",
+ "search_h2": "La mia stampante è supportata?",
+ "search_label": "Modello della stampante",
+ "search_placeholder": "Scrivi il modello della stampante, ad esempio Canon MP250",
+ "search_note": "Non c'è? Prova solo con il numero del modello. Se non compare lo stesso, questo driver non supporta quella stampante. E se macOS configura già la stampante da solo (AirPrint), non ti serve niente di tutto questo.",
+ "all_brands_link": "tutte le marche →",
+ "search_nomatch": "Nessun risultato. Prova solo con il numero del modello (ad esempio “MP250”).",
+ "search_ok": "{name} è supportata",
+ "search_usb": "Collegata via USB? L'installer la configura da solo.",
+ "search_more": "Wi-Fi e altro aiuto per la {name} →",
+ "symptoms_h2": "Ti suona familiare?",
+ "symptoms_alt": "Stampanti e scanner di macOS con una Canon MP250 e l'errore: Il software della stampante non è compatibile con questo dispositivo",
+ "symptoms": [
+  [
+   "“Il software della stampante non è compatibile con questo dispositivo”",
+   "Il vecchio driver non funziona più. Installa questo driver, poi stampa con la nuova voce che termina con “Apple Silicon”."
+  ],
+  [
+   "“Il software per questa stampante non è disponibile”",
+   "macOS non ha un driver per questa stampante. Installa questo driver, poi aggiungi la stampante con Usa: Seleziona software…"
+  ],
+  [
+   "“Generic PostScript Printer”, pagine bianche o opzioni mancanti",
+   "macOS ha scelto un driver generico. Installa questo driver, aggiungi di nuovo la stampante e scegli la voce “Apple Silicon”."
+  ],
+  [
+   "La stampante è sparita dall'elenco",
+   "Cerca il tuo modello qui sopra, poi vai all'<a href=\"{help_url}\">Aiuto</a>."
+  ]
+ ],
+ "options_h2": "Le tue opzioni",
+ "options_head": [
+  "Opzione",
+  "Costo",
+  "Funziona su macOS 28?",
+  "Vale anche per le vecchie stampanti a getto d'inchiostro, come le Canon PIXMA?"
+ ],
+ "options": [
+  [
+   "Questo pacchetto",
+   "Gratuito",
+   "Sì, nativo su Apple Silicon",
+   "Sì, tra {n} modelli"
+  ],
+  [
+   "Reinstallare Rosetta",
+   "Gratuito",
+   "No, Apple elimina Rosetta per le app in macOS 28",
+   "Solo alcune stampanti, e solo fino ad allora"
+  ],
+  [
+   "Il driver del produttore",
+   "Gratuito",
+   "Solo se il produttore ne ha creato uno per Apple Silicon",
+   "I modelli più vecchi di solito non ce l'hanno"
+  ],
+  [
+   "Un driver sostitutivo a pagamento",
+   "A pagamento, a volte per ogni stampante",
+   "Chiedi al produttore",
+   "Spesso no: molti gestiscono solo stampanti PCL o PostScript"
+  ],
+  [
+   "Una stampante nuova",
+   "Il prezzo di una stampante",
+   "Sì",
+   "Sì, e quella vecchia va sprecata"
+  ]
+ ],
+ "limits_note": "Cosa non fa questo driver: non mostra i livelli di inchiostro o toner, non esegue la scansione e le stampanti Wi-Fi richiedono un passaggio in più.",
+ "popular_h2": "Stampanti più cercate",
+ "faq_h2": "Domande",
+ "more_help": "Altro aiuto →",
+ "faq": [
+  [
+   "Perché la mia stampante ha smesso di funzionare?",
+   "Il driver per Mac del produttore è stato creato per i vecchi Mac con Intel e non è mai stato aggiornato. macOS 27 segna questi driver come non compatibili, quindi la stampante si ferma anche se non ha nulla che non va. Questo driver gratuito sostituisce quello vecchio."
+  ],
+  [
+   "Reinstallare Rosetta risolve il problema?",
+   "A volte, e solo per ora. Reinstallando Rosetta alcuni vecchi driver tornano a funzionare dopo aver eliminato e riaggiunto la stampante. Altri restano segnati come “Software non compatibile”. Apple elimina Rosetta per le app in macOS 28, quindi il vecchio driver del produttore smetterà di nuovo di funzionare. Questo driver non ha bisogno di Rosetta."
+  ],
+  [
+   "Avevo installato il vecchio driver del produttore. Devo fare qualcosa?",
+   "Riavvia il Mac una volta dopo l'installazione, poi scollega e ricollega la stampante. L'installer sposta da parte il vecchio driver di Canon, non viene cancellato nulla."
+  ],
+  [
+   "Hai ancora macOS 26 Tahoe o precedente?",
+   "Ora la stampante funziona, ma può smettere dopo l'aggiornamento. Puoi installare questo driver prima o dopo aver aggiornato."
+  ],
+  [
+   "La mia stampante è in Wi-Fi, non via USB.",
+   "Installa il driver, poi apri Impostazioni di Sistema → Stampanti e scanner, clicca su Aggiungi, seleziona la stampante, scegli Usa: Seleziona software… e scegli il tuo modello che termina con “Apple Silicon”."
+  ],
+  [
+   "L'installer non ha aggiunto la mia stampante.",
+   "Installa il driver, poi apri Impostazioni di Sistema → Stampanti e scanner, clicca su Aggiungi, seleziona la stampante, scegli Usa: Seleziona software… e scegli il tuo modello che termina con “Apple Silicon”."
+  ],
+  [
+   "Dove trovo la qualità di stampa e il bianco e nero?",
+   "Nella finestra di stampa apri Funzioni stampante (Opzioni stampante in macOS 27). La qualità è sotto Risoluzione. Per il bianco e nero imposta Modello colore su Scala di grigi."
+  ],
+  [
+   "Il nero non stampa o i colori sembrano strani.",
+   "Prima esegui un controllo degli ugelli dalla stampante stessa: di solito la causa è una cartuccia vuota o otturata. Poi controlla in Funzioni stampante che non sia selezionata una modalità “solo colore”. I colori possono apparire un po' diversi rispetto al driver del produttore."
+  ],
+  [
+   "Livelli di materiale di consumo dice “Informazioni non disponibili”.",
+   "È normale: questo driver non può leggere i livelli di inchiostro o toner. Controllali sul display della stampante."
+  ],
+  [
+   "La mia stampante non è nell'elenco.",
+   "Molte stampanti recenti supportano AirPrint e non hanno bisogno di un driver: collega la stampante alla rete, poi aggiungila in Impostazioni di Sistema → Stampanti e scanner → Aggiungi, con Usa: AirPrint. AirPrint non funziona via USB."
+  ],
+  [
+   "La mia Brother a serbatoio d'inchiostro (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) non è supportata.",
+   "Per queste stampanti non esiste un driver gratuito, quindi questo pacchetto non può aggiungerle. Controlla la pagina Download del tuo modello su support.brother.com. Se la stampante supporta AirPrint, collegala alla rete e aggiungila con Usa: AirPrint."
+  ],
+  [
+   "La mia HP LaserJet 1018, 1020, P1005 o P1006 non è supportata.",
+   "Queste stampanti hanno bisogno che il software di HP venga caricato a ogni accensione, e questo driver non può farlo. Anche scegliere un modello simile non funziona: il lavoro viene inviato, ma non stampa nulla."
+  ],
+  [
+   "Lo scanner della mia multifunzione funziona?",
+   "No, solo la stampa. Per la scansione usa VueScan (a pagamento) o SANE (gratuito, più tecnico)."
+  ],
+  [
+   "Posso stampare da iPhone o iPad?",
+   "Sì. Apri Print from iPhone & iPad sul Mac e attiva la stampante. Il Mac aggiunge AirPrint, anche via USB, finché resta acceso."
+  ],
+  [
+   "È sicuro? macOS si lamenterà?",
+   "Sì, è sicuro. L'installer è firmato e autenticato da Apple, quindi si apre senza avvisi, e tutto quello che fa è visibile su GitHub."
+  ],
+  [
+   "È gratuito?",
+   "Sì. Gratuito e open source, senza account. Il driver non raccoglie nessun dato."
+  ],
+  [
+   "Quali versioni di macOS?",
+   "Provato su macOS 27 con Apple Silicon. Dovrebbe funzionare su macOS 12 e successivi sui Mac con Apple Silicon."
+  ]
+ ],
+ "brand_title": "Driver stampante {b} per Mac (macOS 27, Apple Silicon)",
+ "brand_title_short": "Driver stampante {b} per Mac (macOS 27, Apple Silicon)",
+ "brand_desc": "Driver gratuito per stampanti {b} su Mac: driver nativo per Apple Silicon per {n} stampanti {b} su {macos}. Risolve “Il software della stampante non è compatibile con questo dispositivo” senza Rosetta.",
+ "brand_keywords": "driver stampante {b} mac, driver {b} macos 27, driver {b} mac tahoe, driver {b} macos 26, {b} apple silicon, il software della stampante non è compatibile con questo dispositivo",
+ "brand_h1": "Driver stampante {b} per Mac (Apple Silicon, macOS 27)",
+ "brand_lead": "{n} stampanti {b} tornano a funzionare sui Mac con Apple Silicon e {macos}. Un solo installer gratuito per tutte, senza Rosetta.",
+ "brand_ok": "{n} stampanti {b} supportate",
+ "brand_iphone_h2": "Stampa da iPhone o iPad sulla tua stampante {b}",
+ "brand_iphone_body": "La tua stampante {b} non ha AirPrint? Il Mac può aggiungerlo, anche via USB.",
+ "brand_iphone_link": "Aggiungi AirPrint alla tua stampante {b} →",
+ "brand_models_h2": "Stampanti {b} supportate",
+ "brand_models_intro": "Scegli la tua stampante per l'aiuto specifico del modello.",
+ "other_brands": "Altre marche:",
+ "brand_faq": [
+  [
+   "Esiste un driver per stampanti {b} per macOS 27 e Apple Silicon?",
+   "{b} non ha mai rilasciato versioni per Apple Silicon dei driver Mac per molte delle sue stampanti più vecchie. Richiedono Rosetta, e macOS 27 segna come non compatibili i driver di stampa solo per Intel. Apple elimina Rosetta per le app in macOS 28. Questo pacchetto gratuito aggiunge driver arm64 nativi per {n} modelli {b}, che quindi stampano su qualsiasi Mac con Apple Silicon senza Rosetta."
+  ],
+  [
+   "Perché la mia stampante {b} dice “Il software della stampante non è compatibile con questo dispositivo”?",
+   "Il driver {b} installato sul Mac è solo per Intel. Installa questo pacchetto, riavvia il Mac una volta, poi scollega e ricollega la stampante."
+  ],
+  [
+   "Reinstallare Rosetta risolve il problema?",
+   "A volte, e solo per ora. Reinstallando Rosetta alcuni vecchi driver tornano a funzionare dopo aver eliminato e riaggiunto la stampante. Altri restano segnati come “Software non compatibile”. Apple elimina Rosetta per le app in macOS 28, quindi il vecchio driver del produttore smetterà di nuovo di funzionare. Questo driver non ha bisogno di Rosetta."
+  ],
+  [
+   "Funziona su macOS 26 Tahoe e macOS 15 Sequoia?",
+   "Sì. Funziona su macOS 12 e successivi sui Mac con Apple Silicon, e continua a funzionare dopo l'aggiornamento a macOS 27."
+  ],
+  [
+   "La mia stampante è in Wi-Fi, o non è stata configurata automaticamente.",
+   "Installa il driver, poi apri Impostazioni di Sistema → Stampanti e scanner, clicca su Aggiungi, seleziona la stampante, scegli Usa: Seleziona software… e scegli il tuo modello che termina con “Apple Silicon”."
+  ]
+ ],
+ "brands_title": "Marche di stampanti supportate: driver per Mac con Apple Silicon",
+ "brands_desc": "{n} modelli di stampante di {brands} marche, supportati dai driver arm64 nativi Gutenprint, brlaser e SpliX per macOS.",
+ "brands_h1": "Marche supportate",
+ "brands_lead": "{n} modelli. Clicca su una marca per vedere l'elenco completo dei modelli.",
+ "help_title": "La stampante non funziona ancora su Mac dopo l'installazione?",
+ "help_desc": "La stampante risulta ancora “non compatibile”, manca dall'elenco, è in Wi-Fi o stampa pagine bianche dopo aver installato i driver per Apple Silicon? Soluzioni passo passo per macOS 27, Tahoe e Sequoia.",
+ "help_keywords": "il software della stampante non è compatibile con questo dispositivo dopo l'installazione, stampante non compare su mac, il software per questa stampante non è disponibile, nessuna stampante airprint trovata, driver stampante wifi mac, problemi stampante macos 27",
+ "help_h1": "La stampante non funziona ancora dopo l'installazione?",
+ "help_lead": "Soluzioni ai problemi che si incontrano dopo aver installato il pacchetto di driver, nell'ordine in cui di solito capitano.",
+ "trouble": [
+  [
+   "Dopo l'installazione dice ancora “Il software della stampante non è compatibile con questo dispositivo”.",
+   "Quel messaggio riguarda la vecchia voce della stampante, che usa ancora il driver del produttore solo per Intel. L'installer aggiunge una nuova voce accanto, con il nome del modello e che termina con “Apple Silicon”. In Impostazioni di Sistema → Stampanti e scanner rimuovi la vecchia voce (selezionala e clicca su −), poi stampa con quella “Apple Silicon”. Se non c'è, riavvia il Mac una volta, scollega e ricollega la stampante e leggi la domanda successiva."
+  ],
+  [
+   "La mia stampante non compare nell'elenco.",
+   "Prima cerca il tuo modello nella home page: se non è supportato, non comparirà nessuna voce. Se è supportato e collegato via USB, riavvia il Mac una volta, scollega e ricollega la stampante, e collegala direttamente, senza hub o dock. Poi aggiungila in Impostazioni di Sistema → Stampanti e scanner → Aggiungi, con Usa: Seleziona software… e la voce del tuo modello che termina con “Apple Silicon”."
+  ],
+  [
+   "“Il software per questa stampante non è disponibile da Apple”.",
+   "macOS mostra questo messaggio quando aggiungi una stampante per cui non ha un driver. Installa prima questo pacchetto, poi aggiungi di nuovo la stampante in Impostazioni di Sistema → Stampanti e scanner → Aggiungi, scegli Usa: Seleziona software… e scegli la voce del tuo modello che termina con “Apple Silicon”."
+  ],
+  [
+   "“Nessuna stampante AirPrint trovata”, oppure AirPrint non viene proposto.",
+   "Le stampanti più vecchie non supportano AirPrint. Sul Mac aggiungile con Usa: Seleziona software… e la voce “Apple Silicon”, dopo aver installato questo pacchetto. Per stampare da iPhone o iPad, attiva la stampante in Print from iPhone & iPad, che aggiunge AirPrint tramite il Mac, anche via USB."
+  ],
+  [
+   "La mia stampante è in Wi-Fi o Ethernet.",
+   "L'installer configura da solo solo le stampanti USB. Per una stampante di rete, aggiungila in Impostazioni di Sistema → Stampanti e scanner → Aggiungi con Usa: Seleziona software… e la voce “Apple Silicon”. Se la stampante non compare, collegala alla stessa rete del Mac e spegnila e riaccendila."
+  ],
+  [
+   "Reinstallare Rosetta risolve il problema?",
+   "A volte, e solo per ora. Reinstallando Rosetta alcuni vecchi driver tornano a funzionare dopo aver eliminato e riaggiunto la stampante. Altri restano segnati come “Software non compatibile”. Apple elimina Rosetta per le app in macOS 28, quindi il vecchio driver del produttore smetterà di nuovo di funzionare. Questo driver non ha bisogno di Rosetta."
+  ],
+  [
+   "Il lavoro viene inviato ma non stampa nulla, o stampa solo pagine bianche.",
+   "Controlla che la coda usi esattamente il tuo modello: il driver di un modello simile può inviare dati che la stampante ignora senza dire nulla. Alcune stampanti, come le HP LaserJet 1018, 1020, P1005 e P1006, non possono essere supportate perché hanno bisogno del firmware del produttore a ogni accensione."
+  ],
+  [
+   "Niente di tutto questo ha aiutato.",
+   "Apri una segnalazione su GitHub (https://github.com/theshiver/apple-silicon-printer-drivers/issues) con il modello della stampante, come è collegata (USB o rete) e la tua versione di macOS. I passaggi da Terminale per gli utenti esperti sono nel README su GitHub."
+  ]
+ ],
+ "iphone_crumb": "iPhone & iPad",
+ "nav_iphone": "iPhone &amp; iPad",
+ "iphone_title": "Stampa da iPhone o iPad su qualsiasi stampante (AirPrint)",
+ "iphone_desc": "Stampa da iPhone o iPad su qualsiasi stampante collegata al Mac, anche senza AirPrint. Gratuito per stampanti HP, Canon, Brother ed Epson.",
+ "iphone_keywords": "stampare da iphone, stampare da ipad, come stampare da iphone, airprint, aggiungere airprint alla stampante, airprint stampante usb, airprint hp, canon airprint, airprint brother, airprint epson",
+ "iphone_h1": "Stampa da iPhone o iPad su qualsiasi stampante",
+ "iphone_lead": "Aggiunge AirPrint alle stampanti che non lo hanno. Gratuito, senza installare nulla sull'iPhone.",
+ "iphone_how": "Come stampare da iPhone o iPad",
+ "iphone_steps": [
+  "Installa il driver gratuito sul Mac",
+  "Apri Print from iPhone & iPad e attiva la stampante",
+  "Su iPhone o iPad tocca Condividi, poi Stampa"
+ ],
+ "iphone_need_h2": "Cosa ti serve",
+ "iphone_need": "La stampante deve essere configurata sul Mac, e il Mac deve restare acceso e attivo, sullo stesso Wi-Fi dell'iPhone.",
+ "iphone_works_h2": "Funziona con la tua stampante",
+ "iphone_faq": [
+  [
+   "Cos'è AirPrint?",
+   "AirPrint è il modo di Apple per stampare da iPhone o iPad senza app né driver sul telefono. Le stampanti più vecchie non ce l'hanno. Questo driver permette al Mac di aggiungerlo per loro."
+  ],
+  [
+   "Posso stampare da iPhone su una stampante senza AirPrint?",
+   "Sì. Configura la stampante sul Mac, attivala in Print from iPhone & iPad e comparirà nel menu Stampa dell'iPhone."
+  ],
+  [
+   "Funziona con le stampanti HP, Canon, Brother ed Epson?",
+   "Sì, con qualsiasi stampante configurata sul Mac, comprese quelle USB. Le stampanti che hanno già AirPrint non ne hanno bisogno."
+  ],
+  [
+   "Il Mac deve restare acceso?",
+   "Sì. L'iPhone stampa tramite il Mac, quindi il Mac deve essere acceso e attivo, sullo stesso Wi-Fi."
+  ],
+  [
+   "Possono stampare anche altre persone?",
+   "Chiunque sia sullo stesso Wi-Fi può farlo. È spento finché non lo attivi, e scegli tu quali stampanti condividere."
+  ]
+ ],
+ "privacy_title": "Privacy – Driver di stampa per Mac",
+ "privacy_desc": "Quali dati raccolgono questo sito web e il driver di stampa.",
+ "privacy_h1": "Privacy",
+ "privacy_lead": "Il driver di stampa non raccoglie nulla. Questo sito conta le visite con Google Analytics.",
+ "privacy_analytics_h2": "Statistiche del sito",
+ "privacy_analytics": "Questo sito usa Google Analytics per capire quali pagine e quali stampanti servono alle persone. Salva cookie sul tuo dispositivo e si attiva per ogni visitatore. Google riceve dati di utilizzo: pagine viste, il tuo paese approssimativo, clic sul pulsante di download, le domande che apri e i modelli di stampante che scrivi nella casella di ricerca. Per favore, non scrivere lì dati personali. Le funzioni pubblicitarie sono disattivate. Per evitarlo, blocca i cookie di questo sito o usa un'estensione del browser che blocca Google Analytics.",
+ "privacy_hosting_h2": "Hosting",
+ "privacy_hosting": "Questo sito è ospitato su GitHub Pages. GitHub può registrare dati tecnici, come gli indirizzi IP, per far funzionare il servizio. Leggi l'<a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">informativa sulla privacy di GitHub</a> e l'<a href=\"https://policies.google.com/privacy\">informativa sulla privacy di Google</a>.",
+ "privacy_contact_h2": "Domande",
+ "privacy_contact": "Apri una segnalazione su <a href=\"{repo}/issues\">GitHub</a>."
+}

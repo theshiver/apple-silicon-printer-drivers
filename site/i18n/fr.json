@@ -1,0 +1,308 @@
+{
+ "lang_name": "Français",
+ "macos": "macOS 27, macOS 26 Tahoe et macOS 15 Sequoia",
+ "nav_check": "Vérifier mon imprimante",
+ "nav_help": "Aide",
+ "nav_coffee": "☕ Offrez-moi un café",
+ "privacy": "Confidentialité",
+ "all_brands": "Toutes les marques",
+ "footer_note": "Gratuit et open source. Sans lien avec Canon, Epson, HP, Brother ou Apple. Les noms de produits sont des marques de leurs propriétaires.",
+ "crumb_home": "Accueil",
+ "crumb_brands": "Marques",
+ "crumb_help": "Dépannage",
+ "dl_btn": "Télécharger le pilote gratuit",
+ "dl_trust": "Gratuit · Signé et notarisé par Apple · Tout Mac Apple Silicon, macOS 12 ou ultérieur",
+ "steps": [
+  "Branchez l’imprimante en USB et allumez-la",
+  "Ouvrez le fichier téléchargé et suivez les étapes",
+  "Imprimez. L’imprimante est configurée pour vous"
+ ],
+ "dl_after": "Ça n’imprime toujours pas ? Redémarrez le Mac une fois et rebranchez l’imprimante, puis consultez le <a href=\"{help_url}\">dépannage</a>. Imprimante Wi-Fi ? Voir plus bas.",
+ "coffee_title": "☕ Ça imprime de nouveau ?",
+ "coffee_body": "Ce pilote est gratuit et le restera. S’il vous a évité d’acheter une nouvelle imprimante, vous pouvez dire merci avec un café.",
+ "coffee_btn": "Offrez-moi un café",
+ "app_on": "Prête sur votre iPhone et votre iPad",
+ "app_off": "Non partagée",
+ "promo_title": "Nouveau : imprimez depuis votre iPhone et votre iPad",
+ "promo_body": "Ajoute AirPrint à votre imprimante, même en USB. Gratuit, sans rien installer sur votre iPhone.",
+ "promo_link": "Voir comment ça marche →",
+ "home_title": "« Logiciel d’imprimante non compatible » sur Mac : la solution",
+ "home_desc": "Votre imprimante n’est pas en panne. Corrigez « Le logiciel de l’imprimante n’est pas compatible avec cet appareil » sous macOS 27 avec un pilote gratuit pour {n} imprimantes Canon, Epson, HP, Brother et Samsung. Sans Rosetta.",
+ "home_keywords": "pilote imprimante mac, pilote imprimante macos, pilote imprimante macos 27, pilote imprimante macos tahoe, imprimante ne fonctionne plus après mise à jour mac, logiciel de l’imprimante n’est pas compatible avec cet appareil, pilote canon mp250 mac, pilote imprimante apple silicon, pilote imprimante m1, pilote imprimante rosetta, gutenprint mac",
+ "home_h1": "Votre imprimante ne fonctionne plus sur Mac après la mise à jour de macOS ?",
+ "home_lead": "Votre imprimante n’est pas en panne, et vous n’avez pas besoin d’en acheter une autre. Un pilote gratuit remet en marche {n} imprimantes Canon, Epson, HP, Brother et Samsung.",
+ "proof": "Plus de {downloads} téléchargements · {stars} étoiles sur <a href=\"{repo}\">GitHub</a> · Aucun compte nécessaire",
+ "mock_who": "Votre imprimante",
+ "mock_bad": "Logiciel non compatible",
+ "mock_good": "Prête à imprimer",
+ "how_h2": "Comment ça marche",
+ "still_note": "Ça n’imprime toujours pas ? Redémarrez le Mac une fois et rebranchez l’imprimante, puis consultez l’<a href=\"{help_url}\">aide</a>.",
+ "search_h2": "Mon imprimante est-elle prise en charge ?",
+ "search_label": "Modèle d’imprimante",
+ "search_placeholder": "Saisissez votre modèle, par ex. Canon MP250",
+ "search_note": "Pas dans la liste ? Essayez avec le seul numéro de modèle. S’il n’apparaît toujours pas, ce pilote ne prend pas cette imprimante en charge. Et si macOS configure déjà votre imprimante tout seul (AirPrint), vous n’avez besoin de rien de tout cela.",
+ "all_brands_link": "toutes les marques →",
+ "search_nomatch": "Aucun résultat. Essayez avec le seul numéro de modèle (par ex. « MP250 »).",
+ "search_ok": "{name} est prise en charge",
+ "search_usb": "Branchée en USB ? L’installateur la configure tout seul.",
+ "search_more": "Wi-Fi et plus d’aide pour la {name} →",
+ "symptoms_h2": "Ça vous dit quelque chose ?",
+ "symptoms_alt": "Imprimantes et scanners dans macOS affichant une Canon MP250 avec l’erreur : Le logiciel de l’imprimante n’est pas compatible avec cet appareil",
+ "symptoms": [
+  [
+   "« Le logiciel de l’imprimante n’est pas compatible avec cet appareil »",
+   "L’ancien pilote ne fonctionne plus. Installez ce pilote, puis imprimez avec la nouvelle entrée qui se termine par « Apple Silicon »."
+  ],
+  [
+   "« Aucun logiciel n’est disponible pour cette imprimante »",
+   "macOS n’a pas de pilote pour elle. Installez ce pilote, puis ajoutez l’imprimante avec Utiliser : Sélectionner un logiciel…"
+  ],
+  [
+   "« Generic PostScript Printer », pages blanches ou options manquantes",
+   "macOS a choisi un pilote générique. Installez ce pilote, ajoutez de nouveau l’imprimante et choisissez l’entrée « Apple Silicon »."
+  ],
+  [
+   "L’imprimante a disparu de la liste",
+   "Cherchez votre modèle ci-dessus, puis consultez l’<a href=\"{help_url}\">aide</a>."
+  ]
+ ],
+ "options_h2": "Vos options",
+ "options_head": [
+  "Option",
+  "Coût",
+  "Fonctionne sous macOS 28 ?",
+  "Anciennes imprimantes à jet d’encre comme les Canon PIXMA ?"
+ ],
+ "options": [
+  [
+   "Ce paquet",
+   "Gratuit",
+   "Oui, natif sur Apple Silicon",
+   "Oui, parmi {n} modèles"
+  ],
+  [
+   "Réinstaller Rosetta",
+   "Gratuit",
+   "Non, Apple met fin à Rosetta pour les apps avec macOS 28",
+   "Seulement certaines imprimantes, et seulement jusque-là"
+  ],
+  [
+   "Le pilote du fabricant",
+   "Gratuit",
+   "Seulement si le fabricant en a créé un pour Apple Silicon",
+   "Les anciens modèles n’en ont généralement pas"
+  ],
+  [
+   "Un pilote de remplacement payant",
+   "Payant, parfois par imprimante",
+   "À vérifier auprès de l’éditeur",
+   "Souvent non : beaucoup ne gèrent que les imprimantes PCL ou PostScript"
+  ],
+  [
+   "Une nouvelle imprimante",
+   "Le prix d’une imprimante",
+   "Oui",
+   "Oui, et l’ancienne part à la poubelle"
+  ]
+ ],
+ "limits_note": "Ce que ce pilote ne fait pas : il ne peut pas afficher les niveaux d’encre ou de toner, il ne numérise pas, et les imprimantes Wi-Fi demandent une étape de plus.",
+ "popular_h2": "Imprimantes courantes",
+ "faq_h2": "Questions",
+ "more_help": "Plus d’aide →",
+ "faq": [
+  [
+   "Pourquoi mon imprimante ne fonctionne-t-elle plus ?",
+   "Le pilote Mac du fabricant a été conçu pour les anciens Mac Intel et n’a jamais été mis à jour. macOS 27 marque ces pilotes comme incompatibles, donc l’imprimante s’arrête alors qu’elle n’a aucun défaut. Ce pilote gratuit remplace l’ancien."
+  ],
+  [
+   "Réinstaller Rosetta règle-t-il le problème ?",
+   "Parfois, et seulement pour le moment. Réinstaller Rosetta fait refonctionner certains anciens pilotes d’imprimante après avoir supprimé et ajouté de nouveau l’imprimante. D’autres restent marqués « Logiciel incompatible ». Apple met fin à Rosetta pour les apps avec macOS 28, et l’ancien pilote du fabricant s’arrêtera alors de nouveau. Ce pilote n’a pas besoin de Rosetta."
+  ],
+  [
+   "J’avais installé l’ancien pilote du fabricant. Dois-je faire quelque chose ?",
+   "Redémarrez le Mac une fois après l’installation, puis débranchez et rebranchez l’imprimante. L’installateur met l’ancien pilote de Canon de côté, rien n’est supprimé."
+  ],
+  [
+   "Encore sous macOS 26 Tahoe ou antérieur ?",
+   "Votre imprimante fonctionne pour l’instant, mais elle peut s’arrêter après la mise à jour. Vous pouvez installer ce pilote avant ou après la mise à jour."
+  ],
+  [
+   "Mon imprimante est en Wi-Fi, pas en USB.",
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+  ],
+  [
+   "L’installateur n’a pas ajouté mon imprimante.",
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+  ],
+  [
+   "Où régler la qualité d’impression et le noir et blanc ?",
+   "Dans la fenêtre d’impression, ouvrez Fonctions de l’imprimante (Options d’imprimante sous macOS 27). La qualité se trouve sous Résolution. Pour le noir et blanc, réglez Mode couleur sur Niveaux de gris."
+  ],
+  [
+   "Le noir ne s’imprime pas, ou les couleurs sont bizarres.",
+   "Lancez d’abord un test des buses depuis l’imprimante elle-même : une cartouche vide ou bouchée est la cause habituelle. Vérifiez ensuite dans Fonctions de l’imprimante qu’aucun mode « couleur uniquement » n’est sélectionné. Les couleurs peuvent différer un peu du pilote du fabricant."
+  ],
+  [
+   "Niveaux des fournitures indique « Informations non disponibles ».",
+   "C’est normal : ce pilote ne peut pas lire les niveaux d’encre ou de toner. Regardez-les sur l’écran de l’imprimante."
+  ],
+  [
+   "Mon imprimante n’est pas dans la liste.",
+   "Beaucoup d’imprimantes récentes gèrent AirPrint et n’ont pas besoin de pilote : connectez l’imprimante à votre réseau, puis ajoutez-la dans Réglages Système → Imprimantes et scanners → Ajouter, avec Utiliser : AirPrint. AirPrint ne fonctionne pas en USB."
+  ],
+  [
+   "Mon imprimante Brother à réservoir d’encre (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) n’est pas prise en charge.",
+   "Ces imprimantes n’ont pas de pilote libre, donc ce paquet ne peut pas les ajouter. Consultez la page Téléchargements de votre modèle sur support.brother.com. Si l’imprimante gère AirPrint, connectez-la à votre réseau et ajoutez-la avec Utiliser : AirPrint."
+  ],
+  [
+   "Ma HP LaserJet 1018, 1020, P1005 ou P1006 n’est pas prise en charge.",
+   "Ces imprimantes ont besoin du logiciel de HP chargé à chaque mise en marche, ce que ce pilote ne peut pas faire. Choisir un modèle proche ne marche pas non plus : le travail part, mais rien ne s’imprime."
+  ],
+  [
+   "Le scanner de mon imprimante multifonction fonctionne-t-il ?",
+   "Non, seulement l’impression. Pour numériser, utilisez VueScan (payant) ou SANE (gratuit, plus technique)."
+  ],
+  [
+   "Puis-je imprimer depuis mon iPhone ou mon iPad ?",
+   "Oui. Ouvrez Print from iPhone & iPad sur votre Mac et activez votre imprimante. Votre Mac lui ajoute AirPrint, même en USB, tant que le Mac reste allumé."
+  ],
+  [
+   "Est-ce sûr ? macOS va-t-il protester ?",
+   "Oui, c’est sûr. L’installateur est signé et notarisé par Apple, il s’ouvre sans avertissement, et tout ce qu’il fait est détaillé ouvertement sur GitHub."
+  ],
+  [
+   "Est-ce gratuit ?",
+   "Oui. Gratuit et open source, sans compte. Le pilote ne collecte rien."
+  ],
+  [
+   "Quelles versions de macOS ?",
+   "Testé sous macOS 27 sur Apple Silicon. Il devrait fonctionner à partir de macOS 12 sur les Mac Apple Silicon."
+  ]
+ ],
+ "brand_title": "Pilote d’imprimante {b} pour Mac (macOS 27, Apple Silicon) – gratuit",
+ "brand_title_short": "Pilote d’imprimante {b} pour Mac (macOS 27, Apple Silicon)",
+ "brand_desc": "Pilote d’imprimante {b} gratuit pour Mac : pilote Apple Silicon natif pour {n} imprimantes {b} sous {macos}. Corrige « Le logiciel de l’imprimante n’est pas compatible avec cet appareil » sans Rosetta.",
+ "brand_keywords": "pilote imprimante {b} mac, pilote {b} macos 27, pilote {b} mac tahoe, pilote {b} macos 26, {b} apple silicon, logiciel de l’imprimante n’est pas compatible avec cet appareil",
+ "brand_h1": "Pilote d’imprimante {b} pour Mac (Apple Silicon, macOS 27)",
+ "brand_lead": "{n} imprimantes {b} refonctionnent sur les Mac Apple Silicon avec {macos}. Un seul installateur gratuit pour toutes, sans Rosetta.",
+ "brand_ok": "{n} imprimantes {b} prises en charge",
+ "brand_iphone_h2": "Imprimer depuis un iPhone ou un iPad sur votre imprimante {b}",
+ "brand_iphone_body": "Pas d’AirPrint sur votre imprimante {b} ? Votre Mac peut l’ajouter, même en USB.",
+ "brand_iphone_link": "Ajouter AirPrint à votre imprimante {b} →",
+ "brand_models_h2": "Imprimantes {b} prises en charge",
+ "brand_models_intro": "Choisissez votre imprimante pour obtenir de l’aide propre à son modèle.",
+ "other_brands": "Autres marques :",
+ "brand_faq": [
+  [
+   "Existe-t-il un pilote d’imprimante {b} pour macOS 27 et Apple Silicon ?",
+   "{b} n’a jamais publié de versions Apple Silicon des pilotes Mac pour beaucoup de ses anciennes imprimantes. Elles ont besoin de Rosetta, et macOS 27 marque les pilotes d’imprimante réservés à Intel comme incompatibles. Apple met fin à Rosetta pour les apps avec macOS 28. Ce paquet gratuit ajoute des pilotes arm64 natifs pour {n} modèles {b}, qui impriment donc sur tout Mac Apple Silicon sans Rosetta."
+  ],
+  [
+   "Pourquoi mon imprimante {b} affiche-t-elle « Le logiciel de l’imprimante n’est pas compatible avec cet appareil » ?",
+   "Le pilote {b} installé sur le Mac ne fonctionne que sur Intel. Installez ce paquet, redémarrez le Mac une fois, puis débranchez et rebranchez l’imprimante."
+  ],
+  [
+   "Réinstaller Rosetta règle-t-il le problème ?",
+   "Parfois, et seulement pour le moment. Réinstaller Rosetta fait refonctionner certains anciens pilotes d’imprimante après avoir supprimé et ajouté de nouveau l’imprimante. D’autres restent marqués « Logiciel incompatible ». Apple met fin à Rosetta pour les apps avec macOS 28, et l’ancien pilote du fabricant s’arrêtera alors de nouveau. Ce pilote n’a pas besoin de Rosetta."
+  ],
+  [
+   "Cela fonctionne-t-il sous macOS 26 Tahoe et macOS 15 Sequoia ?",
+   "Oui. Il fonctionne à partir de macOS 12 sur les Mac Apple Silicon et continue de marcher après la mise à jour vers macOS 27."
+  ],
+  [
+   "Mon imprimante est en Wi-Fi, ou elle n’a pas été configurée automatiquement.",
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+  ]
+ ],
+ "brands_title": "Marques d’imprimantes prises en charge : pilotes Mac pour Apple Silicon",
+ "brands_desc": "{n} modèles d’imprimantes de {brands} marques pris en charge par des pilotes arm64 natifs (Gutenprint, brlaser et SpliX) pour macOS.",
+ "brands_h1": "Marques prises en charge",
+ "brands_lead": "{n} modèles. Cliquez sur une marque pour voir la liste complète des modèles.",
+ "help_title": "Imprimante Mac qui ne marche pas après l’installation ? Aide",
+ "help_desc": "L’imprimante est toujours « non compatible », absente de la liste, en Wi-Fi ou imprime des pages blanches après l’installation des pilotes Apple Silicon ? Solutions pas à pas pour macOS 27, Tahoe et Sequoia.",
+ "help_keywords": "logiciel de l’imprimante non compatible après installation, imprimante absente sur mac, aucun logiciel n’est disponible pour cette imprimante, aucune imprimante airprint trouvée, pilote imprimante wifi mac, dépannage imprimante macos 27",
+ "help_h1": "L’imprimante ne marche toujours pas après l’installation ?",
+ "help_lead": "Des solutions aux problèmes rencontrés après l’installation du pilote, dans l’ordre où ils se présentent le plus souvent.",
+ "trouble": [
+  [
+   "Après l’installation, il est toujours écrit « Le logiciel de l’imprimante n’est pas compatible avec cet appareil ».",
+   "Ce message concerne l’ancienne entrée d’imprimante, qui utilise encore le pilote Intel du fabricant. L’installateur ajoute à côté une nouvelle entrée, nommée d’après le modèle et se terminant par « Apple Silicon ». Dans Réglages Système → Imprimantes et scanners, supprimez l’ancienne entrée (sélectionnez-la, cliquez sur −), puis imprimez avec celle en « Apple Silicon ». S’il n’y a pas d’entrée de ce genre, redémarrez le Mac une fois, débranchez et rebranchez l’imprimante, puis lisez la question suivante."
+  ],
+  [
+   "Mon imprimante n’apparaît pas dans la liste.",
+   "Cherchez d’abord votre modèle sur la page d’accueil : s’il n’est pas pris en charge, aucune entrée n’apparaîtra. S’il l’est et que l’imprimante est en USB, redémarrez le Mac une fois, débranchez et rebranchez l’imprimante, et branchez-la directement, sans hub ni station d’accueil. Ajoutez-la ensuite dans Réglages Système → Imprimantes et scanners → Ajouter, avec Utiliser : Sélectionner un logiciel… et l’entrée de votre modèle qui se termine par « Apple Silicon »."
+  ],
+  [
+   "« Aucun logiciel n’est disponible auprès d’Apple pour cette imprimante ».",
+   "macOS affiche ce message quand vous ajoutez une imprimante pour laquelle il n’a pas de pilote. Installez d’abord ce paquet, puis ajoutez de nouveau l’imprimante dans Réglages Système → Imprimantes et scanners → Ajouter, choisissez Utiliser : Sélectionner un logiciel… et prenez l’entrée de votre modèle qui se termine par « Apple Silicon »."
+  ],
+  [
+   "« Aucune imprimante AirPrint trouvée », ou AirPrint n’est pas proposé.",
+   "Les anciennes imprimantes ne gèrent pas AirPrint. Sur votre Mac, après avoir installé ce paquet, ajoutez-les avec Utiliser : Sélectionner un logiciel… et l’entrée « Apple Silicon ». Pour imprimer depuis un iPhone ou un iPad, activez l’imprimante dans Print from iPhone & iPad, qui ajoute AirPrint via votre Mac, même en USB."
+  ],
+  [
+   "Mon imprimante est en Wi-Fi ou en Ethernet.",
+   "L’installateur ne configure tout seul que les imprimantes USB. Pour une imprimante réseau, ajoutez-la dans Réglages Système → Imprimantes et scanners → Ajouter avec Utiliser : Sélectionner un logiciel… et l’entrée « Apple Silicon ». Si l’imprimante n’apparaît pas, connectez-la au même réseau que le Mac, puis éteignez-la et rallumez-la."
+  ],
+  [
+   "Réinstaller Rosetta règle-t-il le problème ?",
+   "Parfois, et seulement pour le moment. Réinstaller Rosetta fait refonctionner certains anciens pilotes d’imprimante après avoir supprimé et ajouté de nouveau l’imprimante. D’autres restent marqués « Logiciel incompatible ». Apple met fin à Rosetta pour les apps avec macOS 28, et l’ancien pilote du fabricant s’arrêtera alors de nouveau. Ce pilote n’a pas besoin de Rosetta."
+  ],
+  [
+   "Le travail part, mais rien ne s’imprime, ou seulement des pages blanches.",
+   "Vérifiez que la file d’attente utilise exactement votre modèle : le pilote d’un modèle proche peut envoyer des données que l’imprimante ignore sans rien dire. Certaines imprimantes, comme les HP LaserJet 1018, 1020, P1005 et P1006, ne peuvent pas être prises en charge du tout, car elles ont besoin que le firmware du fabricant leur soit envoyé à chaque mise en marche."
+  ],
+  [
+   "Rien de tout cela n’a aidé.",
+   "Ouvrez un ticket sur GitHub (https://github.com/theshiver/apple-silicon-printer-drivers/issues) avec le modèle de votre imprimante, son mode de connexion (USB ou réseau) et votre version de macOS. Les étapes dans le Terminal pour les utilisateurs avancés se trouvent dans le README sur GitHub."
+  ]
+ ],
+ "iphone_crumb": "iPhone & iPad",
+ "nav_iphone": "iPhone &amp; iPad",
+ "iphone_title": "Imprimer depuis iPhone ou iPad sur toute imprimante (AirPrint)",
+ "iphone_desc": "Imprimez depuis votre iPhone ou iPad sur n’importe quelle imprimante de votre Mac, même sans AirPrint. Gratuit pour les imprimantes HP, Canon, Brother et Epson.",
+ "iphone_keywords": "imprimer depuis iphone, imprimer depuis ipad, comment imprimer depuis iphone, airprint, ajouter airprint à une imprimante, airprint imprimante usb, airprint hp, canon airprint, airprint brother, airprint epson, imprimante sans airprint",
+ "iphone_h1": "Imprimez depuis votre iPhone ou iPad sur n’importe quelle imprimante",
+ "iphone_lead": "Ajoute AirPrint aux imprimantes qui ne l’ont pas. Gratuit, et rien à installer sur votre iPhone.",
+ "iphone_how": "Comment imprimer depuis un iPhone ou un iPad",
+ "iphone_steps": [
+  "Installez le pilote gratuit sur votre Mac",
+  "Ouvrez Print from iPhone & iPad et activez votre imprimante",
+  "Sur votre iPhone ou iPad, touchez Partager, puis Imprimer"
+ ],
+ "iphone_need_h2": "Ce qu’il vous faut",
+ "iphone_need": "L’imprimante doit être configurée sur votre Mac, et le Mac doit rester allumé et actif, sur le même Wi-Fi que votre iPhone.",
+ "iphone_works_h2": "Compatible avec votre imprimante",
+ "iphone_faq": [
+  [
+   "Qu’est-ce qu’AirPrint ?",
+   "AirPrint est la méthode d’Apple pour imprimer depuis un iPhone ou un iPad sans app ni pilote sur l’appareil. Les anciennes imprimantes ne l’ont pas. Ce pilote permet à votre Mac de l’ajouter pour elles."
+  ],
+  [
+   "Puis-je imprimer depuis mon iPhone sur une imprimante sans AirPrint ?",
+   "Oui. Configurez l’imprimante sur votre Mac, activez-la dans Print from iPhone & iPad, et elle apparaît dans le menu Imprimer de votre iPhone."
+  ],
+  [
+   "Cela fonctionne-t-il avec les imprimantes HP, Canon, Brother et Epson ?",
+   "Oui, avec toute imprimante configurée sur votre Mac, y compris les imprimantes USB. Les imprimantes qui ont déjà AirPrint n’en ont pas besoin."
+  ],
+  [
+   "Mon Mac doit-il rester allumé ?",
+   "Oui. Votre iPhone imprime via votre Mac, donc le Mac doit être allumé et actif, sur le même Wi-Fi."
+  ],
+  [
+   "D’autres personnes peuvent-elles y imprimer ?",
+   "Toute personne sur le même Wi-Fi le peut. C’est désactivé tant que vous ne l’activez pas, et vous choisissez les imprimantes à partager."
+  ]
+ ],
+ "privacy_title": "Confidentialité – Pilotes d’imprimante Mac",
+ "privacy_desc": "Ce que collectent ce site web et le pilote d’imprimante.",
+ "privacy_h1": "Confidentialité",
+ "privacy_lead": "Le pilote d’imprimante ne collecte rien. Ce site web compte les visites avec Google Analytics.",
+ "privacy_analytics_h2": "Statistiques du site",
+ "privacy_analytics": "Ce site utilise Google Analytics pour savoir quelles pages et quelles imprimantes intéressent les gens. Il dépose des cookies sur votre appareil et s’exécute pour chaque visiteur. Google reçoit des données d’usage : pages vues, votre pays approximatif, clics sur le bouton de téléchargement, questions que vous ouvrez et modèles d’imprimante saisis dans la zone de recherche. Merci de n’y saisir aucune information personnelle. Les fonctions publicitaires sont désactivées. Pour l’éviter, bloquez les cookies pour ce site ou utilisez une extension de navigateur qui bloque Google Analytics.",
+ "privacy_hosting_h2": "Hébergement",
+ "privacy_hosting": "Ce site est hébergé sur GitHub Pages. GitHub peut enregistrer des données techniques comme les adresses IP pour faire fonctionner le service. Voir la <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">déclaration de confidentialité de GitHub</a> et la <a href=\"https://policies.google.com/privacy\">politique de confidentialité de Google</a>.",
+ "privacy_contact_h2": "Questions",
+ "privacy_contact": "Ouvrez un ticket sur <a href=\"{repo}/issues\">GitHub</a>."
+}

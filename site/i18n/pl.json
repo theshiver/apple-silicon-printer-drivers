@@ -1,0 +1,308 @@
+{
+ "lang_name": "Polski",
+ "macos": "macOS 27, macOS 26 Tahoe i macOS 15 Sequoia",
+ "nav_check": "Sprawdź drukarkę",
+ "nav_help": "Pomoc",
+ "nav_coffee": "☕ Postaw mi kawę",
+ "privacy": "Prywatność",
+ "all_brands": "Wszystkie marki",
+ "footer_note": "Darmowe i open source. Bez związku z firmami Canon, Epson, HP, Brother i Apple. Nazwy produktów są znakami towarowymi ich właścicieli.",
+ "crumb_home": "Start",
+ "crumb_brands": "Marki",
+ "crumb_help": "Rozwiązywanie problemów",
+ "dl_btn": "Pobierz darmowy sterownik",
+ "dl_trust": "Za darmo · Podpisany i poświadczony przez Apple · Każdy Mac z Apple Silicon, macOS 12 lub nowszy",
+ "steps": [
+  "Podłącz drukarkę kablem USB i włącz ją",
+  "Otwórz pobrany plik i klikaj dalej",
+  "Drukuj. Drukarka jest już skonfigurowana"
+ ],
+ "dl_after": "Nadal nie drukuje? Raz uruchom Maca ponownie i podłącz drukarkę jeszcze raz, potem zajrzyj do <a href=\"{help_url}\">rozwiązywania problemów</a>. Drukarka Wi-Fi? Zobacz niżej.",
+ "coffee_title": "☕ Znowu drukujesz?",
+ "coffee_body": "Ten sterownik jest darmowy i zawsze taki będzie. Jeśli oszczędził ci zakupu nowej drukarki, możesz podziękować kawą.",
+ "coffee_btn": "Postaw mi kawę",
+ "app_on": "Gotowe na iPhonie i iPadzie",
+ "app_off": "Nie udostępniona",
+ "promo_title": "Nowość: drukuj z iPhone'a i iPada",
+ "promo_body": "Dodaje AirPrint do twojej drukarki, także przez USB. Za darmo, na iPhonie nic nie instalujesz.",
+ "promo_link": "Zobacz, jak to działa →",
+ "home_title": "Drukarka nie działa po aktualizacji macOS? Darmowa poprawka",
+ "home_desc": "Twoja drukarka nie jest zepsuta. Napraw komunikat „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem” w macOS 27 darmowym sterownikiem do {n} drukarek Canon, Epson, HP, Brother i Samsung. Bez Rosetta.",
+ "home_keywords": "sterowniki drukarek mac, sterownik drukarki macos, sterownik drukarki macos 27, sterownik drukarki macos tahoe, drukarka nie działa po aktualizacji maca, oprogramowanie drukarki nie jest zgodne z tym urządzeniem, canon mp250 sterownik mac, sterownik drukarki apple silicon, sterownik drukarki m1, rosetta sterownik drukarki, gutenprint mac arm64",
+ "home_h1": "Drukarka nie działa na Macu po aktualizacji macOS?",
+ "home_lead": "Twoja drukarka nie jest zepsuta i nie musisz kupować nowej. Darmowy sterownik przywraca działanie {n} drukarek Canon, Epson, HP, Brother i Samsung.",
+ "proof": "Ponad {downloads} pobrań · {stars} gwiazdek na <a href=\"{repo}\">GitHubie</a> · Bez zakładania konta",
+ "mock_who": "Twoja drukarka",
+ "mock_bad": "Oprogramowanie niezgodne",
+ "mock_good": "Gotowa do druku",
+ "how_h2": "Jak to działa",
+ "still_note": "Nadal nie drukuje? Raz uruchom Maca ponownie i podłącz drukarkę jeszcze raz, potem zajrzyj do <a href=\"{help_url}\">Pomocy</a>.",
+ "search_h2": "Czy moja drukarka jest obsługiwana?",
+ "search_label": "Model drukarki",
+ "search_placeholder": "Wpisz model drukarki, np. Canon MP250",
+ "search_note": "Nie ma jej na liście? Wpisz sam numer modelu. Jeśli nadal jej nie ma, ten sterownik jej nie obsługuje. A jeśli macOS sam konfiguruje twoją drukarkę (AirPrint), nic z tego nie jest ci potrzebne.",
+ "all_brands_link": "wszystkie marki →",
+ "search_nomatch": "Brak wyników. Wpisz tylko numer modelu (np. „MP250”).",
+ "search_ok": "{name} jest obsługiwana",
+ "search_usb": "Podłączona przez USB? Instalator skonfiguruje ją sam.",
+ "search_more": "Wi-Fi i więcej pomocy dla {name} →",
+ "symptoms_h2": "Brzmi znajomo?",
+ "symptoms_alt": "Okno Drukarki i skanery w macOS z drukarką Canon MP250 i błędem: Oprogramowanie drukarki nie jest zgodne z tym urządzeniem",
+ "symptoms": [
+  [
+   "„Oprogramowanie drukarki nie jest zgodne z tym urządzeniem”",
+   "Stary sterownik już nie działa. Zainstaluj ten sterownik i drukuj na nowej pozycji z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "„Oprogramowanie dla tej drukarki jest niedostępne”",
+   "macOS nie ma dla niej sterownika. Zainstaluj ten sterownik, a potem dodaj drukarkę przez Użyj: Wybierz oprogramowanie…"
+  ],
+  [
+   "„Generic PostScript Printer”, puste strony albo brak opcji",
+   "macOS wybrał sterownik ogólny. Zainstaluj ten sterownik, dodaj drukarkę ponownie i wybierz pozycję z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "Drukarka zniknęła z listy",
+   "Wyszukaj swój model powyżej, potem zajrzyj do <a href=\"{help_url}\">Pomocy</a>."
+  ]
+ ],
+ "options_h2": "Twoje możliwości",
+ "options_head": [
+  "Opcja",
+  "Koszt",
+  "Działa w macOS 28?",
+  "Starsze drukarki atramentowe, np. Canon PIXMA?"
+ ],
+ "options": [
+  [
+   "Ten pakiet",
+   "Za darmo",
+   "Tak, natywnie na Apple Silicon",
+   "Tak, wśród {n} modeli"
+  ],
+  [
+   "Ponowna instalacja Rosetta",
+   "Za darmo",
+   "Nie, Apple wyłącza Rosetta dla aplikacji w macOS 28",
+   "Tylko niektóre drukarki i tylko do tego czasu"
+  ],
+  [
+   "Sterownik producenta",
+   "Za darmo",
+   "Tylko jeśli producent zrobił wersję na Apple Silicon",
+   "Starsze modele zwykle go nie mają"
+  ],
+  [
+   "Płatny sterownik zastępczy",
+   "Płatny, czasem osobno za każdą drukarkę",
+   "Zapytaj sprzedawcę",
+   "Często nie: wiele obsługuje tylko drukarki PCL lub PostScript"
+  ],
+  [
+   "Nowa drukarka",
+   "Cena drukarki",
+   "Tak",
+   "Tak, a stara się marnuje"
+  ]
+ ],
+ "limits_note": "Czego ten sterownik nie robi: nie pokazuje poziomu tuszu ani tonera, nie skanuje, a drukarki Wi-Fi wymagają jednego dodatkowego kroku.",
+ "popular_h2": "Popularne drukarki",
+ "faq_h2": "Pytania",
+ "more_help": "Więcej pomocy →",
+ "faq": [
+  [
+   "Dlaczego moja drukarka przestała działać?",
+   "Sterownik producenta na Maca powstał dla starszych komputerów Mac z procesorem Intel i nigdy nie został zaktualizowany. macOS 27 oznacza takie sterowniki jako niezgodne, więc drukarka przestaje działać, choć nic jej nie jest. Ten darmowy sterownik zastępuje stary."
+  ],
+  [
+   "Czy ponowna instalacja Rosetta to naprawi?",
+   "Czasem, i tylko na razie. Po ponownej instalacji Rosetta niektóre stare sterowniki działają znowu, jeśli usuniesz drukarkę i dodasz ją od nowa. Inne dalej są oznaczone jako „Oprogramowanie niezgodne”. Apple wyłącza Rosetta dla aplikacji w macOS 28, więc stary sterownik producenta znowu przestanie działać. Ten sterownik nie potrzebuje Rosetta."
+  ],
+  [
+   "Miałem zainstalowany stary sterownik producenta. Co mam zrobić?",
+   "Po instalacji raz uruchom Maca ponownie, potem odłącz drukarkę i podłącz ją jeszcze raz. Instalator odkłada na bok stary sterownik Canona, niczego nie usuwa."
+  ],
+  [
+   "Masz jeszcze macOS 26 Tahoe lub starszy?",
+   "Drukarka działa teraz, ale po aktualizacji może przestać. Możesz zainstalować sterownik przed aktualizacją albo po niej."
+  ],
+  [
+   "Moja drukarka jest w Wi-Fi, nie przez USB.",
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "Instalator nie dodał mojej drukarki.",
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "Gdzie jest jakość druku i czerń i biel?",
+   "W oknie drukowania otwórz Funkcje drukarki (w macOS 27: Opcje drukarki). Jakość jest w ustawieniu Rozdzielczość. Dla druku czarno-białego ustaw Model kolorów na Skala szarości."
+  ],
+  [
+   "Czarny nie drukuje albo kolory wyglądają dziwnie.",
+   "Najpierw uruchom test dysz w samej drukarce: zwykle winny jest pusty lub zatkany wkład. Potem sprawdź w Funkcjach drukarki, czy nie jest wybrany tryb „tylko kolor”. Kolory mogą wyglądać trochę inaczej niż przy sterowniku producenta."
+  ],
+  [
+   "W Poziomach materiałów jest „Informacje niedostępne”.",
+   "To normalne: ten sterownik nie odczytuje poziomu tuszu ani tonera. Sprawdź go na ekranie drukarki."
+  ],
+  [
+   "Mojej drukarki nie ma na liście.",
+   "Wiele nowszych drukarek obsługuje AirPrint i nie potrzebuje sterownika: podłącz drukarkę do sieci, potem dodaj ją w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: AirPrint. AirPrint nie działa przez USB."
+  ],
+  [
+   "Moja drukarka Brother z zbiornikiem na tusz (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) nie jest obsługiwana.",
+   "Te drukarki nie mają darmowego sterownika, więc ten pakiet ich nie doda. Sprawdź stronę Pobierz dla swojego modelu na support.brother.com. Jeśli drukarka obsługuje AirPrint, podłącz ją do sieci i dodaj z opcją Użyj: AirPrint."
+  ],
+  [
+   "Mój HP LaserJet 1018, 1020, P1005 lub P1006 nie jest obsługiwany.",
+   "Te drukarki potrzebują oprogramowania HP wgrywanego przy każdym włączeniu, a tego ten sterownik nie umie. Wybranie podobnego modelu też nie działa: zadanie przechodzi, ale nic się nie drukuje."
+  ],
+  [
+   "Czy skaner w moim urządzeniu wielofunkcyjnym działa?",
+   "Nie, tylko drukowanie. Do skanowania użyj VueScan (płatny) albo SANE (darmowy, trudniejszy)."
+  ],
+  [
+   "Czy mogę drukować z iPhone'a lub iPada?",
+   "Tak. Otwórz na Macu Print from iPhone & iPad i włącz swoją drukarkę. Mac doda dla niej AirPrint, także przez USB, dopóki jest włączony."
+  ],
+  [
+   "Czy to bezpieczne? Czy macOS będzie ostrzegać?",
+   "Tak, jest bezpieczne. Instalator jest podpisany i poświadczony przez Apple, więc otwiera się bez ostrzeżeń, a wszystko, co robi, jest jawnie opisane na GitHubie."
+  ],
+  [
+   "Czy to jest darmowe?",
+   "Tak. Darmowe i open source, bez konta. Sterownik niczego nie zbiera."
+  ],
+  [
+   "Jakie wersje macOS?",
+   "Przetestowane na macOS 27 na Apple Silicon. Powinno działać na macOS 12 i nowszych na komputerach Mac z Apple Silicon."
+  ]
+ ],
+ "brand_title": "Sterownik drukarki {b} dla Maca (macOS 27, Apple Silicon) – za darmo",
+ "brand_title_short": "Sterownik drukarki {b} dla Maca (macOS 27, Apple Silicon)",
+ "brand_desc": "Darmowy sterownik drukarki {b} dla Maca: natywny sterownik Apple Silicon do {n} drukarek {b} w {macos}. Naprawia komunikat „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem” bez Rosetta.",
+ "brand_keywords": "sterownik drukarki {b} mac, sterownik {b} macos 27, sterownik {b} mac tahoe, sterownik {b} macos 26, {b} apple silicon, oprogramowanie drukarki nie jest zgodne z tym urządzeniem",
+ "brand_h1": "Sterownik drukarki {b} dla Maca (Apple Silicon, macOS 27)",
+ "brand_lead": "{n} drukarek {b} znowu działa na komputerach Mac z Apple Silicon i systemem {macos}. Jeden darmowy instalator dla wszystkich, bez Rosetta.",
+ "brand_ok": "Obsługiwanych drukarek {b}: {n}",
+ "brand_iphone_h2": "Drukuj z iPhone'a lub iPada na drukarce {b}",
+ "brand_iphone_body": "Twoja drukarka {b} nie ma AirPrint? Mac może go dodać, nawet przez USB.",
+ "brand_iphone_link": "Dodaj AirPrint do drukarki {b} →",
+ "brand_models_h2": "Obsługiwane drukarki {b}",
+ "brand_models_intro": "Wybierz swoją drukarkę, aby zobaczyć pomoc dla tego modelu.",
+ "other_brands": "Inne marki:",
+ "brand_faq": [
+  [
+   "Czy jest sterownik drukarki {b} dla macOS 27 i Apple Silicon?",
+   "Firma {b} nie wydała wersji na Apple Silicon sterowników Maca do wielu starszych drukarek. Wymagają one Rosetta, a macOS 27 oznacza sterowniki tylko dla Intela jako niezgodne. Apple wyłącza Rosetta dla aplikacji w macOS 28. Ten darmowy pakiet dodaje natywne sterowniki arm64 do {n} modeli {b}, więc drukują na każdym Macu z Apple Silicon bez Rosetta."
+  ],
+  [
+   "Dlaczego moja drukarka {b} pokazuje „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem”?",
+   "Sterownik drukarki {b} zainstalowany na Macu działa tylko na Intelu. Zainstaluj ten pakiet, raz uruchom Maca ponownie, potem odłącz drukarkę i podłącz ją jeszcze raz."
+  ],
+  [
+   "Czy ponowna instalacja Rosetta to naprawi?",
+   "Czasem, i tylko na razie. Po ponownej instalacji Rosetta niektóre stare sterowniki działają znowu, jeśli usuniesz drukarkę i dodasz ją od nowa. Inne dalej są oznaczone jako „Oprogramowanie niezgodne”. Apple wyłącza Rosetta dla aplikacji w macOS 28, więc stary sterownik producenta znowu przestanie działać. Ten sterownik nie potrzebuje Rosetta."
+  ],
+  [
+   "Czy działa na macOS 26 Tahoe i macOS 15 Sequoia?",
+   "Tak. Działa na macOS 12 i nowszych na komputerach Mac z Apple Silicon i dalej działa po aktualizacji do macOS 27."
+  ],
+  [
+   "Moja drukarka jest w Wi-Fi albo nie dodała się automatycznie.",
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+  ]
+ ],
+ "brands_title": "Obsługiwane marki drukarek — sterowniki drukarek Mac dla Apple Silicon",
+ "brands_desc": "{n} modeli drukarek {brands} marek obsługują natywne sterowniki arm64 Gutenprint, brlaser i SpliX dla macOS.",
+ "brands_h1": "Obsługiwane marki",
+ "brands_lead": "{n} modeli. Kliknij markę, aby zobaczyć pełną listę modeli.",
+ "help_title": "Drukarka nadal nie działa na Macu po instalacji? Rozwiązania",
+ "help_desc": "Drukarka nadal „niezgodna”, nie ma jej na liście, jest w Wi-Fi albo drukuje puste strony po instalacji sterowników Apple Silicon? Rozwiązania krok po kroku dla macOS 27, Tahoe i Sequoia.",
+ "help_keywords": "oprogramowanie drukarki nie jest zgodne z tym urządzeniem po instalacji, drukarka nie pojawia się na macu, oprogramowanie dla tej drukarki jest niedostępne, nie znaleziono drukarek airprint, sterownik drukarki wifi mac, macos 27 problemy z drukarką",
+ "help_h1": "Drukarka nadal nie działa po instalacji?",
+ "help_lead": "Rozwiązania problemów, na które ludzie trafiają po instalacji sterownika, w kolejności, w jakiej zwykle się pojawiają.",
+ "trouble": [
+  [
+   "Po instalacji nadal pojawia się „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem”.",
+   "Ten komunikat dotyczy starej pozycji drukarki, która nadal używa sterownika producenta tylko dla Intela. Instalator dodaje obok nową pozycję, nazwaną od modelu i z dopiskiem „Apple Silicon”. W Ustawienia systemowe → Drukarki i skanery usuń starą pozycję (zaznacz ją, kliknij −), potem drukuj na tej z dopiskiem „Apple Silicon”. Jeśli takiej pozycji nie ma, raz uruchom Maca ponownie, odłącz drukarkę i podłącz ją jeszcze raz, a potem zobacz następne pytanie."
+  ],
+  [
+   "Mojej drukarki nie ma na liście.",
+   "Najpierw wyszukaj swój model na stronie głównej: jeśli nie jest obsługiwany, żadna pozycja się nie pojawi. Jeśli jest obsługiwany i podłączony przez USB, raz uruchom Maca ponownie, odłącz drukarkę i podłącz ją jeszcze raz, i to bezpośrednio, a nie przez hub czy stację dokującą. Potem dodaj ją w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją swojego modelu z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "„Oprogramowanie dla tej drukarki jest niedostępne w Apple”.",
+   "macOS pokazuje to, gdy dodajesz drukarkę, dla której nie ma sterownika. Najpierw zainstaluj ten pakiet, potem dodaj drukarkę jeszcze raz w Ustawienia systemowe → Drukarki i skanery → Dodaj, wybierz Użyj: Wybierz oprogramowanie… i wskaż pozycję swojego modelu z dopiskiem „Apple Silicon”."
+  ],
+  [
+   "„Nie znaleziono drukarek AirPrint” albo AirPrint nie jest oferowany.",
+   "Starsze drukarki nie obsługują AirPrint. Po zainstalowaniu tego pakietu dodaj je na Macu przez Użyj: Wybierz oprogramowanie… i pozycję „Apple Silicon”. Aby drukować z iPhone'a lub iPada, włącz drukarkę w Print from iPhone & iPad, który dodaje AirPrint przez twojego Maca, nawet przez USB."
+  ],
+  [
+   "Moja drukarka jest w Wi-Fi lub w Ethernecie.",
+   "Instalator sam konfiguruje tylko drukarki USB. Drukarkę sieciową dodaj w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją „Apple Silicon”. Jeśli drukarka się nie pojawia, podłącz ją do tej samej sieci co Mac i wyłącz ją, a potem włącz."
+  ],
+  [
+   "Czy ponowna instalacja Rosetta to naprawi?",
+   "Czasem, i tylko na razie. Po ponownej instalacji Rosetta niektóre stare sterowniki działają znowu, jeśli usuniesz drukarkę i dodasz ją od nowa. Inne dalej są oznaczone jako „Oprogramowanie niezgodne”. Apple wyłącza Rosetta dla aplikacji w macOS 28, więc stary sterownik producenta znowu przestanie działać. Ten sterownik nie potrzebuje Rosetta."
+  ],
+  [
+   "Zadanie przechodzi, ale nic się nie drukuje albo wychodzą puste strony.",
+   "Sprawdź, czy kolejka używa dokładnie twojego modelu: sterownik podobnego modelu może wysyłać dane, które drukarka po cichu ignoruje. Niektórych drukarek, jak HP LaserJet 1018, 1020, P1005 i P1006, w ogóle nie da się obsłużyć, bo przy każdym włączeniu potrzebują oprogramowania sprzętowego od producenta."
+  ],
+  [
+   "Nic tu nie pomogło.",
+   "Otwórz zgłoszenie na GitHubie (https://github.com/theshiver/apple-silicon-printer-drivers/issues) i podaj model drukarki, sposób połączenia (USB lub sieć) i wersję macOS. Kroki w Terminalu dla zaawansowanych są w README na GitHubie."
+  ]
+ ],
+ "iphone_crumb": "iPhone & iPad",
+ "nav_iphone": "iPhone &amp; iPad",
+ "iphone_title": "Jak drukować z iPhone'a lub iPada na każdej drukarce (AirPrint)",
+ "iphone_desc": "Drukuj z iPhone'a lub iPada na dowolnej drukarce podłączonej do Maca, nawet bez AirPrint. Za darmo dla drukarek HP, Canon, Brother i Epson.",
+ "iphone_keywords": "drukowanie z iphone, drukowanie z ipada, jak drukować z iphone, airprint, dodać airprint do drukarki, airprint drukarka usb, airprint hp, canon airprint, airprint brother, airprint epson",
+ "iphone_h1": "Drukuj z iPhone'a lub iPada na każdej drukarce",
+ "iphone_lead": "Dodaje AirPrint do drukarek, które go nie mają. Za darmo, na iPhonie nic nie instalujesz.",
+ "iphone_how": "Jak drukować z iPhone'a lub iPada",
+ "iphone_steps": [
+  "Zainstaluj darmowy sterownik na Macu",
+  "Otwórz Print from iPhone & iPad i włącz swoją drukarkę",
+  "Na iPhonie lub iPadzie stuknij Udostępnij, potem Drukuj"
+ ],
+ "iphone_need_h2": "Czego potrzebujesz",
+ "iphone_need": "Drukarka musi być skonfigurowana na Macu, a Mac musi zostać włączony i nieuśpiony, w tej samej sieci Wi-Fi co iPhone.",
+ "iphone_works_h2": "Działa z twoją drukarką",
+ "iphone_faq": [
+  [
+   "Co to jest AirPrint?",
+   "AirPrint to sposób Apple na drukowanie z iPhone'a lub iPada bez aplikacji i sterownika w telefonie. Starsze drukarki go nie mają. Ten sterownik pozwala Macowi dodać AirPrint w ich imieniu."
+  ],
+  [
+   "Czy mogę drukować z iPhone'a na drukarce bez AirPrint?",
+   "Tak. Skonfiguruj drukarkę na Macu, włącz ją w Print from iPhone & iPad, a pojawi się w menu Drukuj na iPhonie."
+  ],
+  [
+   "Czy działa z drukarkami HP, Canon, Brother i Epson?",
+   "Tak, z każdą drukarką skonfigurowaną na Macu, także z drukarkami USB. Drukarki, które już mają AirPrint, tego nie potrzebują."
+  ],
+  [
+   "Czy Mac musi być cały czas włączony?",
+   "Tak. iPhone drukuje przez twojego Maca, więc Mac musi być włączony i nieuśpiony, w tej samej sieci Wi-Fi."
+  ],
+  [
+   "Czy inni mogą drukować na mojej drukarce?",
+   "Może każdy w tej samej sieci Wi-Fi. Funkcja jest wyłączona, dopóki jej nie włączysz, a ty wybierasz, które drukarki udostępnić."
+  ]
+ ],
+ "privacy_title": "Prywatność – sterowniki drukarek Mac",
+ "privacy_desc": "Co zbiera ta strona i sterownik drukarki.",
+ "privacy_h1": "Prywatność",
+ "privacy_lead": "Sterownik drukarki niczego nie zbiera. Ta strona liczy wizyty przez Google Analytics.",
+ "privacy_analytics_h2": "Analityka strony",
+ "privacy_analytics": "Ta strona używa Google Analytics, aby sprawdzić, jakie strony i drukarki są ludziom potrzebne. Zapisuje pliki cookie na twoim urządzeniu i działa dla każdego odwiedzającego. Google dostaje dane o użyciu: wyświetlone strony, przybliżony kraj, kliknięcia przycisku pobierania, otwarte pytania i modele drukarek wpisane w wyszukiwarkę. Nie wpisuj tam danych osobowych. Funkcje reklamowe są wyłączone. Aby to zatrzymać, zablokuj pliki cookie dla tej strony albo użyj dodatku do przeglądarki blokującego Google Analytics.",
+ "privacy_hosting_h2": "Hosting",
+ "privacy_hosting": "Ta strona działa na GitHub Pages. GitHub może zapisywać dane techniczne, takie jak adresy IP, aby obsługiwać usługę. Zobacz <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">oświadczenie GitHuba o prywatności</a> i <a href=\"https://policies.google.com/privacy\">politykę prywatności Google</a>.",
+ "privacy_contact_h2": "Pytania",
+ "privacy_contact": "Otwórz zgłoszenie na <a href=\"{repo}/issues\">GitHubie</a>."
+}

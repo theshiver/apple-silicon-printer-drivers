@@ -1,0 +1,308 @@
+{
+ "lang_name": "Türkçe",
+ "macos": "macOS 27, macOS 26 Tahoe ve macOS 15 Sequoia",
+ "nav_check": "Yazıcımı kontrol et",
+ "nav_help": "Yardım",
+ "nav_coffee": "☕ Bana kahve ısmarla",
+ "privacy": "Gizlilik",
+ "all_brands": "Tüm markalar",
+ "footer_note": "Ücretsiz ve açık kaynak. Canon, Epson, HP, Brother ve Apple ile bağlantısı yoktur. Ürün adları sahiplerinin ticari markalarıdır.",
+ "crumb_home": "Ana sayfa",
+ "crumb_brands": "Markalar",
+ "crumb_help": "Sorun giderme",
+ "dl_btn": "Ücretsiz sürücüyü indir",
+ "dl_trust": "Ücretsiz · Apple tarafından imzalı ve onaylı · Her Apple Silicon Mac, macOS 12 veya üstü",
+ "steps": [
+  "Yazıcıyı USB ile takın ve açın",
+  "İndirilen dosyayı açın ve ilerleyin",
+  "Yazdırın. Yazıcı sizin için kurulur"
+ ],
+ "dl_after": "Hâlâ yazdırmıyor mu? Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın, sonra <a href=\"{help_url}\">sorun gidermeye</a> bakın. Wi-Fi yazıcı mı? Aşağıya bakın.",
+ "coffee_title": "☕ Yine yazdırıyor musunuz?",
+ "coffee_body": "Bu sürücü ücretsizdir ve hep öyle kalacak. Yeni bir yazıcı almaktan kurtardıysa, bir kahveyle teşekkür edebilirsiniz.",
+ "coffee_btn": "Bana kahve ısmarla",
+ "app_on": "iPhone ve iPad için hazır",
+ "app_off": "Paylaşılmıyor",
+ "promo_title": "Yeni: iPhone ve iPad'den yazdırın",
+ "promo_body": "Yazıcınıza AirPrint ekler, USB ile bağlı olsa bile. Ücretsiz, iPhone'unuza bir şey kurmanız gerekmez.",
+ "promo_link": "Nasıl çalıştığını görün →",
+ "home_title": "Mac'te “Yazıcı Yazılımı Bu Aygıtla Uyumlu Değil” Çözümü",
+ "home_desc": "Yazıcınız bozuk değil. macOS 27'de “Yazıcı yazılımı bu aygıtla uyumlu değil” hatasını, {n} Canon, Epson, HP, Brother ve Samsung yazıcısı için ücretsiz bir sürücüyle düzeltin. Rosetta gerekmez.",
+ "home_keywords": "mac yazıcı sürücüleri, macos yazıcı sürücüsü, macos 27 yazıcı sürücüsü, macos tahoe yazıcı sürücüsü, mac güncellemesinden sonra yazıcı çalışmıyor, yazıcı yazılımı bu aygıtla uyumlu değil, canon mp250 sürücü mac, apple silicon yazıcı sürücüsü, m1 yazıcı sürücüsü, rosetta yazıcı sürücüsü, gutenprint mac arm64",
+ "home_h1": "macOS güncellemesinden sonra yazıcı Mac'te çalışmıyor mu?",
+ "home_lead": "Yazıcınız bozuk değil ve yenisini almanız gerekmiyor. Ücretsiz bir sürücü, {n} Canon, Epson, HP, Brother ve Samsung yazıcısını yeniden çalıştırır.",
+ "proof": "{downloads}+ indirme · <a href=\"{repo}\">GitHub</a>'da {stars} yıldız · Hesap gerekmez",
+ "mock_who": "Yazıcınız",
+ "mock_bad": "Yazılım uyumlu değil",
+ "mock_good": "Yazdırmaya hazır",
+ "how_h2": "Nasıl çalışır",
+ "still_note": "Hâlâ yazdırmıyor mu? Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın, sonra <a href=\"{help_url}\">Yardım</a> sayfasına bakın.",
+ "search_h2": "Yazıcım destekleniyor mu?",
+ "search_label": "Yazıcı modeli",
+ "search_placeholder": "Yazıcı modelinizi yazın, örn. Canon MP250",
+ "search_note": "Listede yok mu? Yalnızca model numarasını deneyin. Yine yoksa bu sürücü o yazıcıyı desteklemiyor. macOS yazıcınızı zaten kendisi kuruyorsa (AirPrint), bunların hiçbirine ihtiyacınız yok.",
+ "all_brands_link": "tüm markalar →",
+ "search_nomatch": "Eşleşme yok. Yalnızca model numarasını deneyin (örn. “MP250”).",
+ "search_ok": "{name} destekleniyor",
+ "search_usb": "USB ile mi bağlı? Yükleyici onu kendisi kurar.",
+ "search_more": "{name} için Wi-Fi ve daha fazla yardım →",
+ "symptoms_h2": "Tanıdık geldi mi?",
+ "symptoms_alt": "macOS Yazıcılar ve Tarayıcılar penceresinde Canon MP250 ve şu hata: Yazıcı yazılımı bu aygıtla uyumlu değil",
+ "symptoms": [
+  [
+   "“Yazıcı yazılımı bu aygıtla uyumlu değil”",
+   "Eski sürücü artık çalışmıyor. Bu sürücüyü kurun, sonra sonunda “Apple Silicon” yazan yeni girdiye yazdırın."
+  ],
+  [
+   "“Bu yazıcının yazılımı mevcut değil”",
+   "macOS'te bunun için sürücü yok. Bu sürücüyü kurun, sonra yazıcıyı Kullan: Yazılım Seç… ile ekleyin."
+  ],
+  [
+   "“Generic PostScript Printer”, boş sayfalar veya eksik seçenekler",
+   "macOS genel bir sürücü seçmiş. Bu sürücüyü kurun, yazıcıyı yeniden ekleyin ve “Apple Silicon” girdisini seçin."
+  ],
+  [
+   "Yazıcı listeden kayboldu",
+   "Yukarıdan modelinizi arayın, sonra <a href=\"{help_url}\">Yardım</a> sayfasına bakın."
+  ]
+ ],
+ "options_h2": "Seçenekleriniz",
+ "options_head": [
+  "Seçenek",
+  "Maliyet",
+  "macOS 28'de çalışır mı?",
+  "Canon PIXMA gibi eski mürekkep püskürtmeliler?"
+ ],
+ "options": [
+  [
+   "Bu paket",
+   "Ücretsiz",
+   "Evet, Apple Silicon'da yerel olarak",
+   "Evet, {n} model arasında"
+  ],
+  [
+   "Rosetta'yı yeniden kurmak",
+   "Ücretsiz",
+   "Hayır, Apple macOS 28'de uygulamalar için Rosetta'yı sonlandırıyor",
+   "Yalnızca bazı yazıcılar ve yalnızca o zamana kadar"
+  ],
+  [
+   "Üreticinin sürücüsü",
+   "Ücretsiz",
+   "Yalnızca üretici Apple Silicon için yapmışsa",
+   "Eski modellerde genellikle yok"
+  ],
+  [
+   "Ücretli bir yedek sürücü",
+   "Ücretli, yazıcı başına olabilir",
+   "Satıcıya sorun",
+   "Çoğunlukla hayır: birçoğu yalnızca PCL veya PostScript yazıcıları destekler"
+  ],
+  [
+   "Yeni bir yazıcı",
+   "Bir yazıcının fiyatı",
+   "Evet",
+   "Evet, ama eskisi boşa gider"
+  ]
+ ],
+ "limits_note": "Bu sürücünün yapmadıkları: mürekkep veya toner seviyesini gösteremez, tarama yapmaz ve Wi-Fi yazıcılar için bir ek adım gerekir.",
+ "popular_h2": "Popüler yazıcılar",
+ "faq_h2": "Sorular",
+ "more_help": "Daha fazla yardım →",
+ "faq": [
+  [
+   "Yazıcım neden çalışmayı bıraktı?",
+   "Yazıcı üreticisinin Mac sürücüsü eski Intel Mac'ler için yapılmıştı ve hiç güncellenmedi. macOS 27 bu sürücüleri uyumsuz olarak işaretler, bu yüzden yazıcıda bir sorun olmasa da yazıcı durur. Bu ücretsiz sürücü eskisinin yerine geçer."
+  ],
+  [
+   "Rosetta'yı yeniden kurmak işe yarar mı?",
+   "Bazen, ve yalnızca şimdilik. Rosetta'yı yeniden kurmak, yazıcıyı silip yeniden eklediğinizde bazı eski yazıcı sürücülerini tekrar çalıştırır. Diğerleri “Yazılım uyumsuz” olarak kalır. Apple macOS 28'de uygulamalar için Rosetta'yı sonlandırıyor, bu yüzden üreticinin eski sürücüsü o zaman yine duracak. Bu sürücü Rosetta gerektirmez."
+  ],
+  [
+   "Üreticinin eski sürücüsü kuruluydu. Yapmam gereken bir şey var mı?",
+   "Kurulumdan sonra Mac'i bir kez yeniden başlatın, sonra yazıcının fişini çıkarıp tekrar takın. Yükleyici Canon'un eski sürücüsünü kenara taşır, hiçbir şey silinmez."
+  ],
+  [
+   "Hâlâ macOS 26 Tahoe veya daha eski bir sürümdesiniz?",
+   "Yazıcınız şu an çalışıyor, ama güncellemeden sonra durabilir. Bunu güncellemeden önce de sonra da kurabilirsiniz."
+  ],
+  [
+   "Yazıcım USB ile değil, Wi-Fi ile bağlı.",
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+  ],
+  [
+   "Yükleyici yazıcımı eklemedi.",
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+  ],
+  [
+   "Baskı kalitesi ve siyah beyaz nerede?",
+   "Yazdırma penceresinde Yazıcı Özellikleri'ni açın (macOS 27'de Yazıcı Seçenekleri). Kalite Çözünürlük altındadır. Siyah beyaz için Renk Modeli'ni Gri Tonlama yapın."
+  ],
+  [
+   "Siyah yazmıyor veya renkler garip.",
+   "Önce yazıcının kendisinden bir meme kontrolü yapın: genellikle boş veya tıkanmış kartuş sorumludur. Sonra Yazıcı Özellikleri'nde “yalnızca renk” modunun seçili olmadığını kontrol edin. Renkler üreticinin sürücüsünden biraz farklı görünebilir."
+  ],
+  [
+   "Sarf Malzeme Seviyeleri “Bilgi Yok” diyor.",
+   "Bu beklenen bir durum: bu sürücü mürekkep veya toner seviyesini okuyamaz. Seviyelere yazıcının kendi ekranından bakın."
+  ],
+  [
+   "Yazıcım listede yok.",
+   "Birçok yeni yazıcı AirPrint'i destekler ve sürücü gerektirmez: yazıcıyı ağınıza bağlayın, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den Kullan: AirPrint ile ekleyin. AirPrint USB üzerinden çalışmaz."
+  ],
+  [
+   "Brother mürekkep tanklı yazıcım (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) desteklenmiyor.",
+   "Bu yazıcıların ücretsiz sürücüsü yok, bu yüzden bu paket onları ekleyemez. support.brother.com'da modelinizin İndirmeler sayfasına bakın. Yazıcı AirPrint'i destekliyorsa ağınıza bağlayın ve Kullan: AirPrint ile ekleyin."
+  ],
+  [
+   "HP LaserJet 1018, 1020, P1005 veya P1006 modelim desteklenmiyor.",
+   "Bu yazıcılar her açıldıklarında HP'nin kendi yazılımının yüklenmesini ister, bu sürücü bunu yapamaz. Benzer bir model seçmek de işe yaramaz: iş gider, ama hiçbir şey yazdırılmaz."
+  ],
+  [
+   "Çok işlevli cihazımın tarayıcısı çalışır mı?",
+   "Hayır, yalnızca yazdırma. Tarama için VueScan (ücretli) veya SANE (ücretsiz, daha teknik) kullanın."
+  ],
+  [
+   "iPhone veya iPad'den yazdırabilir miyim?",
+   "Evet. Mac'inizde Print from iPhone & iPad'i açın ve yazıcınızı açın. Mac'iniz açık kaldığı sürece, USB ile bağlı olsa bile, onun için AirPrint ekler."
+  ],
+  [
+   "Güvenli mi? macOS uyarı verir mi?",
+   "Evet, güvenli. Yükleyici Apple tarafından imzalı ve onaylıdır, bu yüzden uyarısız açılır ve yaptığı her şey GitHub'da açıkça listelenir."
+  ],
+  [
+   "Ücretsiz mi?",
+   "Evet. Ücretsiz ve açık kaynak, hesap gerekmez. Sürücü hiçbir şey toplamaz."
+  ],
+  [
+   "Hangi macOS sürümleri?",
+   "Apple Silicon üzerinde macOS 27'de test edildi. Apple Silicon Mac'lerde macOS 12 ve üstünde çalışması gerekir."
+  ]
+ ],
+ "brand_title": "Mac için {b} Yazıcı Sürücüsü (macOS 27, Apple Silicon) – Ücretsiz",
+ "brand_title_short": "Mac için {b} yazıcı sürücüsü (macOS 27, Apple Silicon)",
+ "brand_desc": "Mac için ücretsiz {b} yazıcı sürücüsü: {macos} üzerinde {n} {b} yazıcı için yerel Apple Silicon sürücüsü. “Yazıcı yazılımı bu aygıtla uyumlu değil” hatasını Rosetta olmadan düzeltir.",
+ "brand_keywords": "{b} yazıcı sürücüsü mac, {b} sürücü macos 27, {b} sürücü mac tahoe, {b} sürücü macos 26, {b} apple silicon, yazıcı yazılımı bu aygıtla uyumlu değil",
+ "brand_h1": "Mac için {b} yazıcı sürücüsü (Apple Silicon, macOS 27)",
+ "brand_lead": "{n} {b} yazıcı, {macos} yüklü Apple Silicon Mac'lerde yeniden çalışıyor. Hepsi için tek ücretsiz yükleyici, Rosetta yok.",
+ "brand_ok": "{n} {b} yazıcı destekleniyor",
+ "brand_iphone_h2": "iPhone veya iPad'den {b} yazıcınıza yazdırın",
+ "brand_iphone_body": "{b} yazıcınızda AirPrint yok mu? Mac'iniz onu ekleyebilir, USB ile bağlı olsa bile.",
+ "brand_iphone_link": "{b} yazıcınıza AirPrint ekleyin →",
+ "brand_models_h2": "Desteklenen {b} yazıcılar",
+ "brand_models_intro": "Modele özel yardım için yazıcınızı seçin.",
+ "other_brands": "Diğer markalar:",
+ "brand_faq": [
+  [
+   "macOS 27 ve Apple Silicon için {b} yazıcı sürücüsü var mı?",
+   "{b} eski yazıcılarının çoğu için Mac sürücülerinin Apple Silicon sürümlerini hiç çıkarmadı. Bunlar Rosetta gerektirir ve macOS 27 yalnızca Intel için olan sürücüleri uyumsuz olarak işaretler. Apple macOS 28'de uygulamalar için Rosetta'yı sonlandırıyor. Bu ücretsiz paket {n} {b} modeli için yerel arm64 sürücüleri ekler, böylece her Apple Silicon Mac'te Rosetta olmadan yazdırırlar."
+  ],
+  [
+   "{b} yazıcım neden “Yazıcı yazılımı bu aygıtla uyumlu değil” diyor?",
+   "Mac'e kurulu {b} yazıcı sürücüsü yalnızca Intel için. Bu paketi kurun, Mac'i bir kez yeniden başlatın, sonra yazıcının fişini çıkarıp tekrar takın."
+  ],
+  [
+   "Rosetta'yı yeniden kurmak işe yarar mı?",
+   "Bazen, ve yalnızca şimdilik. Rosetta'yı yeniden kurmak, yazıcıyı silip yeniden eklediğinizde bazı eski yazıcı sürücülerini tekrar çalıştırır. Diğerleri “Yazılım uyumsuz” olarak kalır. Apple macOS 28'de uygulamalar için Rosetta'yı sonlandırıyor, bu yüzden üreticinin eski sürücüsü o zaman yine duracak. Bu sürücü Rosetta gerektirmez."
+  ],
+  [
+   "macOS 26 Tahoe ve macOS 15 Sequoia'da çalışır mı?",
+   "Evet. Apple Silicon Mac'lerde macOS 12 ve üstünde çalışır ve macOS 27'ye güncelledikten sonra da çalışmaya devam eder."
+  ],
+  [
+   "Yazıcım Wi-Fi ile bağlı veya otomatik kurulmadı.",
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+  ]
+ ],
+ "brands_title": "Desteklenen yazıcı markaları — Apple Silicon için Mac yazıcı sürücüleri",
+ "brands_desc": "{brands} markanın {n} yazıcı modeli, macOS için yerel arm64 Gutenprint, brlaser ve SpliX sürücüleriyle destekleniyor.",
+ "brands_h1": "Desteklenen markalar",
+ "brands_lead": "{n} model. Tam model listesi için bir markaya tıklayın.",
+ "help_title": "Kurulumdan Sonra Mac Yazıcı Hâlâ Çalışmıyor mu? Sorun Giderme",
+ "help_desc": "Apple Silicon yazıcı sürücülerini kurduktan sonra yazıcı hâlâ “uyumsuz” mu, listede yok mu, Wi-Fi'de mi ya da boş sayfa mı basıyor? macOS 27, Tahoe ve Sequoia için adım adım çözümler.",
+ "help_keywords": "kurulumdan sonra yazıcı yazılımı bu aygıtla uyumlu değil, yazıcı mac'te görünmüyor, apple'dan bu yazıcının yazılımı mevcut değil, airprint yazıcı bulunamadı, mac wifi yazıcı sürücüsü, macos 27 yazıcı sorun giderme",
+ "help_h1": "Kurulumdan sonra yazıcı hâlâ çalışmıyor mu?",
+ "help_lead": "Sürücü paketini kurduktan sonra insanların karşılaştığı sorunların çözümleri, genellikle ortaya çıkma sırasıyla.",
+ "trouble": [
+  [
+   "Kurulumdan sonra hâlâ “Yazıcı yazılımı bu aygıtla uyumlu değil” diyor.",
+   "Bu mesaj, hâlâ üreticinin yalnızca Intel için olan sürücüsünü kullanan eski yazıcı girdisine aittir. Yükleyici yanına, modelin adını taşıyan ve sonunda “Apple Silicon” yazan yeni bir girdi ekler. Sistem Ayarları → Yazıcılar ve Tarayıcılar'da eski girdiyi kaldırın (seçin, − düğmesine tıklayın), sonra “Apple Silicon” girdisine yazdırın. Böyle bir girdi yoksa Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın ve sonraki soruya bakın."
+  ],
+  [
+   "Yazıcım listede görünmüyor.",
+   "Önce ana sayfada modelinizi arayın: desteklenmiyorsa hiçbir girdi görünmez. Destekleniyorsa ve USB ile bağlıysa, Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın ve onu bir hub veya dock üzerinden değil, doğrudan bağlayın. Sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ile ve sonunda “Apple Silicon” yazan model girdisiyle ekleyin."
+  ],
+  [
+   "“Bu yazıcının yazılımı Apple'dan mevcut değil”.",
+   "macOS, sürücüsü olmayan bir yazıcı eklediğinizde bunu gösterir. Önce bu paketi kurun, sonra yazıcıyı Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den yeniden ekleyin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan model girdisini seçin."
+  ],
+  [
+   "“AirPrint yazıcı bulunamadı” veya AirPrint sunulmuyor.",
+   "Eski yazıcılar AirPrint'i desteklemez. Bu paketi kurduktan sonra Mac'inizde Kullan: Yazılım Seç… ve “Apple Silicon” girdisiyle ekleyin. iPhone veya iPad'den yazdırmak için yazıcıyı Print from iPhone & iPad'de açın; o, Mac'iniz üzerinden, USB ile bile AirPrint ekler."
+  ],
+  [
+   "Yazıcım Wi-Fi veya Ethernet ile bağlı.",
+   "Yükleyici yalnızca USB yazıcıları kendisi kurar. Ağ yazıcısını Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ve “Apple Silicon” girdisiyle ekleyin. Yazıcı görünmüyorsa Mac ile aynı ağa bağlayın ve kapatıp açın."
+  ],
+  [
+   "Rosetta'yı yeniden kurmak işe yarar mı?",
+   "Bazen, ve yalnızca şimdilik. Rosetta'yı yeniden kurmak, yazıcıyı silip yeniden eklediğinizde bazı eski yazıcı sürücülerini tekrar çalıştırır. Diğerleri “Yazılım uyumsuz” olarak kalır. Apple macOS 28'de uygulamalar için Rosetta'yı sonlandırıyor, bu yüzden üreticinin eski sürücüsü o zaman yine duracak. Bu sürücü Rosetta gerektirmez."
+  ],
+  [
+   "İş gidiyor ama hiçbir şey yazdırılmıyor ya da yalnızca boş sayfa çıkıyor.",
+   "Kuyruğun tam olarak sizin modelinizi kullandığını kontrol edin: benzer bir modelin sürücüsü, yazıcının sessizce yok saydığı veri gönderebilir. HP LaserJet 1018, 1020, P1005 ve P1006 gibi bazı yazıcılar, her açılışta üreticinin yazılımının gönderilmesini gerektirdiği için hiç desteklenemez."
+  ],
+  [
+   "Burada hiçbir şey işe yaramadı.",
+   "GitHub'da (https://github.com/theshiver/apple-silicon-printer-drivers/issues) yazıcı modelinizi, nasıl bağlı olduğunu (USB veya ağ) ve macOS sürümünüzü yazarak bir konu açın. İleri düzey kullanıcılar için Terminal adımları GitHub'daki README içinde."
+  ]
+ ],
+ "iphone_crumb": "iPhone & iPad",
+ "nav_iphone": "iPhone &amp; iPad",
+ "iphone_title": "iPhone veya iPad'den Her Yazıcıya Yazdırma (AirPrint)",
+ "iphone_desc": "iPhone veya iPad'inizden Mac'inizdeki herhangi bir yazıcıya, AirPrint olmasa bile yazdırın. HP, Canon, Brother ve Epson yazıcılar için ücretsiz.",
+ "iphone_keywords": "iphone'dan yazdırma, ipad'den yazdırma, iphone'dan nasıl yazdırılır, airprint, yazıcıya airprint ekleme, airprint usb yazıcı, airprint hp, canon airprint, airprint brother, airprint epson",
+ "iphone_h1": "iPhone veya iPad'inizden her yazıcıya yazdırın",
+ "iphone_lead": "AirPrint'i olmayan yazıcılara AirPrint ekler. Ücretsiz, iPhone'unuza bir şey kurmanız gerekmez.",
+ "iphone_how": "iPhone veya iPad'den nasıl yazdırılır",
+ "iphone_steps": [
+  "Ücretsiz sürücüyü Mac'inize kurun",
+  "Print from iPhone & iPad'i açın ve yazıcınızı açın",
+  "iPhone veya iPad'inizde Paylaş'a, sonra Yazdır'a dokunun"
+ ],
+ "iphone_need_h2": "Neye ihtiyacınız var",
+ "iphone_need": "Yazıcı Mac'inizde kurulu olmalı, Mac açık ve uyanık kalmalı ve iPhone'unuzla aynı Wi-Fi'de olmalı.",
+ "iphone_works_h2": "Yazıcınızla çalışır",
+ "iphone_faq": [
+  [
+   "AirPrint nedir?",
+   "AirPrint, Apple'ın iPhone veya iPad'den telefonda uygulama ya da sürücü olmadan yazdırma yoludur. Eski yazıcılarda yoktur. Bu sürücü, Mac'inizin onlar için AirPrint eklemesini sağlar."
+  ],
+  [
+   "AirPrint'i olmayan bir yazıcıya iPhone'dan yazdırabilir miyim?",
+   "Evet. Yazıcıyı Mac'inizde kurun, Print from iPhone & iPad'de açın, iPhone'unuzdaki Yazdır menüsünde görünür."
+  ],
+  [
+   "HP, Canon, Brother ve Epson yazıcılarla çalışır mı?",
+   "Evet, Mac'inizde kurulu her yazıcıyla, USB yazıcılar dahil. Zaten AirPrint'i olan yazıcıların buna ihtiyacı yok."
+  ],
+  [
+   "Mac'imin açık kalması gerekiyor mu?",
+   "Evet. iPhone'unuz Mac'iniz üzerinden yazdırır, bu yüzden Mac açık ve uyanık olmalı, aynı Wi-Fi'de olmalı."
+  ],
+  [
+   "Başkaları da buna yazdırabilir mi?",
+   "Aynı Wi-Fi'deki herkes yazdırabilir. Siz açana kadar kapalıdır ve hangi yazıcıların paylaşılacağını siz seçersiniz."
+  ]
+ ],
+ "privacy_title": "Gizlilik – Mac Yazıcı Sürücüleri",
+ "privacy_desc": "Bu web sitesi ve yazıcı sürücüsü neleri toplar.",
+ "privacy_h1": "Gizlilik",
+ "privacy_lead": "Yazıcı sürücüsü hiçbir şey toplamaz. Bu web sitesi ziyaretleri Google Analytics ile sayar.",
+ "privacy_analytics_h2": "Web sitesi analitiği",
+ "privacy_analytics": "Bu site, insanların hangi sayfalara ve yazıcılara ihtiyaç duyduğunu görmek için Google Analytics kullanır. Cihazınıza çerezler yerleştirir ve her ziyaretçi için çalışır. Google kullanım verilerini alır: görüntülenen sayfalar, yaklaşık ülkeniz, indirme düğmesine tıklamalar, açtığınız sorular ve arama kutusuna yazdığınız yazıcı modelleri. Lütfen oraya kişisel bilgi yazmayın. Reklam özellikleri kapalıdır. Bunu durdurmak için bu site için çerezleri engelleyin veya Google Analytics'i engelleyen bir tarayıcı eklentisi kullanın.",
+ "privacy_hosting_h2": "Barındırma",
+ "privacy_hosting": "Bu site GitHub Pages üzerinde çalışır. GitHub, hizmeti çalıştırmak için IP adresleri gibi teknik verileri kaydedebilir. <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub'ın gizlilik bildirimine</a> ve <a href=\"https://policies.google.com/privacy\">Google'ın gizlilik politikasına</a> bakın.",
+ "privacy_contact_h2": "Sorular",
+ "privacy_contact": "<a href=\"{repo}/issues\">GitHub</a>'da bir konu açın."
+}

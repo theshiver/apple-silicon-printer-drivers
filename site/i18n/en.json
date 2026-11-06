@@ -1,0 +1,308 @@
+{
+ "lang_name": "English",
+ "macos": "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia",
+ "nav_check": "Check my printer",
+ "nav_help": "Help",
+ "nav_coffee": "☕ Buy me a coffee",
+ "privacy": "Privacy",
+ "all_brands": "All brands",
+ "footer_note": "Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.",
+ "crumb_home": "Home",
+ "crumb_brands": "Brands",
+ "crumb_help": "Troubleshooting",
+ "dl_btn": "Download the free driver",
+ "dl_trust": "Free · Signed and notarized by Apple · Any Apple Silicon Mac, macOS 12 or later",
+ "steps": [
+  "Plug the printer in with USB and switch it on",
+  "Open the downloaded file and click through",
+  "Print. The printer is set up for you"
+ ],
+ "dl_after": "Still not printing? Restart the Mac once and re-plug the printer, then see <a href=\"{help_url}\">troubleshooting</a>. Wi-Fi printer? See below.",
+ "coffee_title": "☕ Printing again?",
+ "coffee_body": "This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee.",
+ "coffee_btn": "Buy me a coffee",
+ "app_on": "Ready on your iPhone and iPad",
+ "app_off": "Not shared",
+ "promo_title": "New: print from your iPhone and iPad",
+ "promo_body": "Adds AirPrint to your printer, even over USB. Free, with nothing to install on your iPhone.",
+ "promo_link": "See how it works →",
+ "home_title": "“Printer Software Is Not Compatible With This Device” Mac Fix",
+ "home_desc": "Your printer isn't broken. Fix “The printer software is not compatible with this device” on macOS 27 with a free driver for {n} Canon, Epson, HP, Brother and Samsung printers. No Rosetta.",
+ "home_keywords": "mac printer drivers, macos printer driver, macos 27 printer driver, macos tahoe printer driver, printer not working after mac update, printer software is not compatible with this device, canon mp250 driver mac, apple silicon printer driver, m1 printer driver, macos 27 printer, rosetta printer driver, gutenprint mac arm64",
+ "home_h1": "Printer not working on your Mac after the macOS update?",
+ "home_lead": "Your printer isn't broken, and you don't need a new one. A free driver gets {n} Canon, Epson, HP, Brother and Samsung printers working again.",
+ "proof": "{downloads}+ downloads · {stars} stars on <a href=\"{repo}\">GitHub</a> · No account needed",
+ "mock_who": "Your printer",
+ "mock_bad": "Software not compatible",
+ "mock_good": "Ready to print",
+ "how_h2": "How it works",
+ "still_note": "Still not printing? Restart the Mac once and re-plug the printer, then see <a href=\"{help_url}\">Help</a>.",
+ "search_h2": "Is my printer supported?",
+ "search_label": "Printer model",
+ "search_placeholder": "Type your printer model, e.g. Canon MP250",
+ "search_note": "Not listed? Try just the model number. If it still isn't there, this driver doesn't support that printer. And if macOS already sets your printer up by itself (AirPrint), you don't need any of this.",
+ "all_brands_link": "all brands →",
+ "search_nomatch": "No match. Try only the model number (e.g. “MP250”).",
+ "search_ok": "{name} is supported",
+ "search_usb": "Plugged in with USB? The installer sets it up by itself.",
+ "search_more": "Wi-Fi and more help for the {name} →",
+ "symptoms_h2": "Does this look familiar?",
+ "symptoms_alt": "macOS Printers & Scanners showing a Canon MP250 with the error: The printer software is not compatible with this device",
+ "symptoms": [
+  [
+   "“The printer software is not compatible with this device”",
+   "The old driver no longer runs. Install this driver, then print to the new entry ending in “Apple Silicon”."
+  ],
+  [
+   "“Software for this printer isn't available”",
+   "macOS has no driver for it. Install this driver, then add the printer with Use: Select Software…"
+  ],
+  [
+   "“Generic PostScript Printer”, blank pages or missing options",
+   "macOS picked a generic driver. Install this driver, add the printer again and pick the “Apple Silicon” entry."
+  ],
+  [
+   "The printer disappeared from the list",
+   "Search your model above, then see <a href=\"{help_url}\">Help</a>."
+  ]
+ ],
+ "options_h2": "Your options",
+ "options_head": [
+  "Option",
+  "Cost",
+  "Works on macOS 28?",
+  "Older inkjets like Canon PIXMA?"
+ ],
+ "options": [
+  [
+   "This package",
+   "Free",
+   "Yes, native on Apple Silicon",
+   "Yes, among {n} models"
+  ],
+  [
+   "Reinstall Rosetta",
+   "Free",
+   "No, Apple ends Rosetta for apps in macOS 28",
+   "Only some printers, and only until then"
+  ],
+  [
+   "The maker's driver",
+   "Free",
+   "Only if the maker built one for Apple Silicon",
+   "Older models usually have none"
+  ],
+  [
+   "A paid replacement driver",
+   "Paid, can be per printer",
+   "Check with the vendor",
+   "Often not: many only drive PCL or PostScript printers"
+  ],
+  [
+   "A new printer",
+   "The price of a printer",
+   "Yes",
+   "Yes, and your old one goes to waste"
+  ]
+ ],
+ "limits_note": "What this driver doesn't do: it can't show ink or toner levels, it doesn't scan, and Wi-Fi printers take one extra step.",
+ "popular_h2": "Popular printers",
+ "faq_h2": "Questions",
+ "more_help": "More help →",
+ "faq": [
+  [
+   "Why did my printer stop working?",
+   "The printer maker's Mac driver was built for older Intel Macs and never updated. macOS 27 marks those drivers as incompatible, so the printer stops, even though nothing is wrong with it. This free driver replaces the old one."
+  ],
+  [
+   "Will reinstalling Rosetta fix it?",
+   "Sometimes, and only for now. Reinstalling Rosetta makes some old printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's old driver will stop again then. This driver doesn't need Rosetta."
+  ],
+  [
+   "I had the printer maker's old driver installed. Anything to do?",
+   "Restart the Mac once after installing, then unplug and re-plug the printer. The installer moves Canon's old driver aside, nothing is deleted."
+  ],
+  [
+   "Still on macOS 26 Tahoe or earlier?",
+   "Your printer works now, but it can stop after you update. You can install this before or after updating."
+  ],
+  [
+   "My printer is on Wi-Fi, not USB.",
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+  ],
+  [
+   "The installer didn't add my printer.",
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+  ],
+  [
+   "Where are print quality and black & white?",
+   "In the print dialog, open Printer Features (Printer Options on macOS 27). Quality is under Resolution. For black & white set Color Model to Grayscale."
+  ],
+  [
+   "Black doesn't print, or colors look off.",
+   "Run a nozzle check from the printer itself first: an empty or clogged cartridge is the usual cause. Then check in Printer Features that no “color-only” mode is selected. Colors can look a little different from the maker's driver."
+  ],
+  [
+   "Supply Levels says “Information Not Available”.",
+   "That's expected: this driver can't read ink or toner levels. Check them on the printer's own screen."
+  ],
+  [
+   "My printer isn't in the list.",
+   "Many newer printers support AirPrint and need no driver: connect the printer to your network, then add it in System Settings → Printers & Scanners → Add, with Use: AirPrint. AirPrint doesn't work over USB."
+  ],
+  [
+   "My Brother ink tank printer (DCP-T420W, DCP-T426W, DCP-T536DW, MFC-T…) isn't supported.",
+   "These printers have no free driver, so this package can't add them. Check your model's Downloads page on support.brother.com. If the printer supports AirPrint, connect it to your network and add it with Use: AirPrint."
+  ],
+  [
+   "My HP LaserJet 1018, 1020, P1005 or P1006 isn't supported.",
+   "These printers need HP's own software loaded every time they switch on, which this driver can't do. Picking a similar model doesn't work either: the job goes through, but nothing prints."
+  ],
+  [
+   "Does the scanner on my all-in-one work?",
+   "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical)."
+  ],
+  [
+   "Can I print from my iPhone or iPad?",
+   "Yes. Open Print from iPhone & iPad on your Mac and turn your printer on. Your Mac adds AirPrint for it, even over USB, as long as the Mac stays on."
+  ],
+  [
+   "Is it safe? Will macOS complain?",
+   "Yes, it's safe. The installer is signed and notarized by Apple, so it opens without warnings, and everything it does is listed openly on GitHub."
+  ],
+  [
+   "Is it free?",
+   "Yes. Free and open source, no account needed. The driver collects nothing."
+  ],
+  [
+   "Which macOS versions?",
+   "Tested on macOS 27 on Apple Silicon. It should work on macOS 12 and later on Apple Silicon Macs."
+  ]
+ ],
+ "brand_title": "{b} Printer Driver for Mac (macOS 27, Apple Silicon) – Free",
+ "brand_title_short": "{b} Printer Driver for Mac (macOS 27, Apple Silicon)",
+ "brand_desc": "Free {b} printer driver for Mac: native Apple Silicon driver for {n} {b} printers on {macos}. Fixes “The printer software is not compatible with this device” without Rosetta.",
+ "brand_keywords": "{b} printer driver mac, {b} driver macos 27, {b} driver mac tahoe, {b} driver macos 26, {b} apple silicon, printer software not compatible with this device",
+ "brand_h1": "{b} printer driver for Mac (Apple Silicon, macOS 27)",
+ "brand_lead": "{n} {b} printers work again on Apple Silicon Macs with {macos}. One free installer for all of them, no Rosetta.",
+ "brand_ok": "{n} {b} printers supported",
+ "brand_iphone_h2": "Print from iPhone or iPad to your {b} printer",
+ "brand_iphone_body": "No AirPrint on your {b} printer? Your Mac can add it, even over USB.",
+ "brand_iphone_link": "Add AirPrint to your {b} printer →",
+ "brand_models_h2": "Supported {b} printers",
+ "brand_models_intro": "Pick your printer for model-specific help.",
+ "other_brands": "Other brands:",
+ "brand_faq": [
+  [
+   "Is there a {b} printer driver for macOS 27 and Apple Silicon?",
+   "{b} never released Apple Silicon versions of the Mac drivers for many of its older printers; they need Rosetta, and macOS 27 marks Intel-only printer drivers as incompatible. Apple ends Rosetta for apps in macOS 28. This free package adds native arm64 drivers for {n} {b} models, so they print on any Apple Silicon Mac without Rosetta."
+  ],
+  [
+   "Why does my {b} printer say “The printer software is not compatible with this device”?",
+   "The {b} driver installed on the Mac is Intel-only. Install this package, restart the Mac once, then unplug and re-plug the printer."
+  ],
+  [
+   "Will reinstalling Rosetta fix it?",
+   "Sometimes, and only for now. Reinstalling Rosetta makes some old printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's old driver will stop again then. This driver doesn't need Rosetta."
+  ],
+  [
+   "Does it work on macOS 26 Tahoe and macOS 15 Sequoia?",
+   "Yes. It runs on macOS 12 and later on Apple Silicon Macs, and keeps working after you update to macOS 27."
+  ],
+  [
+   "My printer is on Wi-Fi, or wasn't set up automatically.",
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+  ]
+ ],
+ "brands_title": "Supported printer brands — Mac printer drivers for Apple Silicon",
+ "brands_desc": "{n} printer models from {brands} brands supported by native arm64 Gutenprint, brlaser and SpliX drivers for macOS.",
+ "brands_h1": "Supported brands",
+ "brands_lead": "{n} models. Click a brand for the full model list.",
+ "help_title": "Mac Printer Still Not Working After Installing? Troubleshooting",
+ "help_desc": "Printer still “not compatible”, missing from the list, on Wi-Fi, or printing blank pages after installing the Apple Silicon printer drivers? Step-by-step fixes for macOS 27, Tahoe and Sequoia.",
+ "help_keywords": "printer software is not compatible with this device after install, printer not showing up mac, software for this printer isn't available from apple, no airprint printers found, mac printer wifi driver, macos 27 printer troubleshooting",
+ "help_h1": "Printer still not working after installing?",
+ "help_lead": "Fixes for the problems people hit after installing the driver package, in the order they usually happen.",
+ "trouble": [
+  [
+   "It still says “The printer software is not compatible with this device” after installing.",
+   "That message belongs to the old printer entry, which still uses the maker's Intel-only driver. The installer adds a new entry next to it, named after the model and ending in “Apple Silicon”. In System Settings → Printers & Scanners, remove the old entry (select it, click −), then print to the “Apple Silicon” one. If there is no such entry, restart the Mac once, unplug and re-plug the printer, and check the next question."
+  ],
+  [
+   "My printer doesn't show up in the list.",
+   "Search your model on the home page first: if it isn't supported, no entry will appear. If it is supported and connected over USB, restart the Mac once and unplug / re-plug the printer, and connect it directly rather than through a hub or dock. Then add it in System Settings → Printers & Scanners → Add, with Use: Select Software… and the entry for your model ending in “Apple Silicon”."
+  ],
+  [
+   "“Software for this printer isn't available from Apple”.",
+   "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model ending in “Apple Silicon”."
+  ],
+  [
+   "“No AirPrint printers found”, or AirPrint isn't offered.",
+   "Older printers don't support AirPrint. On your Mac, add them with Use: Select Software… and the “Apple Silicon” entry, after installing this package. To print from an iPhone or iPad, turn the printer on in Print from iPhone & iPad, which adds AirPrint through your Mac, even over USB."
+  ],
+  [
+   "My printer is on Wi-Fi or Ethernet.",
+   "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry. If the printer doesn't appear, connect it to the same network as the Mac and switch it off and on."
+  ],
+  [
+   "Will reinstalling Rosetta fix it?",
+   "Sometimes, and only for now. Reinstalling Rosetta makes some old printer drivers work again after you delete and re-add the printer; others stay marked “Software Incompatible”. Apple ends Rosetta for apps in macOS 28, so the maker's old driver will stop again then. This driver doesn't need Rosetta."
+  ],
+  [
+   "The job goes through but nothing prints, or only blank pages.",
+   "Check that the queue uses your exact model: a similar model's driver can send data the printer silently ignores. Some printers, such as the HP LaserJet 1018, 1020, P1005 and P1006, can't be supported at all because they need the maker's firmware sent on every power-up."
+  ],
+  [
+   "Nothing here helped.",
+   "Open an issue on GitHub (https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model, how it's connected (USB or network) and your macOS version. Terminal steps for advanced users are in the README on GitHub."
+  ]
+ ],
+ "iphone_crumb": "iPhone & iPad",
+ "nav_iphone": "iPhone &amp; iPad",
+ "iphone_title": "How to Print from iPhone or iPad to Any Printer (AirPrint)",
+ "iphone_desc": "Print from your iPhone or iPad to any printer on your Mac, even without AirPrint. Free for HP, Canon, Brother and Epson printers.",
+ "iphone_keywords": "print from iphone, print from ipad, how to print from iphone, airprint, add airprint to printer, airprint usb printer, airprint hp, canon airprint, airprint brother, airprint epson",
+ "iphone_h1": "Print from your iPhone or iPad to any printer",
+ "iphone_lead": "Adds AirPrint to printers that don't have it. Free, and nothing to install on your iPhone.",
+ "iphone_how": "How to print from iPhone or iPad",
+ "iphone_steps": [
+  "Install the free driver on your Mac",
+  "Open Print from iPhone & iPad and turn your printer on",
+  "On your iPhone or iPad, tap Share, then Print"
+ ],
+ "iphone_need_h2": "What you need",
+ "iphone_need": "The printer has to be set up on your Mac, and the Mac has to stay on and awake, on the same Wi-Fi as your iPhone.",
+ "iphone_works_h2": "Works with your printer",
+ "iphone_faq": [
+  [
+   "What is AirPrint?",
+   "AirPrint is Apple's way to print from an iPhone or iPad with no app or driver on the phone. Older printers don't have it. This driver lets your Mac add it for them."
+  ],
+  [
+   "Can I print from my iPhone to a printer without AirPrint?",
+   "Yes. Set the printer up on your Mac, turn it on in Print from iPhone & iPad, and it shows up in the Print menu on your iPhone."
+  ],
+  [
+   "Does it work with HP, Canon, Brother and Epson printers?",
+   "Yes, with any printer set up on your Mac, including USB printers. Printers that already have AirPrint don't need this."
+  ],
+  [
+   "Does my Mac have to stay on?",
+   "Yes. Your iPhone prints through your Mac, so the Mac has to be on and awake, on the same Wi-Fi."
+  ],
+  [
+   "Can other people print to it?",
+   "Anyone on the same Wi-Fi can. It's off until you turn it on, and you pick which printers to share."
+  ]
+ ],
+ "privacy_title": "Privacy – Mac Printer Drivers",
+ "privacy_desc": "What this website and the printer driver collect.",
+ "privacy_h1": "Privacy",
+ "privacy_lead": "The printer driver collects nothing. This website counts visits with Google Analytics.",
+ "privacy_analytics_h2": "Website analytics",
+ "privacy_analytics": "This site uses Google Analytics to see which pages and printers people need. It sets cookies on your device and runs for every visitor. Google receives usage data: pages viewed, your approximate country, clicks on the download button, the questions you open and the printer models you type in the search box. Please don't type personal information there. Advertising features are off. To stop this, block cookies for this site or use a browser add-on that blocks Google Analytics.",
+ "privacy_hosting_h2": "Hosting",
+ "privacy_hosting": "This site runs on GitHub Pages. GitHub may log technical data such as IP addresses to run the service. See <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub's privacy statement</a> and <a href=\"https://policies.google.com/privacy\">Google's privacy policy</a>.",
+ "privacy_contact_h2": "Questions",
+ "privacy_contact": "Open an issue on <a href=\"{repo}/issues\">GitHub</a>."
+}
