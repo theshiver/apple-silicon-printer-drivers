@@ -27,6 +27,10 @@ Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers
 
 ---
 
+## Print from iPhone or iPad
+
+Open **Print from iPhone & iPad** in Applications and turn your printer on. Your Mac adds AirPrint for it, even over USB, so it shows up in the Print menu on your iPhone and iPad. Works with any printer set up on the Mac. Off by default; the Mac has to stay on, and anyone on the same Wi-Fi can print to shared printers.
+
 ## Supported printers
 
 3,670 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:

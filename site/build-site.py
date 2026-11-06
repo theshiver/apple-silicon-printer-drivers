@@ -93,6 +93,8 @@ input[type=search]{width:100%;font-size:1.15rem;padding:14px 16px;border:2px sol
 #results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-top:8px;cursor:pointer}#results li:hover,#results li.sel{border-color:var(--accent)}
 .card{background:var(--soft);border-radius:16px;padding:18px 22px;margin:18px 0}.brands a{display:inline-block;margin:4px 12px 4px 0}
 .cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.cards div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}.cards strong{display:block;margin-bottom:4px}
+.promo{background:var(--soft);border-radius:18px;padding:22px 24px;margin:28px 0;display:grid;gap:20px;align-items:center}@media(min-width:800px){.promo{grid-template-columns:1.3fr 1fr}}.promo h2{margin:0 0 .3em}.promo p{margin:0 0 .6em}
+.app{background:var(--bg);border-radius:14px;padding:6px 14px;box-shadow:0 4px 18px #0002}.app div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.25}.app div:last-child{border:0}.app small{display:block;color:var(--ok)}.app i{flex:none;width:36px;height:21px;border-radius:11px;background:var(--btn-bg);position:relative}.app i::after{content:"";position:absolute;right:2px;top:2px;width:17px;height:17px;border-radius:50%;background:#fff}.app i.off{background:var(--line)}.app i.off::after{right:auto;left:2px}
 .models{columns:3 220px;list-style:none;padding:0;margin:0}.models li{padding:3px 0;break-inside:avoid}
 table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.9rem;color:var(--muted)}tbody tr:first-child{background:var(--ok-soft)}
 details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 .2em}
@@ -114,7 +116,7 @@ d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest(
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s)track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
 
-NAV = {"en": ("Check my printer", "Help", "☕ Buy me a coffee"), "de": ("Drucker prüfen", "Hilfe", "☕ Spendier mir einen Kaffee")}
+NAV = {"en": ("Check my printer", "Help", "☕ Buy me a coffee", "iPhone &amp; iPad"), "de": ("Drucker prüfen", "Hilfe", "☕ Spendier mir einen Kaffee", "iPhone &amp; iPad")}
 COFFEE = "https://github.com/sponsors/theshiver"
 COFFEE_CARD = {"en": ("☕ Printing again?", "This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee.", "Buy me a coffee"),
                "de": ("☕ Druckt es wieder?", "Dieser Treiber ist kostenlos und bleibt es. Hat er dir einen neuen Drucker erspart, kannst du mit einem Kaffee Danke sagen.", "Spendier mir einen Kaffee")}
@@ -126,7 +128,7 @@ LANG_NAME = {"en": "English", "de": "Deutsch"}
 
 def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None, track=None):
     """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
-    sup, helplink, coffee = NAV[lang]
+    sup, helplink, coffee, phone = NAV[lang]
     privacy = PRIVACY[lang]
     data = html.escape(json.dumps({"page_type": "other", **(track or {})}), quote=True)
     hreflang = "".join(f'<link rel="alternate" hreflang="{l}" href="{u}">' for l, u in (alts or {}).items())
@@ -153,7 +155,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 </head>
 <body data-track="{data}">
 <header><a href="{BASE}/{'de/' if lang == 'de' else ''}">🖨 Mac Printer Drivers</a>
-<nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/troubleshooting/">{helplink}</a><a class="coffee" href="{COFFEE}" data-loc="header">{coffee}</a>{switch}</nav></header>
+<nav><a href="{BASE}/#search">{sup}</a><a href="{BASE}/{'de/' if lang == 'de' else ''}print-from-iphone/">{phone}</a><a href="{BASE}/troubleshooting/">{helplink}</a><a class="coffee" href="{COFFEE}" data-loc="header">{coffee}</a>{switch}</nav></header>
 <main>
 {body}
 <footer><a href="{BASE}/brands/">{'Alle Marken' if lang == 'de' else 'All brands'}</a> · <a href="{REPO}">GitHub</a> · <a href="{COFFEE}" data-loc="footer">{coffee}</a> · <a href="{BASE}/privacy/">{privacy}</a><br>{'Kostenlos und Open Source. Keine Verbindung zu Canon, Epson, HP, Brother oder Apple. Produktnamen sind Marken ihrer Inhaber.' if lang == 'de' else 'Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.'}</footer>
@@ -214,6 +216,8 @@ def brand_page(b):
 <h1>{html.escape(b)} printer driver for Mac (Apple Silicon, macOS 27)</h1>
 <p class="lead">{len(ms)} {html.escape(b)} printers work again on Apple Silicon Macs with {MACOS}. One free installer for all of them, no Rosetta.</p>
 {download_card(f"{len(ms)} {html.escape(b)} printers supported")}
+<h2>Print from iPhone or iPad to your {html.escape(b)} printer</h2>
+<p>No AirPrint on your {html.escape(b)} printer? Your Mac can add it, even over USB. <a href="{BASE}/print-from-iphone/">Add AirPrint to your {html.escape(b)} printer →</a></p>
 <h2>Supported {html.escape(b)} printers</h2>
 <p>Pick your printer for model-specific help.</p>
 {rows}
@@ -266,6 +270,7 @@ def model_page(m, b, siblings):
 {download_card(f"The {esc} is supported")}
 <h2>Wi-Fi, network, or not detected over USB</h2>
 <ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Pick “{esc}” ending in “Apple Silicon” and click Add.</li></ol>
+<p><strong>Print from your iPhone or iPad?</strong> Your Mac can share the {esc} over AirPrint. <a href="{BASE}/print-from-iphone/">See how →</a></p>
 <h2>Why did my {esc} stop working?</h2>
 <p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>
 {"".join(notes)}
@@ -334,7 +339,7 @@ trouble = [
  ("“Software for this printer isn't available from Apple”.",
   "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model ending in “Apple Silicon”."),
  ("“No AirPrint printers found”, or AirPrint isn't offered.",
-  "Older printers don't support AirPrint, and AirPrint never works over USB. For those printers, add them with Use: Select Software… and the “Apple Silicon” entry, after installing this package."),
+  "Older printers don't support AirPrint. On your Mac, add them with Use: Select Software… and the “Apple Silicon” entry, after installing this package. To print from an iPhone or iPad, turn the printer on in Print from iPhone & iPad, which adds AirPrint through your Mac, even over USB."),
  ("My printer is on Wi-Fi or Ethernet.",
   "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry. "
   "If the printer doesn't appear, connect it to the same network as the Mac and switch it off and on."),
@@ -382,6 +387,8 @@ faq = [
   "These printers need HP's own software loaded every time they switch on, which this driver can't do. Picking a similar model doesn't work either: the job goes through, but nothing prints."),
  ("Does the scanner on my all-in-one work?",
   "No, only printing. For scanning use VueScan (paid) or SANE (free, more technical)."),
+ ("Can I print from my iPhone or iPad?",
+  "Yes. Open Print from iPhone & iPad on your Mac and turn your printer on. Your Mac adds AirPrint for it, even over USB, as long as the Mac stays on."),
  ("Is it safe? Will macOS complain?",
   "Yes, it's safe. The installer is signed and notarized by Apple, so it opens without warnings, and everything it does is listed openly on GitHub."),
  ("Is it free?", "Yes. Free and open source, no account needed. The driver collects nothing."),
@@ -415,6 +422,17 @@ symptoms = cards([
  ("“Generic PostScript Printer”, blank pages or missing options", "macOS picked a generic driver. Install this driver, add the printer again and pick the “Apple Silicon” entry."),
  ("The printer disappeared from the list", f'Search your model above, then see <a href="{BASE}/troubleshooting/">Help</a>.'),
 ])
+APP_MOCK = {"en": ("Ready on your iPhone and iPad", "Not shared"), "de": ("Bereit auf iPhone und iPad", "Nicht freigegeben")}
+def app_mock(lang="en", first="Canon PIXMA MP250", second="HP LaserJet 1010"):
+    on, off = APP_MOCK[lang]
+    return f'<div class="app" aria-hidden="true"><div><span>{first}<small>{on}</small></span><i></i></div><div><span>{second}<small style="color:var(--muted)">{off}</small></span><i class="off"></i></div></div>'
+def iphone_promo(lang="en"):
+    u = f'{BASE}/{"de/" if lang == "de" else ""}print-from-iphone/'
+    if lang == "de":
+        h, d, l = "Neu: Drucken mit iPhone und iPad", "Macht deinen Drucker AirPrint-fähig, auch per USB. Kostenlos, ohne App auf dem iPhone.", "So funktioniert's →"
+    else:
+        h, d, l = "New: print from your iPhone and iPad", "Adds AirPrint to your printer, even over USB. Free, with nothing to install on your iPhone.", "See how it works →"
+    return f'<section class="promo"><div><h2>{h}</h2><p>{d}</p><a href="{u}">{l}</a></div>{app_mock(lang)}</section>'
 MOCK = '<div class="mock" aria-hidden="true"><div class="bad">{who}<small>✕ {bad}</small></div><span>↓</span><div class="good">{who}<small>✓ {good}</small></div></div>'
 by_name = {m["name"]: m for m in models}
 POPULAR_MODELS = [by_name[n] for n in ("Brother HL-2270DW series", "Brother HL-1210W series", "Brother HL-1110 series", "Brother MFC-7460DN", "Brother DCP-7065DN",
@@ -438,7 +456,7 @@ home = f"""
 <h2>How it works</h2>
 {quick_steps()}
 <p class="note">Still not printing? Restart the Mac once and re-plug the printer, then see <a href="{BASE}/troubleshooting/">Help</a>.</p>
-<p><a href="{BASE}/print-from-iphone/">Want to print from your iPhone or iPad too? →</a></p>
+{iphone_promo()}
 
 <h2 id="search">Is my printer supported?</h2>
 <form id="qf" onsubmit="return false"><input type="search" id="q" aria-label="Printer model" placeholder="Type your printer model, e.g. Canon MP250" autocomplete="off"></form>
@@ -544,7 +562,7 @@ de_home = f"""
 </div>{MOCK.format(bad="Software nicht kompatibel", good="Bereit zum Drucken", who="Dein Drucker")}</section>
 <h2>So geht's</h2>
 {quick_steps("de")}
-<p><a href="{BASE}/de/print-from-iphone/">Auch mit iPhone oder iPad drucken? →</a></p>
+{iphone_promo("de")}
 <h2>Wird mein Drucker unterstützt?</h2>
 <p><a href="{BASE}/#search">Modell in der Suche eingeben</a> (englische Seite) oder nach Marke suchen:</p>
 <p class="brands">{de_brand_links} <a href="{BASE}/brands/">alle Marken →</a></p>
@@ -588,6 +606,8 @@ for b in DE_BRANDS:
 <h1>{b} Druckertreiber für Mac (Apple Silicon, macOS 27)</h1>
 <p class="lead">{n} {b}-Drucker funktionieren wieder auf Apple-Silicon-Macs mit {DE_MACOS}. Ein kostenloses Paket für alle, ohne Rosetta.</p>
 {download_card(f"{n} {b}-Drucker werden unterstützt", "de")}
+<h2>Mit iPhone oder iPad auf deinem {b}-Drucker drucken</h2>
+<p>Kein AirPrint auf deinem {b}-Drucker? Dein Mac kann es ergänzen, auch per USB. <a href="{BASE}/de/print-from-iphone/">AirPrint für deinen {b}-Drucker →</a></p>
 <h2>Unterstützte {b}-Drucker</h2>
 <p>Modell auswählen für genaue Hinweise (Modellseiten auf Englisch).</p>
 {rows}
@@ -630,19 +650,26 @@ def iphone_page(lang):
          ("Den kostenlosen Treiber auf dem Mac installieren", "Print from iPhone &amp; iPad öffnen und den Drucker einschalten", "Auf iPhone oder iPad auf Teilen und dann Drucken tippen"),
          "Das brauchst du", "Der Drucker muss auf dem Mac eingerichtet sein, und der Mac muss eingeschaltet und wach sein, im selben WLAN wie dein iPhone.", "Fragen", DE_IPHONE_QA))
     ol = '<ol class="quick">' + "".join(f"<li>{x}</li>" for x in steps) + "</ol>"
-    body = f"""<h1>{h1}</h1><p class="lead">{lead}</p>
-{download_card(lang=lang, steps=False)}
+    crumb = f'<p class="note"><a href="{BASE}/{"" if en else "de/"}">{"Home" if en else "Start"}</a> › iPhone &amp; iPad</p>'
+    brands = " ".join(f'<a href="{BASE}/{"de/" if not en and b in DE_BRANDS else ""}{slug(b)}/">{b}</a>' for b in POPULAR[:8] if b in BRANDS)
+    body = f"""{crumb}<section class="hero"><div><h1>{h1}</h1><p class="lead">{lead}</p>
+{download_card(lang=lang, steps=False)}</div>{app_mock(lang)}</section>
 <h2>{how}</h2>{ol}
 <h2>{need}</h2><p>{needs}</p>
+<h2>{"Works with your printer" if en else "Funktioniert mit deinem Drucker"}</h2><p class="brands">{brands}</p>
 <h2>{faqh}</h2>{faq_list(qa)}
 {coffee_card(lang)}"""
     path = "print-from-iphone/" if en else "de/print-from-iphone/"
-    ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}]
+    plain = [html.unescape(x) for x in steps]
+    ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
+          {"@context": "https://schema.org", "@type": "HowTo", "name": html.unescape(how), "step": [{"@type": "HowToStep", "text": x} for x in plain]},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home" if en else "Start", "item": f"{BASE}/{'' if en else 'de/'}"}, {"@type": "ListItem", "position": 2, "name": "iPhone & iPad", "item": f"{BASE}/{path}"}]}]
     title = "How to Print from iPhone or iPad to Any Printer (AirPrint)" if en else "iPhone & iPad: Auf jedem Drucker drucken (AirPrint)"
     desc = ("Print from your iPhone or iPad to any printer on your Mac, even without AirPrint. Free for HP, Canon, Brother and Epson printers." if en else
             "Mit iPhone oder iPad auf jedem Drucker drucken, auch ohne AirPrint. Kostenlos für HP-, Canon-, Brother- und Epson-Drucker am Mac.")
     url = f"{BASE}/{path}"
-    write_page(DOCS / path.rstrip("/"), page(title, desc, url, body, ld, lang=lang, alts=alts_for("print-from-iphone/")), url)
+    write_page(DOCS / path.rstrip("/"), page(title, desc, url, body, ld, lang=lang, alts=alts_for("print-from-iphone/"), track={"page_type": "iphone"},
+        keywords="print from iphone, print from ipad, how to print from iphone, airprint, add airprint to printer, airprint usb printer, airprint hp, canon airprint, airprint brother, airprint epson" if en else "iphone drucken, ipad drucken, airprint, airprint drucker, iphone drucker, drucker airprint nachrüsten"), url)
     urls.append(url)
 iphone_page("en"); iphone_page("de")
 
@@ -701,6 +728,7 @@ If someone's printer stopped working on a Mac, check whether the model is in the
 - [Source code, issues and README]({REPO})
 - [What the installer changes (SECURITY.md)]({REPO}/blob/main/SECURITY.md)
 - Drivers: Gutenprint {GUTENPRINT} (inkjets and most lasers), brlaser {BRLASER} (Brother lasers without PCL or AirPrint), SpliX {SPLIX} (Samsung, Xerox and Dell SPL lasers)
+- [Print from iPhone or iPad]({BASE}/print-from-iphone/): the package adds an app that shares any printer on the Mac over AirPrint, including USB printers. Off by default; the Mac has to stay on.
 - Not covered: scanners, Brother DCP-T/MFC-T ink tanks, host-based HP LaserJet 1018/1020/P1005/P1006. Printers that support AirPrint need no driver.
 """)
 (DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>', robots="noindex"))
