@@ -225,6 +225,10 @@ fi
                 for p in (PAYLOAD / "share/foo2zjs/ppd").glob("*.ppd")}
         self.assertEqual({m["id"]: m["name"] for m in models if m["id"].startswith("foo2-")}, foo2)
         self.assertIn("foo2-hp-laserjet-p1006", (ROOT / "docs/hp/laserjet-p1006/index.html").read_text())
+        # brand aliases must not move pages that are already published
+        sitemap = (ROOT / "docs/sitemap-models.xml").read_text()
+        self.assertIn("/minolta/pagepro-6/<", sitemap)
+        self.assertIn("/konica-minolta/magicolor-1600w/<", sitemap)
         self.assertFalse(any("unreleased" in m for m in models))
 
     def test_foo2_firmware_models_name_a_shipped_file(self):

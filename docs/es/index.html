@@ -110,9 +110,9 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <p><a href="https://macprinterdrivers.com/es/troubleshooting/">Más ayuda →</a></p>
 <div class="card"><strong>☕ ¿Ya imprimes otra vez?</strong><br>Este driver es gratis y lo seguirá siendo. Si te ha ahorrado comprar una impresora nueva, puedes darme las gracias con un café. <a href="https://github.com/sponsors/theshiver" data-loc="card">Invítame a un café →</a></div>
 <script>
-const BASE="https://macprinterdrivers.com",ALIAS={"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox", "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera", "Konica": "Konica Minolta", "Minolta": "Konica Minolta", "Fuji": "Fuji Xerox"};let MODELS=null,sel=-1,st;
+const BASE="https://macprinterdrivers.com",ALIAS={"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox", "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera", "Konica": "Konica Minolta", "Fuji": "Fuji Xerox"};let MODELS=null,sel=-1,st;
 const slug=s=>s.replace(/\+/g,' plus').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-function modelPath(m){const w=m.name.split(' ')[0];return slug(ALIAS[w]||w)+'/'+(slug(m.name.slice(w.length))||slug(m.name))}
+function modelPath(m){const w=m.name.split(' ')[0],b=ALIAS[w]||w;return slug(b)+'/'+(slug(m.name.slice((m.name.startsWith(b)?b:w).length))||slug(m.name))}
 const q=document.getElementById('q'),res=document.getElementById('results'),ans=document.getElementById('answer');
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 async function load(){if(!MODELS){MODELS=await (await fetch('/models.json')).json();MODELS.forEach(m=>m.n=norm(m.name+' '+m.id));}}

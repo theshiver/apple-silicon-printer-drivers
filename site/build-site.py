@@ -31,7 +31,7 @@ def write_page(d, text, url):
 # brand normalisation: first word of the display name, with a few fixes
 ALIAS = {"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox",
          "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera",
-         "Konica": "Konica Minolta", "Minolta": "Konica Minolta", "Fuji": "Fuji Xerox"}
+         "Konica": "Konica Minolta", "Fuji": "Fuji Xerox"}
 def brand_of(m):
     b = m["name"].split()[0]
     return ALIAS.get(b, b)
@@ -64,15 +64,18 @@ PKG_URL = f"{REPO}/releases/download/v{VERSION}/{PKG}"  # the file itself, not t
 
 INDEXNOW_KEY = "a3007c2aad3307cf8925b08255b5b513"
 # HP LaserJets that keep their firmware in RAM: the PPD names the file to send at power on
-FIRMWARE_MODELS = {p.stem for p in (ROOT / "pkgroot/Library/Printers/Gutenprint/share/foo2zjs/ppd").glob("*.ppd")
-                   if "*foo2Firmware:" in p.read_text()}
+FOO2_PPDS = {p.stem: p.read_text() for p in (ROOT / "pkgroot/Library/Printers/Gutenprint/share/foo2zjs/ppd").glob("*.ppd")}
+FIRMWARE_MODELS = {k for k, v in FOO2_PPDS.items() if "*foo2Firmware:" in v}
 def driver_name(mid):
     return "brlaser" if mid.startswith("brlaser-") else "SpliX" if mid.startswith("splix-") else "foo2zjs" if mid.startswith("foo2-") else "Gutenprint"
 
 def model_path(m):
     """canon/pixma-ip4300 — mirrored by modelPath() in the home page search script."""
     w = m["name"].split()[0]
-    return f"{slug(ALIAS.get(w, w))}/{slug(m['name'][len(w):]) or slug(m['name'])}"
+    b = ALIAS.get(w, w)
+    # a two-word brand ("Fuji Xerox") shouldn't repeat its second word in the model part
+    rest = m["name"][len(b if m["name"].startswith(b) else w):]
+    return f"{slug(b)}/{slug(rest) or slug(m['name'])}"
 assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
 
 GA_ID = "G-RL7H0KSZYM"
@@ -210,7 +213,7 @@ def model_page(m, b, siblings):
     if splix:
         notes.append(f"<p>The {esc} speaks Samsung's SPL printer language rather than PCL or PostScript, so it uses the bundled native arm64 SpliX driver rather than Gutenprint. Toner save, density and resolution are in the print dialog under Printer Features.</p>")
     if foo2:
-        notes.append(f"<p>The {esc} is a host-based printer that doesn't understand PCL or PostScript, so it uses the bundled native arm64 foo2zjs driver. Paper size and color mode are in the print dialog. This driver is new and hasn't been tested on every model. If yours doesn't print, <a href=\"{REPO}/issues\">tell us</a> and we'll fix it.</p>")
+        notes.append(f"<p>The {esc} is a host-based printer that doesn't understand PCL or PostScript, so it uses the bundled native arm64 foo2zjs driver. {"Paper size and color mode are" if "*ColorModel CMYK" in FOO2_PPDS[mid] else "Paper size is"} in the print dialog. This driver is new and hasn't been tested on every model. If yours doesn't print, <a href=\"{REPO}/issues\">tell us</a> and we'll fix it.</p>")
     if mid in FIRMWARE_MODELS:
         notes.append(f"<p>The {esc} loses its firmware when switched off. The driver sends it again with the first job after power on, so that job takes a few seconds longer.</p>")
     sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
@@ -306,7 +309,7 @@ def search_script(t):
     return f"""<script>
 const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1,st;
 const slug=s=>s.replace(/\\+/g,' plus').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-function modelPath(m){{const w=m.name.split(' ')[0];return slug(ALIAS[w]||w)+'/'+(slug(m.name.slice(w.length))||slug(m.name))}}
+function modelPath(m){{const w=m.name.split(' ')[0],b=ALIAS[w]||w;return slug(b)+'/'+(slug(m.name.slice((m.name.startsWith(b)?b:w).length))||slug(m.name))}}
 const q=document.getElementById('q'),res=document.getElementById('results'),ans=document.getElementById('answer');
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 async function load(){{if(!MODELS){{MODELS=await (await fetch('/models.json')).json();MODELS.forEach(m=>m.n=norm(m.name+' '+m.id));}}}}

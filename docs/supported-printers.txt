@@ -1382,41 +1382,41 @@ Canon TS8000 series | bjc-TS8000-series | Gutenprint | https://macprinterdrivers
 Canon TS9000 series | bjc-TS9000-series | Gutenprint | https://macprinterdrivers.com/canon/ts9000-series/
 Citizen ProJet II | citizen-projet_ii | Gutenprint | https://macprinterdrivers.com/citizen/projet-ii/
 Compaq IJ1200 | compaq-ij1200 | Gutenprint | https://macprinterdrivers.com/compaq/ij1200/
-Datamax-ONeil E4204B Mark III | datamax_oneil_E4204B | Gutenprint | https://macprinterdrivers.com/datamax/e4204b-mark-iii/
-Datamax-ONeil E4205A Mark III | datamax_oneil_E4205A | Gutenprint | https://macprinterdrivers.com/datamax/e4205a-mark-iii/
-Datamax-ONeil E4206L Mark III | datamax_oneil_E4206L | Gutenprint | https://macprinterdrivers.com/datamax/e4206l-mark-iii/
-Datamax-ONeil E4206P Mark III | datamax_oneil_E4206P | Gutenprint | https://macprinterdrivers.com/datamax/e4206p-mark-iii/
-Datamax-ONeil E4304B Mark III | datamax_oneil_E4304B | Gutenprint | https://macprinterdrivers.com/datamax/e4304b-mark-iii/
-Datamax-ONeil E4305A Mark III | datamax_oneil_E4305A | Gutenprint | https://macprinterdrivers.com/datamax/e4305a-mark-iii/
-Datamax-ONeil E4305L Mark III | datamax_oneil_E4305L | Gutenprint | https://macprinterdrivers.com/datamax/e4305l-mark-iii/
-Datamax-ONeil E4305P Mark III | datamax_oneil_E4305P | Gutenprint | https://macprinterdrivers.com/datamax/e4305p-mark-iii/
-Datamax-ONeil H4212 | datamax_oneil_H4212 | Gutenprint | https://macprinterdrivers.com/datamax/h4212/
-Datamax-ONeil H4212X | datamax_oneil_H4212X | Gutenprint | https://macprinterdrivers.com/datamax/h4212x/
-Datamax-ONeil H4310 | datamax_oneil_H4310 | Gutenprint | https://macprinterdrivers.com/datamax/h4310/
-Datamax-ONeil H4310X | datamax_oneil_H4310X | Gutenprint | https://macprinterdrivers.com/datamax/h4310x/
-Datamax-ONeil H4408 | datamax_oneil_H4408 | Gutenprint | https://macprinterdrivers.com/datamax/h4408/
-Datamax-ONeil H4606 | datamax_oneil_H4606 | Gutenprint | https://macprinterdrivers.com/datamax/h4606/
-Datamax-ONeil H4606X | datamax_oneil_H4606X | Gutenprint | https://macprinterdrivers.com/datamax/h4606x/
-Datamax-ONeil H6210 | datamax_oneil_H6210 | Gutenprint | https://macprinterdrivers.com/datamax/h6210/
-Datamax-ONeil H6210X | datamax_oneil_H6210X | Gutenprint | https://macprinterdrivers.com/datamax/h6210x/
-Datamax-ONeil H6212 | datamax_oneil_H6212 | Gutenprint | https://macprinterdrivers.com/datamax/h6212/
-Datamax-ONeil H6212X | datamax_oneil_H6212X | Gutenprint | https://macprinterdrivers.com/datamax/h6212x/
-Datamax-ONeil H6308 | datamax_oneil_H6308 | Gutenprint | https://macprinterdrivers.com/datamax/h6308/
-Datamax-ONeil H6310X | datamax_oneil_H6310X | Gutenprint | https://macprinterdrivers.com/datamax/h6310x/
-Datamax-ONeil H8308 | datamax_oneil_H8308 | Gutenprint | https://macprinterdrivers.com/datamax/h8308/
-Datamax-ONeil H8308p | datamax_oneil_H8308p | Gutenprint | https://macprinterdrivers.com/datamax/h8308p/
-Datamax-ONeil H8308X | datamax_oneil_H8308X | Gutenprint | https://macprinterdrivers.com/datamax/h8308x/
-Datamax-ONeil I4212e Mark II | datamax_oneil_I4212e | Gutenprint | https://macprinterdrivers.com/datamax/i4212e-mark-ii/
-Datamax-ONeil I4310e Mark II | datamax_oneil_I4310e | Gutenprint | https://macprinterdrivers.com/datamax/i4310e-mark-ii/
-Datamax-ONeil I4606e Mark II | datamax_oneil_I4606e | Gutenprint | https://macprinterdrivers.com/datamax/i4606e-mark-ii/
-Datamax-ONeil p1115 | datamax_oneil_p1115 | Gutenprint | https://macprinterdrivers.com/datamax/p1115/
-Datamax-ONeil p1115s | datamax_oneil_p1115s | Gutenprint | https://macprinterdrivers.com/datamax/p1115s/
-Datamax-ONeil p1120n | datamax_oneil_p1120n | Gutenprint | https://macprinterdrivers.com/datamax/p1120n/
-Datamax-ONeil p1125 | datamax_oneil_p1125 | Gutenprint | https://macprinterdrivers.com/datamax/p1125/
-Datamax-ONeil p1725 | datamax_oneil_p1725 | Gutenprint | https://macprinterdrivers.com/datamax/p1725/
-Datamax-ONeil RL3e | datamax_oneil_RL3e | Gutenprint | https://macprinterdrivers.com/datamax/rl3e/
-Datamax-ONeil RL4e | datamax_oneil_RL4e | Gutenprint | https://macprinterdrivers.com/datamax/rl4e/
-Datamax-ONeil w1110 | datamax_oneil_w1110 | Gutenprint | https://macprinterdrivers.com/datamax/w1110/
+Datamax-ONeil E4204B Mark III | datamax_oneil_E4204B | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4204b-mark-iii/
+Datamax-ONeil E4205A Mark III | datamax_oneil_E4205A | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4205a-mark-iii/
+Datamax-ONeil E4206L Mark III | datamax_oneil_E4206L | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4206l-mark-iii/
+Datamax-ONeil E4206P Mark III | datamax_oneil_E4206P | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4206p-mark-iii/
+Datamax-ONeil E4304B Mark III | datamax_oneil_E4304B | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4304b-mark-iii/
+Datamax-ONeil E4305A Mark III | datamax_oneil_E4305A | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305a-mark-iii/
+Datamax-ONeil E4305L Mark III | datamax_oneil_E4305L | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305l-mark-iii/
+Datamax-ONeil E4305P Mark III | datamax_oneil_E4305P | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305p-mark-iii/
+Datamax-ONeil H4212 | datamax_oneil_H4212 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4212/
+Datamax-ONeil H4212X | datamax_oneil_H4212X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4212x/
+Datamax-ONeil H4310 | datamax_oneil_H4310 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4310/
+Datamax-ONeil H4310X | datamax_oneil_H4310X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4310x/
+Datamax-ONeil H4408 | datamax_oneil_H4408 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4408/
+Datamax-ONeil H4606 | datamax_oneil_H4606 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4606/
+Datamax-ONeil H4606X | datamax_oneil_H4606X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4606x/
+Datamax-ONeil H6210 | datamax_oneil_H6210 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6210/
+Datamax-ONeil H6210X | datamax_oneil_H6210X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6210x/
+Datamax-ONeil H6212 | datamax_oneil_H6212 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6212/
+Datamax-ONeil H6212X | datamax_oneil_H6212X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6212x/
+Datamax-ONeil H6308 | datamax_oneil_H6308 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6308/
+Datamax-ONeil H6310X | datamax_oneil_H6310X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6310x/
+Datamax-ONeil H8308 | datamax_oneil_H8308 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308/
+Datamax-ONeil H8308p | datamax_oneil_H8308p | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308p/
+Datamax-ONeil H8308X | datamax_oneil_H8308X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308x/
+Datamax-ONeil I4212e Mark II | datamax_oneil_I4212e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4212e-mark-ii/
+Datamax-ONeil I4310e Mark II | datamax_oneil_I4310e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4310e-mark-ii/
+Datamax-ONeil I4606e Mark II | datamax_oneil_I4606e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4606e-mark-ii/
+Datamax-ONeil p1115 | datamax_oneil_p1115 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1115/
+Datamax-ONeil p1115s | datamax_oneil_p1115s | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1115s/
+Datamax-ONeil p1120n | datamax_oneil_p1120n | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1120n/
+Datamax-ONeil p1125 | datamax_oneil_p1125 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1125/
+Datamax-ONeil p1725 | datamax_oneil_p1725 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1725/
+Datamax-ONeil RL3e | datamax_oneil_RL3e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-rl3e/
+Datamax-ONeil RL4e | datamax_oneil_RL4e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-rl4e/
+Datamax-ONeil w1110 | datamax_oneil_w1110 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-w1110/
 DEC 1800 | dec-1800 | Gutenprint | https://macprinterdrivers.com/dec/1800/
 DEC LN17 | dec-ln17 | Gutenprint | https://macprinterdrivers.com/dec/ln17/
 Dell 1100 | splix-dell-1100 | SpliX | https://macprinterdrivers.com/dell/1100/
@@ -2051,10 +2051,10 @@ Epson WorkForce 633 | escp2-wf633 | Gutenprint | https://macprinterdrivers.com/e
 Epson WorkForce 635 | escp2-wf636 | Gutenprint | https://macprinterdrivers.com/epson/workforce-635/
 Epson WorkForce 645 | escp2-wf645 | Gutenprint | https://macprinterdrivers.com/epson/workforce-645/
 Epson XP-15000 Series | escp2-xp15000 | Gutenprint | https://macprinterdrivers.com/epson/xp-15000-series/
-Fuji Xerox DocuPrint CM205 | foo2-fuji-xerox-docuprint-cm205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-cm205/
-Fuji Xerox DocuPrint CM215 | foo2-fuji-xerox-docuprint-cm215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-cm215/
-Fuji Xerox DocuPrint M215 | foo2-fuji-xerox-docuprint-m215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-m215/
-Fuji Xerox DocuPrint P205 | foo2-fuji-xerox-docuprint-p205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-p205/
+Fuji Xerox DocuPrint CM205 | foo2-fuji-xerox-docuprint-cm205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/docuprint-cm205/
+Fuji Xerox DocuPrint CM215 | foo2-fuji-xerox-docuprint-cm215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/docuprint-cm215/
+Fuji Xerox DocuPrint M215 | foo2-fuji-xerox-docuprint-m215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/docuprint-m215/
+Fuji Xerox DocuPrint P205 | foo2-fuji-xerox-docuprint-p205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/docuprint-p205/
 Fujifilm DX100 | escp2-fujifilm-dx100 | Gutenprint | https://macprinterdrivers.com/fujifilm/dx100/
 Fujifilm FinePix-NX-500 | fujifilm-nx500 | Gutenprint | https://macprinterdrivers.com/fujifilm/finepix-nx-500/
 Fujifilm Printpix-CX-400 | fujifilm-cx400 | Gutenprint | https://macprinterdrivers.com/fujifilm/printpix-cx-400/
@@ -2753,23 +2753,14 @@ Kodak Photo-Printer | kodak-photo-printer | Gutenprint | https://macprinterdrive
 Kodak Photo-Printer-500 | kodak-photo-printer-500 | Gutenprint | https://macprinterdrivers.com/kodak/photo-printer-500/
 Kodak Printer-Dock-Plus | kodak-dock-plus | Gutenprint | https://macprinterdrivers.com/kodak/printer-dock-plus/
 Kodak Printer-Dock-Plus-S3 | kodak-dock-plus-s3 | Gutenprint | https://macprinterdrivers.com/kodak/printer-dock-plus-s3/
-Konica Minolta magicolor 1600W | foo2-konica-minolta-magicolor-1600w | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1600w/
-Konica Minolta magicolor 1680MF | foo2-konica-minolta-magicolor-1680mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1680mf/
-Konica Minolta magicolor 1690MF | foo2-konica-minolta-magicolor-1690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1690mf/
-Konica Minolta magicolor 2430 DL | foo2-konica-minolta-magicolor-2430-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2430-dl/
-Konica Minolta magicolor 2480 MF | foo2-konica-minolta-magicolor-2480-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2480-mf/
-Konica Minolta magicolor 2490 MF | foo2-konica-minolta-magicolor-2490-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2490-mf/
-Konica Minolta magicolor 2530 DL | foo2-konica-minolta-magicolor-2530-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2530-dl/
-Konica Minolta magicolor 4690MF | foo2-konica-minolta-magicolor-4690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-4690mf/
-Minolta Color PageWorks/Pro L | foo2-minolta-color-pageworks-pro-l | foo2zjs | https://macprinterdrivers.com/konica-minolta/color-pageworks-pro-l/
-Minolta magicolor 2200 DL | foo2-minolta-magicolor-2200-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2200-dl/
-Minolta magicolor 2300 DL | foo2-minolta-magicolor-2300-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2300-dl/
-Minolta PagePro 1100 | minolta-pp_1100 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-1100/
-Minolta PagePro 6 | minolta-pp_6 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6/
-Minolta PagePro 6e | minolta-pp_6e | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6e/
-Minolta PagePro 6ex | minolta-pp_6ex | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6ex/
-Minolta PagePro 8 | minolta-pp_8 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-8/
-Minolta PagePro 8L | minolta-pp_8l | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-8l/
+Konica Minolta magicolor 1600W | foo2-konica-minolta-magicolor-1600w | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-1600w/
+Konica Minolta magicolor 1680MF | foo2-konica-minolta-magicolor-1680mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-1680mf/
+Konica Minolta magicolor 1690MF | foo2-konica-minolta-magicolor-1690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-1690mf/
+Konica Minolta magicolor 2430 DL | foo2-konica-minolta-magicolor-2430-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2430-dl/
+Konica Minolta magicolor 2480 MF | foo2-konica-minolta-magicolor-2480-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2480-mf/
+Konica Minolta magicolor 2490 MF | foo2-konica-minolta-magicolor-2490-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2490-mf/
+Konica Minolta magicolor 2530 DL | foo2-konica-minolta-magicolor-2530-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2530-dl/
+Konica Minolta magicolor 4690MF | foo2-konica-minolta-magicolor-4690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-4690mf/
 Kyocera Ci-1100 | kyocera-ci-1100 | Gutenprint | https://macprinterdrivers.com/kyocera/ci-1100/
 Kyocera CS-1815 | kyocera-cs-1815 | Gutenprint | https://macprinterdrivers.com/kyocera/cs-1815/
 Kyocera CS-250ci | kyocera-cs-250ci | Gutenprint | https://macprinterdrivers.com/kyocera/cs-250ci/
@@ -3027,6 +3018,15 @@ Lexmark Z42 | lexmark-z42 | Gutenprint | https://macprinterdrivers.com/lexmark/z
 Lexmark Z43 | lexmark-z43 | Gutenprint | https://macprinterdrivers.com/lexmark/z43/
 Lexmark Z52 | lexmark-z52 | Gutenprint | https://macprinterdrivers.com/lexmark/z52/
 Lexmark Z53 | lexmark-z53 | Gutenprint | https://macprinterdrivers.com/lexmark/z53/
+Minolta Color PageWorks/Pro L | foo2-minolta-color-pageworks-pro-l | foo2zjs | https://macprinterdrivers.com/minolta/color-pageworks-pro-l/
+Minolta magicolor 2200 DL | foo2-minolta-magicolor-2200-dl | foo2zjs | https://macprinterdrivers.com/minolta/magicolor-2200-dl/
+Minolta magicolor 2300 DL | foo2-minolta-magicolor-2300-dl | foo2zjs | https://macprinterdrivers.com/minolta/magicolor-2300-dl/
+Minolta PagePro 1100 | minolta-pp_1100 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-1100/
+Minolta PagePro 6 | minolta-pp_6 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6/
+Minolta PagePro 6e | minolta-pp_6e | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6e/
+Minolta PagePro 6ex | minolta-pp_6ex | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6ex/
+Minolta PagePro 8 | minolta-pp_8 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-8/
+Minolta PagePro 8L | minolta-pp_8l | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-8l/
 NEC SuperScript 1260 | nec-ssc_1260 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1260/
 NEC SuperScript 1400 | nec-ssc_1400 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1400/
 NEC SuperScript 1800 | nec-ssc_1800 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1800/
