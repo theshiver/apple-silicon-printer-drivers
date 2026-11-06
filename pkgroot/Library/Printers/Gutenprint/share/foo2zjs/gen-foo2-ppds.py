@@ -45,7 +45,7 @@ def capture(command):
     cap.write_text("")
     wrapper, *args = command
     subprocess.run(["sh", str(SRC / f"{wrapper}.in"), *args], input=b"x\n", env=ENV, cwd=SRC, capture_output=True)
-    lines = [l.split("\t")[:-1] for l in cap.read_text().splitlines()]
+    lines = [l.split("\t")[:-1] for l in cap.read_text().splitlines() if l.strip()]
     foo = [l for l in lines if l[0] == "FOO"]
     gs = [l for l in lines if l[0] == "GS" and any(a.startswith("-sDEVICE=") for a in l)]
     if not foo or not gs:
