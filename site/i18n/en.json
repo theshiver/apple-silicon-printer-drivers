@@ -155,8 +155,8 @@
    "These printers have no free driver, so this package can't add them. Check your model's Downloads page on support.brother.com. If the printer supports AirPrint, connect it to your network and add it with Use: AirPrint."
   ],
   [
-   "My HP LaserJet 1018, 1020, P1005 or P1006 isn't supported.",
-   "These printers need HP's own software loaded every time they switch on, which this driver can't do. Picking a similar model doesn't work either: the job goes through, but nothing prints."
+   "Does my HP LaserJet 1018, 1020, P1005 or P1006 work?",
+   "Yes, since version 2.0.1. These printers lose their firmware when switched off, so the driver sends it again with the first job after power on. That job takes a few seconds longer. This driver is new, so if your model doesn't print, please open an issue on GitHub."
   ],
   [
    "Does the scanner on my all-in-one work?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Supported printer brands — Mac printer drivers for Apple Silicon",
- "brands_desc": "{n} printer models from {brands} brands supported by native arm64 Gutenprint, brlaser and SpliX drivers for macOS.",
+ "brands_desc": "{n} printer models from {brands} brands supported by native arm64 Gutenprint, brlaser, SpliX and foo2zjs drivers for macOS.",
  "brands_h1": "Supported brands",
  "brands_lead": "{n} models. Click a brand for the full model list.",
  "help_title": "Mac Printer Still Not Working After Installing? Troubleshooting",
@@ -250,7 +250,7 @@
   ],
   [
    "The job goes through but nothing prints, or only blank pages.",
-   "Check that the queue uses your exact model: a similar model's driver can send data the printer silently ignores. Some printers, such as the HP LaserJet 1018, 1020, P1005 and P1006, can't be supported at all because they need the maker's firmware sent on every power-up."
+   "Check that the queue uses your exact model: a similar model's driver can send data the printer silently ignores."
   ],
   [
    "Nothing here helped.",

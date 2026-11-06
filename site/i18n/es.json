@@ -155,8 +155,8 @@
    "Estas impresoras no tienen un driver gratis, así que este paquete no puede añadirlas. Mira la página de descargas de tu modelo en support.brother.com. Si la impresora es compatible con AirPrint, conéctala a tu red y añádela con Usar: AirPrint."
   ],
   [
-   "Mi HP LaserJet 1018, 1020, P1005 o P1006 no es compatible.",
-   "Estas impresoras necesitan que el software de HP se cargue cada vez que se encienden, y este driver no puede hacerlo. Elegir un modelo parecido tampoco sirve: el trabajo se envía, pero no se imprime nada."
+   "¿Funciona mi HP LaserJet 1018, 1020, P1005 o P1006?",
+   "Sí, desde la versión 2.0.1. Estas impresoras pierden su firmware al apagarse, así que el driver lo envía de nuevo con el primer trabajo tras encenderlas. Ese trabajo tarda unos segundos más. Este driver es nuevo: si tu modelo no imprime, abre una incidencia en GitHub."
   ],
   [
    "¿Funciona el escáner de mi multifunción?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Marcas de impresora compatibles: drivers para Mac con Apple Silicon",
- "brands_desc": "{n} modelos de impresora de {brands} marcas, compatibles con los drivers nativos arm64 de Gutenprint, brlaser y SpliX para macOS.",
+ "brands_desc": "{n} modelos de impresora de {brands} marcas, compatibles con los drivers nativos arm64 de Gutenprint, brlaser, SpliX y foo2zjs para macOS.",
  "brands_h1": "Marcas compatibles",
  "brands_lead": "{n} modelos. Haz clic en una marca para ver la lista completa de modelos.",
  "help_title": "¿Tu impresora sigue sin ir en el Mac tras instalar? Soluciones",
@@ -250,7 +250,7 @@
   ],
   [
    "El trabajo se envía pero no se imprime nada, o salen páginas en blanco.",
-   "Comprueba que la cola use exactamente tu modelo: el driver de un modelo parecido puede enviar datos que la impresora ignora sin avisar. Algunas impresoras, como la HP LaserJet 1018, 1020, P1005 y P1006, no pueden ser compatibles porque necesitan que se les envíe el firmware del fabricante en cada encendido."
+   "Comprueba que la cola use exactamente tu modelo: el driver de un modelo parecido puede enviar datos que la impresora ignora sin avisar."
   ],
   [
    "Nada de esto me ha servido.",

@@ -2,7 +2,7 @@
 
 **Your printer isn't broken. macOS just stopped supporting it.**
 
-Free drivers that bring 3,670 Canon, Epson, HP, Brother, Samsung and other printers back to life on Apple Silicon Macs, and let you print to them from your iPhone or iPad.
+Free drivers that bring 3,757 Canon, Epson, HP, Brother, Samsung and other printers back to life on Apple Silicon Macs, and let you print to them from your iPhone or iPad.
 
 **[⬇ Download the free driver](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)** · [Website](https://macprinterdrivers.com/) · [Is my printer supported?](https://macprinterdrivers.com/#search)
 
@@ -36,7 +36,7 @@ Canon (PIXMA, BJC) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, Lase
 
 **[Search your model](https://macprinterdrivers.com/#search)** or see the [full list](https://macprinterdrivers.com/supported-printers.txt).
 
-Not covered: scanners on all-in-ones, Brother DCP-T and MFC-T ink tanks, HP LaserJet 1018, 1020, P1005 and P1006, and dye-sublimation photo printers. Newer printers with AirPrint don't need a driver.
+Not covered: scanners on all-in-ones, Brother DCP-T and MFC-T ink tanks, and dye-sublimation photo printers. Newer printers with AirPrint don't need a driver.
 
 ## Need help?
 
@@ -64,6 +64,6 @@ This started as a fix for one Canon PIXMA MP250 on a MacBook Air. It's free and 
 
 ## License
 
-Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. SpliX: GPL-2.0, statically linked with jbigkit (GPL-2.0-or-later) (`pkgroot/Library/Printers/Gutenprint/share/splix/COPYING`); both source archives are shipped in the same directory. Scripts, installer and site: MIT (`LICENSE`).
+Gutenprint: GPL-2.0 (`LICENSE-gutenprint`). brlaser: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/brlaser/COPYING`); its corresponding source archive is shipped in the same directory. SpliX: GPL-2.0, statically linked with jbigkit (GPL-2.0-or-later) (`pkgroot/Library/Printers/Gutenprint/share/splix/COPYING`); both source archives are shipped in the same directory. foo2zjs: GPL-2.0-or-later (`pkgroot/Library/Printers/Gutenprint/share/foo2zjs/COPYING`); its corresponding source archive is shipped in the same directory. The HP firmware in `share/foo2zjs/firmware` belongs to HP and is not covered by these licenses. Scripts, installer and site: MIT (`LICENSE`).
 
 Made by [Can Çetin](https://cancetin.com/).

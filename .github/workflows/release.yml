@@ -33,11 +33,15 @@ jobs:
       - name: Build SpliX (arm64) from source
         run: build/build-splix.sh
 
-      - name: Test printer setup and Brother / Samsung filter chains
+      - name: Build foo2zjs family (arm64) from source
+        run: build/build-foo2.sh
+
+      - name: Test printer setup and Brother / Samsung / foo2zjs filter chains
         run: |
           python3 -m unittest discover -s tests -v
           build/test-brlaser.sh
           build/test-splix.sh
+          build/test-foo2.sh
 
       - name: Smoke test — generated PPD must pass through the real filter chain
         run: |

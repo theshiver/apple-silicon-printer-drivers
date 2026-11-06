@@ -1,4 +1,4 @@
-# Mac Printer Drivers for Apple Silicon: 3670 supported printer models (version 2.0.0)
+# Mac Printer Drivers for Apple Silicon: 3757 supported printer models (version 2.0.1)
 # Every model below works on Apple Silicon Macs with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -32,6 +32,7 @@ Brother DCP-7080 | brlaser-dcp-7080 | brlaser | https://macprinterdrivers.com/br
 Brother DCP-7080D | brlaser-dcp-7080d | brlaser | https://macprinterdrivers.com/brother/dcp-7080d/
 Brother DCP-8045D | brother-dcp-8045d | Gutenprint | https://macprinterdrivers.com/brother/dcp-8045d/
 Brother DCP-8065DN | brlaser-dcp-8065dn | brlaser | https://macprinterdrivers.com/brother/dcp-8065dn/
+Brother DCP-8080DN | brother-dcp-8080dn | Gutenprint | https://macprinterdrivers.com/brother/dcp-8080dn/
 Brother DCP-B7500D series | brlaser-dcp-b7500d | brlaser | https://macprinterdrivers.com/brother/dcp-b7500d-series/
 Brother DCP-L2500D series | brlaser-dcp-l2500d | brlaser | https://macprinterdrivers.com/brother/dcp-l2500d-series/
 Brother DCP-L2510D series | brlaser-dcp-l2510d | brlaser | https://macprinterdrivers.com/brother/dcp-l2510d-series/
@@ -1420,12 +1421,16 @@ DEC 1800 | dec-1800 | Gutenprint | https://macprinterdrivers.com/dec/1800/
 DEC LN17 | dec-ln17 | Gutenprint | https://macprinterdrivers.com/dec/ln17/
 Dell 1100 | splix-dell-1100 | SpliX | https://macprinterdrivers.com/dell/1100/
 Dell 1110 | splix-dell-1110 | SpliX | https://macprinterdrivers.com/dell/1110/
+Dell 1355 | foo2-dell-1355 | foo2zjs | https://macprinterdrivers.com/dell/1355/
 Dell 3000cn | dell-3000cn | Gutenprint | https://macprinterdrivers.com/dell/3000cn/
 Dell 3100cn | dell-3100cn | Gutenprint | https://macprinterdrivers.com/dell/3100cn/
+Dell C1765 | foo2-dell-c1765 | foo2zjs | https://macprinterdrivers.com/dell/c1765/
 Dai Nippon Printing SL10 | dnp-sl10 | Gutenprint | https://macprinterdrivers.com/dnp/nippon-printing-sl10/
 Dai Nippon Printing SL20 | dnp-sl20 | Gutenprint | https://macprinterdrivers.com/dnp/nippon-printing-sl20/
 Epson ActionLaser 1100 | epson-actl_1100 | Gutenprint | https://macprinterdrivers.com/epson/actionlaser-1100/
 Epson ActionLaser II | epson-actl_ii | Gutenprint | https://macprinterdrivers.com/epson/actionlaser-ii/
+Epson AcuLaser CX17NF | foo2-epson-aculaser-cx17nf | foo2zjs | https://macprinterdrivers.com/epson/aculaser-cx17nf/
+Epson AcuLaser M1400 | foo2-epson-aculaser-m1400 | foo2zjs | https://macprinterdrivers.com/epson/aculaser-m1400/
 Epson AL-C2000 | epson-acl_c2000 | Gutenprint | https://macprinterdrivers.com/epson/al-c2000/
 Epson AL-C2000 PS3 | epson-acl_c2000ps | Gutenprint | https://macprinterdrivers.com/epson/al-c2000-ps3/
 Epson AL-C8500 | epson-acl_c8500 | Gutenprint | https://macprinterdrivers.com/epson/al-c8500/
@@ -2046,6 +2051,10 @@ Epson WorkForce 633 | escp2-wf633 | Gutenprint | https://macprinterdrivers.com/e
 Epson WorkForce 635 | escp2-wf636 | Gutenprint | https://macprinterdrivers.com/epson/workforce-635/
 Epson WorkForce 645 | escp2-wf645 | Gutenprint | https://macprinterdrivers.com/epson/workforce-645/
 Epson XP-15000 Series | escp2-xp15000 | Gutenprint | https://macprinterdrivers.com/epson/xp-15000-series/
+Fuji Xerox DocuPrint CM205 | foo2-fuji-xerox-docuprint-cm205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-cm205/
+Fuji Xerox DocuPrint CM215 | foo2-fuji-xerox-docuprint-cm215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-cm215/
+Fuji Xerox DocuPrint M215 | foo2-fuji-xerox-docuprint-m215 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-m215/
+Fuji Xerox DocuPrint P205 | foo2-fuji-xerox-docuprint-p205 | foo2zjs | https://macprinterdrivers.com/fuji-xerox/xerox-docuprint-p205/
 Fujifilm DX100 | escp2-fujifilm-dx100 | Gutenprint | https://macprinterdrivers.com/fujifilm/dx100/
 Fujifilm FinePix-NX-500 | fujifilm-nx500 | Gutenprint | https://macprinterdrivers.com/fujifilm/finepix-nx-500/
 Fujifilm Printpix-CX-400 | fujifilm-cx400 | Gutenprint | https://macprinterdrivers.com/fujifilm/printpix-cx-400/
@@ -2205,7 +2214,10 @@ HP Business Inkjet 2250TN | hp-bij_2250tn | Gutenprint | https://macprinterdrive
 HP Business Inkjet 2280 | hp-bij_2280 | Gutenprint | https://macprinterdrivers.com/hp/business-inkjet-2280/
 HP Color Inkjet Printer CP1160 | hp-cij_cp1160 | Gutenprint | https://macprinterdrivers.com/hp/color-inkjet-printer-cp1160/
 HP Color Inkjet Printer CP1700 | hp-cij_cp1700 | Gutenprint | https://macprinterdrivers.com/hp/color-inkjet-printer-cp1700/
+HP Color LaserJet 1500 | foo2-hp-color-laserjet-1500 | foo2zjs | https://macprinterdrivers.com/hp/color-laserjet-1500/
+HP Color LaserJet 1600 | foo2-hp-color-laserjet-1600 | foo2zjs | https://macprinterdrivers.com/hp/color-laserjet-1600/
 HP Color LaserJet 2500 | hp-clj_2500 | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-2500/
+HP Color LaserJet 2600n | foo2-hp-color-laserjet-2600n | foo2zjs | https://macprinterdrivers.com/hp/color-laserjet-2600n/
 HP Color LaserJet 3000 | hp-clj_3000 | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-3000/
 HP Color LaserJet 3000dn | hp-clj_3000dn | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-3000dn/
 HP Color LaserJet 3000dtn | hp-clj_3000dtn | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-3000dtn/
@@ -2266,6 +2278,7 @@ HP Color LaserJet CM6030 MFP | hp-clj_cm6030_mfp | Gutenprint | https://macprint
 HP Color LaserJet CM6040 MFP | hp-clj_cm6040_mfp | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cm6040-mfp/
 HP Color LaserJet CM6040f MFP | hp-clj_cm6040f_mfp | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cm6040f-mfp/
 HP Color LaserJet CM6049f MFP | hp-clj_cm6049f_mfp | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cm6049f-mfp/
+HP Color LaserJet CP1215 | foo2-hp-color-laserjet-cp1215 | foo2zjs | https://macprinterdrivers.com/hp/color-laserjet-cp1215/
 HP Color LaserJet CP1514n | hp-clj_cp1514n | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cp1514n/
 HP Color LaserJet CP1515n | hp-clj_cp1515n | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cp1515n/
 HP Color LaserJet CP1518ni | hp-clj_cp1518ni | Gutenprint | https://macprinterdrivers.com/hp/color-laserjet-cp1518ni/
@@ -2401,10 +2414,16 @@ HP DeskJet 995C | hp-dj_995c | Gutenprint | https://macprinterdrivers.com/hp/des
 HP e-printer e20 | hp-e-printer_e20 | Gutenprint | https://macprinterdrivers.com/hp/e-printer-e20/
 HP Laser 10x Series | splix-hp-laser-10x | SpliX | https://macprinterdrivers.com/hp/laser-10x-series/
 HP Laser MFP 13x Series | splix-hp-laser-mfp-13x | SpliX | https://macprinterdrivers.com/hp/laser-mfp-13x-series/
+HP LaserJet 1000 | foo2-hp-laserjet-1000 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1000/
+HP LaserJet 1005 | foo2-hp-laserjet-1005 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1005/
 HP LaserJet 1010 | hp-lj_1010 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1010/
 HP LaserJet 1012 | hp-lj_1012 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1012/
 HP LaserJet 1015 | hp-lj_1015 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1015/
+HP LaserJet 1018 | foo2-hp-laserjet-1018 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1018/
+HP LaserJet 1020 | foo2-hp-laserjet-1020 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1020/
 HP LaserJet 1022 | hp-lj_1022 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1022/
+HP LaserJet 1022n | foo2-hp-laserjet-1022n | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1022n/
+HP LaserJet 1022nw | foo2-hp-laserjet-1022nw | foo2zjs | https://macprinterdrivers.com/hp/laserjet-1022nw/
 HP LaserJet 1100 | hp-lj_1100 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1100/
 HP LaserJet 1100A | hp-lj_1100a | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1100a/
 HP LaserJet 1150 | hp-lj_1150 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-1150/
@@ -2485,15 +2504,32 @@ HP LaserJet 9040 | hp-lj_9040 | Gutenprint | https://macprinterdrivers.com/hp/la
 HP LaserJet 9040 MFP | hp-lj_9040_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-9040-mfp/
 HP LaserJet 9050 | hp-lj_9050 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-9050/
 HP LaserJet 9050 MFP | hp-lj_9050_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-9050-mfp/
+HP LaserJet M1005 MFP | foo2-hp-laserjet-m1005-mfp | foo2zjs | https://macprinterdrivers.com/hp/laserjet-m1005-mfp/
+HP LaserJet M1120 MFP | foo2-hp-laserjet-m1120-mfp | foo2zjs | https://macprinterdrivers.com/hp/laserjet-m1120-mfp/
+HP LaserJet M1319 MFP | foo2-hp-laserjet-m1319-mfp | foo2zjs | https://macprinterdrivers.com/hp/laserjet-m1319-mfp/
 HP LaserJet M3027 MFP | hp-lj_m3027_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-m3027-mfp/
 HP LaserJet M3035 MFP | hp-lj_m3035_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-m3035-mfp/
 HP LaserJet M4345 MFP | hp-lj_m4345_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-m4345-mfp/
 HP LaserJet M5025 MFP | hp-lj_m5025_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-m5025-mfp/
 HP LaserJet M5035 MFP | hp-lj_m5035_mfp | Gutenprint | https://macprinterdrivers.com/hp/laserjet-m5035-mfp/
+HP LaserJet P1005 | foo2-hp-laserjet-p1005 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1005/
+HP LaserJet P1006 | foo2-hp-laserjet-p1006 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1006/
+HP LaserJet P1007 | foo2-hp-laserjet-p1007 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1007/
+HP LaserJet P1008 | foo2-hp-laserjet-p1008 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1008/
+HP LaserJet P1505 | foo2-hp-laserjet-p1505 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1505/
+HP LaserJet P1505n | foo2-hp-laserjet-p1505n | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p1505n/
 HP LaserJet P2010 | hp-lj_p2010 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2010/
+HP LaserJet P2014 | foo2-hp-laserjet-p2014 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2014/
+HP LaserJet P2014n | foo2-hp-laserjet-p2014n | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2014n/
 HP LaserJet P2015 | hp-lj_p2015 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2015/
+HP LaserJet P2035 | foo2-hp-laserjet-p2035 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2035/
+HP LaserJet P2035n | foo2-hp-laserjet-p2035n | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2035n/
 HP LaserJet P3004 | hp-lj_p3004 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p3004/
 HP LaserJet P3005 | hp-lj_p3005 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p3005/
+HP LaserJet Pro CP1025nw | foo2-hp-laserjet-pro-cp1025nw | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-cp1025nw/
+HP LaserJet Pro M1132s MFP | foo2-hp-laserjet-pro-m1132s-mfp | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-m1132s-mfp/
+HP LaserJet Pro M12a | foo2-hp-laserjet-pro-m12a | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-m12a/
+HP LaserJet Pro M12w | foo2-hp-laserjet-pro-m12w | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-m12w/
 HP LaserJet Pro M201dw | hp-lj_pro_m201dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m201dw/
 HP LaserJet Pro M201n | hp-lj_pro_m201n | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m201n/
 HP LaserJet Pro M202dw | hp-lj_pro_m202dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m202dw/
@@ -2502,6 +2538,11 @@ HP LaserJet Pro MFP M225dn | hp-lj_pro_m225dn | Gutenprint | https://macprinterd
 HP LaserJet Pro MFP M225dw | hp-lj_pro_m225dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m225dw/
 HP LaserJet Pro MFP M226dn | hp-lj_pro_m226dn | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m226dn/
 HP LaserJet Pro MFP M226dw | hp-lj_pro_m226dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m226dw/
+HP LaserJet Pro P1102 | foo2-hp-laserjet-pro-p1102 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-p1102/
+HP LaserJet Pro P1102w | foo2-hp-laserjet-pro-p1102w | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-p1102w/
+HP LaserJet Pro P1566 | foo2-hp-laserjet-pro-p1566 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-p1566/
+HP LaserJet Pro P1606dn | foo2-hp-laserjet-pro-p1606dn | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-p1606dn/
+HP LaserJet Professional M1212nf MFP | foo2-hp-laserjet-professional-m1212nf-mfp | foo2zjs | https://macprinterdrivers.com/hp/laserjet-professional-m1212nf-mfp/
 HP Mopier 240 | hp-mopier_240 | Gutenprint | https://macprinterdrivers.com/hp/mopier-240/
 HP Mopier 320 | hp-mopier_320 | Gutenprint | https://macprinterdrivers.com/hp/mopier-320/
 HP OfficeJet | hp-oj | Gutenprint | https://macprinterdrivers.com/hp/officejet/
@@ -2712,6 +2753,23 @@ Kodak Photo-Printer | kodak-photo-printer | Gutenprint | https://macprinterdrive
 Kodak Photo-Printer-500 | kodak-photo-printer-500 | Gutenprint | https://macprinterdrivers.com/kodak/photo-printer-500/
 Kodak Printer-Dock-Plus | kodak-dock-plus | Gutenprint | https://macprinterdrivers.com/kodak/printer-dock-plus/
 Kodak Printer-Dock-Plus-S3 | kodak-dock-plus-s3 | Gutenprint | https://macprinterdrivers.com/kodak/printer-dock-plus-s3/
+Konica Minolta magicolor 1600W | foo2-konica-minolta-magicolor-1600w | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1600w/
+Konica Minolta magicolor 1680MF | foo2-konica-minolta-magicolor-1680mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1680mf/
+Konica Minolta magicolor 1690MF | foo2-konica-minolta-magicolor-1690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-1690mf/
+Konica Minolta magicolor 2430 DL | foo2-konica-minolta-magicolor-2430-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2430-dl/
+Konica Minolta magicolor 2480 MF | foo2-konica-minolta-magicolor-2480-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2480-mf/
+Konica Minolta magicolor 2490 MF | foo2-konica-minolta-magicolor-2490-mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2490-mf/
+Konica Minolta magicolor 2530 DL | foo2-konica-minolta-magicolor-2530-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-2530-dl/
+Konica Minolta magicolor 4690MF | foo2-konica-minolta-magicolor-4690mf | foo2zjs | https://macprinterdrivers.com/konica-minolta/minolta-magicolor-4690mf/
+Minolta Color PageWorks/Pro L | foo2-minolta-color-pageworks-pro-l | foo2zjs | https://macprinterdrivers.com/konica-minolta/color-pageworks-pro-l/
+Minolta magicolor 2200 DL | foo2-minolta-magicolor-2200-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2200-dl/
+Minolta magicolor 2300 DL | foo2-minolta-magicolor-2300-dl | foo2zjs | https://macprinterdrivers.com/konica-minolta/magicolor-2300-dl/
+Minolta PagePro 1100 | minolta-pp_1100 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-1100/
+Minolta PagePro 6 | minolta-pp_6 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6/
+Minolta PagePro 6e | minolta-pp_6e | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6e/
+Minolta PagePro 6ex | minolta-pp_6ex | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-6ex/
+Minolta PagePro 8 | minolta-pp_8 | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-8/
+Minolta PagePro 8L | minolta-pp_8l | Gutenprint | https://macprinterdrivers.com/konica-minolta/pagepro-8l/
 Kyocera Ci-1100 | kyocera-ci-1100 | Gutenprint | https://macprinterdrivers.com/kyocera/ci-1100/
 Kyocera CS-1815 | kyocera-cs-1815 | Gutenprint | https://macprinterdrivers.com/kyocera/cs-1815/
 Kyocera CS-250ci | kyocera-cs-250ci | Gutenprint | https://macprinterdrivers.com/kyocera/cs-250ci/
@@ -2798,10 +2856,12 @@ Kyocera FS-C8100DN | kyocera-fs-c8100dn | Gutenprint | https://macprinterdrivers
 Kyocera FS-C8100DN+ | kyocera-fs-c8100dnplus | Gutenprint | https://macprinterdrivers.com/kyocera/fs-c8100dn-plus/
 Kyocera KM-1510 | kyocera-km-1510 | Gutenprint | https://macprinterdrivers.com/kyocera/km-1510/
 Kyocera KM-1530 | kyocera-km-1530 | Gutenprint | https://macprinterdrivers.com/kyocera/km-1530/
+Kyocera KM-1635 | foo2-kyocera-km-1635 | foo2zjs | https://macprinterdrivers.com/kyocera/km-1635/
 Kyocera KM-1810 | kyocera-km-1810 | Gutenprint | https://macprinterdrivers.com/kyocera/km-1810/
 Kyocera KM-1815 | kyocera-km-1815 | Gutenprint | https://macprinterdrivers.com/kyocera/km-1815/
 Kyocera KM-1820 | kyocera-km-1820 | Gutenprint | https://macprinterdrivers.com/kyocera/km-1820/
 Kyocera KM-2030 | kyocera-km-2030 | Gutenprint | https://macprinterdrivers.com/kyocera/km-2030/
+Kyocera KM-2035 | foo2-kyocera-km-2035 | foo2zjs | https://macprinterdrivers.com/kyocera/km-2035/
 Kyocera KM-2530 | kyocera-km-2530 | Gutenprint | https://macprinterdrivers.com/kyocera/km-2530/
 Kyocera KM-3050 | kyocera-km-3050 | Gutenprint | https://macprinterdrivers.com/kyocera/km-3050/
 Kyocera KM-3530 | kyocera-km-3530 | Gutenprint | https://macprinterdrivers.com/kyocera/km-3530/
@@ -2954,6 +3014,7 @@ Lanier SG3110DN | lanier-sg3110dn | Gutenprint | https://macprinterdrivers.com/l
 Lanier SG3110DNw | lanier-sg3110dnw | Gutenprint | https://macprinterdrivers.com/lanier/sg3110dnw/
 Lanier SG3110SFNw | lanier-sg3110sfnw | Gutenprint | https://macprinterdrivers.com/lanier/sg3110sfnw/
 Lexmark 4076 | lexmark-4076 | Gutenprint | https://macprinterdrivers.com/lexmark/4076/
+Lexmark C500 | foo2-lexmark-c500 | foo2zjs | https://macprinterdrivers.com/lexmark/c500/
 Lexmark Optra E | lexmark-optra_e | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e/
 Lexmark Optra E+ | lexmark-optra_eplus | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e-plus/
 Lexmark Optra E220 | lexmark-optra_e220 | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e220/
@@ -2966,12 +3027,6 @@ Lexmark Z42 | lexmark-z42 | Gutenprint | https://macprinterdrivers.com/lexmark/z
 Lexmark Z43 | lexmark-z43 | Gutenprint | https://macprinterdrivers.com/lexmark/z43/
 Lexmark Z52 | lexmark-z52 | Gutenprint | https://macprinterdrivers.com/lexmark/z52/
 Lexmark Z53 | lexmark-z53 | Gutenprint | https://macprinterdrivers.com/lexmark/z53/
-Minolta PagePro 1100 | minolta-pp_1100 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-1100/
-Minolta PagePro 6 | minolta-pp_6 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6/
-Minolta PagePro 6e | minolta-pp_6e | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6e/
-Minolta PagePro 6ex | minolta-pp_6ex | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-6ex/
-Minolta PagePro 8 | minolta-pp_8 | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-8/
-Minolta PagePro 8L | minolta-pp_8l | Gutenprint | https://macprinterdrivers.com/minolta/pagepro-8l/
 NEC SuperScript 1260 | nec-ssc_1260 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1260/
 NEC SuperScript 1400 | nec-ssc_1400 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1400/
 NEC SuperScript 1800 | nec-ssc_1800 | Gutenprint | https://macprinterdrivers.com/nec/superscript-1800/
@@ -3108,9 +3163,25 @@ NRG SG3110SFNw | nrg-sg3110sfnw | Gutenprint | https://macprinterdrivers.com/nrg
 Oki B401d | oki-b401d | Gutenprint | https://macprinterdrivers.com/oki/b401d/
 Oki B430 | oki-b430 | Gutenprint | https://macprinterdrivers.com/oki/b430/
 Oki B4350 | oki-b4350 | Gutenprint | https://macprinterdrivers.com/oki/b4350/
+Oki C110 | foo2-oki-c110 | foo2zjs | https://macprinterdrivers.com/oki/c110/
+Oki C301dn | foo2-oki-c301dn | foo2zjs | https://macprinterdrivers.com/oki/c301dn/
+Oki C3100 | foo2-oki-c3100 | foo2zjs | https://macprinterdrivers.com/oki/c3100/
+Oki C310dn | foo2-oki-c310dn | foo2zjs | https://macprinterdrivers.com/oki/c310dn/
+Oki C3200 | foo2-oki-c3200 | foo2zjs | https://macprinterdrivers.com/oki/c3200/
+Oki C3300 | foo2-oki-c3300 | foo2zjs | https://macprinterdrivers.com/oki/c3300/
+Oki C3400 | foo2-oki-c3400 | foo2zjs | https://macprinterdrivers.com/oki/c3400/
+Oki C3530 MFP | foo2-oki-c3530-mfp | foo2zjs | https://macprinterdrivers.com/oki/c3530-mfp/
+Oki C5100 | foo2-oki-c5100 | foo2zjs | https://macprinterdrivers.com/oki/c5100/
+Oki C511dn | foo2-oki-c511dn | foo2zjs | https://macprinterdrivers.com/oki/c511dn/
+Oki C5200 | foo2-oki-c5200 | foo2zjs | https://macprinterdrivers.com/oki/c5200/
 Oki C5300 | oki-c5300 | Gutenprint | https://macprinterdrivers.com/oki/c5300/
 Oki C5400 | oki-c5400 | Gutenprint | https://macprinterdrivers.com/oki/c5400/
+Oki C5500 | foo2-oki-c5500 | foo2zjs | https://macprinterdrivers.com/oki/c5500/
+Oki C5600 | foo2-oki-c5600 | foo2zjs | https://macprinterdrivers.com/oki/c5600/
+Oki C5650 | foo2-oki-c5650 | foo2zjs | https://macprinterdrivers.com/oki/c5650/
+Oki C5800 | foo2-oki-c5800 | foo2zjs | https://macprinterdrivers.com/oki/c5800/
 Oki C7300 | oki-c7300 | Gutenprint | https://macprinterdrivers.com/oki/c7300/
+Oki C810 | foo2-oki-c810 | foo2zjs | https://macprinterdrivers.com/oki/c810/
 Oki C8800 | oki-c8800 | Gutenprint | https://macprinterdrivers.com/oki/c8800/
 Oki C9200 | oki-c9200 | Gutenprint | https://macprinterdrivers.com/oki/c9200/
 Oki C9400 | oki-c9400 | Gutenprint | https://macprinterdrivers.com/oki/c9400/
@@ -3129,6 +3200,7 @@ Oki OL610e/S | okidata-ol610e_s | Gutenprint | https://macprinterdrivers.com/oki
 Oki OL800 | okidata-ol800 | Gutenprint | https://macprinterdrivers.com/oki/ol800/
 Oki OL810ex | okidata-ol810ex | Gutenprint | https://macprinterdrivers.com/oki/ol810ex/
 Oki Super 6e | okidata-super_6e | Gutenprint | https://macprinterdrivers.com/oki/super-6e/
+Olivetti d-Color P160W | foo2-olivetti-d-color-p160w | foo2zjs | https://macprinterdrivers.com/olivetti/d-color-p160w/
 Olivetti JP350S | olivetti-jp350s | Gutenprint | https://macprinterdrivers.com/olivetti/jp350s/
 Olivetti PG 306 | olivetti-pg_306 | Gutenprint | https://macprinterdrivers.com/olivetti/pg-306/
 Olympus P-10 | olympus-p10 | Gutenprint | https://macprinterdrivers.com/olympus/p-10/
@@ -3286,6 +3358,8 @@ Ricoh Pro C7100S | ricoh-pro_c7100s | Gutenprint | https://macprinterdrivers.com
 Ricoh Pro C7110 | ricoh-pro_c7110 | Gutenprint | https://macprinterdrivers.com/ricoh/pro-c7110/
 Ricoh Pro C7110S | ricoh-pro_c7110s | Gutenprint | https://macprinterdrivers.com/ricoh/pro-c7110s/
 Ricoh SG3120BSFNw | ricoh-sg3120bsfnw | Gutenprint | https://macprinterdrivers.com/ricoh/sg3120bsfnw/
+Ricoh SP 112 | foo2-ricoh-sp-112 | foo2zjs | https://macprinterdrivers.com/ricoh/sp-112/
+Ricoh SP 201Nw | foo2-ricoh-sp-201nw | foo2zjs | https://macprinterdrivers.com/ricoh/sp-201nw/
 Ricoh SP C250DN | ricoh-sp_c250dn | Gutenprint | https://macprinterdrivers.com/ricoh/sp-c250dn/
 Ricoh SP C250SF | ricoh-sp_c250sf | Gutenprint | https://macprinterdrivers.com/ricoh/sp-c250sf/
 Ricoh SP C252DN | ricoh-sp_c252dn | Gutenprint | https://macprinterdrivers.com/ricoh/sp-c252dn/
@@ -3297,16 +3371,22 @@ Samsung CLP-300 | splix-samsung-clp-300 | SpliX | https://macprinterdrivers.com/
 Samsung CLP-310 | splix-samsung-clp-310 | SpliX | https://macprinterdrivers.com/samsung/clp-310/
 Samsung CLP-310N | splix-samsung-clp-310n | SpliX | https://macprinterdrivers.com/samsung/clp-310n/
 Samsung CLP-315 | splix-samsung-clp-315 | SpliX | https://macprinterdrivers.com/samsung/clp-315/
+Samsung CLP-325 | foo2-samsung-clp-325 | foo2zjs | https://macprinterdrivers.com/samsung/clp-325/
+Samsung CLP-365 | foo2-samsung-clp-365 | foo2zjs | https://macprinterdrivers.com/samsung/clp-365/
 Samsung CLP-500 | splix-samsung-clp-500 | SpliX | https://macprinterdrivers.com/samsung/clp-500/
 Samsung CLP-510 | splix-samsung-clp-510 | SpliX | https://macprinterdrivers.com/samsung/clp-510/
 Samsung CLP-550 | splix-samsung-clp-550 | SpliX | https://macprinterdrivers.com/samsung/clp-550/
 Samsung CLP-600 | splix-samsung-clp-600 | SpliX | https://macprinterdrivers.com/samsung/clp-600/
+Samsung CLP-610 | foo2-samsung-clp-610 | foo2zjs | https://macprinterdrivers.com/samsung/clp-610/
 Samsung CLP-620 | samsung-clp-620 | Gutenprint | https://macprinterdrivers.com/samsung/clp-620/
 Samsung CLP-660N | samsung-clp-660n | Gutenprint | https://macprinterdrivers.com/samsung/clp-660n/
 Samsung CLP-660ND | samsung-clp-660nd | Gutenprint | https://macprinterdrivers.com/samsung/clp-660nd/
+Samsung CLX-2160 | foo2-samsung-clx-2160 | foo2zjs | https://macprinterdrivers.com/samsung/clx-2160/
 Samsung CLX-216X | splix-samsung-clx-216x | SpliX | https://macprinterdrivers.com/samsung/clx-216x/
 Samsung CLX-2170 | splix-samsung-clx-2170 | SpliX | https://macprinterdrivers.com/samsung/clx-2170/
 Samsung CLX-3160 | splix-samsung-clx-3160 | SpliX | https://macprinterdrivers.com/samsung/clx-3160/
+Samsung CLX-3175 | foo2-samsung-clx-3175 | foo2zjs | https://macprinterdrivers.com/samsung/clx-3175/
+Samsung CLX-3185 | foo2-samsung-clx-3185 | foo2zjs | https://macprinterdrivers.com/samsung/clx-3185/
 Samsung M2020 Series | splix-samsung-m2020 | SpliX | https://macprinterdrivers.com/samsung/m2020-series/
 Samsung M2070 Series | splix-samsung-m2070 | SpliX | https://macprinterdrivers.com/samsung/m2070-series/
 Samsung M262x 282x Series | splix-samsung-m262x-282x | SpliX | https://macprinterdrivers.com/samsung/m262x-282x-series/
@@ -3324,6 +3404,7 @@ Samsung ML-1650 | samsung-ml-1650 | Gutenprint | https://macprinterdrivers.com/s
 Samsung ML-1651N | samsung-ml-1651n | Gutenprint | https://macprinterdrivers.com/samsung/ml-1651n/
 Samsung ML-1660 | splix-samsung-ml-1660 | SpliX | https://macprinterdrivers.com/samsung/ml-1660/
 Samsung ML-1670 | splix-samsung-ml-1670 | SpliX | https://macprinterdrivers.com/samsung/ml-1670/
+Samsung ML-1675 | foo2-samsung-ml-1675 | foo2zjs | https://macprinterdrivers.com/samsung/ml-1675/
 Samsung ML-1710 | splix-samsung-ml-1710 | SpliX | https://macprinterdrivers.com/samsung/ml-1710/
 Samsung ML-1740 | splix-samsung-ml-1740 | SpliX | https://macprinterdrivers.com/samsung/ml-1740/
 Samsung ML-1750 | samsung-ml-1750 | Gutenprint | https://macprinterdrivers.com/samsung/ml-1750/
@@ -3574,7 +3655,9 @@ Xerox DocuPrint P12 | xerox-dp_p12 | Gutenprint | https://macprinterdrivers.com/
 Xerox DocuPrint P1202 | xerox-dp_p1202 | Gutenprint | https://macprinterdrivers.com/xerox/docuprint-p1202/
 Xerox DocuPrint P8e | xerox-dp_p8e | Gutenprint | https://macprinterdrivers.com/xerox/docuprint-p8e/
 Xerox Phaser 2135 | xerox-phaser_2135 | Gutenprint | https://macprinterdrivers.com/xerox/phaser-2135/
+Xerox Phaser 3010 | foo2-xerox-phaser-3010 | foo2zjs | https://macprinterdrivers.com/xerox/phaser-3010/
 Xerox Phaser 3020 | splix-xerox-phaser-3020 | SpliX | https://macprinterdrivers.com/xerox/phaser-3020/
+Xerox Phaser 3040 | foo2-xerox-phaser-3040 | foo2zjs | https://macprinterdrivers.com/xerox/phaser-3040/
 Xerox Phaser 3052 | splix-xerox-phaser-3052 | SpliX | https://macprinterdrivers.com/xerox/phaser-3052/
 Xerox Phaser 3115 | splix-xerox-phaser-3115 | SpliX | https://macprinterdrivers.com/xerox/phaser-3115/
 Xerox Phaser 3116 | splix-xerox-phaser-3116 | SpliX | https://macprinterdrivers.com/xerox/phaser-3116/
@@ -3612,6 +3695,8 @@ Xerox Phaser 5500DX | xerox-phaser_5500dx | Gutenprint | https://macprinterdrive
 Xerox Phaser 5500N | xerox-phaser_5500n | Gutenprint | https://macprinterdrivers.com/xerox/phaser-5500n/
 Xerox Phaser 6100 | splix-xerox-phaser-6100 | SpliX | https://macprinterdrivers.com/xerox/phaser-6100/
 Xerox Phaser 6110 | splix-xerox-phaser-6110 | SpliX | https://macprinterdrivers.com/xerox/phaser-6110/
+Xerox Phaser 6115MFP | foo2-xerox-phaser-6115mfp | foo2zjs | https://macprinterdrivers.com/xerox/phaser-6115mfp/
+Xerox Phaser 6121MFP | foo2-xerox-phaser-6121mfp | foo2zjs | https://macprinterdrivers.com/xerox/phaser-6121mfp/
 Xerox Phaser 6130N | xerox-phaser_6130n | Gutenprint | https://macprinterdrivers.com/xerox/phaser-6130n/
 Xerox Phaser 6180DN | xerox-phaser_6180dn | Gutenprint | https://macprinterdrivers.com/xerox/phaser-6180dn/
 Xerox Phaser 6180MFP-D | xerox-phaser_6180mfp-d | Gutenprint | https://macprinterdrivers.com/xerox/phaser-6180mfp-d/
@@ -3665,9 +3750,11 @@ Xerox Phaser 8560DN | xerox-phaser_8560dn | Gutenprint | https://macprinterdrive
 Xerox Phaser 8560N | xerox-phaser_8560n | Gutenprint | https://macprinterdrivers.com/xerox/phaser-8560n/
 Xerox Phaser 8860 | xerox-phaser_8860 | Gutenprint | https://macprinterdrivers.com/xerox/phaser-8860/
 Xerox WorkCentre 3025 | splix-xerox-workcentre-3025 | SpliX | https://macprinterdrivers.com/xerox/workcentre-3025/
+Xerox WorkCentre 3045 | foo2-xerox-workcentre-3045 | foo2zjs | https://macprinterdrivers.com/xerox/workcentre-3045/
 Xerox WorkCentre 3119 | splix-xerox-workcentre-3119 | SpliX | https://macprinterdrivers.com/xerox/workcentre-3119/
 Xerox WorkCentre 3215 | splix-xerox-workcentre-3215 | SpliX | https://macprinterdrivers.com/xerox/workcentre-3215/
 Xerox WorkCentre 3225 | splix-xerox-workcentre-3225 | SpliX | https://macprinterdrivers.com/xerox/workcentre-3225/
+Xerox WorkCentre 6015 | foo2-xerox-workcentre-6015 | foo2zjs | https://macprinterdrivers.com/xerox/workcentre-6015/
 Xerox WorkCentre 7345 | xerox-workcentre_7345 | Gutenprint | https://macprinterdrivers.com/xerox/workcentre-7345/
 Xerox WorkCentre C2424 | xerox-workcentre_c2424 | Gutenprint | https://macprinterdrivers.com/xerox/workcentre-c2424/
 Xerox WorkCentre M118 | xerox-wc_m118 | Gutenprint | https://macprinterdrivers.com/xerox/workcentre-m118/

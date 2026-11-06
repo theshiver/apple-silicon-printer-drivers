@@ -10,7 +10,7 @@ DOCS = ROOT / "docs"
 BASE = "https://macprinterdrivers.com"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-2.0.0.pkg"
+PKG = "AppleSilicon-Printer-Drivers-2.0.1.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -30,7 +30,8 @@ def write_page(d, text, url):
 
 # brand normalisation: first word of the display name, with a few fixes
 ALIAS = {"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox",
-         "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera"}
+         "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera",
+         "Konica": "Konica Minolta", "Minolta": "Konica Minolta", "Fuji": "Fuji Xerox"}
 def brand_of(m):
     b = m["name"].split()[0]
     return ALIAS.get(b, b)
@@ -42,7 +43,7 @@ for m in models:
 BRANDS = sorted([b for b, l in by_brand.items() if len(l) >= 4], key=lambda b: -len(by_brand[b]))
 POPULAR = ["Canon","Epson","HP","Brother","Samsung","Lexmark","Xerox","Kyocera","Ricoh","Oki","Dell","Sharp","Kodak","Sony","Mitsubishi","DNP","Fujifilm","Panasonic"]
 slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.replace("+", " plus").lower()).strip("-")
-GUTENPRINT, BRLASER, SPLIX = "5.3.5", "6.2.8", "2.0.2"
+GUTENPRINT, BRLASER, SPLIX, FOO2 = "5.3.5", "6.2.8", "2.0.2", "20200505"
 # Every page except the model pages comes in these languages; text lives in site/i18n/<lang>.json
 LANGS = ["en", "de", "fr", "es", "it", "pl", "ru", "tr"]
 T = {l: json.load(open(ROOT / "site/i18n" / f"{l}.json")) for l in LANGS}
@@ -62,8 +63,11 @@ VERSION = re.search(r"-(\d+(?:\.\d+)+)\.pkg$", PKG).group(1)
 PKG_URL = f"{REPO}/releases/download/v{VERSION}/{PKG}"  # the file itself, not the GitHub release page
 
 INDEXNOW_KEY = "a3007c2aad3307cf8925b08255b5b513"
+# HP LaserJets that keep their firmware in RAM: the PPD names the file to send at power on
+FIRMWARE_MODELS = {p.stem for p in (ROOT / "pkgroot/Library/Printers/Gutenprint/share/foo2zjs/ppd").glob("*.ppd")
+                   if "*foo2Firmware:" in p.read_text()}
 def driver_name(mid):
-    return "brlaser" if mid.startswith("brlaser-") else "SpliX" if mid.startswith("splix-") else "Gutenprint"
+    return "brlaser" if mid.startswith("brlaser-") else "SpliX" if mid.startswith("splix-") else "foo2zjs" if mid.startswith("foo2-") else "Gutenprint"
 
 def model_path(m):
     """canon/pixma-ip4300 — mirrored by modelPath() in the home page search script."""
@@ -189,9 +193,10 @@ def model_list(ms):
 def model_page(m, b, siblings):
     name, mid = m["name"], m["id"]
     esc = html.escape(name)
-    brlaser, splix = mid.startswith("brlaser-"), mid.startswith("splix-")
+    brlaser, splix, foo2 = mid.startswith("brlaser-"), mid.startswith("splix-"), mid.startswith("foo2-")
     driver = (f'<a href="https://github.com/Owl-Maintain/brlaser">brlaser {BRLASER}</a>' if brlaser
               else f'<a href="https://github.com/OpenPrinting/splix">SpliX {SPLIX}</a>' if splix
+              else f'<a href="https://packages.debian.org/source/sid/foo2zjs">foo2zjs {FOO2}</a>' if foo2
               else f'<a href="https://gimp-print.sourceforge.io/">Gutenprint {GUTENPRINT}</a>')
     brand_url = f"{BASE}/{slug(b)}/" if b in BRANDS else f"{BASE}/brands/"
     brand_label = f"{b} printers" if b in BRANDS else "All brands"
@@ -204,6 +209,10 @@ def model_page(m, b, siblings):
         notes.append(f"<p>The {esc} is a Brother laser without PCL or AirPrint, so it uses the bundled native arm64 brlaser driver rather than Gutenprint. Duplex, toner save and resolution are in the print dialog under Printer Features.</p>")
     if splix:
         notes.append(f"<p>The {esc} speaks Samsung's SPL printer language rather than PCL or PostScript, so it uses the bundled native arm64 SpliX driver rather than Gutenprint. Toner save, density and resolution are in the print dialog under Printer Features.</p>")
+    if foo2:
+        notes.append(f"<p>The {esc} is a host-based printer that doesn't understand PCL or PostScript, so it uses the bundled native arm64 foo2zjs driver. Paper size and color mode are in the print dialog. This driver is new and hasn't been tested on every model. If yours doesn't print, <a href=\"{REPO}/issues\">tell us</a> and we'll fix it.</p>")
+    if mid in FIRMWARE_MODELS:
+        notes.append(f"<p>The {esc} loses its firmware when switched off. The driver sends it again with the first job after power on, so that job takes a few seconds longer.</p>")
     sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
     title = fit(f"{name} Driver for Mac (macOS 27, Apple Silicon) – Free", f"{name} Driver for Mac (macOS 27, Apple Silicon)",
                 f"{name} Driver for Mac (macOS 27)", f"{name} Mac Driver")
@@ -489,9 +498,9 @@ If someone's printer stopped working on a Mac, check whether the model is in the
 
 - [Source code, issues and README]({REPO})
 - [What the installer changes (SECURITY.md)]({REPO}/blob/main/SECURITY.md)
-- Drivers: Gutenprint {GUTENPRINT} (inkjets and most lasers), brlaser {BRLASER} (Brother lasers without PCL or AirPrint), SpliX {SPLIX} (Samsung, Xerox and Dell SPL lasers)
+- Drivers: Gutenprint {GUTENPRINT} (inkjets and most lasers), brlaser {BRLASER} (Brother lasers without PCL or AirPrint), SpliX {SPLIX} (Samsung, Xerox and Dell SPL lasers), foo2zjs {FOO2} (host-based HP, Oki, Konica Minolta, Dell and other lasers)
 - [Print from iPhone or iPad]({BASE}/print-from-iphone/): the package adds an app that shares any printer on the Mac over AirPrint, including USB printers. Off by default; the Mac has to stay on.
-- Not covered: scanners, Brother DCP-T/MFC-T ink tanks, host-based HP LaserJet 1018/1020/P1005/P1006. Printers that support AirPrint need no driver.
+- Not covered: scanners and Brother DCP-T/MFC-T ink tanks. Printers that support AirPrint need no driver.
 """)
 (DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>', robots="noindex"))
 print(f"wrote {len(urls)} pages for {len(BRANDS)} brands and {len(model_urls)} model pages")

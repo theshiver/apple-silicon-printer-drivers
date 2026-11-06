@@ -155,8 +155,8 @@
    "Für diese Drucker gibt es keinen freien Treiber, deshalb kann dieses Paket sie nicht hinzufügen. Sieh auf support.brother.com auf der Download-Seite deines Modells nach. Unterstützt der Drucker AirPrint, verbinde ihn mit deinem Netzwerk und füge ihn mit Verwenden: AirPrint hinzu."
   ],
   [
-   "Mein HP LaserJet 1018, 1020, P1005 oder P1006 wird nicht unterstützt.",
-   "Diese Drucker brauchen bei jedem Einschalten die eigene Software von HP, und das kann dieser Treiber nicht. Ein ähnliches Modell zu wählen hilft auch nicht: Der Auftrag geht durch, aber es wird nichts gedruckt."
+   "Funktioniert mein HP LaserJet 1018, 1020, P1005 oder P1006?",
+   "Ja, seit Version 2.0.1. Diese Drucker verlieren beim Ausschalten ihre Firmware, deshalb sendet der Treiber sie mit dem ersten Auftrag nach dem Einschalten erneut. Dieser Auftrag dauert einige Sekunden länger. Der Treiber ist neu: Wenn dein Modell nicht druckt, eröffne bitte ein Issue auf GitHub."
   ],
   [
    "Funktioniert der Scanner meines Multifunktionsgeräts?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Unterstützte Druckermarken: Mac-Druckertreiber für Apple Silicon",
- "brands_desc": "{n} Druckermodelle von {brands} Marken, unterstützt durch native arm64-Treiber (Gutenprint, brlaser und SpliX) für macOS.",
+ "brands_desc": "{n} Druckermodelle von {brands} Marken, unterstützt durch native arm64-Treiber (Gutenprint, brlaser, SpliX und foo2zjs) für macOS.",
  "brands_h1": "Unterstützte Marken",
  "brands_lead": "{n} Modelle. Klicke auf eine Marke für die ganze Modellliste.",
  "help_title": "Drucker am Mac druckt nach der Installation nicht? Hilfe",
@@ -250,7 +250,7 @@
   ],
   [
    "Der Auftrag geht durch, aber es wird nichts oder nur eine leere Seite gedruckt.",
-   "Prüfe, ob die Warteschlange genau dein Modell nutzt: Der Treiber eines ähnlichen Modells kann Daten senden, die der Drucker stillschweigend ignoriert. Manche Drucker, etwa der HP LaserJet 1018, 1020, P1005 und P1006, lassen sich gar nicht unterstützen, weil bei jedem Einschalten die Firmware des Herstellers gesendet werden muss."
+   "Prüfe, ob die Warteschlange genau dein Modell nutzt: Der Treiber eines ähnlichen Modells kann Daten senden, die der Drucker stillschweigend ignoriert."
   ],
   [
    "Nichts davon hat geholfen.",

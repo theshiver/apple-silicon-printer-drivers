@@ -155,8 +155,8 @@
    "Per queste stampanti non esiste un driver gratuito, quindi questo pacchetto non può aggiungerle. Controlla la pagina Download del tuo modello su support.brother.com. Se la stampante supporta AirPrint, collegala alla rete e aggiungila con Usa: AirPrint."
   ],
   [
-   "La mia HP LaserJet 1018, 1020, P1005 o P1006 non è supportata.",
-   "Queste stampanti hanno bisogno che il software di HP venga caricato a ogni accensione, e questo driver non può farlo. Anche scegliere un modello simile non funziona: il lavoro viene inviato, ma non stampa nulla."
+   "La mia HP LaserJet 1018, 1020, P1005 o P1006 funziona?",
+   "Sì, dalla versione 2.0.1. Queste stampanti perdono il firmware quando vengono spente, quindi il driver lo invia di nuovo con la prima stampa dopo l’accensione. Quella stampa richiede qualche secondo in più. Questo driver è nuovo: se il tuo modello non stampa, apri una segnalazione su GitHub."
   ],
   [
    "Lo scanner della mia multifunzione funziona?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Marche di stampanti supportate: driver per Mac con Apple Silicon",
- "brands_desc": "{n} modelli di stampante di {brands} marche, supportati dai driver arm64 nativi Gutenprint, brlaser e SpliX per macOS.",
+ "brands_desc": "{n} modelli di stampante di {brands} marche, supportati dai driver arm64 nativi Gutenprint, brlaser, SpliX e foo2zjs per macOS.",
  "brands_h1": "Marche supportate",
  "brands_lead": "{n} modelli. Clicca su una marca per vedere l'elenco completo dei modelli.",
  "help_title": "La stampante non funziona ancora su Mac dopo l'installazione?",
@@ -250,7 +250,7 @@
   ],
   [
    "Il lavoro viene inviato ma non stampa nulla, o stampa solo pagine bianche.",
-   "Controlla che la coda usi esattamente il tuo modello: il driver di un modello simile può inviare dati che la stampante ignora senza dire nulla. Alcune stampanti, come le HP LaserJet 1018, 1020, P1005 e P1006, non possono essere supportate perché hanno bisogno del firmware del produttore a ogni accensione."
+   "Controlla che la coda usi esattamente il tuo modello: il driver di un modello simile può inviare dati che la stampante ignora senza dire nulla."
   ],
   [
    "Niente di tutto questo ha aiutato.",

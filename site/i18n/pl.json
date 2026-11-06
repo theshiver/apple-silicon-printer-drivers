@@ -155,8 +155,8 @@
    "Te drukarki nie mają darmowego sterownika, więc ten pakiet ich nie doda. Sprawdź stronę Pobierz dla swojego modelu na support.brother.com. Jeśli drukarka obsługuje AirPrint, podłącz ją do sieci i dodaj z opcją Użyj: AirPrint."
   ],
   [
-   "Mój HP LaserJet 1018, 1020, P1005 lub P1006 nie jest obsługiwany.",
-   "Te drukarki potrzebują oprogramowania HP wgrywanego przy każdym włączeniu, a tego ten sterownik nie umie. Wybranie podobnego modelu też nie działa: zadanie przechodzi, ale nic się nie drukuje."
+   "Czy mój HP LaserJet 1018, 1020, P1005 lub P1006 działa?",
+   "Tak, od wersji 2.0.1. Te drukarki tracą firmware po wyłączeniu, więc sterownik wysyła je ponownie z pierwszym zadaniem po włączeniu. To zadanie trwa kilka sekund dłużej. Ten sterownik jest nowy: jeśli twój model nie drukuje, zgłoś to na GitHubie."
   ],
   [
    "Czy skaner w moim urządzeniu wielofunkcyjnym działa?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Obsługiwane marki drukarek — sterowniki drukarek Mac dla Apple Silicon",
- "brands_desc": "{n} modeli drukarek {brands} marek obsługują natywne sterowniki arm64 Gutenprint, brlaser i SpliX dla macOS.",
+ "brands_desc": "{n} modeli drukarek {brands} marek obsługują natywne sterowniki arm64 Gutenprint, brlaser, SpliX i foo2zjs dla macOS.",
  "brands_h1": "Obsługiwane marki",
  "brands_lead": "{n} modeli. Kliknij markę, aby zobaczyć pełną listę modeli.",
  "help_title": "Drukarka nadal nie działa na Macu po instalacji? Rozwiązania",
@@ -250,7 +250,7 @@
   ],
   [
    "Zadanie przechodzi, ale nic się nie drukuje albo wychodzą puste strony.",
-   "Sprawdź, czy kolejka używa dokładnie twojego modelu: sterownik podobnego modelu może wysyłać dane, które drukarka po cichu ignoruje. Niektórych drukarek, jak HP LaserJet 1018, 1020, P1005 i P1006, w ogóle nie da się obsłużyć, bo przy każdym włączeniu potrzebują oprogramowania sprzętowego od producenta."
+   "Sprawdź, czy kolejka używa dokładnie twojego modelu: sterownik podobnego modelu może wysyłać dane, które drukarka po cichu ignoruje."
   ],
   [
    "Nic tu nie pomogło.",

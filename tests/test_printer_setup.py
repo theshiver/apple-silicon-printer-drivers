@@ -4,8 +4,10 @@ import os
 import re
 from pathlib import Path
 import shutil
+import socket
 import subprocess
 import tempfile
+import threading
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +27,7 @@ class PrinterSetupTest(unittest.TestCase):
         (self.gp / "libexec").mkdir()
         shutil.copytree(PAYLOAD / "share/brlaser/ppd", self.gp / "share/brlaser/ppd")
         shutil.copytree(PAYLOAD / "share/splix/ppd", self.gp / "share/splix/ppd")
+        shutil.copytree(PAYLOAD / "share/foo2zjs/ppd", self.gp / "share/foo2zjs/ppd")
         shutil.copy(PAYLOAD / "share/dyesub-backend-only.txt", self.gp / "share")
         self.helper = self.gp / "bin/gutenprint-add"
         self.helper.write_text((PAYLOAD / "bin/gutenprint-add").read_text().replace(
@@ -102,6 +105,9 @@ fi
             ("usb://Samsung/M2020%20Series?serial=123", "splix-samsung-m2020"),
             ("usb://Xerox/Phaser%203117?serial=123", "splix-xerox-phaser-3117"),
             ("usb://Dell/Dell%201100?serial=123", "splix-dell-1100"),
+            ("usb://Hewlett-Packard/HP%20LaserJet%20P1006?serial=123", "foo2-hp-laserjet-p1006"),
+            ("usb://Hewlett-Packard/HP%20LaserJet%201018?serial=123", "foo2-hp-laserjet-1018"),
+            ("usb://Dell/Dell%201355?serial=123", "foo2-dell-1355"),
             ("usb://Brother/HL-1212W?serial=123", ""),
             ("usb://Other/HL-1210W?serial=123", ""),
         ]:
@@ -215,7 +221,76 @@ fi
                  for p in (PAYLOAD / "share/splix/ppd").glob("*.ppd")}
         self.assertEqual({m["id"]: m["name"] for m in models if m["id"].startswith("splix-")}, splix)
         self.assertIn("splix-samsung-ml-1640", (ROOT / "docs/samsung/ml-1640/index.html").read_text())
+        foo2 = {p.stem: re.search(r'\*ModelName: "(.*)"', p.read_text()).group(1)
+                for p in (PAYLOAD / "share/foo2zjs/ppd").glob("*.ppd")}
+        self.assertEqual({m["id"]: m["name"] for m in models if m["id"].startswith("foo2-")}, foo2)
+        self.assertIn("foo2-hp-laserjet-p1006", (ROOT / "docs/hp/laserjet-p1006/index.html").read_text())
         self.assertFalse(any("unreleased" in m for m in models))
+
+    def test_foo2_firmware_models_name_a_shipped_file(self):
+        named = {}
+        for p in (PAYLOAD / "share/foo2zjs/ppd").glob("*.ppd"):
+            m = re.search(r'^\*foo2Firmware: "(.*)"', p.read_text(), re.M)
+            if m:
+                named[p.stem] = m.group(1)
+                self.assertTrue((PAYLOAD / "share/foo2zjs/firmware" / m.group(1)).stat().st_size > 100000)
+        self.assertEqual(named["foo2-hp-laserjet-p1007"], "sihpP1005.dl")
+        self.assertEqual(named["foo2-hp-laserjet-p1008"], "sihpP1006.dl")
+        self.assertEqual(len(named), 10)
+
+    def run_filter_against_backend(self, device_ids):
+        """Run the P1006 filter with a fake USB backend on the CUPS side channel (fd 4).
+        device_ids: what GET_DEVICE_ID answers, in order; the last one repeats."""
+        ppd = PAYLOAD / "share/foo2zjs/ppd/foo2-hp-laserjet-p1006.ppd"
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            pdf = subprocess.run(["/usr/libexec/cups/filter/cgtexttopdf", "1", "u", "t", "1", ""], input=b"x\n",
+                                 capture_output=True).stdout
+            (d / "t.pdf").write_bytes(pdf)
+            env = {**os.environ, "PPD": str(ppd), "FOO2_FIRMWARE_DIR": str(PAYLOAD / "share/foo2zjs/firmware") + "/"}
+            ras = subprocess.run(["/usr/libexec/cups/filter/cgpdftoraster", "1", "u", "t", "1", "PageSize=A4", str(d / "t.pdf")],
+                                 env=env, capture_output=True).stdout
+            (d / "t.ras").write_bytes(ras)
+            ours, theirs = socket.socketpair()
+            requests, answers = [], list(device_ids)
+
+            def backend():
+                while True:
+                    try:
+                        head = ours.recv(4)
+                    except OSError:
+                        return
+                    if len(head) < 4:
+                        return
+                    requests.append(head[0])
+                    if head[0] == 4:  # CUPS_SC_CMD_GET_DEVICE_ID
+                        reply = (answers.pop(0) if len(answers) > 1 else answers[0]).encode()
+                    else:
+                        reply = b""
+                    ours.send(bytes([head[0], 1, len(reply) >> 8, len(reply) & 255]) + reply)  # 1 = status OK
+
+            threading.Thread(target=backend, daemon=True).start()
+            # the side channel is fd 4; a shell puts it there after subprocess has set up its own pipes
+            run = subprocess.run(["sh", "-c", f'exec "$0" "$@" 4<&{theirs.fileno()}', str(PAYLOAD / "libexec/rastertofoo-foo2xqx"),
+                                  "1", "u", "t", "1", "", str(d / "t.ras")],
+                                 env=env, capture_output=True, pass_fds=(theirs.fileno(),), timeout=60)
+            ours.close()
+            theirs.close()
+            return run, requests
+
+    def test_foo2_sends_no_firmware_when_the_printer_has_it(self):
+        run, requests = self.run_filter_against_backend(["MFG:HP;MDL:P1006;FWVER:20071220;"])
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertEqual(requests, [4])
+        self.assertTrue(run.stdout.startswith(b"\033%-12345X@PJL JOB"))
+
+    def test_foo2_sends_firmware_before_the_job_after_power_on(self):
+        firmware = (PAYLOAD / "share/foo2zjs/firmware/sihpP1006.dl").read_bytes()
+        run, requests = self.run_filter_against_backend(["MFG:HP;MDL:P1006;", "MFG:HP;MDL:P1006;FWVER:20071220;"])
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertEqual(requests, [4, 2, 4])  # ask, drain, confirm
+        self.assertTrue(run.stdout.startswith(firmware))
+        self.assertTrue(run.stdout[len(firmware):].startswith(b"\033%-12345X@PJL JOB"))
 
     def test_extra_pcl_models_are_shipped_and_listed(self):
         xml = (PAYLOAD / "share/gutenprint/5.3/xml/printers/pcl.xml").read_text()

@@ -1,0 +1,134 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "FOO2.PPD"
+*Manufacturer: "HP"
+*Product: "(HP LaserJet Pro M12w)"
+*ModelName: "HP LaserJet Pro M12w"
+*ShortNickName: "HP LaserJet Pro M12w"
+*NickName: "HP LaserJet Pro M12w - Apple Silicon"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 1.4
+*cupsModelNumber: 0
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertofoo-foo2zjs"
+*1284DeviceID: "MFG:Hewlett-Packard;MDL:HP LaserJet Professional M12w;CMD:ZJS,PJL,ACL,HTTP;DES:HP LaserJet Professional M12w;DRV:Dfoo2zjs-z2,R1,M0,TF;"
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize A6: "<</PageSize[297 420]/ImagingBBox null>>setpagedevice"
+*PageSize B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize DoublePostcard: "<</PageSize[283 416]/ImagingBBox null>>setpagedevice"
+*PageSize Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageSize EnvISOB5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize FanfoldGermanLegal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize Postcard: "<</PageSize[283 416]/ImagingBBox null>>setpagedevice"
+*PageSize w522h737: "<</PageSize[522 737]/ImagingBBox null>>setpagedevice"
+*PageSize w553h765: "<</PageSize[553 765]/ImagingBBox null>>setpagedevice"
+*PageSize w558h774: "<</PageSize[558 774]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion A6: "<</PageSize[297 420]/ImagingBBox null>>setpagedevice"
+*PageRegion B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion DoublePostcard: "<</PageSize[283 416]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvISOB5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion FanfoldGermanLegal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion Postcard: "<</PageSize[283 416]/ImagingBBox null>>setpagedevice"
+*PageRegion w522h737: "<</PageSize[522 737]/ImagingBBox null>>setpagedevice"
+*PageRegion w553h765: "<</PageSize[553 765]/ImagingBBox null>>setpagedevice"
+*PageRegion w558h774: "<</PageSize[558 774]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea Letter: "11.34 11.34 600.66 780.66"
+*ImageableArea A4: "11.34 11.34 583.66 830.66"
+*ImageableArea A5: "11.34 11.34 408.66 583.66"
+*ImageableArea A6: "11.34 11.34 285.66 408.66"
+*ImageableArea B5: "11.34 11.34 486.66 696.66"
+*ImageableArea DoublePostcard: "11.34 11.34 271.66 404.66"
+*ImageableArea Env10: "11.34 11.34 285.66 672.66"
+*ImageableArea EnvC5: "11.34 11.34 447.66 637.66"
+*ImageableArea EnvDL: "11.34 11.34 299.66 611.66"
+*ImageableArea EnvISOB5: "11.34 11.34 486.66 696.66"
+*ImageableArea EnvMonarch: "11.34 11.34 267.66 528.66"
+*ImageableArea Executive: "11.34 11.34 510.66 744.66"
+*ImageableArea FanfoldGermanLegal: "11.34 11.34 600.66 996.66"
+*ImageableArea Legal: "11.34 11.34 600.66 996.66"
+*ImageableArea Postcard: "11.34 11.34 271.66 404.66"
+*ImageableArea w522h737: "11.34 11.34 510.66 725.66"
+*ImageableArea w553h765: "11.34 11.34 541.66 753.66"
+*ImageableArea w558h774: "11.34 11.34 546.66 762.66"
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension A4: "595 842"
+*PaperDimension A5: "420 595"
+*PaperDimension A6: "297 420"
+*PaperDimension B5: "498 708"
+*PaperDimension DoublePostcard: "283 416"
+*PaperDimension Env10: "297 684"
+*PaperDimension EnvC5: "459 649"
+*PaperDimension EnvDL: "311 623"
+*PaperDimension EnvISOB5: "498 708"
+*PaperDimension EnvMonarch: "279 540"
+*PaperDimension Executive: "522 756"
+*PaperDimension FanfoldGermanLegal: "612 1008"
+*PaperDimension Legal: "612 1008"
+*PaperDimension Postcard: "283 416"
+*PaperDimension w522h737: "522 737"
+*PaperDimension w553h765: "553 765"
+*PaperDimension w558h774: "558 774"
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 1200x600dpi
+*Resolution 1200x600dpi: "<</HWResolution[1200 600]>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: Gray
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 1>>setpagedevice"
+*CloseUI: *ColorModel
+*foo2GrayArgs Letter: "-r1200x600 -g10200x6600 -p1 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs A4: "-r1200x600 -g9920x7016 -p9 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs A5: "-r1200x600 -g6992x4960 -p11 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs A6: "-r1200x600 -g4956x3498 -p70 -m1 -n1 -d1 -s7 -z2 -u 174x78 -l 173x78 -L 0 -T3 -P -D0"
+*foo2GrayArgs B5: "-r1200x600 -g8598x6070 -p13 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs DoublePostcard: "-r1200x600 -g6996x4722 -p82 -m1 -n1 -d1 -s7 -z2 -u 126x87 -l 126x87 -L 0 -T3 -P -D0"
+*foo2GrayArgs Env10: "-r1200x600 -g4950x5700 -p20 -m1 -n1 -d1 -s7 -z2 -u 171x78 -l 171x78 -L 0 -T3 -P -D0"
+*foo2GrayArgs EnvC5: "-r1200x600 -g7650x5408 -p28 -m1 -n1 -d1 -s7 -z2 -u 170x80 -l 169x80 -L 0 -T3 -P -D0"
+*foo2GrayArgs EnvDL: "-r1200x600 -g5200x5200 -p27 -m1 -n1 -d1 -s7 -z2 -u 176x84 -l 176x84 -L 0 -T3 -P -D0"
+*foo2GrayArgs EnvISOB5: "-r1200x600 -g8316x5892 -p34 -m1 -n1 -d1 -s7 -z2 -u 174x74 -l 174x74 -L 0 -T3 -P -D0"
+*foo2GrayArgs EnvMonarch: "-r1200x600 -g4650x4500 -p37 -m1 -n1 -d1 -s7 -z2 -u 174x78 -l 173x78 -L 0 -T3 -P -D0"
+*foo2GrayArgs Executive: "-r1200x600 -g8700x6300 -p7 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs FanfoldGermanLegal: "-r1200x600 -g10200x7800 -p258 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs Legal: "-r1200x600 -g10200x8400 -p5 -m1 -n1 -d1 -s7 -z2 -u 192x96 -l 192x96 -L 0 -T3 -P -D0"
+*foo2GrayArgs Postcard: "-r1200x600 -g4728x3498 -p43 -m1 -n1 -d1 -s7 -z2 -u 126x87 -l 126x87 -L 0 -T3 -P -D0"
+*foo2GrayArgs w522h737: "-r1200x600 -g8692x6142 -p263 -m1 -n1 -d1 -s7 -z2 -u 122x87 -l 122x87 -L 0 -T3 -P -D0"
+*foo2GrayArgs w553h765: "-r1200x600 -g9212x6378 -p264 -m1 -n1 -d1 -s7 -z2 -u 126x87 -l 126x87 -L 0 -T3 -P -D0"
+*foo2GrayArgs w558h774: "-r1200x600 -g9306x6448 -p257 -m1 -n1 -d1 -s7 -z2 -u 173x84 -l 173x84 -L 0 -T3 -P -D0"

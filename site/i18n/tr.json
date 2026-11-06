@@ -155,8 +155,8 @@
    "Bu yazıcıların ücretsiz sürücüsü yok, bu yüzden bu paket onları ekleyemez. support.brother.com'da modelinizin İndirmeler sayfasına bakın. Yazıcı AirPrint'i destekliyorsa ağınıza bağlayın ve Kullan: AirPrint ile ekleyin."
   ],
   [
-   "HP LaserJet 1018, 1020, P1005 veya P1006 modelim desteklenmiyor.",
-   "Bu yazıcılar her açıldıklarında HP'nin kendi yazılımının yüklenmesini ister, bu sürücü bunu yapamaz. Benzer bir model seçmek de işe yaramaz: iş gider, ama hiçbir şey yazdırılmaz."
+   "HP LaserJet 1018, 1020, P1005 veya P1006 modelim çalışır mı?",
+   "Evet, 2.0.1 sürümünden beri. Bu yazıcılar kapanınca yazılımlarını kaybeder, bu yüzden sürücü açılıştan sonraki ilk işle birlikte yazılımı yeniden gönderir. Bu iş birkaç saniye daha uzun sürer. Bu sürücü yeni: modeliniz yazdırmıyorsa GitHub'da bir issue açın."
   ],
   [
    "Çok işlevli cihazımın tarayıcısı çalışır mı?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Desteklenen yazıcı markaları — Apple Silicon için Mac yazıcı sürücüleri",
- "brands_desc": "{brands} markanın {n} yazıcı modeli, macOS için yerel arm64 Gutenprint, brlaser ve SpliX sürücüleriyle destekleniyor.",
+ "brands_desc": "{brands} markanın {n} yazıcı modeli, macOS için yerel arm64 Gutenprint, brlaser, SpliX ve foo2zjs sürücüleriyle destekleniyor.",
  "brands_h1": "Desteklenen markalar",
  "brands_lead": "{n} model. Tam model listesi için bir markaya tıklayın.",
  "help_title": "Kurulumdan Sonra Mac Yazıcı Hâlâ Çalışmıyor mu? Sorun Giderme",
@@ -250,7 +250,7 @@
   ],
   [
    "İş gidiyor ama hiçbir şey yazdırılmıyor ya da yalnızca boş sayfa çıkıyor.",
-   "Kuyruğun tam olarak sizin modelinizi kullandığını kontrol edin: benzer bir modelin sürücüsü, yazıcının sessizce yok saydığı veri gönderebilir. HP LaserJet 1018, 1020, P1005 ve P1006 gibi bazı yazıcılar, her açılışta üreticinin yazılımının gönderilmesini gerektirdiği için hiç desteklenemez."
+   "Kuyruğun tam olarak sizin modelinizi kullandığını kontrol edin: benzer bir modelin sürücüsü, yazıcının sessizce yok saydığı veri gönderebilir."
   ],
   [
    "Burada hiçbir şey işe yaramadı.",

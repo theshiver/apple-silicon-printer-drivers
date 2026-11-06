@@ -1,0 +1,111 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "FOO2.PPD"
+*Manufacturer: "HP"
+*Product: "(HP Color LaserJet 2600n)"
+*ModelName: "HP Color LaserJet 2600n"
+*ShortNickName: "HP Color LaserJet 2600n"
+*NickName: "HP Color LaserJet 2600n - Apple Silicon"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 1.4
+*cupsModelNumber: 0
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertofoo-foo2hp"
+*1284DeviceID: "MFG:Hewlett-Packard;MDL:HP Color LaserJet 2600n;CMD:ACL;DES:HP Color LaserJet 2600n;DRV:Dfoo2hp,R1,M0,TF;"
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageSize EnvISOB5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvISOB5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea Letter: "12.00 12.00 600.00 780.00"
+*ImageableArea A4: "12.00 12.00 583.00 830.00"
+*ImageableArea A5: "12.00 12.00 408.00 583.00"
+*ImageableArea B5: "12.00 12.00 486.00 696.00"
+*ImageableArea Env10: "12.00 12.00 285.00 672.00"
+*ImageableArea EnvC5: "12.00 12.00 447.00 637.00"
+*ImageableArea EnvDL: "12.00 12.00 299.00 611.00"
+*ImageableArea EnvISOB5: "12.00 12.00 486.00 696.00"
+*ImageableArea EnvMonarch: "12.00 12.00 267.00 528.00"
+*ImageableArea Executive: "12.00 12.00 510.00 744.00"
+*ImageableArea Legal: "12.00 12.00 600.00 996.00"
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension A4: "595 842"
+*PaperDimension A5: "420 595"
+*PaperDimension B5: "498 708"
+*PaperDimension Env10: "297 684"
+*PaperDimension EnvC5: "459 649"
+*PaperDimension EnvDL: "311 623"
+*PaperDimension EnvISOB5: "498 708"
+*PaperDimension EnvMonarch: "279 540"
+*PaperDimension Executive: "522 756"
+*PaperDimension Legal: "612 1008"
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 600x600dpi
+*Resolution 600x600dpi: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 1>>setpagedevice"
+*ColorModel CMYK/Color: "<</cupsColorSpace 6/cupsColorOrder 1/cupsBitsPerColor 1>>setpagedevice"
+*CloseUI: *ColorModel
+*foo2GrayArgs Letter: "-r600x600 -g5100x6600 -p1 -m1 -n1 -d1 -s7 -b1 -u 86x80 -l 86x80 -O0,0,0,0 -D0"
+*foo2GrayArgs A4: "-r600x600 -g4960x7016 -p9 -m1 -n1 -d1 -s7 -b1 -u 88x84 -l 88x84 -O0,0,0,0 -D0"
+*foo2GrayArgs A5: "-r600x600 -g3496x4960 -p11 -m1 -n1 -d1 -s7 -b1 -u 88x80 -l 88x80 -O0,0,0,0 -D0"
+*foo2GrayArgs B5: "-r600x600 -g4299x6070 -p13 -m1 -n1 -d1 -s7 -b1 -u 86x83 -l 85x83 -O0,0,0,0 -D0"
+*foo2GrayArgs Env10: "-r600x600 -g2475x5700 -p20 -m1 -n1 -d1 -s7 -b1 -u 85x78 -l 85x78 -O0,0,0,0 -D0"
+*foo2GrayArgs EnvC5: "-r600x600 -g3825x5408 -p28 -m1 -n1 -d1 -s7 -b1 -u 85x80 -l 84x80 -O0,0,0,0 -D0"
+*foo2GrayArgs EnvDL: "-r600x600 -g2600x5200 -p27 -m1 -n1 -d1 -s7 -b1 -u 88x84 -l 88x84 -O0,0,0,0 -D0"
+*foo2GrayArgs EnvISOB5: "-r600x600 -g4158x5892 -p34 -m1 -n1 -d1 -s7 -b1 -u 87x74 -l 87x74 -O0,0,0,0 -D0"
+*foo2GrayArgs EnvMonarch: "-r600x600 -g2325x4500 -p37 -m1 -n1 -d1 -s7 -b1 -u 87x78 -l 86x78 -O0,0,0,0 -D0"
+*foo2GrayArgs Executive: "-r600x600 -g4350x6300 -p7 -m1 -n1 -d1 -s7 -b1 -u 87x78 -l 87x78 -O0,0,0,0 -D0"
+*foo2GrayArgs Legal: "-r600x600 -g5100x8400 -p5 -m1 -n1 -d1 -s7 -b1 -u 86x80 -l 86x80 -O0,0,0,0 -D0"
+*foo2Args Letter: "-r600x600 -g5100x6600 -p1 -m1 -n1 -d1 -s7 -c -b1 -u 86x80 -l 86x80 -O0,0,0,0 -B -A -D0"
+*foo2Args A4: "-r600x600 -g4960x7016 -p9 -m1 -n1 -d1 -s7 -c -b1 -u 88x84 -l 88x84 -O0,0,0,0 -B -A -D0"
+*foo2Args A5: "-r600x600 -g3496x4960 -p11 -m1 -n1 -d1 -s7 -c -b1 -u 88x80 -l 88x80 -O0,0,0,0 -B -A -D0"
+*foo2Args B5: "-r600x600 -g4299x6070 -p13 -m1 -n1 -d1 -s7 -c -b1 -u 86x83 -l 85x83 -O0,0,0,0 -B -A -D0"
+*foo2Args Env10: "-r600x600 -g2475x5700 -p20 -m1 -n1 -d1 -s7 -c -b1 -u 85x78 -l 85x78 -O0,0,0,0 -B -A -D0"
+*foo2Args EnvC5: "-r600x600 -g3825x5408 -p28 -m1 -n1 -d1 -s7 -c -b1 -u 85x80 -l 84x80 -O0,0,0,0 -B -A -D0"
+*foo2Args EnvDL: "-r600x600 -g2600x5200 -p27 -m1 -n1 -d1 -s7 -c -b1 -u 88x84 -l 88x84 -O0,0,0,0 -B -A -D0"
+*foo2Args EnvISOB5: "-r600x600 -g4158x5892 -p34 -m1 -n1 -d1 -s7 -c -b1 -u 87x74 -l 87x74 -O0,0,0,0 -B -A -D0"
+*foo2Args EnvMonarch: "-r600x600 -g2325x4500 -p37 -m1 -n1 -d1 -s7 -c -b1 -u 87x78 -l 86x78 -O0,0,0,0 -B -A -D0"
+*foo2Args Executive: "-r600x600 -g4350x6300 -p7 -m1 -n1 -d1 -s7 -c -b1 -u 87x78 -l 87x78 -O0,0,0,0 -B -A -D0"
+*foo2Args Legal: "-r600x600 -g5100x8400 -p5 -m1 -n1 -d1 -s7 -c -b1 -u 86x80 -l 86x80 -O0,0,0,0 -B -A -D0"

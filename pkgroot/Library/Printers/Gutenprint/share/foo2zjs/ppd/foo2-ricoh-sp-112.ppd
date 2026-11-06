@@ -1,0 +1,89 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "FOO2.PPD"
+*Manufacturer: "Ricoh"
+*Product: "(Ricoh SP 112)"
+*ModelName: "Ricoh SP 112"
+*ShortNickName: "Ricoh SP 112"
+*NickName: "Ricoh SP 112 - Apple Silicon"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 1.4
+*cupsModelNumber: 0
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertofoo-foo2ddst"
+*1284DeviceID: "DRV:Dfoo2ddst,R1,M0,TF;"
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageSize Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize w522h737: "<</PageSize[522 737]/ImagingBBox null>>setpagedevice"
+*PageSize w553h765: "<</PageSize[553 765]/ImagingBBox null>>setpagedevice"
+*PageSize w558h774: "<</PageSize[558 774]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion w522h737: "<</PageSize[522 737]/ImagingBBox null>>setpagedevice"
+*PageRegion w553h765: "<</PageSize[553 765]/ImagingBBox null>>setpagedevice"
+*PageRegion w558h774: "<</PageSize[558 774]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea Letter: "14.40 14.40 597.60 777.60"
+*ImageableArea A4: "14.40 14.40 580.60 827.60"
+*ImageableArea A5: "14.40 14.40 405.60 580.60"
+*ImageableArea B5jis: "14.40 14.40 503.60 712.60"
+*ImageableArea Executive: "14.40 14.40 507.60 741.60"
+*ImageableArea Legal: "14.40 14.40 597.60 993.60"
+*ImageableArea w522h737: "14.40 14.40 507.60 722.60"
+*ImageableArea w553h765: "14.40 14.40 538.60 750.60"
+*ImageableArea w558h774: "14.40 14.40 543.60 759.60"
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension A4: "595 842"
+*PaperDimension A5: "420 595"
+*PaperDimension B5jis: "518 727"
+*PaperDimension Executive: "522 756"
+*PaperDimension Legal: "612 1008"
+*PaperDimension w522h737: "522 737"
+*PaperDimension w553h765: "553 765"
+*PaperDimension w558h774: "558 774"
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 600x600dpi
+*Resolution 600x600dpi: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: Gray
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 1>>setpagedevice"
+*CloseUI: *ColorModel
+*foo2GrayArgs Letter: "-r600x600 -g5100x6600 -p1 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs A4: "-r600x600 -g4960x7016 -p5 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs A5: "-r600x600 -g3496x4960 -p6 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs B5jis: "-r600x600 -g4299x6070 -p8 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs Executive: "-r600x600 -g4350x6300 -p3 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs Legal: "-r600x600 -g5100x8400 -p2 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs w522h737: "-r600x600 -g4346x6142 -p11 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs w553h765: "-r600x600 -g4606x6378 -p12 -m1 -n1 -d1 -s1 -T3 -D0"
+*foo2GrayArgs w558h774: "-r600x600 -g4653x6448 -p10 -m1 -n1 -d1 -s1 -T3 -D0"

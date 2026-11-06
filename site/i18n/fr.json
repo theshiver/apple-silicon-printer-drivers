@@ -155,8 +155,8 @@
    "Ces imprimantes n’ont pas de pilote libre, donc ce paquet ne peut pas les ajouter. Consultez la page Téléchargements de votre modèle sur support.brother.com. Si l’imprimante gère AirPrint, connectez-la à votre réseau et ajoutez-la avec Utiliser : AirPrint."
   ],
   [
-   "Ma HP LaserJet 1018, 1020, P1005 ou P1006 n’est pas prise en charge.",
-   "Ces imprimantes ont besoin du logiciel de HP chargé à chaque mise en marche, ce que ce pilote ne peut pas faire. Choisir un modèle proche ne marche pas non plus : le travail part, mais rien ne s’imprime."
+   "Ma HP LaserJet 1018, 1020, P1005 ou P1006 fonctionne-t-elle ?",
+   "Oui, depuis la version 2.0.1. Ces imprimantes perdent leur firmware à l’arrêt : le pilote le renvoie donc avec la première impression après la mise sous tension. Cette impression prend quelques secondes de plus. Ce pilote est nouveau : si votre modèle n’imprime pas, ouvrez un ticket sur GitHub."
   ],
   [
    "Le scanner de mon imprimante multifonction fonctionne-t-il ?",
@@ -215,7 +215,7 @@
   ]
  ],
  "brands_title": "Marques d’imprimantes prises en charge : pilotes Mac pour Apple Silicon",
- "brands_desc": "{n} modèles d’imprimantes de {brands} marques pris en charge par des pilotes arm64 natifs (Gutenprint, brlaser et SpliX) pour macOS.",
+ "brands_desc": "{n} modèles d’imprimantes de {brands} marques pris en charge par des pilotes arm64 natifs (Gutenprint, brlaser, SpliX et foo2zjs) pour macOS.",
  "brands_h1": "Marques prises en charge",
  "brands_lead": "{n} modèles. Cliquez sur une marque pour voir la liste complète des modèles.",
  "help_title": "Imprimante Mac qui ne marche pas après l’installation ? Aide",
@@ -250,7 +250,7 @@
   ],
   [
    "Le travail part, mais rien ne s’imprime, ou seulement des pages blanches.",
-   "Vérifiez que la file d’attente utilise exactement votre modèle : le pilote d’un modèle proche peut envoyer des données que l’imprimante ignore sans rien dire. Certaines imprimantes, comme les HP LaserJet 1018, 1020, P1005 et P1006, ne peuvent pas être prises en charge du tout, car elles ont besoin que le firmware du fabricant leur soit envoyé à chaque mise en marche."
+   "Vérifiez que la file d’attente utilise exactement votre modèle : le pilote d’un modèle proche peut envoyer des données que l’imprimante ignore sans rien dire."
   ],
   [
    "Rien de tout cela n’a aidé.",

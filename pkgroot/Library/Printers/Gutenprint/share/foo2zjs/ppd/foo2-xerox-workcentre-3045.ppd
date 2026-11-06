@@ -1,0 +1,104 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "FOO2.PPD"
+*Manufacturer: "Xerox"
+*Product: "(Xerox WorkCentre 3045)"
+*ModelName: "Xerox WorkCentre 3045"
+*ShortNickName: "Xerox WorkCentre 3045"
+*NickName: "Xerox WorkCentre 3045 - Apple Silicon"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 1.4
+*cupsModelNumber: 0
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertofoo-foo2hbpl2"
+*1284DeviceID: "DRV:Dfoo2hbpl2,R1,M0,TF;"
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageSize Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize FanfoldGermanLegal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageSize Folio: "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageSize Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion FanfoldGermanLegal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*PageRegion Folio: "<</PageSize[612 936]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea Letter: "9 12.00 603 780.00"
+*ImageableArea A4: "9 12.00 586 830.00"
+*ImageableArea A5: "9 12.00 411 583.00"
+*ImageableArea B5jis: "9 12.00 509 715.00"
+*ImageableArea Env10: "9 12.00 288 672.00"
+*ImageableArea EnvC5: "9 12.00 450 637.00"
+*ImageableArea EnvDL: "9 12.00 302 611.00"
+*ImageableArea EnvMonarch: "9 12.00 270 528.00"
+*ImageableArea Executive: "9 12.00 513 744.00"
+*ImageableArea FanfoldGermanLegal: "9 12.00 603 996.00"
+*ImageableArea Folio: "9 12.00 603 924.00"
+*ImageableArea Legal: "9 12.00 603 996.00"
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension A4: "595 842"
+*PaperDimension A5: "420 595"
+*PaperDimension B5jis: "518 727"
+*PaperDimension Env10: "297 684"
+*PaperDimension EnvC5: "459 649"
+*PaperDimension EnvDL: "311 623"
+*PaperDimension EnvMonarch: "279 540"
+*PaperDimension Executive: "522 756"
+*PaperDimension FanfoldGermanLegal: "612 1008"
+*PaperDimension Folio: "612 936"
+*PaperDimension Legal: "612 1008"
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 600x600dpi
+*Resolution 600x600dpi: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: Gray
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 1>>setpagedevice"
+*CloseUI: *ColorModel
+*foo2GrayArgs Letter: "-r600x600 -g5100x6600 -p4 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs A4: "-r600x600 -g4960x7016 -p1 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs A5: "-r600x600 -g3496x4960 -p3 -m1 -n1 -d1 -s1 -z0 -u 84x100 -l 84x100 -D0"
+*foo2GrayArgs B5jis: "-r600x600 -g4299x6070 -p2 -m1 -n1 -d1 -s1 -z0 -u 69x100 -l 69x100 -D0"
+*foo2GrayArgs Env10: "-r600x600 -g2475x5700 -p9 -m1 -n1 -d1 -s1 -z0 -u 85x100 -l 85x100 -D0"
+*foo2GrayArgs EnvC5: "-r600x600 -g3825x5408 -p11 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs EnvDL: "-r600x600 -g2600x5200 -p12 -m1 -n1 -d1 -s1 -z0 -u 84x100 -l 84x100 -D0"
+*foo2GrayArgs EnvMonarch: "-r600x600 -g2325x4500 -p10 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs Executive: "-r600x600 -g4350x6300 -p5 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs FanfoldGermanLegal: "-r600x600 -g5100x7800 -p6 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs Folio: "-r600x600 -g5100x7800 -p6 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"
+*foo2GrayArgs Legal: "-r600x600 -g5100x8400 -p7 -m1 -n1 -d1 -s1 -z0 -u 75x100 -l 75x100 -D0"

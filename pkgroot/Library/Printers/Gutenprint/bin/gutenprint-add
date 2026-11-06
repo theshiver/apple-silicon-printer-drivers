@@ -20,6 +20,11 @@ all_models() {
     [ -f "$p" ] || continue
     printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ShortNickName: "\(.*\)"/\1/p' "$p")"
   done
+  # ShortNickName stops at 31 characters, and some of these names are longer
+  for p in "$GP"/share/foo2zjs/ppd/*.ppd; do
+    [ -f "$p" ] || continue
+    printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ModelName: "\(.*\)"/\1/p' "$p")"
+  done
 }
 case "${1:-}" in
   ""|-h|--help) sed -n '2,5p' "$0"; exit 0;;
@@ -57,6 +62,9 @@ case "$MODEL" in
     SRC="$GP/share/splix/ppd/$MODEL.ppd"
     [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
     [ -x "$GP/libexec/rastertoqpdl" ] || { echo "SpliX filter missing; reinstall the package"; exit 1; };;
+  foo2-*)
+    SRC="$GP/share/foo2zjs/ppd/$MODEL.ppd"
+    [ -f "$SRC" ] || { echo "unknown model id: $MODEL (try --list)"; exit 1; };;
   *)
     # LC_ALL=C: genppd honors LC_NUMERIC, and a comma-decimal locale writes "PageSize[612,000 ..." (CUPS: Unknown operator)
     LC_ALL=C "$GEN" -p "$T" "$MODEL" >/dev/null 2>&1 || { echo "unknown model id: $MODEL (try --list)"; exit 1; }
@@ -72,13 +80,14 @@ chmod 644 "$OUT"
 # Keep *NickName untouched: rastertogutenprint validates the "- CUPS+Gutenprint vX.Y.Z" suffix.
 # The friendly name goes into the queue description, which is what Printers & Scanners shows.
 NICK="$(grep '^\*ShortNickName' "$OUT" | cut -d'"' -f2) - Apple Silicon"
+case "$MODEL" in foo2-*) NICK=$(grep '^\*NickName' "$OUT" | cut -d'"' -f2);; esac
 echo "PPD installed: $OUT"
 echo "  ($NICK)"
 if [ -z "$URI" ]; then
   # try to auto-match a USB printer by manufacturer word of the model id
   BRAND=$(grep '^\*Manufacturer' "$OUT" | cut -d'"' -f2 | awk '{print $1}')
   case "$MODEL" in
-    brlaser-*|splix-*)
+    brlaser-*|splix-*|foo2-*)
       URI=$(lpinfo -v 2>/dev/null | awk '$2 ~ /^usb:\/\//{print $2}' | while read -r device; do
         if [ "$("$0" --match-usb "$device")" = "$MODEL" ]; then printf '%s\n' "$device"; break; fi
       done);;

@@ -1,0 +1,129 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "FOO2.PPD"
+*Manufacturer: "Konica"
+*Product: "(Konica Minolta magicolor 2530 DL)"
+*ModelName: "Konica Minolta magicolor 2530 DL"
+*ShortNickName: "Konica Minolta magicolor 2530 D"
+*NickName: "Konica Minolta magicolor 2530 DL - Apple Silicon"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 1.4
+*cupsModelNumber: 0
+*cupsManualCopies: False
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertofoo-foo2lava"
+*1284DeviceID: "MFG:KONICA MINOLTA;MDL:mc2530DL;CMD:ZJS,PJL,LAVAFLOW;DES:KONICA MINOLTA mc2530DL;DRV:Dfoo2lava,R1,M0,TF;"
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageSize A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageSize Photo4x6: "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize Photo10x15: "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageSize B5iso: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageSize Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageSize EnvC6: "<</PageSize[323 459]/ImagingBBox null>>setpagedevice"
+*PageSize EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageSize EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageSize Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageSize Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter: "<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+*PageRegion A4: "<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+*PageRegion Photo4x6: "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion Photo10x15: "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion A5: "<</PageSize[420 595]/ImagingBBox null>>setpagedevice"
+*PageRegion B5iso: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion B5jis: "<</PageSize[518 727]/ImagingBBox null>>setpagedevice"
+*PageRegion Env10: "<</PageSize[297 684]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC5: "<</PageSize[459 649]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvC6: "<</PageSize[323 459]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvDL: "<</PageSize[311 623]/ImagingBBox null>>setpagedevice"
+*PageRegion EnvMonarch: "<</PageSize[279 540]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive: "<</PageSize[522 756]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal: "<</PageSize[612 1008]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea Letter: "11.34 11.34 600.66 780.66"
+*ImageableArea A4: "11.34 11.34 583.66 830.66"
+*ImageableArea Photo4x6: "11.34 11.34 276.66 420.66"
+*ImageableArea Photo10x15: "11.34 11.34 276.66 420.66"
+*ImageableArea A5: "11.34 11.34 408.66 583.66"
+*ImageableArea B5iso: "11.34 11.34 486.66 696.66"
+*ImageableArea B5jis: "11.34 11.34 506.66 715.66"
+*ImageableArea Env10: "11.34 11.34 285.66 672.66"
+*ImageableArea EnvC5: "11.34 11.34 447.66 637.66"
+*ImageableArea EnvC6: "11.34 11.34 311.66 447.66"
+*ImageableArea EnvDL: "11.34 11.34 299.66 611.66"
+*ImageableArea EnvMonarch: "11.34 11.34 267.66 528.66"
+*ImageableArea Executive: "11.34 11.34 510.66 744.66"
+*ImageableArea Legal: "11.34 11.34 600.66 996.66"
+*DefaultPaperDimension: A4
+*PaperDimension Letter: "612 792"
+*PaperDimension A4: "595 842"
+*PaperDimension Photo4x6: "288 432"
+*PaperDimension Photo10x15: "288 432"
+*PaperDimension A5: "420 595"
+*PaperDimension B5iso: "498 708"
+*PaperDimension B5jis: "518 727"
+*PaperDimension Env10: "297 684"
+*PaperDimension EnvC5: "459 649"
+*PaperDimension EnvC6: "323 459"
+*PaperDimension EnvDL: "311 623"
+*PaperDimension EnvMonarch: "279 540"
+*PaperDimension Executive: "522 756"
+*PaperDimension Legal: "612 1008"
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 1200x600dpi
+*Resolution 1200x600dpi: "<</HWResolution[1200 600]>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel Gray/Grayscale: "<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 1>>setpagedevice"
+*ColorModel CMYK/Color: "<</cupsColorSpace 6/cupsColorOrder 1/cupsBitsPerColor 1>>setpagedevice"
+*CloseUI: *ColorModel
+*foo2GrayArgs Letter: "-r1200x600 -g10200x6600 -p2 -m0 -n1 -d1 -s255 -z0 -u 204x100 -l 204x100 -D0"
+*foo2GrayArgs A4: "-r1200x600 -g9920x7016 -p26 -m0 -n1 -d1 -s255 -z0 -u 208x100 -l 208x100 -D0"
+*foo2GrayArgs Photo4x6: "-r1200x600 -g4800x3600 -p835 -m0 -n1 -d1 -s255 -z0 -u 224x104 -l 224x104 -D0"
+*foo2GrayArgs Photo10x15: "-r1200x600 -g4818x3590 -p837 -m0 -n1 -d1 -s255 -z0 -u 201x115 -l 201x115 -D0"
+*foo2GrayArgs A5: "-r1200x600 -g6992x4960 -p25 -m0 -n1 -d1 -s255 -z0 -u 216x112 -l 216x112 -D0"
+*foo2GrayArgs B5iso: "-r1200x600 -g8314x5906 -p65 -m0 -n1 -d1 -s255 -z0 -u 206x105 -l 204x105 -D0"
+*foo2GrayArgs B5jis: "-r1200x600 -g8598x6070 -p45 -m0 -n1 -d1 -s255 -z0 -u 204x107 -l 202x107 -D0"
+*foo2GrayArgs Env10: "-r1200x600 -g4950x5700 -p81 -m0 -n1 -d1 -s255 -z0 -u 204x114 -l 202x114 -D0"
+*foo2GrayArgs EnvC5: "-r1200x600 -g7650x5408 -p91 -m0 -n1 -d1 -s255 -z0 -u 210x112 -l 208x112 -D0"
+*foo2GrayArgs EnvC6: "-r1200x600 -g5386x3826 -p92 -m0 -n1 -d1 -s255 -z0 -u 214x105 -l 212x105 -D0"
+*foo2GrayArgs EnvDL: "-r1200x600 -g5200x5200 -p90 -m0 -n1 -d1 -s255 -z0 -u 216x104 -l 216x104 -D0"
+*foo2GrayArgs EnvMonarch: "-r1200x600 -g4650x4500 -p80 -m0 -n1 -d1 -s255 -z0 -u 214x106 -l 212x106 -D0"
+*foo2GrayArgs Executive: "-r1200x600 -g8700x6300 -p1 -m0 -n1 -d1 -s255 -z0 -u 206x110 -l 206x110 -D0"
+*foo2GrayArgs Legal: "-r1200x600 -g10200x8400 -p3 -m0 -n1 -d1 -s255 -z0 -u 204x104 -l 204x104 -D0"
+*foo2Args Letter: "-r1200x600 -g10200x6600 -p2 -m0 -n1 -d1 -s255 -z0 -c -u 204x100 -l 204x100 -B -A -D0"
+*foo2Args A4: "-r1200x600 -g9920x7016 -p26 -m0 -n1 -d1 -s255 -z0 -c -u 208x100 -l 208x100 -B -A -D0"
+*foo2Args Photo4x6: "-r1200x600 -g4800x3600 -p835 -m0 -n1 -d1 -s255 -z0 -c -u 224x104 -l 224x104 -B -A -D0"
+*foo2Args Photo10x15: "-r1200x600 -g4818x3590 -p837 -m0 -n1 -d1 -s255 -z0 -c -u 201x115 -l 201x115 -B -A -D0"
+*foo2Args A5: "-r1200x600 -g6992x4960 -p25 -m0 -n1 -d1 -s255 -z0 -c -u 216x112 -l 216x112 -B -A -D0"
+*foo2Args B5iso: "-r1200x600 -g8314x5906 -p65 -m0 -n1 -d1 -s255 -z0 -c -u 206x105 -l 204x105 -B -A -D0"
+*foo2Args B5jis: "-r1200x600 -g8598x6070 -p45 -m0 -n1 -d1 -s255 -z0 -c -u 204x107 -l 202x107 -B -A -D0"
+*foo2Args Env10: "-r1200x600 -g4950x5700 -p81 -m0 -n1 -d1 -s255 -z0 -c -u 204x114 -l 202x114 -B -A -D0"
+*foo2Args EnvC5: "-r1200x600 -g7650x5408 -p91 -m0 -n1 -d1 -s255 -z0 -c -u 210x112 -l 208x112 -B -A -D0"
+*foo2Args EnvC6: "-r1200x600 -g5386x3826 -p92 -m0 -n1 -d1 -s255 -z0 -c -u 214x105 -l 212x105 -B -A -D0"
+*foo2Args EnvDL: "-r1200x600 -g5200x5200 -p90 -m0 -n1 -d1 -s255 -z0 -c -u 216x104 -l 216x104 -B -A -D0"
+*foo2Args EnvMonarch: "-r1200x600 -g4650x4500 -p80 -m0 -n1 -d1 -s255 -z0 -c -u 214x106 -l 212x106 -B -A -D0"
+*foo2Args Executive: "-r1200x600 -g8700x6300 -p1 -m0 -n1 -d1 -s255 -z0 -c -u 206x110 -l 206x110 -B -A -D0"
+*foo2Args Legal: "-r1200x600 -g10200x8400 -p3 -m0 -n1 -d1 -s255 -z0 -c -u 204x104 -l 204x104 -B -A -D0"
