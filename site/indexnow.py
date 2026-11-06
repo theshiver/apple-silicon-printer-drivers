@@ -7,12 +7,12 @@ Run after the site is deployed, so the key file is live:
 import json, re, pathlib, urllib.request
 
 DOCS = pathlib.Path(__file__).resolve().parent.parent / "docs"
-BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
+BASE = "https://macprinterdrivers.com"
 KEY = re.search(r'INDEXNOW_KEY = "([0-9a-f]+)"', (DOCS.parent / "site" / "build-site.py").read_text()).group(1)
 
 urls = [u for f in sorted(DOCS.glob("sitemap-*.xml")) for u in re.findall(r"<loc>(.*?)</loc>", f.read_text())]
 urls += [f"{BASE}/llms.txt", f"{BASE}/supported-printers.txt"]
-body = json.dumps({"host": "theshiver.github.io", "key": KEY, "keyLocation": f"{BASE}/{KEY}.txt", "urlList": urls}).encode()
+body = json.dumps({"host": "macprinterdrivers.com", "key": KEY, "keyLocation": f"{BASE}/{KEY}.txt", "urlList": urls}).encode()
 req = urllib.request.Request("https://api.indexnow.org/indexnow", body, {"Content-Type": "application/json; charset=utf-8", "User-Agent": "apple-silicon-printer-drivers-indexnow/1.0"})
 with urllib.request.urlopen(req) as r:
     print(f"submitted {len(urls)} urls: HTTP {r.status}")

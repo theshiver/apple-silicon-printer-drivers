@@ -16,7 +16,7 @@ permissions:
 
 env:
   TAG: ${{ inputs.tag || github.event.release.tag_name }}
-  SITE: https://theshiver.github.io/apple-silicon-printer-drivers
+  SITE: https://macprinterdrivers.com
 
 jobs:
   cask:

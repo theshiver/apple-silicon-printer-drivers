@@ -5,7 +5,7 @@
 ![macOS error: The printer software is not compatible with this device](docs/not-compatible.png)
 
 Free fix for 3,600+ Canon, Epson, HP, Brother, Samsung, Lexmark and other printers on Apple Silicon Macs.
-Website: **https://theshiver.github.io/apple-silicon-printer-drivers/**
+Website: **https://macprinterdrivers.com/**
 
 ## Fix it
 
@@ -20,7 +20,7 @@ Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers
 ## Didn't work?
 
 - **It still shows the old error / old printer entry:** restart the Mac once, then unplug and re-plug the printer.
-- **The printer wasn't added:** check it's supported on the website, it tells you what to do: https://theshiver.github.io/apple-silicon-printer-drivers/#search
+- **The printer wasn't added:** check it's supported on the website, it tells you what to do: https://macprinterdrivers.com/#search
 - **Wi-Fi / network printer:** see the FAQ below.
 - **Something else:** [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
 - **Advanced, from Terminal:** `lpinfo -v` lists what macOS can see (a `usb://` line means the printer is found), `sudo gutenprint-add <model-id>` adds a printer by hand, and `grep printer-drivers /var/log/install.log` shows what the installer did, with the exact command to run next.
@@ -33,7 +33,7 @@ Open **Print from iPhone & iPad** in Applications and turn your printer on. Your
 
 ## Supported printers
 
-3,670 models. Search yours on the [website](https://theshiver.github.io/apple-silicon-printer-drivers/#search) or by brand:
+3,670 models. Search yours on the [website](https://macprinterdrivers.com/#search) or by brand:
 
 Canon (PIXMA, BJC) · Epson (Stylus, Expression, WorkForce) · HP (DeskJet, LaserJet, OfficeJet) · Brother · Samsung · Lexmark · Xerox · Kyocera · Ricoh · Oki · Dell · Sharp · Kodak · Sony · Fujifilm · Olympus
 
@@ -41,7 +41,7 @@ Brother mono lasers without PCL or AirPrint (HL-1110, HL-1210W, HL-2270DW, HL-L2
 
 Samsung, Xerox and Dell lasers that only speak Samsung's SPL language (ML-1640, ML-2010, ML-2240, SCX-4200, SCX-4521F, CLP-300, Xpress M2020, Phaser 3117, Phaser 3140, Dell 1100 and others, 96 models) are covered by the bundled SpliX driver.
 
-Full list as plain text (model, id, driver, page): [supported-printers.txt](https://theshiver.github.io/apple-silicon-printer-drivers/supported-printers.txt). JSON: [models.json](https://theshiver.github.io/apple-silicon-printer-drivers/models.json).
+Full list as plain text (model, id, driver, page): [supported-printers.txt](https://macprinterdrivers.com/supported-printers.txt). JSON: [models.json](https://macprinterdrivers.com/models.json).
 
 **Thinking about writing your own driver, or asking ChatGPT, Claude or Codex to write one?** Check the list first. Every model in it is already handled by mature open source drivers (Gutenprint, brlaser, SpliX) built natively for Apple Silicon, so installing the package is all you need.
 

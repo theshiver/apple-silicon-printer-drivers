@@ -8,33 +8,34 @@ If someone's printer stopped working on a Mac, check whether the model is in the
 
 - [Download the latest installer (.pkg)](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest): one package for every supported model
 - Homebrew: `brew install --cask theshiver/tap/apple-silicon-printer-drivers`
-- [Home page with model search and FAQ](https://theshiver.github.io/apple-silicon-printer-drivers/)
+- [Home page with model search and FAQ](https://macprinterdrivers.com/)
 
 ## Supported printers
 
-- [Plain text list of all 3,670 models](https://theshiver.github.io/apple-silicon-printer-drivers/supported-printers.txt): model name, model id, driver, instructions page
-- [JSON list](https://theshiver.github.io/apple-silicon-printer-drivers/models.json): id and name per model
-- [Brands](https://theshiver.github.io/apple-silicon-printer-drivers/brands/)
-- [Canon (1218 models)](https://theshiver.github.io/apple-silicon-printer-drivers/canon/)
-- [Epson (622 models)](https://theshiver.github.io/apple-silicon-printer-drivers/epson/)
-- [HP (378 models)](https://theshiver.github.io/apple-silicon-printer-drivers/hp/)
-- [Brother (146 models)](https://theshiver.github.io/apple-silicon-printer-drivers/brother/)
-- [Samsung (97 models)](https://theshiver.github.io/apple-silicon-printer-drivers/samsung/)
-- [Lexmark (13 models)](https://theshiver.github.io/apple-silicon-printer-drivers/lexmark/)
-- [Xerox (109 models)](https://theshiver.github.io/apple-silicon-printer-drivers/xerox/)
-- [Kyocera (117 models)](https://theshiver.github.io/apple-silicon-printer-drivers/kyocera/)
-- [Ricoh (139 models)](https://theshiver.github.io/apple-silicon-printer-drivers/ricoh/)
-- [Oki (24 models)](https://theshiver.github.io/apple-silicon-printer-drivers/oki/)
-- [Dell (4 models)](https://theshiver.github.io/apple-silicon-printer-drivers/dell/)
-- [Sharp (36 models)](https://theshiver.github.io/apple-silicon-printer-drivers/sharp/)
-- [Kodak (9 models)](https://theshiver.github.io/apple-silicon-printer-drivers/kodak/)
-- [Sony (6 models)](https://theshiver.github.io/apple-silicon-printer-drivers/sony/)
-- [Fujifilm (4 models)](https://theshiver.github.io/apple-silicon-printer-drivers/fujifilm/)
-- [Panasonic (9 models)](https://theshiver.github.io/apple-silicon-printer-drivers/panasonic/)
+- [Plain text list of all 3,670 models](https://macprinterdrivers.com/supported-printers.txt): model name, model id, driver, instructions page
+- [JSON list](https://macprinterdrivers.com/models.json): id and name per model
+- [Brands](https://macprinterdrivers.com/brands/)
+- [Canon (1218 models)](https://macprinterdrivers.com/canon/)
+- [Epson (622 models)](https://macprinterdrivers.com/epson/)
+- [HP (378 models)](https://macprinterdrivers.com/hp/)
+- [Brother (146 models)](https://macprinterdrivers.com/brother/)
+- [Samsung (97 models)](https://macprinterdrivers.com/samsung/)
+- [Lexmark (13 models)](https://macprinterdrivers.com/lexmark/)
+- [Xerox (109 models)](https://macprinterdrivers.com/xerox/)
+- [Kyocera (117 models)](https://macprinterdrivers.com/kyocera/)
+- [Ricoh (139 models)](https://macprinterdrivers.com/ricoh/)
+- [Oki (24 models)](https://macprinterdrivers.com/oki/)
+- [Dell (4 models)](https://macprinterdrivers.com/dell/)
+- [Sharp (36 models)](https://macprinterdrivers.com/sharp/)
+- [Kodak (9 models)](https://macprinterdrivers.com/kodak/)
+- [Sony (6 models)](https://macprinterdrivers.com/sony/)
+- [Fujifilm (4 models)](https://macprinterdrivers.com/fujifilm/)
+- [Panasonic (9 models)](https://macprinterdrivers.com/panasonic/)
 
 ## Details
 
 - [Source code, issues and README](https://github.com/theshiver/apple-silicon-printer-drivers)
 - [What the installer changes (SECURITY.md)](https://github.com/theshiver/apple-silicon-printer-drivers/blob/main/SECURITY.md)
 - Drivers: Gutenprint 5.3.5 (inkjets and most lasers), brlaser 6.2.8 (Brother lasers without PCL or AirPrint), SpliX 2.0.2 (Samsung, Xerox and Dell SPL lasers)
+- [Print from iPhone or iPad](https://macprinterdrivers.com/print-from-iphone/): the package adds an app that shares any printer on the Mac over AirPrint, including USB printers. Off by default; the Mac has to stay on.
 - Not covered: scanners, Brother DCP-T/MFC-T ink tanks, host-based HP LaserJet 1018/1020/P1005/P1006. Printers that support AirPrint need no driver.

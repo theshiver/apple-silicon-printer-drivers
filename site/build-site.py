@@ -7,7 +7,7 @@ import json, re, html, datetime, pathlib, collections
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
-BASE = "https://theshiver.github.io/apple-silicon-printer-drivers"
+BASE = "https://macprinterdrivers.com"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
 PKG = "AppleSilicon-Printer-Drivers-2.0.0.pkg"
@@ -415,7 +415,7 @@ STACK_CSS = ("<style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,
              ".stack tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:10px 0}.stack td{border:0;padding:4px 0}"
              ".stack td:first-child{font-weight:600}.stack td:not(:first-child)::before{content:attr(data-l);display:block;color:var(--muted);font-size:.85rem}}</style>")
 # ponytail: hand-kept floors (.pkg downloads across all releases, GitHub stars), refresh at release time
-DOWNLOADS, STARS = 7300, 65
+DOWNLOADS, STARS = 7600, 65
 symptoms = cards([
  ("“The printer software is not compatible with this device”", "The old driver no longer runs. Install this driver, then print to the new entry ending in “Apple Silicon”."),
  ("“Software for this printer isn't available”", "macOS has no driver for it. Install this driver, then add the printer with Use: Select Software…"),
@@ -696,6 +696,7 @@ for fn, us in parts.items():
     "".join(f"<sitemap><loc>{BASE}/{fn}</loc><lastmod>{max(LASTMOD[u] for u in us)}</lastmod></sitemap>\n" for fn, us in parts.items()) + "</sitemapindex>\n")
 (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
 (DOCS / ".nojekyll").write_text("")
+(DOCS / "CNAME").write_text("macprinterdrivers.com\n")
 (DOCS / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
 ordered = sorted(models, key=lambda m: (brand_of(m).lower(), m["name"].lower()))
 (DOCS / "supported-printers.txt").write_text(
