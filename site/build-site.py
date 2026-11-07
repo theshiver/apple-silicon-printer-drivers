@@ -148,6 +148,10 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
         links = "".join(f'<a href="{u}" hreflang="{l}" lang="{l}">{T[l]["lang_name"]}</a>' for l, u in alts.items() if l != lang)
         switch = f'<details class="langs"><summary>{t["lang_name"]}</summary><div>{links}</div></details>'
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, separators=(",",":"))}</script>' if jsonld else ""
+    # home pages only: in the shared footer this would move lastmod on every URL for a credit link
+    credit = ""
+    if (track or {}).get("page_type") == "home":
+        credit = f' · <a href="https://cancetin.com/{"tr/" if lang == "tr" else ""}">Can Çetin</a>'
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -170,7 +174,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 <nav><a href="{pre}#search">{t["nav_check"]}</a><a href="{pre}print-from-iphone/">{t["nav_iphone"]}</a><a href="{pre}troubleshooting/">{t["nav_help"]}</a><a class="coffee" href="{COFFEE}" data-loc="header">{t["nav_coffee"]}</a>{switch}</nav></header>
 <main>
 {body}
-<footer><a href="{pre}brands/">{t["all_brands"]}</a> · <a href="{REPO}">GitHub</a> · <a href="{COFFEE}" data-loc="footer">{t["nav_coffee"]}</a> · <a href="{pre}privacy/">{t["privacy"]}</a><br>{t["footer_note"]}</footer>
+<footer><a href="{pre}brands/">{t["all_brands"]}</a> · <a href="{REPO}">GitHub</a> · <a href="{COFFEE}" data-loc="footer">{t["nav_coffee"]}</a> · <a href="{pre}privacy/">{t["privacy"]}</a>{credit}<br>{t["footer_note"]}</footer>
 </main>
 <script>{TRACK_JS}</script>
 </body></html>"""
