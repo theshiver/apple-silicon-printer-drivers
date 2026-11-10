@@ -288,8 +288,19 @@ by_name = {m["name"]: m for m in models}
 POPULAR_MODELS = [by_name[n] for n in ("Brother HL-2270DW series", "Brother HL-1210W series", "Brother HL-1110 series", "Brother MFC-7460DN", "Brother DCP-7065DN",
     "Canon PIXMA MP250", "Canon PIXMA iP4300", "Canon PIXMA iP110", "Canon PIXMA MX885", "Canon MG2500 series",
     "Epson Stylus Photo R300", "Epson WorkForce 610", "HP LaserJet 1010", "Samsung ML-1865", "Samsung ML-2010")]
-# ponytail: hand-kept floors (.pkg downloads across all releases, GitHub stars), refresh at release time
-DOWNLOADS, STARS = 7600, 65
+# Social proof is read from the GitHub API on every build (.pkg downloads across all releases, rounded down to 100;
+# stars). The numbers below are the fallback when the API is unreachable or rate limited; a build never fails over them.
+DOWNLOADS, STARS = 8600, 91
+def github_counts():
+    import urllib.request
+    api = lambda p: json.load(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/theshiver/apple-silicon-printer-drivers{p}",
+                                                                          headers={"User-Agent": "macprinterdrivers-site-build"}), timeout=15))
+    dl = sum(a["download_count"] for r in api("/releases?per_page=100") for a in r["assets"] if a["name"].endswith(".pkg"))
+    return dl // 100 * 100, api("")["stargazers_count"]
+try:
+    DOWNLOADS, STARS = github_counts()
+except Exception as e:
+    print(f"GitHub counts unavailable ({e}); using {DOWNLOADS}+ downloads and {STARS} stars")
 # Four columns don't fit a phone, so rows become cards; only home pages need it, so it stays out of CSS
 STACK_CSS = ("<style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,.stack td{display:block}.stack thead{display:none}"
              ".stack tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:10px 0}.stack td{border:0;padding:4px 0}"
