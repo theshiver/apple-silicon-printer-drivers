@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Alojamiento",
  "privacy_hosting": "Este sitio funciona en GitHub Pages. GitHub puede registrar datos técnicos, como direcciones IP, para prestar el servicio. Mira la <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">declaración de privacidad de GitHub</a> y la <a href=\"https://policies.google.com/privacy\">política de privacidad de Google</a>.",
  "privacy_contact_h2": "Preguntas",
- "privacy_contact": "Abre una incidencia en <a href=\"{repo}/issues\">GitHub</a>."
+ "privacy_contact": "Abre una incidencia en <a href=\"{repo}/issues\">GitHub</a>.",
+ "apple_title": "Drivers de impresora para Mac Apple Silicon (macOS 27) – Gratis",
+ "apple_desc": "Drivers de impresora gratis para Mac con Apple Silicon y macOS 27, macOS 26 Tahoe o macOS 15 Sequoia. Para {n} impresoras Canon, Epson, HP, Brother y Samsung. Sin Rosetta.",
+ "apple_h1": "Drivers de impresora para Mac con Apple Silicon",
+ "apple_lead": "¿Tu impresora dejó de funcionar al actualizar macOS? Un driver nativo gratis hace que {n} impresoras Canon, Epson, HP, Brother y Samsung vuelvan a funcionar en Apple Silicon.",
+ "apple_models_h2": "Impresoras de Apple",
+ "apple_models_intro": "También son compatibles los antiguos modelos Apple StyleWriter y LaserWriter."
 }

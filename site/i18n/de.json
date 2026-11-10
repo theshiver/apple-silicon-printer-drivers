@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Hosting",
  "privacy_hosting": "Diese Website läuft auf GitHub Pages. GitHub kann technische Daten wie IP-Adressen protokollieren, um den Dienst zu betreiben. Siehe <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHubs Datenschutzerklärung</a> und <a href=\"https://policies.google.com/privacy\">Googles Datenschutzerklärung</a>.",
  "privacy_contact_h2": "Fragen",
- "privacy_contact": "Eröffne ein Issue auf <a href=\"{repo}/issues\">GitHub</a>."
+ "privacy_contact": "Eröffne ein Issue auf <a href=\"{repo}/issues\">GitHub</a>.",
+ "apple_title": "Druckertreiber für Apple-Silicon-Macs (macOS 27) – Kostenlos",
+ "apple_desc": "Kostenlose Druckertreiber für Apple-Silicon-Macs mit macOS 27, macOS 26 Tahoe oder macOS 15 Sequoia. Für {n} Canon-, Epson-, HP-, Brother- und Samsung-Drucker. Ohne Rosetta.",
+ "apple_h1": "Druckertreiber für Macs mit Apple Silicon",
+ "apple_lead": "Drucker funktioniert nach dem macOS-Update nicht mehr? Ein kostenloser nativer Treiber bringt {n} Canon-, Epson-, HP-, Brother- und Samsung-Drucker auf Apple Silicon wieder zum Laufen.",
+ "apple_models_h2": "Drucker von Apple",
+ "apple_models_intro": "Auch die alten Apple-Modelle StyleWriter und LaserWriter werden unterstützt."
 }

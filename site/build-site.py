@@ -413,6 +413,47 @@ def brand_page(b, l):
     return page(title, fill(t["brand_desc"], b=b, n=n, macos=t["macos"]), f"{pre}{slug(b)}/", body, ld, lang=l, alts=alts_for(f"{slug(b)}/"),
                 track={"page_type": "brand", "printer_brand": b}, keywords=fill(t["brand_keywords"], b=b))
 
+def apple_page(l):
+    """/apple/ ranks for "apple silicon printer driver", not for Apple-made printers: a home-style landing page,
+    with the four Apple models as a small section instead of the brand template."""
+    t = T[l]; pre = f"{BASE}/{P(l)}"; n = num(len(models), l); help_url = f"{pre}troubleshooting/"
+    ms = sorted(by_brand["Apple"], key=lambda m: m["name"].lower())
+    brands = " ".join(f'<a href="{pre}{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)
+    body = f"""
+<section class="hero"><div>
+<h1>{t["apple_h1"]}</h1>
+<p class="lead">{fill(t["apple_lead"], n=n)}</p>
+{download_card(lang=l, steps=False)}
+<p class="note">{fill(t["proof"], downloads=num(DOWNLOADS, l), stars=STARS, repo=REPO)}</p>
+</div>{MOCK.format(bad=t["mock_bad"], good=t["mock_good"], who=t["mock_who"])}</section>
+
+<h2>{t["how_h2"]}</h2>
+{quick_steps(l)}
+<p class="note">{fill(t["still_note"], help_url=help_url)}</p>
+
+<h2 id="search">{t["search_h2"]}</h2>
+<form id="qf" onsubmit="return false"><input type="search" id="q" aria-label="{html.escape(t["search_label"], quote=True)}" placeholder="{html.escape(t["search_placeholder"], quote=True)}" autocomplete="off"></form>
+<ul id="results"></ul>
+<div id="answer" class="card hidden"></div>
+<p class="note">{t["search_note"]}</p>
+<p class="brands">{brands} <a href="{pre}brands/">{t["all_brands_link"]}</a></p>
+
+<h2>{t["apple_models_h2"]}</h2>
+<p>{t["apple_models_intro"]}</p>
+{model_list(ms)}
+
+<h2>{t["popular_h2"]}</h2>
+<p class="brands">{" ".join(f'<a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a>' for m in POPULAR_MODELS)}</p>
+
+<h2 id="faq">{t["faq_h2"]}</h2>
+{faq_list(t["faq"])}
+<p><a href="{help_url}">{t["more_help"]}</a></p>
+{coffee_card(l)}
+{search_script(t)}
+"""
+    return page(t["apple_title"], fill(t["apple_desc"], n=n), f"{pre}apple/", body, lang=l, alts=alts_for("apple/"),
+                track={"page_type": "landing"}, keywords=t["home_keywords"])
+
 def brands_index(l):
     t = T[l]; pre = f"{BASE}/{P(l)}"; n = num(len(models), l)
     links = "\n".join(f'<a href="{pre}{slug(b)}/">{html.escape(b)} ({num(len(by_brand[b]), l)})</a>' for b in BRANDS)
@@ -456,7 +497,7 @@ for l in LANGS:
         urls.append(url)
     out("", home_page(l))
     for b in BRANDS:
-        out(f"{slug(b)}/", brand_page(b, l))
+        out(f"{slug(b)}/", apple_page(l) if b == "Apple" else brand_page(b, l))
     out("brands/", brands_index(l))
     out("troubleshooting/", help_page(l))
     out("print-from-iphone/", iphone_page(l))

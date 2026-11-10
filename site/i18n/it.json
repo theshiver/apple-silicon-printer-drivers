@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Hosting",
  "privacy_hosting": "Questo sito è ospitato su GitHub Pages. GitHub può registrare dati tecnici, come gli indirizzi IP, per far funzionare il servizio. Leggi l'<a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">informativa sulla privacy di GitHub</a> e l'<a href=\"https://policies.google.com/privacy\">informativa sulla privacy di Google</a>.",
  "privacy_contact_h2": "Domande",
- "privacy_contact": "Apri una segnalazione su <a href=\"{repo}/issues\">GitHub</a>."
+ "privacy_contact": "Apri una segnalazione su <a href=\"{repo}/issues\">GitHub</a>.",
+ "apple_title": "Driver stampante per Mac Apple Silicon (macOS 27) – Gratis",
+ "apple_desc": "Driver stampante gratuiti per Mac Apple Silicon con macOS 27, macOS 26 Tahoe o macOS 15 Sequoia. Per {n} stampanti Canon, Epson, HP, Brother e Samsung. Senza Rosetta.",
+ "apple_h1": "Driver stampante per Mac Apple Silicon",
+ "apple_lead": "La stampante ha smesso di funzionare dopo l'aggiornamento di macOS? Un driver nativo gratuito fa tornare a funzionare {n} stampanti Canon, Epson, HP, Brother e Samsung su Apple Silicon.",
+ "apple_models_h2": "Stampanti Apple",
+ "apple_models_intro": "Sono supportati anche i vecchi modelli Apple StyleWriter e LaserWriter."
 }

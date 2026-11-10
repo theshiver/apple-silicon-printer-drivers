@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Hébergement",
  "privacy_hosting": "Ce site est hébergé sur GitHub Pages. GitHub peut enregistrer des données techniques comme les adresses IP pour faire fonctionner le service. Voir la <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">déclaration de confidentialité de GitHub</a> et la <a href=\"https://policies.google.com/privacy\">politique de confidentialité de Google</a>.",
  "privacy_contact_h2": "Questions",
- "privacy_contact": "Ouvrez un ticket sur <a href=\"{repo}/issues\">GitHub</a>."
+ "privacy_contact": "Ouvrez un ticket sur <a href=\"{repo}/issues\">GitHub</a>.",
+ "apple_title": "Pilotes d’imprimante pour Mac Apple Silicon (macOS 27) – Gratuit",
+ "apple_desc": "Pilotes d’imprimante gratuits pour les Mac Apple Silicon sous macOS 27, macOS 26 Tahoe ou macOS 15 Sequoia. Pour {n} imprimantes Canon, Epson, HP, Brother et Samsung. Sans Rosetta.",
+ "apple_h1": "Pilotes d’imprimante pour Mac Apple Silicon",
+ "apple_lead": "Votre imprimante ne fonctionne plus après la mise à jour de macOS ? Un pilote natif gratuit remet en marche {n} imprimantes Canon, Epson, HP, Brother et Samsung sur Apple Silicon.",
+ "apple_models_h2": "Imprimantes Apple",
+ "apple_models_intro": "Les anciens modèles Apple StyleWriter et LaserWriter sont aussi pris en charge."
 }

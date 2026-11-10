@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Barındırma",
  "privacy_hosting": "Bu site GitHub Pages üzerinde çalışır. GitHub, hizmeti çalıştırmak için IP adresleri gibi teknik verileri kaydedebilir. <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub'ın gizlilik bildirimine</a> ve <a href=\"https://policies.google.com/privacy\">Google'ın gizlilik politikasına</a> bakın.",
  "privacy_contact_h2": "Sorular",
- "privacy_contact": "<a href=\"{repo}/issues\">GitHub</a>'da bir konu açın."
+ "privacy_contact": "<a href=\"{repo}/issues\">GitHub</a>'da bir konu açın.",
+ "apple_title": "Apple Silicon Mac için Yazıcı Sürücüleri (macOS 27) – Ücretsiz",
+ "apple_desc": "macOS 27, macOS 26 Tahoe veya macOS 15 Sequoia çalıştıran Apple Silicon Mac'ler için ücretsiz yazıcı sürücüleri. {n} Canon, Epson, HP, Brother ve Samsung yazıcısı için. Rosetta gerekmez.",
+ "apple_h1": "Apple Silicon Mac için yazıcı sürücüleri",
+ "apple_lead": "macOS güncellemesinden sonra yazıcınız çalışmayı bıraktı mı? Ücretsiz yerel bir sürücü, Apple Silicon'da {n} Canon, Epson, HP, Brother ve Samsung yazıcısını yeniden çalıştırır.",
+ "apple_models_h2": "Apple yazıcıları",
+ "apple_models_intro": "Eski Apple StyleWriter ve LaserWriter modelleri de desteklenir."
 }

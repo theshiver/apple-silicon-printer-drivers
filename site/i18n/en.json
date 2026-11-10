@@ -304,5 +304,11 @@
  "privacy_hosting_h2": "Hosting",
  "privacy_hosting": "This site runs on GitHub Pages. GitHub may log technical data such as IP addresses to run the service. See <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub's privacy statement</a> and <a href=\"https://policies.google.com/privacy\">Google's privacy policy</a>.",
  "privacy_contact_h2": "Questions",
- "privacy_contact": "Open an issue on <a href=\"{repo}/issues\">GitHub</a>."
+ "privacy_contact": "Open an issue on <a href=\"{repo}/issues\">GitHub</a>.",
+ "apple_title": "Printer Drivers for Apple Silicon Macs (macOS 27) – Free",
+ "apple_desc": "Free printer drivers for Apple Silicon Macs running macOS 27, macOS 26 Tahoe or macOS 15 Sequoia. Works with {n} Canon, Epson, HP, Brother and Samsung printers. No Rosetta.",
+ "apple_h1": "Printer drivers for Apple Silicon Macs",
+ "apple_lead": "Printer stopped working after a macOS update? A free native driver gets {n} Canon, Epson, HP, Brother and Samsung printers working again on Apple Silicon.",
+ "apple_models_h2": "Apple's own printers",
+ "apple_models_intro": "The old Apple StyleWriter and LaserWriter models are supported too."
 }
