@@ -666,6 +666,13 @@
       <printer translate="name" name="Epson PX 7000" driver="escp2-px7000" manufacturer="Epson" model="48" parameters="standard_params" />
       <printer translate="name" name="Epson PX 9000" driver="escp2-px9000" manufacturer="Epson" model="49" parameters="standard_params" />
       <printer translate="name" name="Fujifilm DX100" deviceid="MFG:FUJIFILM;CMD:ESCPL2,BDC,D4,D4PX;MDL:DX100;CLS:PRINTER;DES:FUJIFILM DX100;RID:02;" driver="escp2-fujifilm-dx100" manufacturer="Fujifilm" model="136" parameters="standard_params">EXPERIMENTAL</printer>
+      <!-- Added by apple-silicon-printer-drivers (build/add-pcl-models.sh): Epson inkjets not in upstream Gutenprint. -->
+      <!-- Stylus DX5000/DX5050/DX6000/DX6050: DURABrite Ultra (T0711 inks); the DX5000 and DX6050 share Epson's service manual with the CX4900. Same engine class as the CX4900/DX4800 entries. Untested on hardware. -->
+      <printer translate="name" name="Epson Stylus DX5000" driver="escp2-dx5000" manufacturer="Epson" model="95" parameters="cx3500_params" />
+      <printer translate="name" name="Epson Stylus DX5050" driver="escp2-dx5050" manufacturer="Epson" model="95" parameters="cx3500_params" />
+      <printer translate="name" name="Epson Stylus DX6000" driver="escp2-dx6000" manufacturer="Epson" model="95" parameters="cx3500_params" />
+      <printer translate="name" name="Epson Stylus DX6050" driver="escp2-dx6050" manufacturer="Epson" model="95" parameters="cx3500_params" />
+
     </family>
   </printdef>
 </gutenprint>

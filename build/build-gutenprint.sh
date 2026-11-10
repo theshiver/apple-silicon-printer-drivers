@@ -21,6 +21,7 @@ rm -rf "$OUT/share/gutenprint"
 mkdir -p "$OUT/libexec" "$OUT/share"
 cp -R "$W/stage/Library/Printers/Gutenprint/share/gutenprint" "$OUT/share/"
 "$HERE/add-pcl-models.sh" "$OUT/share/gutenprint/5.3/xml/printers/pcl.xml"
+"$HERE/add-pcl-models.sh" "$OUT/share/gutenprint/5.3/xml/printers/escp2.xml" escp2-extra-printers.xml
 cp "$W/stage/usr/libexec/cups/filter/rastertogutenprint.5.3" "$W/stage/usr/libexec/cups/filter/commandtocanon" "$W/stage/usr/libexec/cups/filter/commandtoepson" "$W/stage/usr/libexec/cups/filter/commandtodyesub" "$W/stage/usr/sbin/cups-genppd.5.3" "$OUT/libexec/"
 # Dye-subs driven by Gutenprint's libusb backend (not shipped) can't print over Apple's USB backend:
 # their ids come from the backend device tables, plus genppd ids that differ from the backend's.

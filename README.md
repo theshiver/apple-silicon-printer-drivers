@@ -2,7 +2,7 @@
 
 **Your printer isn't broken. macOS just stopped supporting it.**
 
-Free drivers that bring 3,757 Canon, Epson, HP, Brother, Samsung and other printers back to life on Apple Silicon Macs, and let you print to them from your iPhone or iPad.
+Free drivers that bring 3,766 Canon, Epson, HP, Brother, Samsung and other printers back to life on Apple Silicon Macs, and let you print to them from your iPhone or iPad.
 
 **[⬇ Download the free driver](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)** · [Website](https://macprinterdrivers.com/) · [Is my printer supported?](https://macprinterdrivers.com/#search)
 

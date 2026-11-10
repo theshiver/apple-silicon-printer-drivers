@@ -1684,6 +1684,13 @@
       <printer translate="name" name="Ricoh SP C252SF" driver="ricoh-sp_c252sf" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
       <printer translate="name" name="Ricoh SP C261DNw" driver="ricoh-sp_c261dnw" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
       <printer translate="name" name="Ricoh SP C261SFNw" driver="ricoh-sp_c261sfnw" manufacturer="Ricoh" model="50000" parameters="pcl_laser_params" />
+      <!-- HP LaserJet P2055 series: PCL6, PCL5c and PostScript 3 emulation, same class as the P2015 entry. -->
+      <printer translate="name" name="HP LaserJet P2055d" driver="hp-lj_p2055d" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet P2055dn" driver="hp-lj_p2055dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet P2055x" driver="hp-lj_p2055x" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <!-- HP LaserJet Pro M203dn/M203dw: PCL6, PCL5c and PostScript (HP datasheet), same class as the M201 entries. -->
+      <printer translate="name" name="HP LaserJet Pro M203dn" driver="hp-lj_pro_m203dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="HP LaserJet Pro M203dw" driver="hp-lj_pro_m203dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
 
     </family>
   </printdef>

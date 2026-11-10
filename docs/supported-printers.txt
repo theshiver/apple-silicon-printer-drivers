@@ -1,4 +1,4 @@
-# Mac Printer Drivers for Apple Silicon: 3757 supported printer models (version 2.0.1)
+# Mac Printer Drivers for Apple Silicon: 3766 supported printer models (version 2.0.1)
 # Every model below works on Apple Silicon Macs with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -1774,6 +1774,10 @@ Epson Stylus DX4400 | escp2-dx4400 | Gutenprint | https://macprinterdrivers.com/
 Epson Stylus DX4450 | escp2-dx4450 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx4450/
 Epson Stylus DX4800 | escp2-dx4800 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx4800/
 Epson Stylus DX4850 | escp2-dx4850 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx4850/
+Epson Stylus DX5000 | escp2-dx5000 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx5000/
+Epson Stylus DX5050 | escp2-dx5050 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx5050/
+Epson Stylus DX6000 | escp2-dx6000 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx6000/
+Epson Stylus DX6050 | escp2-dx6050 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx6050/
 Epson Stylus DX7000F | escp2-dx7000f | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx7000f/
 Epson Stylus DX7400 | escp2-dx7400 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx7400/
 Epson Stylus DX7450 | escp2-dx7450 | Gutenprint | https://macprinterdrivers.com/epson/stylus-dx7450/
@@ -2524,6 +2528,9 @@ HP LaserJet P2014n | foo2-hp-laserjet-p2014n | foo2zjs | https://macprinterdrive
 HP LaserJet P2015 | hp-lj_p2015 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2015/
 HP LaserJet P2035 | foo2-hp-laserjet-p2035 | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2035/
 HP LaserJet P2035n | foo2-hp-laserjet-p2035n | foo2zjs | https://macprinterdrivers.com/hp/laserjet-p2035n/
+HP LaserJet P2055d | hp-lj_p2055d | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2055d/
+HP LaserJet P2055dn | hp-lj_p2055dn | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2055dn/
+HP LaserJet P2055x | hp-lj_p2055x | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p2055x/
 HP LaserJet P3004 | hp-lj_p3004 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p3004/
 HP LaserJet P3005 | hp-lj_p3005 | Gutenprint | https://macprinterdrivers.com/hp/laserjet-p3005/
 HP LaserJet Pro CP1025nw | foo2-hp-laserjet-pro-cp1025nw | foo2zjs | https://macprinterdrivers.com/hp/laserjet-pro-cp1025nw/
@@ -2534,6 +2541,8 @@ HP LaserJet Pro M201dw | hp-lj_pro_m201dw | Gutenprint | https://macprinterdrive
 HP LaserJet Pro M201n | hp-lj_pro_m201n | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m201n/
 HP LaserJet Pro M202dw | hp-lj_pro_m202dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m202dw/
 HP LaserJet Pro M202n | hp-lj_pro_m202n | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m202n/
+HP LaserJet Pro M203dn | hp-lj_pro_m203dn | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m203dn/
+HP LaserJet Pro M203dw | hp-lj_pro_m203dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-m203dw/
 HP LaserJet Pro MFP M225dn | hp-lj_pro_m225dn | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m225dn/
 HP LaserJet Pro MFP M225dw | hp-lj_pro_m225dw | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m225dw/
 HP LaserJet Pro MFP M226dn | hp-lj_pro_m226dn | Gutenprint | https://macprinterdrivers.com/hp/laserjet-pro-mfp-m226dn/
