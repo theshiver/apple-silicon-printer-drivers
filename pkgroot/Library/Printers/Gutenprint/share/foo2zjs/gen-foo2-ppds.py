@@ -29,10 +29,11 @@ CMYK = "<</cupsColorSpace 6/cupsColorOrder 1/cupsBitsPerColor 1>>setpagedevice"
 stub = pathlib.Path(tempfile.mkdtemp())
 cap = stub / "cap"
 tools = "foo2zjs foo2xqx foo2lava foo2qpdl foo2hbpl2 foo2hiperc foo2oak foo2slx foo2hp foo2ddst".split()
-scripts = {"gs": 'printf "GS\\t" >>"$CAP"; printf "%s\\t" "$@" >>"$CAP"; echo >>"$CAP"; cat >/dev/null',
+# one printf = one append, so gs and foo2* running side by side in a pipeline can't interleave their lines
+scripts = {"gs": 'printf "GS\\t%s\\n" "$(printf "%s\\t" "$@")" >>"$CAP"; cat >/dev/null',
            "foo2zjs-pstops": "cat"}
 for t in tools:
-    scripts[t] = f'printf "FOO\\t{t}\\t" >>"$CAP"; printf "%s\\t" "$@" >>"$CAP"; echo >>"$CAP"; cat >/dev/null'
+    scripts[t] = f'printf "FOO\\t{t}\\t%s\\n" "$(printf "%s\\t" "$@")" >>"$CAP"; cat >/dev/null'
 for name, body in scripts.items():
     p = stub / name
     p.write_text("#!/bin/sh\n" + body + "\n")
