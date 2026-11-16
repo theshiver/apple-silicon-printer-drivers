@@ -1382,41 +1382,41 @@ Canon TS8000 series | bjc-TS8000-series | Gutenprint | https://macprinterdrivers
 Canon TS9000 series | bjc-TS9000-series | Gutenprint | https://macprinterdrivers.com/canon/ts9000-series/
 Citizen ProJet II | citizen-projet_ii | Gutenprint | https://macprinterdrivers.com/citizen/projet-ii/
 Compaq IJ1200 | compaq-ij1200 | Gutenprint | https://macprinterdrivers.com/compaq/ij1200/
-Datamax-ONeil E4204B Mark III | datamax_oneil_E4204B | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4204b-mark-iii/
-Datamax-ONeil E4205A Mark III | datamax_oneil_E4205A | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4205a-mark-iii/
-Datamax-ONeil E4206L Mark III | datamax_oneil_E4206L | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4206l-mark-iii/
-Datamax-ONeil E4206P Mark III | datamax_oneil_E4206P | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4206p-mark-iii/
-Datamax-ONeil E4304B Mark III | datamax_oneil_E4304B | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4304b-mark-iii/
-Datamax-ONeil E4305A Mark III | datamax_oneil_E4305A | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305a-mark-iii/
-Datamax-ONeil E4305L Mark III | datamax_oneil_E4305L | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305l-mark-iii/
-Datamax-ONeil E4305P Mark III | datamax_oneil_E4305P | Gutenprint | https://macprinterdrivers.com/datamax/oneil-e4305p-mark-iii/
-Datamax-ONeil H4212 | datamax_oneil_H4212 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4212/
-Datamax-ONeil H4212X | datamax_oneil_H4212X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4212x/
-Datamax-ONeil H4310 | datamax_oneil_H4310 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4310/
-Datamax-ONeil H4310X | datamax_oneil_H4310X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4310x/
-Datamax-ONeil H4408 | datamax_oneil_H4408 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4408/
-Datamax-ONeil H4606 | datamax_oneil_H4606 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4606/
-Datamax-ONeil H4606X | datamax_oneil_H4606X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h4606x/
-Datamax-ONeil H6210 | datamax_oneil_H6210 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6210/
-Datamax-ONeil H6210X | datamax_oneil_H6210X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6210x/
-Datamax-ONeil H6212 | datamax_oneil_H6212 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6212/
-Datamax-ONeil H6212X | datamax_oneil_H6212X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6212x/
-Datamax-ONeil H6308 | datamax_oneil_H6308 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6308/
-Datamax-ONeil H6310X | datamax_oneil_H6310X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h6310x/
-Datamax-ONeil H8308 | datamax_oneil_H8308 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308/
-Datamax-ONeil H8308p | datamax_oneil_H8308p | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308p/
-Datamax-ONeil H8308X | datamax_oneil_H8308X | Gutenprint | https://macprinterdrivers.com/datamax/oneil-h8308x/
-Datamax-ONeil I4212e Mark II | datamax_oneil_I4212e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4212e-mark-ii/
-Datamax-ONeil I4310e Mark II | datamax_oneil_I4310e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4310e-mark-ii/
-Datamax-ONeil I4606e Mark II | datamax_oneil_I4606e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-i4606e-mark-ii/
-Datamax-ONeil p1115 | datamax_oneil_p1115 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1115/
-Datamax-ONeil p1115s | datamax_oneil_p1115s | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1115s/
-Datamax-ONeil p1120n | datamax_oneil_p1120n | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1120n/
-Datamax-ONeil p1125 | datamax_oneil_p1125 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1125/
-Datamax-ONeil p1725 | datamax_oneil_p1725 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-p1725/
-Datamax-ONeil RL3e | datamax_oneil_RL3e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-rl3e/
-Datamax-ONeil RL4e | datamax_oneil_RL4e | Gutenprint | https://macprinterdrivers.com/datamax/oneil-rl4e/
-Datamax-ONeil w1110 | datamax_oneil_w1110 | Gutenprint | https://macprinterdrivers.com/datamax/oneil-w1110/
+Datamax-ONeil E4204B Mark III | datamax_oneil_E4204B | Gutenprint | https://macprinterdrivers.com/datamax/e4204b-mark-iii/
+Datamax-ONeil E4205A Mark III | datamax_oneil_E4205A | Gutenprint | https://macprinterdrivers.com/datamax/e4205a-mark-iii/
+Datamax-ONeil E4206L Mark III | datamax_oneil_E4206L | Gutenprint | https://macprinterdrivers.com/datamax/e4206l-mark-iii/
+Datamax-ONeil E4206P Mark III | datamax_oneil_E4206P | Gutenprint | https://macprinterdrivers.com/datamax/e4206p-mark-iii/
+Datamax-ONeil E4304B Mark III | datamax_oneil_E4304B | Gutenprint | https://macprinterdrivers.com/datamax/e4304b-mark-iii/
+Datamax-ONeil E4305A Mark III | datamax_oneil_E4305A | Gutenprint | https://macprinterdrivers.com/datamax/e4305a-mark-iii/
+Datamax-ONeil E4305L Mark III | datamax_oneil_E4305L | Gutenprint | https://macprinterdrivers.com/datamax/e4305l-mark-iii/
+Datamax-ONeil E4305P Mark III | datamax_oneil_E4305P | Gutenprint | https://macprinterdrivers.com/datamax/e4305p-mark-iii/
+Datamax-ONeil H4212 | datamax_oneil_H4212 | Gutenprint | https://macprinterdrivers.com/datamax/h4212/
+Datamax-ONeil H4212X | datamax_oneil_H4212X | Gutenprint | https://macprinterdrivers.com/datamax/h4212x/
+Datamax-ONeil H4310 | datamax_oneil_H4310 | Gutenprint | https://macprinterdrivers.com/datamax/h4310/
+Datamax-ONeil H4310X | datamax_oneil_H4310X | Gutenprint | https://macprinterdrivers.com/datamax/h4310x/
+Datamax-ONeil H4408 | datamax_oneil_H4408 | Gutenprint | https://macprinterdrivers.com/datamax/h4408/
+Datamax-ONeil H4606 | datamax_oneil_H4606 | Gutenprint | https://macprinterdrivers.com/datamax/h4606/
+Datamax-ONeil H4606X | datamax_oneil_H4606X | Gutenprint | https://macprinterdrivers.com/datamax/h4606x/
+Datamax-ONeil H6210 | datamax_oneil_H6210 | Gutenprint | https://macprinterdrivers.com/datamax/h6210/
+Datamax-ONeil H6210X | datamax_oneil_H6210X | Gutenprint | https://macprinterdrivers.com/datamax/h6210x/
+Datamax-ONeil H6212 | datamax_oneil_H6212 | Gutenprint | https://macprinterdrivers.com/datamax/h6212/
+Datamax-ONeil H6212X | datamax_oneil_H6212X | Gutenprint | https://macprinterdrivers.com/datamax/h6212x/
+Datamax-ONeil H6308 | datamax_oneil_H6308 | Gutenprint | https://macprinterdrivers.com/datamax/h6308/
+Datamax-ONeil H6310X | datamax_oneil_H6310X | Gutenprint | https://macprinterdrivers.com/datamax/h6310x/
+Datamax-ONeil H8308 | datamax_oneil_H8308 | Gutenprint | https://macprinterdrivers.com/datamax/h8308/
+Datamax-ONeil H8308p | datamax_oneil_H8308p | Gutenprint | https://macprinterdrivers.com/datamax/h8308p/
+Datamax-ONeil H8308X | datamax_oneil_H8308X | Gutenprint | https://macprinterdrivers.com/datamax/h8308x/
+Datamax-ONeil I4212e Mark II | datamax_oneil_I4212e | Gutenprint | https://macprinterdrivers.com/datamax/i4212e-mark-ii/
+Datamax-ONeil I4310e Mark II | datamax_oneil_I4310e | Gutenprint | https://macprinterdrivers.com/datamax/i4310e-mark-ii/
+Datamax-ONeil I4606e Mark II | datamax_oneil_I4606e | Gutenprint | https://macprinterdrivers.com/datamax/i4606e-mark-ii/
+Datamax-ONeil p1115 | datamax_oneil_p1115 | Gutenprint | https://macprinterdrivers.com/datamax/p1115/
+Datamax-ONeil p1115s | datamax_oneil_p1115s | Gutenprint | https://macprinterdrivers.com/datamax/p1115s/
+Datamax-ONeil p1120n | datamax_oneil_p1120n | Gutenprint | https://macprinterdrivers.com/datamax/p1120n/
+Datamax-ONeil p1125 | datamax_oneil_p1125 | Gutenprint | https://macprinterdrivers.com/datamax/p1125/
+Datamax-ONeil p1725 | datamax_oneil_p1725 | Gutenprint | https://macprinterdrivers.com/datamax/p1725/
+Datamax-ONeil RL3e | datamax_oneil_RL3e | Gutenprint | https://macprinterdrivers.com/datamax/rl3e/
+Datamax-ONeil RL4e | datamax_oneil_RL4e | Gutenprint | https://macprinterdrivers.com/datamax/rl4e/
+Datamax-ONeil w1110 | datamax_oneil_w1110 | Gutenprint | https://macprinterdrivers.com/datamax/w1110/
 DEC 1800 | dec-1800 | Gutenprint | https://macprinterdrivers.com/dec/1800/
 DEC LN17 | dec-ln17 | Gutenprint | https://macprinterdrivers.com/dec/ln17/
 Dell 1100 | splix-dell-1100 | SpliX | https://macprinterdrivers.com/dell/1100/

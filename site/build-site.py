@@ -74,7 +74,7 @@ def model_path(m):
     w = m["name"].split()[0]
     b = ALIAS.get(w, w)
     # a two-word brand ("Fuji Xerox") shouldn't repeat its second word in the model part
-    rest = m["name"][len(b if m["name"].startswith(b) else w):]
+    rest = m["name"][len(b if m["name"].startswith(b + " ") else w):]
     return f"{slug(b)}/{slug(rest) or slug(m['name'])}"
 assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
 
@@ -324,7 +324,7 @@ def search_script(t):
     return f"""<script>
 const BASE={json.dumps(BASE)},ALIAS={json.dumps(ALIAS)};let MODELS=null,sel=-1,st;
 const slug=s=>s.replace(/\\+/g,' plus').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-function modelPath(m){{const w=m.name.split(' ')[0],b=ALIAS[w]||w;return slug(b)+'/'+(slug(m.name.slice((m.name.startsWith(b)?b:w).length))||slug(m.name))}}
+function modelPath(m){{const w=m.name.split(' ')[0],b=ALIAS[w]||w;return slug(b)+'/'+(slug(m.name.slice((m.name.startsWith(b+' ')?b:w).length))||slug(m.name))}}
 const q=document.getElementById('q'),res=document.getElementById('results'),ans=document.getElementById('answer');
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 async function load(){{if(!MODELS){{MODELS=await (await fetch('/models.json')).json();MODELS.forEach(m=>m.n=norm(m.name+' '+m.id));}}}}
