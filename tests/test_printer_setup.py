@@ -150,6 +150,10 @@ fi
         self.assertEqual(args[args.index("-D") + 1], "Samsung ML-1640 - Apple Silicon")
         ppd = Path(args[args.index("-P") + 1]).read_text()
         self.assertIn('"application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertoqpdl"', ppd)
+        for p in (PAYLOAD / "share/splix/ppd").glob("*.ppd"):
+            text = p.read_text()
+            self.assertNotIn("pstoqpdl", text, p.name)
+            self.assertIn('"application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertoqpdl"', text, p.name)
 
     def test_missing_splix_filter_fails_before_queue_creation(self):
         (self.gp / "libexec/rastertoqpdl").unlink()

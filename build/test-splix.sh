@@ -17,6 +17,8 @@ codesign --verify "$FILTER"
 printf 'SpliX native arm64 smoke test\n' | \
   /usr/libexec/cups/filter/cgtexttopdf 1 user test 1 "" > "$T/test.pdf" 2>"$T/pdf.log"
 for P in "$GP"/share/splix/ppd/*.ppd; do
+  grep -q '^\*cupsFilter: "application/vnd\.cups-raster [0-9]* /Library/Printers/Gutenprint/libexec/rastertoqpdl"$' "$P"
+  ! grep -q 'pstoqpdl' "$P"
   # Validate with the staged filter path, since nothing is installed system-wide.
   sed "s#/Library/Printers/Gutenprint/libexec/rastertoqpdl#$FILTER#" "$P" > "$T/m.ppd"
   # A checkout is user-owned; postinstall sets root ownership for CUPS.

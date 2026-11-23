@@ -30,7 +30,7 @@
 *cupsVersion: 2.3
 *cupsModelNumber: 0
 *cupsManualCopies: False
-*cupsFilter: "application/vnd.cups-postscript 0 pstoqpdl"
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertoqpdl"
 *cupsLanguages: "en"
 *UIConstraints: *OptionTray2 False *InputSlot Lower
 *UIConstraints: *InputSlot Lower *OptionTray2 False

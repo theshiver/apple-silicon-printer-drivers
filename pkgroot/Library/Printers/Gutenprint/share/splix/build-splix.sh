@@ -69,6 +69,7 @@ for p in "$W"/all/*.ppd; do
   sed -e "s#^\*ShortNickName: .*#*ShortNickName: \"$NAME\"#" \
       -e 's#^\(\*NickName: ".*\)"$#\1 - Apple Silicon"#' \
       -e 's#\(\*cupsFilter: *"application/vnd.cups-raster [0-9]* \)rastertoqpdl"#\1/Library/Printers/Gutenprint/libexec/rastertoqpdl"#' \
+      -e 's#^\*cupsFilter: *"application/vnd\.cups-postscript [0-9]* pstoqpdl"$#*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/Gutenprint/libexec/rastertoqpdl"#' \
       "$p" > "$OUT/share/splix/ppd/$ID.ppd"
   N=$((N + 1))
 done
