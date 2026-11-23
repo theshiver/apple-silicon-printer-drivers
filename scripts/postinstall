@@ -12,6 +12,14 @@ log() { echo "[printer-drivers] $*"; }
 chown -R root:wheel "$GP"; chmod -R u=rwX,go=rX "$GP"
 mkdir -p /usr/local/bin && ln -sf "$GP/bin/gutenprint-add" /usr/local/bin/gutenprint-add
 
+FW_PLIST=/Library/LaunchDaemons/com.github.apple-silicon-printer-drivers.foo2-firmware.plist
+if [ -f "$FW_PLIST" ]; then
+  chown root:wheel "$FW_PLIST"; chmod 644 "$FW_PLIST"
+  launchctl bootout system "$FW_PLIST" >/dev/null 2>&1 || true
+  launchctl bootstrap system "$FW_PLIST" >/dev/null 2>&1 || true
+  "$GP/libexec/foo2-firmware-loader" --once >/dev/null 2>&1 || true
+fi
+
 # ---- 1) Canon IJ driver (Intel-only). Its codeless kext pins Canon's x86_64 USB class-driver
 #         plugin to the printer, which stops macOS from using its own generic driver.
 if [ -d /Library/Extensions/BJUSBLoad.kext ]; then

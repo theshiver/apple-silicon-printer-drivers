@@ -292,9 +292,36 @@ fi
         firmware = (PAYLOAD / "share/foo2zjs/firmware/sihpP1006.dl").read_bytes()
         run, requests = self.run_filter_against_backend(["MFG:HP;MDL:P1006;", "MFG:HP;MDL:P1006;FWVER:20071220;"])
         self.assertEqual(run.returncode, 0, run.stderr)
-        self.assertEqual(requests, [4, 2, 4])  # ask, drain, confirm
+        self.assertEqual(requests, [4, 4])  # ask, confirm
         self.assertTrue(run.stdout.startswith(firmware))
         self.assertTrue(run.stdout[len(firmware):].startswith(b"\033%-12345X@PJL JOB"))
+
+    def test_foo2_firmware_loader_uploads_only_when_fwver_missing(self):
+        import plistlib
+        plist = plistlib.loads((ROOT / "pkgroot/Library/LaunchDaemons/com.github.apple-silicon-printer-drivers.foo2-firmware.plist").read_bytes())
+        matches = plist["LaunchEvents"]["com.apple.iokit.matching"]
+        self.assertEqual(len(matches), 10)
+        self.assertEqual(matches["HP_LaserJet_1020"]["idVendor"], 0x03f0)
+        self.assertEqual(matches["HP_LaserJet_1020"]["idProduct"], 0x2b17)
+
+        uploads = self.root / "uploads.log"
+        fake_usb = self.bin / "fake-usb"
+        self.script(fake_usb, f'''
+if [ "$#" -eq 0 ]; then
+  printf 'direct usb://Hewlett-Packard/HP%%20LaserJet%%201020?serial=ABC "HP LaserJet 1020" "HP LaserJet 1020" "MFG:Hewlett-Packard;MDL:HP LaserJet 1020;CMD:ACL;CLS:PRINTER;DES:HP LaserJet 1020;" ""\\n'
+  printf 'direct usb://Hewlett-Packard/HP%%20LaserJet%%20P1006?serial=DEF "HP LaserJet P1006" "HP LaserJet P1006" "MFG:Hewlett-Packard;MDL:HP LaserJet P1006;FWVER:20071220;" ""\\n'
+  printf 'direct usb://Brother/HL-1210W?serial=GHI "Brother HL-1210W" "Brother HL-1210W" "MFG:Brother;MDL:HL-1210W;" ""\\n'
+else
+  printf '%s|%s\\n' "$DEVICE_URI" "$6" >> "{uploads}"
+fi
+''')
+        env = {**os.environ, "FOO2_USB_BACKEND": str(fake_usb),
+               "FOO2_FIRMWARE_DIR": str(PAYLOAD / "share/foo2zjs/firmware") + "/"}
+        run = subprocess.run([str(PAYLOAD / "libexec/foo2-firmware-loader"), "--once"],
+                             env=env, capture_output=True, text=True, timeout=15)
+        self.assertEqual(run.returncode, 0, run.stderr)
+        lines = uploads.read_text().splitlines()
+        self.assertEqual(lines, [f'usb://Hewlett-Packard/HP%20LaserJet%201020?serial=ABC|{PAYLOAD / "share/foo2zjs/firmware/sihp1020.dl"}'])
 
     def test_extra_pcl_models_are_shipped_and_listed(self):
         xml = (PAYLOAD / "share/gutenprint/5.3/xml/printers/pcl.xml").read_text()

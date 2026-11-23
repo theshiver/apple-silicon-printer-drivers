@@ -7,6 +7,9 @@ for f in /etc/cups/ppd/*.ppd; do
   [ -f "$f" ] || continue; q=$(basename "$f" .ppd)
   grep -qsE 'rastertogutenprint|/Library/Printers/Gutenprint/libexec/rastertobrlaser|/Library/Printers/Gutenprint/libexec/rastertoqpdl|/Library/Printers/Gutenprint/libexec/rastertofoo-' "$f" && lpadmin -x "$q" && echo "removed queue $q"
 done
+FW_PLIST=/Library/LaunchDaemons/com.github.apple-silicon-printer-drivers.foo2-firmware.plist
+launchctl bootout system "$FW_PLIST" >/dev/null 2>&1 || true
+rm -f "$FW_PLIST"
 rm -f /usr/local/bin/gutenprint-add
 rm -rf "/Applications/Print from iPhone & iPad.app"
 rm -rf /Library/Printers/Gutenprint /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd

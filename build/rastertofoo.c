@@ -47,9 +47,9 @@ static int firmware_running(void)
  */
 static void load_firmware(const char *name)
 {
-    char path[1024], buf[65536], reply[8];
+    char path[1024], buf[65536];
     const char *dir = getenv("FOO2_FIRMWARE_DIR");
-    int len = sizeof(reply), state = firmware_running();
+    int state = firmware_running();
     size_t n;
     FILE *f;
 
@@ -70,8 +70,8 @@ static void load_firmware(const char *name)
             exit(1);
     fclose(f);
     fflush(stdout);
-    cupsSideChannelDoRequest(CUPS_SC_CMD_DRAIN_OUTPUT, reply, &len, 60.0);
-    for (int i = 0; i < 20; i++) {
+    /* Avoid CUPS_SC_CMD_DRAIN_OUTPUT: usb-darwin.c never wakes select() when it arrives after the write finishes. */
+    for (int i = 0; i < 10; i++) {
         sleep(1);
         if (firmware_running() == 1)
             return;

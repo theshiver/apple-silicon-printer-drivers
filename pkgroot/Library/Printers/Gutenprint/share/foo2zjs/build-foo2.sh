@@ -37,6 +37,8 @@ for T in foo2zjs foo2xqx foo2lava foo2qpdl foo2hbpl2 foo2hiperc foo2oak foo2slx 
   cc -arch arm64 -mmacosx-version-min=12.0 -o "$OUT/libexec/rastertofoo-$T" "$W/rastertofoo.o" "$W/$T.o" "$W/jbig.o" "$W/jbig_ar.o" -lcups -lcupsimage
   codesign -s - -f "$OUT/libexec/rastertofoo-$T"
 done
+cc $FLAGS -o "$OUT/libexec/foo2-firmware-loader" "$HERE/foo2-firmware-loader.c"
+codesign -s - -f "$OUT/libexec/foo2-firmware-loader"
 
 # The firmware images become the .dl stream the printer expects, as upstream's getweb does.
 cc $FLAGS -o "$W/arm2hpdl" "$S/arm2hpdl.c"
@@ -53,5 +55,5 @@ python3 "$HERE/gen-foo2-ppds.py" "$S" "$OUT/share/foo2zjs/ppd" "$W/known.txt"
 # Ship the exact corresponding source and licenses with the binaries.
 cp "$W/foo2zjs.tar.xz" "$OUT/share/foo2zjs/foo2zjs-$VER.orig.tar.xz"
 cp "$S/COPYING" "$OUT/share/foo2zjs/COPYING"
-cp "$HERE/build-foo2.sh" "$HERE/rastertofoo.c" "$HERE/gen-foo2-ppds.py" "$HERE/foo2-firmware.sha256" "$OUT/share/foo2zjs/"
+cp "$HERE/build-foo2.sh" "$HERE/rastertofoo.c" "$HERE/foo2-firmware-loader.c" "$HERE/gen-foo2-ppds.py" "$HERE/foo2-firmware.sha256" "$OUT/share/foo2zjs/"
 echo "done -> $OUT (foo2zjs, $(ls "$OUT/share/foo2zjs/ppd" | wc -l | tr -d ' ') models)"
