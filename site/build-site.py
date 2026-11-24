@@ -13,7 +13,7 @@ DOCS = ROOT / "docs"
 BASE = "https://macprinterdrivers.com"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-2.0.2.pkg"
+PKG = "AppleSilicon-Printer-Drivers-2.0.5.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -161,13 +161,13 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install, then print. Once it works, if it saved you a new printer and you\'d like to say thanks:</p><div class="t-act"><a class="t-btn" href="https://buymeacoffee.com/cancetin" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="buymeacoffee.com/cancetin"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
 
-COFFEE = "https://github.com/sponsors/theshiver"
+COFFEE = "https://buymeacoffee.com/cancetin"
 def coffee_card(lang="en"):
     t = T[lang]
     return f'<div class="card"><strong>{t["coffee_title"]}</strong><br>{t["coffee_body"]} <a href="{COFFEE}" data-loc="card">{t["coffee_btn"]} →</a></div>'

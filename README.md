@@ -60,7 +60,7 @@ The installer is signed and notarized by Apple, the source is open, and the driv
 
 ## ☕ Buy me a coffee
 
-This started as a fix for one Canon PIXMA MP250 on a MacBook Air. It's free and always will be. If it saved you a new printer, you can [buy me a coffee on GitHub Sponsors](https://github.com/sponsors/theshiver). Thank you!
+This started as a fix for one Canon PIXMA MP250 on a MacBook Air. It's free and always will be. If it saved you a new printer and you'd like to say thanks, you can [buy me a coffee](https://buymeacoffee.com/cancetin). Thank you!
 
 ## License
 

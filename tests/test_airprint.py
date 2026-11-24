@@ -142,7 +142,7 @@ class InstallerTest(unittest.TestCase):
         xml.dom.minidom.parseString(text)
         self.assertIn('hostArchitectures="arm64"', text)
         self.assertIn('<conclusion file="conclusion.html"', text)
-        self.assertIn("sponsors/theshiver", (ROOT / "build/installer/conclusion.html").read_text())
+        self.assertIn("buymeacoffee.com/cancetin", (ROOT / "build/installer/conclusion.html").read_text())
 
     @unittest.skipUnless(shutil.which("swiftc"), "macOS only")
     def test_app_builds(self):

@@ -122,7 +122,7 @@ struct ContentView: View {
             HStack(spacing: 4) {
                 Text(t("☕ Printing again? It's free and always will be.", "☕ Druckt es wieder? Es ist kostenlos und bleibt es."))
                     .foregroundColor(.secondary)
-                Link(t("Buy me a coffee", "Spendier mir einen Kaffee"), destination: URL(string: "https://github.com/sponsors/theshiver")!)
+                Link(t("Buy me a coffee", "Spendier mir einen Kaffee"), destination: URL(string: "https://buymeacoffee.com/cancetin")!)
             }
             .font(.callout)
         }
