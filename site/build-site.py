@@ -148,9 +148,11 @@ header.site-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,va
 .header-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;min-height:62px;padding:8px 0}
 .brand-logo{display:inline-flex;align-items:center;gap:9px;color:var(--fg);text-decoration:none;font-weight:750;font-size:16px;letter-spacing:-.01em;margin-right:auto}
 .brand-icon{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
-header nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+header nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
 header nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
 header nav a:hover{color:var(--fg)}
+header nav a.nav-coffee{background:var(--band);color:var(--fg);border:1px solid var(--line);padding:5px 11px;border-radius:999px;font-size:.86rem;font-weight:550;white-space:nowrap}
+header nav a.nav-coffee:hover{border-color:var(--accent);color:var(--accent)}
 header nav a.nav-cta{background:var(--btn-bg);color:var(--btn-fg);padding:7px 15px;border-radius:999px;font-weight:650;font-size:.88rem;white-space:nowrap}
 header nav a.nav-cta:hover{filter:brightness(1.08);color:var(--btn-fg)}
 h1{font-size:clamp(1.95rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.025em;margin:.2em 0 .4em;font-weight:750}
@@ -323,7 +325,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", goog
 </head>
 <body data-track="{data}">
 <header class="site-nav"><div class="wrap header-in"><a class="brand-logo" href="{pre}"><span class="brand-icon">{PRINTER_SVG}</span>Mac Printer Drivers</a>
-<nav><a href="{pre}#search">{t["nav_check"]}</a><a href="{pre}print-from-iphone/">{t["nav_iphone"]}</a><a href="{pre}troubleshooting/">{t["nav_help"]}</a><a href="{REPO}">GitHub</a>{switch}<a class="nav-cta" href="{PKG_URL}" data-loc="header">⬇ {t["nav_dl"]} v{VERSION}</a></nav></div></header>
+<nav><a href="{pre}#search">{t["nav_check"]}</a><a href="{pre}print-from-iphone/">{t["nav_iphone"]}</a><a href="{pre}troubleshooting/">{t["nav_help"]}</a><a href="{REPO}">GitHub</a><a class="nav-coffee" href="{COFFEE}" data-loc="header">{t["nav_coffee"]}</a>{switch}<a class="nav-cta" href="{PKG_URL}" data-loc="header">⬇ {t["nav_dl"]} v{VERSION}</a></nav></div></header>
 <main>
 {main_html}
 </main>
@@ -447,7 +449,7 @@ POPULAR_MODELS = [by_name[n] for n in ("Brother HL-2270DW series", "Brother HL-1
     "Epson Stylus Photo R300", "Epson WorkForce 610", "HP LaserJet 1010", "Samsung ML-1865", "Samsung ML-2010")]
 # Social proof is read from the GitHub API on every build (.pkg downloads across all releases, rounded down to 100;
 # stars). The numbers below are the fallback when the API is unreachable or rate limited; a build never fails over them.
-DOWNLOADS, STARS = 10300, 98
+DOWNLOADS, STARS = 11600, 103
 def github_counts():
     import urllib.request
     api = lambda p: json.load(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/theshiver/apple-silicon-printer-drivers{p}",
