@@ -62,8 +62,8 @@
    "macOS hat einen allgemeinen Treiber gewählt. Installiere diesen Treiber, füge den Drucker neu hinzu und wähle den Eintrag mit „Apple Silicon“."
   ],
   [
-   "Der Drucker ist aus der Liste verschwunden",
-   "Suche oben dein Modell, dann lies die <a href=\"{help_url}\">Hilfe</a>."
+   "„Gestoppt - 'Filter' fehlgeschlagen“ oder „'Data' failed“",
+   "Ein alter Intel-CUPS-Filter ist abgestürzt. Paket installieren, alte Warteschlange löschen und <a href=\"{filter_url}\">Anleitung für Filter failed</a> lesen."
   ]
  ],
  "options_h2": "Deine Möglichkeiten",
@@ -79,6 +79,12 @@
    "Kostenlos",
    "Ja, nativ auf Apple Silicon",
    "Ja, unter {n} Modellen"
+  ],
+  [
+   "Altes Gutenprint (SourceForge)",
+   "Kostenlos (veraltet)",
+   "Nein, nur Intel (letzter Mac-Build 2019)",
+   "Scheitert unter neuem macOS; kein brlaser, SpliX oder foo2zjs"
   ],
   [
    "Rosetta neu installieren",
@@ -310,5 +316,68 @@
  "apple_h1": "Druckertreiber für Macs mit Apple Silicon",
  "apple_lead": "Drucker funktioniert nach dem macOS-Update nicht mehr? Ein kostenloser nativer Treiber bringt {n} Canon-, Epson-, HP-, Brother- und Samsung-Drucker auf Apple Silicon wieder zum Laufen.",
  "apple_models_h2": "Drucker von Apple",
- "apple_models_intro": "Auch die alten Apple-Modelle StyleWriter und LaserWriter werden unterstützt."
+ "apple_models_intro": "Auch die alten Apple-Modelle StyleWriter und LaserWriter werden unterstützt.",
+ "nav_reviews": "Bewertungen",
+ "nav_brands": "Marken",
+ "nav_dl": "Laden",
+ "ba_before": "Vorher",
+ "ba_after": "Nachher",
+ "ba_title": "Drucker & Scanner",
+ "ba_sub_bad": "Inaktiv · Intel-Herstellertreiber",
+ "ba_sub_good": "Inaktiv · Natives arm64 Gutenprint 5.3.5",
+ "ba_foot_bad": "Von macOS 27 ohne nativen ARM64-Treiber blockiert",
+ "ba_foot_good": "Per USB automatisch eingerichtet · AirPrint-bereit",
+ "ba_hint": "Oben Vorher / Nachher umschalten",
+ "brew_label": "Kopieren",
+ "brew_copied": "Kopiert",
+ "reviews_h2": "Bewährt bei über {downloads} Mac-Nutzern",
+ "reviews_sub": "Echte Rückmeldungen aus r/MacOS-Threads, in denen Nutzer alte Heim- und Bürodrucker wieder zum Laufen brachten.",
+ "reviews_cta": "r/MacOS-Thread lesen (225 Upvotes) →",
+ "reviews_prev": "Vorherige Bewertungen",
+ "reviews_next": "Nächste Bewertungen",
+ "story_h2": "Mit 1 Drucker begonnen. Durch eure Anfragen gewachsen.",
+ "story_sub": "Angefangen hat alles mit einem Canon PIXMA MP250 am MacBook Air. Seitdem kamen mit jedem Release Modelle und Korrekturen aus Reddit und GitHub dazu.",
+ "story_steps": [
+  [
+   "v1.0",
+   "1 Canon MP250",
+   "Native arm64-Gutenprint-Filter kompiliert, statt einen funktionierenden Drucker zu ersetzen."
+  ],
+  [
+   "v1.3.8",
+   "Brother-Laserdrucker",
+   "Natives arm64 brlaser 6.2.8 für HL-1210W, HL-L2340DW und alte Warteschlangen ergänzt."
+  ],
+  [
+   "v1.3.9",
+   "96 SPL-Drucker",
+   "SpliX für Samsung ML-1630, ML-1865W, Xerox Phaser 3020 und HP M201dw aufgenommen."
+  ],
+  [
+   "v2.0.0",
+   "USB zu AirPrint",
+   "Print from iPhone & iPad entwickelt, damit alte USB-Drucker kabellos von iOS drucken."
+  ],
+  [
+   "v2.0.1 – v2.0.5",
+   "86 Host-Laserdrucker",
+   "foo2zjs + automatischer USB-Firmware-Loader für HP 1018/1020/P1005/P1006 und Brother DCP-8080DN."
+  ],
+  [
+   "{n} Modelle",
+   "Drucker fehlt?",
+   "Erstelle ein Issue auf GitHub mit Modell und macOS-Version. Offene Treiberwünsche erscheinen oft in Tagen."
+  ]
+ ],
+ "brands_home_h2": "{n} unterstützte Drucker von {brands} Marken",
+ "brands_home_sub": "Angetrieben von vier nativen arm64-Open-Source-Treibern: Gutenprint, brlaser, SpliX und foo2zjs.",
+ "airprint_badge": "Kostenlos ab v2.0 enthalten",
+ "airprint_hint": "Schalter zur Vorschau anklicken",
+ "trust_title": "Gepflegt von einem unabhängigen Mac-Entwickler",
+ "trust_body": "Gebaut aus unveränderten Open-Source-Treibern (Gutenprint, brlaser, SpliX, foo2zjs), mit einer Apple Developer ID signiert und notarisiert von <a href=\"https://cancetin.com/\">Can Çetin</a>. Jede Änderung ist in <a href=\"{repo}/blob/main/SECURITY.md\">SECURITY.md</a> und offen auf <a href=\"{repo}\">GitHub</a> dokumentiert.",
+ "faq_gutenprint": [
+  "Ich habe Gutenprint früher probiert und es ging nicht. Was ist hier anders?",
+  "Offizielle Gutenprint-Builds auf SourceForge endeten vor Jahren als Intel-Pakete. Dieses Paket kompiliert Gutenprint 5.3.5 nativ für Apple Silicon (arm64) und ergänzt brlaser, SpliX und foo2zjs für Brother, Samsung, Xerox und HP, vollständig von Apple signiert und notarisiert."
+ ],
+ "more_trouble_h2": "Weitere Drucker- und Einrichtungsfragen"
 }

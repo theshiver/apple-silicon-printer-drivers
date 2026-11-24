@@ -62,8 +62,8 @@
    "macOS genel bir sürücü seçmiş. Bu sürücüyü kurun, yazıcıyı yeniden ekleyin ve “Apple Silicon” girdisini seçin."
   ],
   [
-   "Yazıcı listeden kayboldu",
-   "Yukarıdan modelinizi arayın, sonra <a href=\"{help_url}\">Yardım</a> sayfasına bakın."
+   "“Durduruldu - 'Filter' başarısız” veya “'Data' failed”",
+   "Eski bir Intel CUPS filtresi çöktü. Bu paketi kurun, eski yazıcı kuyruğunu silin ve <a href=\"{filter_url}\">sorun giderme rehberine</a> bakın."
   ]
  ],
  "options_h2": "Seçenekleriniz",
@@ -79,6 +79,12 @@
    "Ücretsiz",
    "Evet, Apple Silicon'da yerel olarak",
    "Evet, {n} model arasında"
+  ],
+  [
+   "Eski Gutenprint (SourceForge)",
+   "Ücretsiz (güncellenmiyor)",
+   "Hayır, yalnızca Intel (son Mac sürümü 2019)",
+   "Güncel macOS'te başarısız olur; brlaser, SpliX veya foo2zjs yok"
   ],
   [
    "Rosetta'yı yeniden kurmak",
@@ -310,5 +316,68 @@
  "apple_h1": "Apple Silicon Mac için yazıcı sürücüleri",
  "apple_lead": "macOS güncellemesinden sonra yazıcınız çalışmayı bıraktı mı? Ücretsiz yerel bir sürücü, Apple Silicon'da {n} Canon, Epson, HP, Brother ve Samsung yazıcısını yeniden çalıştırır.",
  "apple_models_h2": "Apple yazıcıları",
- "apple_models_intro": "Eski Apple StyleWriter ve LaserWriter modelleri de desteklenir."
+ "apple_models_intro": "Eski Apple StyleWriter ve LaserWriter modelleri de desteklenir.",
+ "nav_reviews": "Yorumlar",
+ "nav_brands": "Markalar",
+ "nav_dl": "İndir",
+ "ba_before": "Önce",
+ "ba_after": "Sonra",
+ "ba_title": "Yazıcılar ve Tarayıcılar",
+ "ba_sub_bad": "Boşta · Yalnızca Intel üretici sürücüsü",
+ "ba_sub_good": "Boşta · Yerel arm64 Gutenprint 5.3.5",
+ "ba_foot_bad": "Yerel ARM64 sürücüsü olmadan macOS 27 tarafından engellendi",
+ "ba_foot_good": "USB üzerinden otomatik kuruldu · AirPrint'e hazır",
+ "ba_hint": "Yukarıdan Önce / Sonra değiştirin",
+ "brew_label": "Kopyala",
+ "brew_copied": "Kopyalandı",
+ "reviews_h2": "{downloads}+ Mac kullanıcısının güvendiği çözüm",
+ "reviews_sub": "r/MacOS başlıklarında eski ev ve ofis yazıcılarını yeniden çalıştıran kullanıcıların gerçek yorumları.",
+ "reviews_cta": "r/MacOS başlığını oku (225 upvote) →",
+ "reviews_prev": "Önceki yorumlar",
+ "reviews_next": "Sonraki yorumlar",
+ "story_h2": "1 yazıcıyla başladı. Sizin isteklerinizle büyüdü.",
+ "story_sub": "Bu proje bir MacBook Air'deki tek bir Canon PIXMA MP250'yi kurtarmak için başladı. Sonraki her sürüm Reddit ve GitHub'dan gelen model istekleriyle büyüdü.",
+ "story_steps": [
+  [
+   "v1.0",
+   "1 Canon MP250",
+   "Çalışan yazıcıyı çöpe atmak yerine yerel arm64 Gutenprint filtreleri derlendi."
+  ],
+  [
+   "v1.3.8",
+   "Brother Lazerler",
+   "HL-1210W, HL-L2340DW ve eski kuyruklar için yerel arm64 brlaser 6.2.8 eklendi."
+  ],
+  [
+   "v1.3.9",
+   "96 SPL Yazıcı",
+   "Samsung ML-1630, ML-1865W, Xerox Phaser 3020 ve HP M201dw istekleri için SpliX eklendi."
+  ],
+  [
+   "v2.0.0",
+   "USB'den AirPrint'e",
+   "Eski USB yazıcıların iPhone ve iPad'den kablosuz yazdırması için AirPrint uygulaması eklendi."
+  ],
+  [
+   "v2.0.1 – v2.0.5",
+   "86 Host-Based Lazer",
+   "HP 1018/1020/P1005/P1006 ve Brother DCP-8080DN için foo2zjs + otomatik USB firmware yükleyici eklendi."
+  ],
+  [
+   "{n} Model",
+   "Modeliniz eksik mi?",
+   "Modeliniz ve macOS sürümünüzle GitHub'da issue açın. Açık sürücülü istekler genellikle günler içinde eklenir."
+  ]
+ ],
+ "brands_home_h2": "{brands} markada {n} desteklenen yazıcı",
+ "brands_home_sub": "Dört yerel arm64 açık kaynak motoruyla çalışır: Gutenprint, brlaser, SpliX ve foo2zjs.",
+ "airprint_badge": "v2.0+ ile ücretsiz dahil",
+ "airprint_hint": "Önizlemek için anahtara tıklayın",
+ "trust_title": "Bağımsız bir Mac geliştiricisi tarafından sürdürülür",
+ "trust_body": "Değiştirilmemiş açık kaynak sürücülerden (Gutenprint, brlaser, SpliX, foo2zjs) derlenir; <a href=\"https://cancetin.com/tr/\">Can Çetin</a> tarafından Apple Developer ID ile imzalanır ve onaylanır. Yükleyicinin yaptığı her değişiklik <a href=\"{repo}/blob/main/SECURITY.md\">SECURITY.md</a> ve <a href=\"{repo}\">GitHub</a> üzerinde açıktır.",
+ "faq_gutenprint": [
+  "Daha önce Gutenprint denedim ama çalışmadı. Bunun farkı ne?",
+  "SourceForge'daki resmi Gutenprint Mac derlemeleri yıllar önce yalnızca Intel olarak durdu. Bu paket Gutenprint 5.3.5'i Apple Silicon (arm64) için yerel olarak derler ve Brother, Samsung, Xerox ve HP lazerler için brlaser, SpliX ile foo2zjs'yi ekler; tümü Apple tarafından imzalı ve onaylıdır."
+ ],
+ "more_trouble_h2": "Diğer yazıcı ve kurulum soruları"
 }

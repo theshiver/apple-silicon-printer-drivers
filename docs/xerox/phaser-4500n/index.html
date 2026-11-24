@@ -11,58 +11,131 @@
 <link rel="canonical" href="https://macprinterdrivers.com/xerox/phaser-4500n/">
 <meta property="og:type" content="website"><meta property="og:title" content="Xerox Phaser 4500N Driver for Mac (macOS 27, Apple Silicon)">
 <meta property="og:description" content="Free native driver for the Xerox Phaser 4500N on Apple Silicon Macs. Fixes “The printer software is not compatible with this device” on macOS 27 Golden Gate, macOS 26 Tahoe and macOS 15 Sequoia without Rosetta. USB sets up automatically; Wi-Fi in a few clicks."><meta property="og:url" content="https://macprinterdrivers.com/xerox/phaser-4500n/">
-<meta property="og:image" content="https://macprinterdrivers.com/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://macprinterdrivers.com/not-compatible.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://macprinterdrivers.com/not-compatible.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://macprinterdrivers.com/not-compatible.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Xerox Phaser 4500N driver for macOS (Apple Silicon)","operatingSystem":"macOS 12 or later (Apple Silicon)","applicationCategory":"DriverApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"downloadUrl":"https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v2.0.5/AppleSilicon-Printer-Drivers-2.0.5.pkg","softwareVersion":"2.0.5"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://macprinterdrivers.com/"},{"@type":"ListItem","position":2,"name":"Xerox printers","item":"https://macprinterdrivers.com/xerox/"},{"@type":"ListItem","position":3,"name":"Xerox Phaser 4500N","item":"https://macprinterdrivers.com/xerox/phaser-4500n/"}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the Xerox Phaser 4500N work on macOS 27 Golden Gate, macOS 26 Tahoe and Apple Silicon?","acceptedAnswer":{"@type":"Answer","text":"Yes. This free package adds a native arm64 Gutenprint driver for the Xerox Phaser 4500N. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27 Golden Gate, without Rosetta."}},{"@type":"Question","name":"Do I need to write my own Xerox Phaser 4500N driver?","acceptedAnswer":{"@type":"Answer","text":"No. The Xerox Phaser 4500N is already supported by Gutenprint, an open source driver with years of tuning for this printer. Install the package; there is nothing to write, compile or patch."}},{"@type":"Question","name":"Why does my Xerox Phaser 4500N say \u201cThe printer software is not compatible with this device\u201d?","acceptedAnswer":{"@type":"Answer","text":"Xerox's Mac driver for the Xerox Phaser 4500N is Intel-only, and macOS 27 Golden Gate marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer."}}]}]</script>
 <style>
-:root{color-scheme:light dark;--bg:#fff;--soft:#f5f6f8;--fg:#14171f;--muted:#5b6472;--line:#e4e7ec;--accent:#1d5fd1;--code:#f1f2f5;--ok:#127a3e;--ok-soft:#e7f6ed;--bad:#c5342b;--bad-soft:#fdeceb;--btn-bg:#1d5fd1;--btn-fg:#fff}
-@media(prefers-color-scheme:dark){:root{--bg:#101216;--soft:#191c22;--fg:#eef0f3;--muted:#a3abb8;--line:#2b2f37;--accent:#7db0ff;--code:#1f2229;--ok:#6fd694;--ok-soft:#14291c;--bad:#ff8f87;--bad-soft:#331a18;--btn-bg:#7db0ff;--btn-fg:#0b1a2b}}
+:root{color-scheme:light dark;--bg:#fff;--band:#f5f6f8;--card:#fff;--elevated:#eef1f6;--fg:#111827;--muted:#525d6f;--line:#e2e6ed;--accent:#0071e3;--accent-hover:#0062c4;--accent-soft:#e8f2ff;--code:#f1f3f7;--ok:#15803d;--ok-soft:#e8f7ee;--bad:#dc2626;--bad-soft:#fef2f2;--btn-bg:#0071e3;--btn-fg:#fff;--shadow:0 12px 32px rgba(17,24,39,.08)}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1015;--band:#131720;--card:#161b22;--elevated:#1d2430;--fg:#e6edf3;--muted:#9aa5b5;--line:#29313d;--accent:#58a6ff;--accent-hover:#79b8ff;--accent-soft:rgba(88,166,255,.14);--code:#1c222b;--ok:#4ade80;--ok-soft:rgba(74,222,128,.12);--bad:#f87171;--bad-soft:rgba(248,113,113,.14);--btn-bg:#58a6ff;--btn-fg:#0b1a2b;--shadow:0 14px 36px rgba(0,0,0,.45)}}
 *{box-sizing:border-box}[hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
-header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}header nav a.coffee{color:var(--accent);font-weight:600}
-main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
-h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
-h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
-a{color:var(--accent)}p.lead{font-size:1.2rem;color:var(--muted);margin-top:0}.note{color:var(--muted);font-size:.93rem}
-.hero{display:grid;gap:32px;align-items:center;padding:24px 0 8px}@media(min-width:800px){.hero{grid-template-columns:1.45fr 1fr}}
-.mock{background:var(--soft);border-radius:18px;padding:18px;display:grid;gap:8px;justify-items:center}
-.mock div{width:100%;background:var(--bg);border-radius:12px;padding:12px 14px;line-height:1.3}.mock small{display:block;font-weight:600}
-.mock .bad small{color:var(--bad)}.mock .good small{color:var(--ok)}.mock span{color:var(--muted)}
-.dl{background:var(--soft);border-radius:16px;padding:20px 22px;margin:20px 0}.hero .dl{background:none;padding:0;margin:0}
-.dl .ok{font-size:1.1rem;font-weight:600;margin:0 0 12px;color:var(--ok)}
-a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:15px 30px;border-radius:12px}
-a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.dl .trust{color:var(--muted);font-size:.92rem;margin:12px 0 14px}.hero .trust{margin-bottom:6px}
-ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;padding:0;margin:0;counter-reset:q}
-ol.quick li{counter-increment:q;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.97rem}
+body{margin:0;background:var(--bg);color:var(--fg);font:16.5px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}button{font:inherit;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}.wrap.narrow{max-width:940px}.page-pad{padding:28px 20px 52px}
+.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:54px 0}.sec{padding:54px 0}
+header.site-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;min-height:62px;padding:8px 0}
+.brand-logo{display:inline-flex;align-items:center;gap:9px;color:var(--fg);text-decoration:none;font-weight:750;font-size:16px;letter-spacing:-.01em;margin-right:auto}
+.brand-icon{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+header nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+header nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
+header nav a:hover{color:var(--fg)}
+header nav a.nav-cta{background:var(--btn-bg);color:var(--btn-fg);padding:7px 15px;border-radius:999px;font-weight:650;font-size:.88rem;white-space:nowrap}
+header nav a.nav-cta:hover{filter:brightness(1.08);color:var(--btn-fg)}
+h1{font-size:clamp(1.95rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.025em;margin:.2em 0 .4em;font-weight:750}
+h2{font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 .35em}
+.page-pad h2{margin-top:2em}
+h3{font-size:1.05rem;margin:0 0 .35em}
+p.lead{font-size:1.12rem;color:var(--muted);margin-top:0;max-width:58ch}.sub{color:var(--muted);margin:0 0 24px;max-width:64ch}.note{color:var(--muted);font-size:.92rem}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.01em;margin-bottom:12px}
+.hero{display:grid;gap:34px;align-items:center;padding:42px 0 48px}@media(min-width:900px){.hero{grid-template-columns:1.22fr 1fr}}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0}
+a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--btn-bg);color:var(--btn-fg);font-size:1.05rem;font-weight:650;text-decoration:none;padding:13px 24px;border-radius:12px}
+a.btn:hover{filter:brightness(1.08)}a.btn:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.brew-chip{display:inline-flex;align-items:center;gap:8px;background:var(--code);border:1px solid var(--line);border-radius:10px;padding:8px 11px;font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg);max-width:100%;overflow:auto}
+.brew-chip button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-family:-apple-system,sans-serif;font-size:11.5px;font-weight:600;flex:none}
+.trust-strip{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;color:var(--muted);margin-top:8px}
+.mac-win{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.mac-titlebar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;background:var(--elevated);border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px}.dots i{width:11px;height:11px;border-radius:50%;display:block}.dots i:nth-child(1){background:#ff5f57}.dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
+.mac-title{font-size:12.5px;font-weight:600;color:var(--muted)}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:6px}
+.seg button.active{background:var(--btn-bg);color:var(--btn-fg)}
+.mac-body{padding:18px}
+.printer-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px;border-radius:12px;border:1px solid var(--line);background:var(--bg)}
+.printer-meta{display:flex;align-items:center;gap:12px}.printer-badge{width:40px;height:40px;border-radius:10px;background:var(--elevated);display:grid;place-items:center;color:var(--muted);flex:none}
+.printer-row h4{margin:0;font-size:15px}.printer-row small{color:var(--muted);font-size:12.5px}
+.status-banner{margin-top:12px;padding:11px 14px;border-radius:10px;font-size:13.5px;font-weight:600}
+.status-banner.bad{background:var(--bad-soft);color:var(--bad);border:1px solid color-mix(in srgb,var(--bad) 25%,transparent)}
+.status-banner.good{background:var(--ok-soft);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 25%,transparent)}
+.mac-foot{margin-top:11px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}
+input[type=search]{width:100%;font-size:1.05rem;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg)}input[type=search]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+#results{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px}
+#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.95rem}
+#results li span{font-size:.8rem;color:var(--muted);font-weight:600}
+#results li:hover,#results li.sel{border-color:var(--accent);background:var(--accent-soft)}
+.search-result{background:var(--ok-soft);border:1px solid color-mix(in srgb,var(--ok) 35%,transparent);border-radius:12px;padding:14px 16px;margin-top:10px;font-size:.95rem}
+.search-result h3{margin:0 0 6px;color:var(--ok)}
+.dl{background:var(--band);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:20px 0}.hero .dl{background:none;border:0;padding:0;margin:0}
+.dl .ok{font-size:1.05rem;font-weight:600;margin:0 0 12px;color:var(--ok)}.dl .trust{color:var(--muted);font-size:.9rem;margin:10px 0 12px}
+.rev-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
+.rev-head .sub{margin-bottom:0}.rev-nav{display:flex;gap:8px}
+.rev-nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-weight:700;display:grid;place-items:center}
+.rev-nav button:hover{border-color:var(--accent);color:var(--accent)}
+.spotlight-quote{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:18px 22px;margin-bottom:18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.spotlight-quote blockquote{margin:0;font-size:1.15rem;font-weight:650;letter-spacing:-.01em}.spotlight-quote .qmeta{font-size:.85rem;color:var(--muted);margin-top:3px}
+.reviews-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.reviews-track::-webkit-scrollbar{height:6px}.reviews-track::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.tcard{flex:0 0 min(84vw,330px);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.tcard p{margin:0;font-size:.93rem;line-height:1.55}
+.tcard-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.tcard-foot a{text-decoration:none;color:var(--muted)}.tcard-foot a:hover{color:var(--accent)}
+.mpill{background:var(--elevated);color:var(--fg);padding:3px 9px;border-radius:6px;font-weight:600;font-size:.78rem;text-decoration:none;white-space:nowrap}
+.timeline{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.mstone{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.mstone .ver{display:inline-block;font-size:.75rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:999px;margin-bottom:8px}
+.mstone strong{display:block;font-size:.95rem;margin-bottom:4px}.mstone span{font-size:.86rem;color:var(--muted);display:block}
+.mstone.req{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;padding:0;margin:0;counter-reset:q}
+ol.quick li{counter-increment:q;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;font-size:.95rem}
 ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
-@media(max-width:600px){ol.quick{grid-template-columns:1fr}a.btn{display:block;text-align:center}}
-input[type=search]{width:100%;font-size:1.15rem;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}input[type=search]:focus{outline:none;border-color:var(--accent)}
-#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-top:8px;cursor:pointer}#results li:hover,#results li.sel{border-color:var(--accent)}
-.card{background:var(--soft);border-radius:16px;padding:18px 22px;margin:18px 0}.brands a{display:inline-block;margin:4px 12px 4px 0}
-.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.cards div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}.cards strong{display:block;margin-bottom:4px}
-.promo{background:var(--soft);border-radius:18px;padding:22px 24px;margin:28px 0;display:grid;gap:20px;align-items:center}@media(min-width:800px){.promo{grid-template-columns:1.3fr 1fr}}.promo h2{margin:0 0 .3em}.promo p{margin:0 0 .6em}
-.app{background:var(--bg);border-radius:14px;padding:6px 14px;box-shadow:0 4px 18px #0002}.app div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.25}.app div:last-child{border:0}.app small{display:block;color:var(--ok)}.app i{flex:none;width:36px;height:21px;border-radius:11px;background:var(--btn-bg);position:relative}.app i::after{content:"";position:absolute;right:2px;top:2px;width:17px;height:17px;border-radius:50%;background:#fff}.app i.off{background:var(--line)}.app i.off::after{right:auto;left:2px}
-.langs{position:relative;font-size:.95rem;color:var(--muted)}.langs summary{list-style:none}.langs summary::after{content:" ▾"}.langs summary::-webkit-details-marker{display:none}.langs summary{font-weight:400;border:0}.langs{border:0;padding:0}.langs div{position:absolute;right:0;z-index:2;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:grid;gap:4px;min-width:120px}
+@media(max-width:640px){ol.quick{grid-template-columns:1fr}a.btn{width:100%}}
+.air-box{display:grid;gap:28px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}@media(min-width:860px){.air-box{grid-template-columns:1.18fr 1fr}}
+.promo{background:var(--band);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:28px 0;display:grid;gap:20px;align-items:center}@media(min-width:800px){.promo{grid-template-columns:1.3fr 1fr}}.promo h2{margin:0 0 .3em}.promo p{margin:0 0 .6em}
+.sw-win{background:var(--band);border:1px solid var(--line);border-radius:14px;padding:16px}
+.sw-head{font-weight:700;font-size:.92rem;margin-bottom:2px}.sw-sub{font-size:.78rem;color:var(--muted);margin-bottom:10px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 12px}
+.app div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.25}.app div:last-child{border:0}
+.app strong{display:block;font-size:.92rem}.app small{display:block;font-size:.8rem;font-weight:500}.app small.on{color:var(--ok)}.app small.off{color:var(--muted)}
+button.toggle{flex:none;width:40px;height:23px;border:0;border-radius:999px;background:var(--line);position:relative;transition:background .15s}
+button.toggle::after{content:"";position:absolute;left:2px;top:2px;width:19px;height:19px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+button.toggle.on{background:var(--btn-bg)}button.toggle.on::after{transform:translateX(17px)}
+.brand-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.bcard{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);text-decoration:none;color:var(--fg);font-size:.93rem;font-weight:600}
+.bcard:hover{border-color:var(--accent);color:var(--accent)}.bcard span{font-size:.8rem;color:var(--muted);font-weight:500}
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.cards div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}.cards strong{display:block;margin-bottom:6px}
+.card{background:var(--band);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.brands a,.pill-links a{display:inline-block;margin:4px 8px 4px 0}
+.pill-links a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;font-size:.88rem;color:var(--fg)}
+.pill-links a:hover{border-color:var(--accent);color:var(--accent)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}td,th{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;background:var(--elevated)}
+tbody tr:first-child{background:var(--ok-soft);font-weight:600}tbody tr:last-child td{border-bottom:0}
+.langs{position:relative;font-size:.9rem;color:var(--muted)}.langs summary{list-style:none;cursor:pointer}.langs summary::after{content:" ▾"}.langs summary::-webkit-details-marker{display:none}
+.langs div{position:absolute;right:0;z-index:60;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:grid;gap:4px;min-width:120px;box-shadow:var(--shadow)}
 .models{columns:3 220px;list-style:none;padding:0;margin:0}.models li{padding:3px 0;break-inside:avoid}
-table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.9rem;color:var(--muted)}tbody tr:first-child{background:var(--ok-soft)}
-details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 .2em}
-pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
-button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+main details:not(.langs){border-bottom:1px solid var(--line);padding:13px 0}main details:not(.langs) summary{cursor:pointer;font-weight:600}main details:not(.langs) p{margin:.6em 0 .2em;color:var(--muted)}
+pre,code{font:.9em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative;border:1px solid var(--line)}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.copy{position:absolute;top:8px;right:8px;font-size:.78rem;padding:4px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px}
 .hidden{display:none}ol.steps li{margin:.4em 0}
-#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+.footer-cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:28px}.footer-cards .card{margin:0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:80;max-width:360px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
 #dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
-#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
-footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
+#dl-toast a.t-btn{display:inline-block;background:var(--band);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);font-size:1rem;padding:2px 6px}
+footer{color:var(--muted);font-size:.88rem;margin-top:36px;border-top:1px solid var(--line);padding:20px 0 42px}
 </style>
 </head>
 <body data-track="{&quot;page_type&quot;: &quot;model&quot;, &quot;printer_brand&quot;: &quot;Xerox&quot;, &quot;printer_model&quot;: &quot;Xerox Phaser 4500N&quot;}">
-<header><a href="https://macprinterdrivers.com/">🖨 Mac Printer Drivers</a>
-<nav><a href="https://macprinterdrivers.com/#search">Check my printer</a><a href="https://macprinterdrivers.com/print-from-iphone/">iPhone &amp; iPad</a><a href="https://macprinterdrivers.com/troubleshooting/">Help</a><a class="coffee" href="https://buymeacoffee.com/cancetin" data-loc="header">☕ Buy me a coffee</a></nav></header>
+<header class="site-nav"><div class="wrap header-in"><a class="brand-logo" href="https://macprinterdrivers.com/"><span class="brand-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>Mac Printer Drivers</a>
+<nav><a href="https://macprinterdrivers.com/#search">Check my printer</a><a href="https://macprinterdrivers.com/print-from-iphone/">iPhone &amp; iPad</a><a href="https://macprinterdrivers.com/troubleshooting/">Help</a><a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a><a class="nav-cta" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v2.0.5/AppleSilicon-Printer-Drivers-2.0.5.pkg" data-loc="header">⬇ Download v2.0.5</a></nav></div></header>
 <main>
-
+<div class="wrap narrow page-pad">
 <p class="note"><a href="https://macprinterdrivers.com/">Home</a> › <a href="https://macprinterdrivers.com/xerox/">Xerox printers</a> › Xerox Phaser 4500N</p>
 <h1>Xerox Phaser 4500N driver for Mac</h1>
 <p class="lead">Works on Apple Silicon Macs with macOS 27 Golden Gate, macOS 26 Tahoe and macOS 15 Sequoia. One free installer, no Rosetta, nothing to compile.</p>
@@ -88,18 +161,24 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <div class="card"><strong>☕ Printing again?</strong><br>This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee. <a href="https://buymeacoffee.com/cancetin" data-loc="card">Buy me a coffee →</a></div>
 <h2>Similar Xerox models</h2><p><a href="https://macprinterdrivers.com/xerox/phaser-4400dt/">Xerox Phaser 4400DT</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4400dx/">Xerox Phaser 4400DX</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4400n/">Xerox Phaser 4400N</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4500b/">Xerox Phaser 4500B</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4500dt/">Xerox Phaser 4500DT</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4500dx/">Xerox Phaser 4500DX</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4510b/">Xerox Phaser 4510B</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4510dt/">Xerox Phaser 4510DT</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4510dx/">Xerox Phaser 4510DX</a> · <a href="https://macprinterdrivers.com/xerox/phaser-4510n/">Xerox Phaser 4510N</a> · <a href="https://macprinterdrivers.com/xerox/phaser-5500/">Xerox Phaser 5500</a> · <a href="https://macprinterdrivers.com/xerox/phaser-5500b/">Xerox Phaser 5500B</a></p>
 <p><a href="https://macprinterdrivers.com/xerox/">← Xerox printers</a></p>
-<script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)})</script>
-
-<footer><a href="https://macprinterdrivers.com/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://buymeacoffee.com/cancetin" data-loc="footer">☕ Buy me a coffee</a> · <a href="https://macprinterdrivers.com/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
+</div>
 </main>
+<div class="wrap"><footer><a href="https://macprinterdrivers.com/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://buymeacoffee.com/cancetin" data-loc="footer">☕ Buy me a coffee</a> · <a href="https://macprinterdrivers.com/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer></div>
 <script>(function(){var G='G-RL7H0KSZYM',d=document;
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install, then print. Once it works, if it saved you a new printer and you'd like to say thanks:</p><div class="t-act"><a class="t-btn" href="https://buymeacoffee.com/cancetin" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install, then print. Once it works, if it saved you a new printer and you\x27d like to say thanks:</p><div class="t-act"><a class="t-btn" href="https://buymeacoffee.com/cancetin" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="buymeacoffee.com/cancetin"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
+})();(function(){var d=document;
+d.querySelectorAll('.js-air-toggle').forEach(function(btn){btn.addEventListener('click',function(){var on=btn.classList.toggle('on'),row=btn.closest('div'),st=row&&row.querySelector('.js-air-status');if(st){st.textContent=on?btn.dataset.on:btn.dataset.off;st.className=on?'on js-air-status':'off js-air-status'}})});
+d.querySelectorAll('.js-copy').forEach(function(btn){btn.addEventListener('click',async function(){try{await navigator.clipboard.writeText(btn.dataset.copy);var prev=btn.textContent;btn.textContent=btn.dataset.done||'Copied';setTimeout(function(){btn.textContent=prev},1500)}catch(e){}})});
+d.querySelectorAll('button.copy').forEach(function(b){b.onclick=async function(){try{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)}catch(e){}}});
+var trk=d.getElementById('reviews-track');
+if(trk){var prev=d.getElementById('rev-prev'),next=d.getElementById('rev-next');if(prev)prev.onclick=function(){trk.scrollBy({left:-350,behavior:'smooth'})};if(next)next.onclick=function(){trk.scrollBy({left:350,behavior:'smooth'})}}
+d.querySelectorAll('.js-ba').forEach(function(btn){btn.addEventListener('click',function(){d.querySelectorAll('.js-ba').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');var after=btn.dataset.mode==='after',w=btn.closest('.mac-win');if(!w)return;w.querySelector('.js-ba-name').textContent=after?'Canon MP250 series - Apple Silicon':'Canon MP250 series';w.querySelector('.js-ba-sub').textContent=after?w.dataset.subGood:w.dataset.subBad;var bn=w.querySelector('.js-ba-banner');bn.className='status-banner js-ba-banner '+(after?'good':'bad');bn.textContent=(after?'✓ ':'✕ ')+(after?w.dataset.msgGood:w.dataset.msgBad);w.querySelector('.js-ba-foot').textContent=after?w.dataset.footGood:w.dataset.footBad})});
 })();</script>
 </body></html>

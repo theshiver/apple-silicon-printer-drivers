@@ -111,9 +111,9 @@ FIX_GUIDES = [
         "slug": "filter-failed-mac-printer",
         "title": "Fix “Stopped - 'Filter' Failed” Printer Error on Mac",
         "desc": "Seeing Stopped - 'Filter' failed in the Mac print queue on macOS 27 Golden Gate or Apple Silicon? Fix crashed CUPS filters, reset the queue, or switch to native arm64 drivers.",
-        "keywords": "stopped filter failed mac, filter failed macos printer, cups filter failed apple silicon, macos 27 filter failed printer, samsung brother canon filter failed mac",
+        "keywords": "stopped filter failed mac, filter failed macos printer, cups filter failed apple silicon, macos 27 filter failed printer, samsung brother canon filter failed mac, data failed mac printer",
         "h1": "Fix “Stopped - 'Filter' failed” on Mac",
-        "lead": "“Stopped - 'Filter' failed” means the macOS CUPS filter crashed before data reached your printer. On Apple Silicon and macOS 27 Golden Gate, the most common trigger is an outdated Intel vendor filter or a broken PPD reference.",
+        "lead": "“Stopped - 'Filter' failed” (or “Stopped - 'Data' failed” on some Brother queues) means the macOS CUPS filter crashed before data reached your printer. On Apple Silicon and macOS 27 Golden Gate, the most common trigger is an outdated Intel vendor filter or a broken PPD reference.",
         "sections": [
             (
                 "1. Try the quick built-in macOS checks first",

@@ -62,8 +62,8 @@
    "macOS wybrał sterownik ogólny. Zainstaluj ten sterownik, dodaj drukarkę ponownie i wybierz pozycję z dopiskiem „Apple Silicon”."
   ],
   [
-   "Drukarka zniknęła z listy",
-   "Wyszukaj swój model powyżej, potem zajrzyj do <a href=\"{help_url}\">Pomocy</a>."
+   "„Zatrzymano - Błąd 'Filter'” lub „'Data' failed”",
+   "Stary filtr CUPS dla Intela uległ awarii. Zainstaluj ten pakiet, usuń starą kolejkę i zajrzyj do <a href=\"{filter_url}\">pomocy</a>."
   ]
  ],
  "options_h2": "Twoje możliwości",
@@ -79,6 +79,12 @@
    "Za darmo",
    "Tak, natywnie na Apple Silicon",
    "Tak, wśród {n} modeli"
+  ],
+  [
+   "Stary Gutenprint (SourceForge)",
+   "Za darmo (porzucony)",
+   "Nie, tylko Intel (ostatni build Mac 2019)",
+   "Nie działa na nowym macOS; brak brlaser, SpliX i foo2zjs"
   ],
   [
    "Ponowna instalacja Rosetta",
@@ -310,5 +316,68 @@
  "apple_h1": "Sterowniki drukarek dla Maców z Apple Silicon",
  "apple_lead": "Drukarka przestała działać po aktualizacji macOS? Darmowy natywny sterownik przywraca działanie {n} drukarek Canon, Epson, HP, Brother i Samsung na Apple Silicon.",
  "apple_models_h2": "Drukarki Apple",
- "apple_models_intro": "Obsługiwane są też stare modele Apple StyleWriter i LaserWriter."
+ "apple_models_intro": "Obsługiwane są też stare modele Apple StyleWriter i LaserWriter.",
+ "nav_reviews": "Opinie",
+ "nav_brands": "Marki",
+ "nav_dl": "Pobierz",
+ "ba_before": "Przed",
+ "ba_after": "Po",
+ "ba_title": "Drukarki i skanery",
+ "ba_sub_bad": "Bezczynna · Sterownik Intel producenta",
+ "ba_sub_good": "Bezczynna · Natywny arm64 Gutenprint 5.3.5",
+ "ba_foot_bad": "Zablokowana przez macOS 27 bez natywnego sterownika ARM64",
+ "ba_foot_good": "Skonfigurowana automatycznie przez USB · Gotowa do AirPrint",
+ "ba_hint": "Przełącz Przed / Po powyżej",
+ "brew_label": "Kopiuj",
+ "brew_copied": "Skopiowano",
+ "reviews_h2": "Zaufało nam ponad {downloads} użytkowników Mac",
+ "reviews_sub": "Prawdziwe komentarze z wątków r/MacOS od osób, które przywróciły do życia starsze drukarki.",
+ "reviews_cta": "Zobacz wątek r/MacOS (225 głosów) →",
+ "reviews_prev": "Poprzednie opinie",
+ "reviews_next": "Następne opinie",
+ "story_h2": "Zaczęło się od 1 drukarki. Rozwinęło dzięki wam.",
+ "story_sub": "Projekt powstał, by uruchomić jedną drukarkę Canon PIXMA MP250 na MacBooku Air. Każde kolejne wydanie dodawało modele zgłoszone na Reddit i GitHub.",
+ "story_steps": [
+  [
+   "v1.0",
+   "1 Canon MP250",
+   "Skompilowano natywne filtry Gutenprint arm64 zamiast wyrzucać sprawną drukarkę."
+  ],
+  [
+   "v1.3.8",
+   "Lasery Brother",
+   "Dodano natywny arm64 brlaser 6.2.8 dla HL-1210W, HL-L2340DW i starszych kolejek."
+  ],
+  [
+   "v1.3.9",
+   "96 laserów SPL",
+   "Dodano SpliX dla Samsung ML-1630, ML-1865W, Xerox Phaser 3020 i HP M201dw."
+  ],
+  [
+   "v2.0.0",
+   "USB na AirPrint",
+   "Stworzono Print from iPhone & iPad do bezprzewodowego druku z iOS na drukarkach USB."
+  ],
+  [
+   "v2.0.1 – v2.0.5",
+   "86 laserów host-based",
+   "Dodano foo2zjs + automatyczne wgrywanie firmware USB dla HP 1018/1020/P1005/P1006 i Brother DCP-8080DN."
+  ],
+  [
+   "{n} modeli",
+   "Brakuje modelu?",
+   "Zgłoś model i wersję macOS w GitHub Issues."
+  ]
+ ],
+ "brands_home_h2": "{n} obsługiwanych drukarek {brands} marek",
+ "brands_home_sub": "Napędzane czterema natywnymi silnikami open source arm64: Gutenprint, brlaser, SpliX i foo2zjs.",
+ "airprint_badge": "W pakiecie za darmo od v2.0",
+ "airprint_hint": "Kliknij przełącznik, aby przetestować",
+ "trust_title": "Utrzymywane przez niezależnego programistę Mac",
+ "trust_body": "Zbudowane z niezmodyfikowanych sterowników open source (Gutenprint, brlaser, SpliX, foo2zjs), podpisane i notoryzowane przez Apple Developer ID przez <a href=\"https://cancetin.com/\">Can Çetin</a>. Wszystkie zmiany opisane są w <a href=\"{repo}/blob/main/SECURITY.md\">SECURITY.md</a> na <a href=\"{repo}\">GitHub</a>.",
+ "faq_gutenprint": [
+  "Próbowałem już Gutenprint wcześniej i nie działało. Czym to się różni?",
+  "Oficjalne paczki Gutenprint na SourceForge zatrzymały się lata temu w wersji tylko dla Intela. Ten pakiet kompiluje Gutenprint 5.3.5 natywnie dla Apple Silicon (arm64) oraz dodaje brlaser, SpliX i foo2zjs dla Brother, Samsung, Xerox i HP, z podpisem i notoryzacją Apple."
+ ],
+ "more_trouble_h2": "Więcej pytań o drukarki i konfigurację"
 }

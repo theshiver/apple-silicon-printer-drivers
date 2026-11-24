@@ -62,8 +62,8 @@
    "macOS ha elegido un driver genérico. Instala este driver, añade la impresora de nuevo y elige la entrada “Apple Silicon”."
   ],
   [
-   "La impresora ha desaparecido de la lista",
-   "Busca tu modelo arriba y luego mira la <a href=\"{help_url}\">Ayuda</a>."
+   "“Detenido - Error de 'Filter'” o “'Data' failed”",
+   "Falló un filtro CUPS de Intel antiguo. Instala este paquete, borra la cola antigua y consulta <a href=\"{filter_url}\">la guía de solución</a>."
   ]
  ],
  "options_h2": "Tus opciones",
@@ -79,6 +79,12 @@
    "Gratis",
    "Sí, nativo en Apple Silicon",
    "Sí, entre {n} modelos"
+  ],
+  [
+   "Gutenprint antiguo (SourceForge)",
+   "Gratis (abandonado)",
+   "No, solo Intel (última versión Mac en 2019)",
+   "Falla en macOS actual; sin brlaser, SpliX ni foo2zjs"
   ],
   [
    "Reinstalar Rosetta",
@@ -310,5 +316,68 @@
  "apple_h1": "Drivers de impresora para Mac con Apple Silicon",
  "apple_lead": "¿Tu impresora dejó de funcionar al actualizar macOS? Un driver nativo gratis hace que {n} impresoras Canon, Epson, HP, Brother y Samsung vuelvan a funcionar en Apple Silicon.",
  "apple_models_h2": "Impresoras de Apple",
- "apple_models_intro": "También son compatibles los antiguos modelos Apple StyleWriter y LaserWriter."
+ "apple_models_intro": "También son compatibles los antiguos modelos Apple StyleWriter y LaserWriter.",
+ "nav_reviews": "Opiniones",
+ "nav_brands": "Marcas",
+ "nav_dl": "Descargar",
+ "ba_before": "Antes",
+ "ba_after": "Después",
+ "ba_title": "Impresoras y escáneres",
+ "ba_sub_bad": "Inactiva · Controlador Intel del fabricante",
+ "ba_sub_good": "Inactiva · Gutenprint 5.3.5 nativo arm64",
+ "ba_foot_bad": "Bloqueada en macOS 27 sin controlador nativo ARM64",
+ "ba_foot_good": "Configurada automáticamente por USB · Lista para AirPrint",
+ "ba_hint": "Cambia Antes / Después arriba",
+ "brew_label": "Copiar",
+ "brew_copied": "Copiado",
+ "reviews_h2": "Confiado por más de {downloads} usuarios de Mac",
+ "reviews_sub": "Comentarios reales en r/MacOS de personas que recuperaron sus impresoras antiguas.",
+ "reviews_cta": "Ver hilo en r/MacOS (225 votos) →",
+ "reviews_prev": "Opiniones anteriores",
+ "reviews_next": "Siguientes opiniones",
+ "story_h2": "Empezó con 1 impresora. Creció con tus peticiones.",
+ "story_sub": "Empezó como arreglo para una Canon PIXMA MP250 en un MacBook Air. Desde entonces cada versión añade modelos pedidos en Reddit y GitHub.",
+ "story_steps": [
+  [
+   "v1.0",
+   "1 Canon MP250",
+   "Compilación nativa arm64 de Gutenprint en lugar de tirar una impresora que funciona."
+  ],
+  [
+   "v1.3.8",
+   "Láser Brother",
+   "Se añadió brlaser 6.2.8 nativo arm64 para HL-1210W, HL-L2340DW y colas antiguas."
+  ],
+  [
+   "v1.3.9",
+   "96 láser SPL",
+   "Se añadió SpliX para Samsung ML-1630, ML-1865W, Xerox Phaser 3020 y HP M201dw."
+  ],
+  [
+   "v2.0.0",
+   "USB a AirPrint",
+   "Se creó Print from iPhone & iPad para imprimir desde iOS en impresoras USB antiguas."
+  ],
+  [
+   "v2.0.1 – v2.0.5",
+   "86 láser host-based",
+   "Se añadió foo2zjs + carga automática de firmware USB para HP 1018/1020/P1005/P1006 y Brother DCP-8080DN."
+  ],
+  [
+   "{n} modelos",
+   "¿Falta tu modelo?",
+   "Abre un issue en GitHub con tu modelo y versión de macOS."
+  ]
+ ],
+ "brands_home_h2": "{n} impresoras compatibles en {brands} marcas",
+ "brands_home_sub": "Basado en cuatro motores de código abierto nativos arm64: Gutenprint, brlaser, SpliX y foo2zjs.",
+ "airprint_badge": "Incluido gratis desde v2.0",
+ "airprint_hint": "Pulsa un interruptor para probar",
+ "trust_title": "Mantenido por un desarrollador independiente de Mac",
+ "trust_body": "Compilado desde controladores de código abierto sin modificar (Gutenprint, brlaser, SpliX, foo2zjs), firmado y notarizado con Apple Developer ID por <a href=\"https://cancetin.com/\">Can Çetin</a>. Todo cambio está documentado en <a href=\"{repo}/blob/main/SECURITY.md\">SECURITY.md</a> en <a href=\"{repo}\">GitHub</a>.",
+ "faq_gutenprint": [
+  "Probé Gutenprint antes y no funcionó. ¿En qué se diferencia?",
+  "Las compilaciones oficiales de Gutenprint para Mac en SourceForge se detuvieron hace años solo para Intel. Este paquete compila Gutenprint 5.3.5 nativamente para Apple Silicon (arm64) y añade brlaser, SpliX y foo2zjs para Brother, Samsung, Xerox y HP, todo firmado y notarizado por Apple."
+ ],
+ "more_trouble_h2": "Más preguntas sobre impresoras y configuración"
 }
