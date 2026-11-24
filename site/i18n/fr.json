@@ -1,6 +1,6 @@
 {
  "lang_name": "Français",
- "macos": "macOS 27, macOS 26 Tahoe et macOS 15 Sequoia",
+ "macos": "macOS 27 Golden Gate, macOS 26 Tahoe et macOS 15 Sequoia",
  "nav_check": "Vérifier mon imprimante",
  "nav_help": "Aide",
  "nav_coffee": "☕ Offrez-moi un café",
@@ -214,7 +214,7 @@
    "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
   ]
  ],
- "brands_title": "Marques d’imprimantes prises en charge : pilotes Mac pour Apple Silicon",
+ "brands_title": "Marques prises en charge : pilotes Mac Apple Silicon",
  "brands_desc": "{n} modèles d’imprimantes de {brands} marques pris en charge par des pilotes arm64 natifs (Gutenprint, brlaser, SpliX et foo2zjs) pour macOS.",
  "brands_h1": "Marques prises en charge",
  "brands_lead": "{n} modèles. Cliquez sur une marque pour voir la liste complète des modèles.",

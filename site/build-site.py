@@ -3,7 +3,10 @@
 
   python3 site/build-site.py
 """
-import json, re, html, datetime, pathlib, collections
+import json, re, html, datetime, pathlib, collections, sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from fix_guides import FIX_GUIDES, tier1_extra_notes
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
@@ -76,7 +79,35 @@ def model_path(m):
     # a two-word brand ("Fuji Xerox") shouldn't repeat its second word in the model part
     rest = m["name"][len(b if m["name"].startswith(b + " ") else w):]
     return f"{slug(b)}/{slug(rest) or slug(m['name'])}"
+INDEXED_BRANDS_ALL_LANGS = {
+    "Canon", "Epson", "HP", "Brother", "Samsung", "Xerox", "Kyocera",
+    "Ricoh", "Oki", "Konica Minolta", "Lexmark", "Dell", "Sharp", "Apple",
+}
+INDEXED_BRANDS_EN_ONLY = {"Toshiba", "Fuji Xerox", "Panasonic", "Kodak", "Sony", "Generic"}
+INDEXED_MODELS = {
+    "samsung/m2020-series", "samsung/scx-3400", "samsung/ml-1640", "samsung/ml-2240",
+    "samsung/m267x-287x-series", "samsung/ml-1865", "samsung/ml-2010", "samsung/ml-2160",
+    "samsung/ml-2165", "samsung/clp-310",
+    "brother/hl-1210w-series", "brother/hl-2130-series", "brother/hl-2030-series",
+    "brother/hl-2270dw-series", "brother/hl-l2310d-series", "brother/hl-1110-series",
+    "brother/hl-2240-series", "brother/dcp-7030", "brother/dcp-7055w", "brother/dcp-7065dn",
+    "brother/dcp-1610w-series", "brother/mfc-7460dn", "brother/dcp-l2510d-series",
+    "brother/dcp-l2520dw-series", "brother/hl-l2300d-series",
+    "canon/pixma-g3010", "canon/pixma-mp250", "canon/mg2500-series", "canon/pixma-ip4300",
+    "canon/pixma-ip4700", "canon/pixma-ip110", "canon/pixma-mx885", "canon/mp490-series",
+    "canon/pixma-ix6550", "canon/pixma-mg4250", "canon/mg3600-series", "canon/pixma-mp280",
+    "canon/pixma-ip2700", "canon/pixma-ts3140",
+    "hp/laserjet-1010", "hp/laserjet-1018", "hp/laserjet-1020", "hp/laserjet-p1005",
+    "hp/laserjet-p1006", "hp/laserjet-pro-m12w", "hp/laserjet-pro-p1102",
+    "hp/laserjet-pro-p1102w", "hp/laserjet-pro-m1132s-mfp", "hp/laserjet-1022",
+    "hp/laserjet-1320",
+    "xerox/phaser-3020", "xerox/workcentre-3025", "xerox/workcentre-6015",
+    "xerox/phaser-3140",
+    "epson/stylus-photo-r300", "epson/workforce-610", "epson/stylus-dx5000",
+    "generic/pcl-color-laser", "generic/pcl-6-pcl-xl-printer", "generic/pcl-4-lf-printer",
+}
 assert len({model_path(m) for m in models}) == len(models), "model page paths collide"
+assert INDEXED_MODELS.issubset({model_path(m) for m in models}), "indexed model path missing from models.json"
 
 GA_ID = "G-RL7H0KSZYM"
 CSS = """
@@ -116,6 +147,10 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+#dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
 footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 """
 
@@ -126,7 +161,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();""" % GA_ID
@@ -136,7 +172,7 @@ def coffee_card(lang="en"):
     t = T[lang]
     return f'<div class="card"><strong>{t["coffee_title"]}</strong><br>{t["coffee_body"]} <a href="{COFFEE}" data-loc="card">{t["coffee_btn"]} →</a></div>'
 
-def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang="en", alts=None, track=None):
+def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", googlebot="", lang="en", alts=None, track=None):
     """alts: {lang: url} of every language version including this one; emits hreflang and a language switch."""
     t = T[lang]; pre = f"{BASE}/{P(lang)}"
     data = html.escape(json.dumps({"page_type": "other", **(track or {})}), quote=True)
@@ -161,6 +197,7 @@ def page(title, desc, canonical, body, jsonld=None, keywords="", robots="", lang
 <meta name="description" content="{html.escape(desc)}">
 {f'<meta name="keywords" content="{html.escape(keywords)}">' if keywords else ''}
 {f'<meta name="robots" content="{robots}">' if robots else ''}
+{f'<meta name="googlebot" content="{googlebot}">' if googlebot else ''}
 <link rel="canonical" href="{canonical}">{hreflang}
 <meta property="og:type" content="website"><meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}"><meta property="og:url" content="{canonical}">
@@ -193,13 +230,14 @@ def faq_list(qa):
 def cards(rows):
     return '<div class="cards">' + "".join(f"<div><strong>{t}</strong>{d}</div>" for t, d in rows) + "</div>"
 
-MACOS = "macOS 27, macOS 26 Tahoe and macOS 15 Sequoia"
+MACOS = "macOS 27 Golden Gate, macOS 26 Tahoe and macOS 15 Sequoia"
 def model_list(ms):
     return '<ul class="models">' + "".join(f'<li><a href="{BASE}/{model_path(m)}/">{html.escape(m["name"])}</a></li>' for m in ms) + "</ul>"
 
-def model_page(m, b, siblings):
+def model_page(m, b, siblings, is_indexed=False):
     name, mid = m["name"], m["id"]
     esc = html.escape(name)
+    path = model_path(m)
     brlaser, splix, foo2 = mid.startswith("brlaser-"), mid.startswith("splix-"), mid.startswith("foo2-")
     driver = (f'<a href="https://github.com/Owl-Maintain/brlaser">brlaser {BRLASER}</a>' if brlaser
               else f'<a href="https://github.com/OpenPrinting/splix">SpliX {SPLIX}</a>' if splix
@@ -220,18 +258,19 @@ def model_page(m, b, siblings):
         notes.append(f"<p>The {esc} is a host-based printer that doesn't understand PCL or PostScript, so it uses the bundled native arm64 foo2zjs driver. {"Paper size and color mode are" if "*ColorModel CMYK" in FOO2_PPDS[mid] else "Paper size is"} in the print dialog. This driver is new and hasn't been tested on every model. If yours doesn't print, <a href=\"{REPO}/issues\">tell us</a> and we'll fix it.</p>")
     if mid in FIRMWARE_MODELS:
         notes.append(f"<p>The {esc} loses its firmware when switched off. The driver sends it again with the first job after power on, so that job takes a few seconds longer.</p>")
+    extra_notes = tier1_extra_notes(m, b, mid, path, BASE) if is_indexed else ""
     sib = " · ".join(f'<a href="{BASE}/{model_path(s)}/">{html.escape(s["name"])}</a>' for s in siblings)
     title = fit(f"{name} Driver for Mac (macOS 27, Apple Silicon) – Free", f"{name} Driver for Mac (macOS 27, Apple Silicon)",
                 f"{name} Driver for Mac (macOS 27)", f"{name} Mac Driver")
     desc = (f"Free native driver for the {name} on Apple Silicon Macs. Fixes “The printer software is not compatible "
             f"with this device” on {MACOS} without Rosetta. USB sets up automatically; Wi-Fi in a few clicks.")
     qa = [
-        (f"Does the {name} work on macOS 27, macOS 26 Tahoe and Apple Silicon?",
-         f"Yes. This free package adds a native arm64 {driver_name(mid)} driver for the {name}. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27, without Rosetta."),
+        (f"Does the {name} work on macOS 27 Golden Gate, macOS 26 Tahoe and Apple Silicon?",
+         f"Yes. This free package adds a native arm64 {driver_name(mid)} driver for the {name}. It runs on every Apple Silicon Mac with macOS 12 or later, including macOS 27 Golden Gate, without Rosetta."),
         (f"Do I need to write my own {name} driver?",
          f"No. The {name} is already supported by {driver_name(mid)}, an open source driver with years of tuning for this printer. Install the package; there is nothing to write, compile or patch."),
         (f"Why does my {name} say “The printer software is not compatible with this device”?",
-         f"{b}'s Mac driver for the {name} is Intel-only, and macOS 27 marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer."),
+         f"{b}'s Mac driver for the {name} is Intel-only, and macOS 27 Golden Gate marks Intel-only printer drivers as incompatible. Install this package, restart the Mac once, then unplug and re-plug the printer."),
     ]
     body = f"""
 <p class="note"><a href="{BASE}/">Home</a> › <a href="{brand_url}">{html.escape(brand_label)}</a> › {esc}</p>
@@ -242,8 +281,8 @@ def model_page(m, b, siblings):
 <ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Pick “{esc}” ending in “Apple Silicon” and click Add.</li></ol>
 <p><strong>Print from your iPhone or iPad?</strong> Your Mac can share the {esc} over AirPrint. <a href="{BASE}/print-from-iphone/">See how →</a></p>
 <h2>Why did my {esc} stop working?</h2>
-<p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>
-{"".join(notes)}
+<p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 Golden Gate marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>
+{"".join(notes)}{extra_notes}
 <p><strong>Print quality and black &amp; white:</strong> in the print dialog open Printer Features (Printer Options on macOS 27). Quality is under Resolution; for black &amp; white set Color Model to Grayscale. Ink and toner levels can't be shown by open source drivers.</p>
 <h2>Questions</h2>
 {faq_list(qa)}
@@ -258,7 +297,7 @@ def model_page(m, b, siblings):
 <p><a href="{brand_url}">← {html.escape(brand_label)}</a></p>
 <script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})</script>
 """
-    url = f"{BASE}/{model_path(m)}/"
+    url = f"{BASE}/{path}/"
     crumbs = [("Home", f"{BASE}/"), (brand_label, brand_url), (name, url)]
     ld = [
         {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{name} driver for macOS (Apple Silicon)",
@@ -270,7 +309,8 @@ def model_page(m, b, siblings):
             [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]},
     ]
     return page(title, desc, url, body, ld,
-                keywords=f"{name} driver mac, {name} mac driver, {name} macos 27, {name} mac tahoe, {name} apple silicon, {name} m1, {b} printer driver mac",
+                keywords=f"{name} driver mac, {name} mac driver, {name} macos 27, {name} macos 27 golden gate, {name} mac tahoe, {name} apple silicon, {name} m1, {b} printer driver mac",
+                googlebot="" if is_indexed else "noindex, follow",
                 track={"page_type": "model", "printer_brand": b, "printer_model": name})
 
 # ---- write model pages
@@ -279,9 +319,12 @@ for b, ms in by_brand.items():
     ms = sorted(ms, key=lambda m: m["name"].lower())
     for i, m in enumerate(ms):
         siblings = ms[max(0, i - 6):i] + ms[i + 1:i + 7]
-        url = f"{BASE}/{model_path(m)}/"
-        write_page(DOCS / model_path(m), model_page(m, b, siblings), url)
-        model_urls.append(url)
+        path = model_path(m)
+        url = f"{BASE}/{path}/"
+        is_indexed = path in INDEXED_MODELS
+        write_page(DOCS / path, model_page(m, b, siblings, is_indexed=is_indexed), url)
+        if is_indexed:
+            model_urls.append(url)
 
 # ---- every page except the model pages, in every language
 by_name = {m["name"]: m for m in models}
@@ -290,7 +333,7 @@ POPULAR_MODELS = [by_name[n] for n in ("Brother HL-2270DW series", "Brother HL-1
     "Epson Stylus Photo R300", "Epson WorkForce 610", "HP LaserJet 1010", "Samsung ML-1865", "Samsung ML-2010")]
 # Social proof is read from the GitHub API on every build (.pkg downloads across all releases, rounded down to 100;
 # stars). The numbers below are the fallback when the API is unreachable or rate limited; a build never fails over them.
-DOWNLOADS, STARS = 8600, 91
+DOWNLOADS, STARS = 9900, 98
 def github_counts():
     import urllib.request
     api = lambda p: json.load(urllib.request.urlopen(urllib.request.Request(f"https://api.github.com/repos/theshiver/apple-silicon-printer-drivers{p}",
@@ -346,12 +389,33 @@ q.addEventListener('search',pick);q.addEventListener('keyup',e=>{{if(e.key==='En
 (async()=>{{const h=decodeURIComponent(location.hash.slice(1));if(h){{await load();const m=MODELS.find(x=>x.id===h);if(m)show(m)}}}})();
 </script>"""
 
+def is_brand_indexed(b, l):
+    if b in INDEXED_BRANDS_ALL_LANGS:
+        return True
+    if b in INDEXED_BRANDS_EN_ONLY:
+        return l == "en"
+    return False
+
+def fix_links_html():
+    items = "".join(
+        f'<li><a href="{BASE}/fix/{g["slug"]}/">{html.escape(g["h1"])}</a></li>'
+        for g in FIX_GUIDES
+    )
+    return f"<h2>Common macOS printer error guides</h2><ul>{items}</ul>"
+
 def home_page(l):
     t = T[l]; pre = f"{BASE}/{P(l)}"; n = num(len(models), l); help_url = f"{pre}troubleshooting/"
     symptoms = cards([(a, fill(b, help_url=help_url)) for a, b in t["symptoms"]])
     rows = [[fill(c, n=n) for c in r] for r in t["options"]]
     rows[0] = [f"<strong>{c}</strong>" for c in rows[0]]
     brands = " ".join(f'<a href="{pre}{slug(b)}/">{html.escape(b)}</a>' for b in POPULAR if b in BRANDS)
+    en_guides = fix_links_html() if l == "en" else ""
+    trust_box = (
+        f'<div class="card"><strong>Maintained by an independent Mac developer</strong><br>'
+        f'Built from unmodified upstream open-source drivers (Gutenprint, brlaser, SpliX, foo2zjs), signed and notarized with an Apple Developer ID by '
+        f'<a href="https://cancetin.com/">Can Çetin</a>. Every change in the installer is documented in '
+        f'<a href="{REPO}/blob/main/SECURITY.md">SECURITY.md</a> and <a href="{REPO}">open on GitHub</a>.</div>'
+    ) if l == "en" else ""
     body = f"""
 <section class="hero"><div>
 <h1>{t["home_h1"]}</h1>
@@ -375,6 +439,7 @@ def home_page(l):
 <h2 id="symptoms">{t["symptoms_h2"]}</h2>
 <figure style="margin:0 0 16px"><img src="{BASE}/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border-radius:12px" alt="{html.escape(t["symptoms_alt"], quote=True)}" loading="lazy"></figure>
 {symptoms}
+{en_guides}
 
 <h2 id="options">{t["options_h2"]}</h2>
 {STACK_CSS}{table(t["options_head"], rows)}
@@ -386,6 +451,7 @@ def home_page(l):
 <h2 id="faq">{t["faq_h2"]}</h2>
 {faq_list(t["faq"])}
 <p><a href="{help_url}">{t["more_help"]}</a></p>
+{trust_box}
 {coffee_card(l)}
 {search_script(t)}
 """
@@ -403,11 +469,18 @@ def brand_page(b, l):
     qa = [(fill(q, b=b, n=n), fill(a, b=b, n=n)) for q, a in t["brand_faq"]]
     title = fit(fill(t["brand_title"], b=b), fill(t["brand_title_short"], b=b))
     others = " ".join(f'<a href="{pre}{slug(o)}/">{html.escape(o)}</a>' for o in POPULAR if o in BRANDS and o != b)
+    indexed = is_brand_indexed(b, l)
+    alts = alts_for(f"{slug(b)}/") if (indexed and b in INDEXED_BRANDS_ALL_LANGS) else None
+    fix_note = ""
+    if l == "en" and indexed:
+        extra = f' or <a href="{BASE}/fix/filter-failed-mac-printer/">fix “Filter” failed</a>' if b in ("Samsung", "Xerox", "Brother") else ""
+        fix_note = f'<p class="note">See also: <a href="{BASE}/fix/rosetta-printer-driver-macos-27/">Rosetta vs. native drivers on macOS 27 Golden Gate</a>, <a href="{BASE}/fix/printer-not-working-after-macos-update/">post-update checklist</a>{extra}.</p>'
     body = f"""
 <p class="note"><a href="{pre}">{t["crumb_home"]}</a> › <a href="{pre}brands/">{t["crumb_brands"]}</a> › {e}</p>
 <h1>{f("brand_h1")}</h1>
 <p class="lead">{f("brand_lead")}</p>
 {download_card(f("brand_ok"), l)}
+{fix_note}
 <h2>{f("brand_iphone_h2")}</h2>
 <p>{f("brand_iphone_body")} <a href="{pre}print-from-iphone/">{f("brand_iphone_link")}</a></p>
 <h2>{f("brand_models_h2")}</h2>
@@ -421,7 +494,8 @@ def brand_page(b, l):
     ld = [{"@context": "https://schema.org", "@type": "ItemList", "name": title, "numberOfItems": len(ms),
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": m["name"], "url": f"{BASE}/{model_path(m)}/"} for i, m in enumerate(ms[:200])]},
           faq_ld(qa), crumbs_ld([(t["crumb_home"], pre), (t["crumb_brands"], f"{pre}brands/"), (b, f"{pre}{slug(b)}/")])]
-    return page(title, fill(t["brand_desc"], b=b, n=n, macos=t["macos"]), f"{pre}{slug(b)}/", body, ld, lang=l, alts=alts_for(f"{slug(b)}/"),
+    return page(title, fill(t["brand_desc"], b=b, n=n, macos=t["macos"]), f"{pre}{slug(b)}/", body, ld, lang=l, alts=alts,
+                googlebot="" if indexed else "noindex, follow",
                 track={"page_type": "brand", "printer_brand": b}, keywords=fill(t["brand_keywords"], b=b))
 
 def apple_page(l):
@@ -473,7 +547,8 @@ def brands_index(l):
 
 def help_page(l):
     t = T[l]; pre = f"{BASE}/{P(l)}"; qa = [(q, fill(a, repo=REPO)) for q, a in t["trouble"]]
-    body = f"<p class='note'><a href='{pre}'>{t['crumb_home']}</a> › {t['crumb_help']}</p><h1>{t['help_h1']}</h1><p class='lead'>{t['help_lead']}</p>{faq_list(qa)}{coffee_card(l)}"
+    guides = fix_links_html() if l == "en" else ""
+    body = f"<p class='note'><a href='{pre}'>{t['crumb_home']}</a> › {t['crumb_help']}</p><h1>{t['help_h1']}</h1><p class='lead'>{t['help_lead']}</p>{guides}{faq_list(qa)}{coffee_card(l)}"
     return page(t["help_title"], t["help_desc"], f"{pre}troubleshooting/", body, [faq_ld(qa), crumbs_ld([(t["crumb_home"], pre), (t["crumb_help"], f"{pre}troubleshooting/")])],
                 lang=l, alts=alts_for("troubleshooting/"), keywords=t["help_keywords"])
 
@@ -498,21 +573,61 @@ def privacy_page(l):
 <h2>{t["privacy_analytics_h2"]}</h2><p>{t["privacy_analytics"]}</p>
 <h2>{t["privacy_hosting_h2"]}</h2><p>{t["privacy_hosting"]}</p>
 <h2>{t["privacy_contact_h2"]}</h2><p>{fill(t["privacy_contact"], repo=REPO)}</p>"""
-    return page(t["privacy_title"], t["privacy_desc"], f"{pre}privacy/", body, lang=l, alts=alts_for("privacy/"))
+    return page(t["privacy_title"], t["privacy_desc"], f"{pre}privacy/", body, lang=l, googlebot="noindex, follow")
+
+def fix_page(g):
+    url = f"{BASE}/fix/{g['slug']}/"
+    sections = "".join(f"<h2>{html.escape(h)}</h2>{body}" for h, body in g["sections"])
+    related = "".join(f'<li><a href="{BASE}{p}">{html.escape(label)}</a></li>' for label, p in g["related"])
+    brands = " ".join(f'<a href="{BASE}/{slug(b)}/">{html.escape(b)}</a>' for b in g["brands"] if b in BRANDS)
+    body = f"""
+<p class="note"><a href="{BASE}/">Home</a> › <a href="{BASE}/troubleshooting/">Troubleshooting</a> › {html.escape(g["h1"])}</p>
+<h1>{html.escape(g["h1"])}</h1>
+<p class="lead">{html.escape(g["lead"])}</p>
+{download_card()}
+{sections}
+<h2>Questions</h2>
+{faq_list(g["faq"])}
+<h2>Related guides &amp; brands</h2>
+<ul>{related}</ul>
+<p class="brands">{brands} <a href="{BASE}/brands/">all brands →</a></p>
+{coffee_card()}
+<script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)}})</script>
+"""
+    ld = [
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": g["h1"],
+            "description": g["desc"],
+            "url": url,
+            "dateModified": TODAY,
+            "author": {"@type": "Person", "name": "Can Çetin", "url": "https://cancetin.com/"},
+        },
+        faq_ld(g["faq"]),
+        crumbs_ld([("Home", f"{BASE}/"), ("Troubleshooting", f"{BASE}/troubleshooting/"), (g["h1"], url)]),
+    ]
+    return page(fit(g["title"], limit=70), g["desc"], url, body, ld, keywords=g["keywords"], track={"page_type": "fix_guide"})
 
 urls = []
 for l in LANGS:
-    def out(path, text):
+    def out(path, text, indexed=True):
         url = f"{BASE}/{P(l)}{path}"
         write_page(DOCS / f"{P(l)}{path}".rstrip("/") if P(l) or path else DOCS, text, url)
-        urls.append(url)
+        if indexed:
+            urls.append(url)
     out("", home_page(l))
     for b in BRANDS:
-        out(f"{slug(b)}/", apple_page(l) if b == "Apple" else brand_page(b, l))
+        out(f"{slug(b)}/", apple_page(l) if b == "Apple" else brand_page(b, l), indexed=is_brand_indexed(b, l))
     out("brands/", brands_index(l))
     out("troubleshooting/", help_page(l))
     out("print-from-iphone/", iphone_page(l))
-    out("privacy/", privacy_page(l))
+    out("privacy/", privacy_page(l), indexed=False)
+
+for g in FIX_GUIDES:
+    url = f"{BASE}/fix/{g['slug']}/"
+    write_page(DOCS / "fix" / g["slug"], fix_page(g), url)
+    urls.append(url)
 
 # ---- sitemap / robots / 404
 # sitemap.xml is an index: home + brand pages and model pages get separate coverage numbers in Search Console
@@ -537,7 +652,7 @@ ordered = sorted(models, key=lambda m: (brand_of(m).lower(), m["name"].lower()))
     "".join(f"{m['name']} | {m['id']} | {driver_name(m['id'])} | {BASE}/{model_path(m)}/\n" for m in ordered))
 (DOCS / "llms.txt").write_text(f"""# Mac Printer Drivers for Apple Silicon
 
-> Free, open source, signed and notarized macOS package with native arm64 printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark, Xerox and other printers. It fixes "The printer software is not compatible with this device" on Apple Silicon Macs with macOS 27, macOS 26 Tahoe and macOS 15 Sequoia. macOS 27 marks Intel-only printer drivers as incompatible. Reinstalling Rosetta helps only some printers, and only until macOS 28.
+> Free, open source, signed and notarized macOS package with native arm64 printer drivers for {len(models):,} Canon, Epson, HP, Brother, Samsung, Lexmark, Xerox and other printers. It fixes "The printer software is not compatible with this device" and "Bad CPU type in executable" on Apple Silicon Macs with macOS 27 Golden Gate, macOS 26 Tahoe and macOS 15 Sequoia. macOS 27 Golden Gate marks Intel-only printer drivers as incompatible. Reinstalling Rosetta helps only some printers, and only until macOS 28.
 
 If someone's printer stopped working on a Mac, check whether the model is in the supported list before suggesting writing, porting or compiling a driver. Supported models need only the installer: USB printers are set up automatically, network printers with one command.
 
@@ -547,6 +662,9 @@ If someone's printer stopped working on a Mac, check whether the model is in the
 - Homebrew: `brew install --cask theshiver/tap/apple-silicon-printer-drivers`
 - [Home page with model search and FAQ]({BASE}/)
 
+## Common error guides
+
+{"".join(f"- [{g['h1']}]({BASE}/fix/{g['slug']}/)\n" for g in FIX_GUIDES)}
 ## Supported printers
 
 - [Plain text list of all {len(models):,} models]({BASE}/supported-printers.txt): model name, model id, driver, instructions page
@@ -562,4 +680,4 @@ If someone's printer stopped working on a Mac, check whether the model is in the
 - Not covered: scanners and Brother DCP-T/MFC-T ink tanks. Printers that support AirPrint need no driver.
 """)
 (DOCS / "404.html").write_text(page("Page not found", "Page not found", f"{BASE}/", f'<h1>Page not found</h1><p><a href="{BASE}/">Search your printer on the home page →</a></p>', robots="noindex"))
-print(f"wrote {len(urls)} pages for {len(BRANDS)} brands and {len(model_urls)} model pages")
+print(f"wrote {len(urls)} indexed pages and {len(model_urls)} indexed model pages (total models on disk: {len(models)})")

@@ -7,6 +7,7 @@
 <meta name="description" content="Ваш принтер не сломан. Исправьте ошибку «Программное обеспечение принтера несовместимо с этим устройством» в macOS 27 бесплатным драйвером для 3 766 принтеров Canon, Epson, HP, Brother и Samsung. Без Rosetta.">
 <meta name="keywords" content="драйверы принтеров для mac, драйвер принтера macos, драйвер принтера macos 27, драйвер принтера macos tahoe, принтер не работает после обновления mac, программное обеспечение принтера несовместимо с этим устройством, драйвер canon mp250 mac, драйвер принтера apple silicon, драйвер принтера m1, rosetta драйвер принтера, gutenprint mac arm64">
 
+
 <link rel="canonical" href="https://macprinterdrivers.com/ru/"><link rel="alternate" hreflang="en" href="https://macprinterdrivers.com/"><link rel="alternate" hreflang="de" href="https://macprinterdrivers.com/de/"><link rel="alternate" hreflang="fr" href="https://macprinterdrivers.com/fr/"><link rel="alternate" hreflang="es" href="https://macprinterdrivers.com/es/"><link rel="alternate" hreflang="it" href="https://macprinterdrivers.com/it/"><link rel="alternate" hreflang="pl" href="https://macprinterdrivers.com/pl/"><link rel="alternate" hreflang="ru" href="https://macprinterdrivers.com/ru/"><link rel="alternate" hreflang="tr" href="https://macprinterdrivers.com/tr/"><link rel="alternate" hreflang="x-default" href="https://macprinterdrivers.com/">
 <meta property="og:type" content="website"><meta property="og:title" content="«ПО принтера несовместимо с этим устройством» на Mac: решение">
 <meta property="og:description" content="Ваш принтер не сломан. Исправьте ошибку «Программное обеспечение принтера несовместимо с этим устройством» в macOS 27 бесплатным драйвером для 3 766 принтеров Canon, Epson, HP, Brother и Samsung. Без Rosetta."><meta property="og:url" content="https://macprinterdrivers.com/ru/">
@@ -50,6 +51,10 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+#dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
 footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 </style>
 </head>
@@ -63,7 +68,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <p class="lead">Ваш принтер не сломан, и новый покупать не нужно. Бесплатный драйвер снова запускает 3 766 принтеров Canon, Epson, HP, Brother и Samsung.</p>
 <div class="dl"><a class="btn" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v2.0.2/AppleSilicon-Printer-Drivers-2.0.2.pkg" data-loc="card">⬇ Скачать бесплатный драйвер</a><p class="trust">Бесплатно · Подписан и проверен Apple · Любой Mac с Apple Silicon, macOS 12 или новее</p></div>
 
-<p class="note">Более 9 900 скачиваний · 98 звёзд на <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · Без регистрации</p>
+<p class="note">Более 11 600 скачиваний · 103 звёзд на <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · Без регистрации</p>
 </div><div class="mock" aria-hidden="true"><div class="bad">Ваш принтер<small>✕ ПО несовместимо</small></div><span>↓</span><div class="good">Ваш принтер<small>✓ Готов к печати</small></div></div></section>
 
 <h2>Как это работает</h2>
@@ -81,6 +86,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <h2 id="symptoms">Знакомая картина?</h2>
 <figure style="margin:0 0 16px"><img src="https://macprinterdrivers.com/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border-radius:12px" alt="Окно «Принтеры и сканеры» в macOS с принтером Canon MP250 и ошибкой: Программное обеспечение принтера несовместимо с этим устройством" loading="lazy"></figure>
 <div class="cards"><div><strong>«Программное обеспечение принтера несовместимо с этим устройством»</strong>Старый драйвер больше не запускается. Установите этот драйвер и печатайте на новый пункт с пометкой «Apple Silicon».</div><div><strong>«ПО для этого принтера недоступно»</strong>В macOS для него нет драйвера. Установите этот драйвер, затем добавьте принтер через Использовать: Выбрать ПО…</div><div><strong>«Generic PostScript Printer», пустые страницы или нет нужных настроек</strong>macOS выбрала универсальный драйвер. Установите этот драйвер, добавьте принтер заново и выберите пункт с пометкой «Apple Silicon».</div><div><strong>Принтер пропал из списка</strong>Найдите свою модель выше, затем загляните в <a href="https://macprinterdrivers.com/ru/troubleshooting/">Помощь</a>.</div></div>
+
 
 <h2 id="options">Ваши варианты</h2>
 <style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,.stack td{display:block}.stack thead{display:none}.stack tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:10px 0}.stack td{border:0;padding:4px 0}.stack td:first-child{font-weight:600}.stack td:not(:first-child)::before{content:attr(data-l);display:block;color:var(--muted);font-size:.85rem}}</style><table class=stack><thead><tr><th>Вариант</th><th>Цена</th><th>Работает в macOS 28?</th><th>Старые струйные, например Canon PIXMA?</th></tr></thead><tbody><tr><td data-l="Вариант"><strong>Этот пакет</strong></td><td data-l="Цена"><strong>Бесплатно</strong></td><td data-l="Работает в macOS 28?"><strong>Да, нативно на Apple Silicon</strong></td><td data-l="Старые струйные, например Canon PIXMA?"><strong>Да, среди 3 766 моделей</strong></td></tr><tr><td data-l="Вариант">Переустановить Rosetta</td><td data-l="Цена">Бесплатно</td><td data-l="Работает в macOS 28?">Нет, Apple отключает Rosetta для приложений в macOS 28</td><td data-l="Старые струйные, например Canon PIXMA?">Только некоторые принтеры и только до этого момента</td></tr><tr><td data-l="Вариант">Драйвер от производителя</td><td data-l="Цена">Бесплатно</td><td data-l="Работает в macOS 28?">Только если производитель сделал версию для Apple Silicon</td><td data-l="Старые струйные, например Canon PIXMA?">Для старых моделей его обычно нет</td></tr><tr><td data-l="Вариант">Платный сторонний драйвер</td><td data-l="Цена">Платно, иногда за каждый принтер</td><td data-l="Работает в macOS 28?">Уточните у продавца</td><td data-l="Старые струйные, например Canon PIXMA?">Часто нет: многие работают только с принтерами PCL или PostScript</td></tr><tr><td data-l="Вариант">Новый принтер</td><td data-l="Цена">Цена принтера</td><td data-l="Работает в macOS 28?">Да</td><td data-l="Старые струйные, например Canon PIXMA?">Да, а старый пропадает зря</td></tr></tbody></table>
@@ -108,6 +114,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <details><summary>Это бесплатно?</summary><p>Да. Бесплатно, с открытым исходным кодом, без регистрации. Драйвер ничего не собирает.</p></details>
 <details><summary>Какие версии macOS?</summary><p>Проверено на macOS 27 на Apple Silicon. Должно работать на macOS 12 и новее на компьютерах Mac с Apple Silicon.</p></details>
 <p><a href="https://macprinterdrivers.com/ru/troubleshooting/">Больше помощи →</a></p>
+
 <div class="card"><strong>☕ Снова печатаете?</strong><br>Этот драйвер бесплатный и всегда таким будет. Если он избавил вас от покупки нового принтера, можно сказать спасибо чашкой кофе. <a href="https://github.com/sponsors/theshiver" data-loc="card">Угостить кофе →</a></div>
 <script>
 const BASE="https://macprinterdrivers.com",ALIAS={"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox", "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera", "Konica": "Konica Minolta", "Fuji": "Fuji Xerox"};let MODELS=null,sel=-1,st;
@@ -141,7 +148,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>

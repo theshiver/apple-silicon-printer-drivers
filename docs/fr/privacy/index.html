@@ -7,7 +7,8 @@
 <meta name="description" content="Ce que collectent ce site web et le pilote d’imprimante.">
 
 
-<link rel="canonical" href="https://macprinterdrivers.com/fr/privacy/"><link rel="alternate" hreflang="en" href="https://macprinterdrivers.com/privacy/"><link rel="alternate" hreflang="de" href="https://macprinterdrivers.com/de/privacy/"><link rel="alternate" hreflang="fr" href="https://macprinterdrivers.com/fr/privacy/"><link rel="alternate" hreflang="es" href="https://macprinterdrivers.com/es/privacy/"><link rel="alternate" hreflang="it" href="https://macprinterdrivers.com/it/privacy/"><link rel="alternate" hreflang="pl" href="https://macprinterdrivers.com/pl/privacy/"><link rel="alternate" hreflang="ru" href="https://macprinterdrivers.com/ru/privacy/"><link rel="alternate" hreflang="tr" href="https://macprinterdrivers.com/tr/privacy/"><link rel="alternate" hreflang="x-default" href="https://macprinterdrivers.com/privacy/">
+<meta name="googlebot" content="noindex, follow">
+<link rel="canonical" href="https://macprinterdrivers.com/fr/privacy/">
 <meta property="og:type" content="website"><meta property="og:title" content="Confidentialité – Pilotes d’imprimante Mac">
 <meta property="og:description" content="Ce que collectent ce site web et le pilote d’imprimante."><meta property="og:url" content="https://macprinterdrivers.com/fr/privacy/">
 <meta property="og:image" content="https://macprinterdrivers.com/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://macprinterdrivers.com/not-compatible.png">
@@ -50,12 +51,16 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+#dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
 footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 </style>
 </head>
 <body data-track="{&quot;page_type&quot;: &quot;other&quot;}">
 <header><a href="https://macprinterdrivers.com/fr/">🖨 Mac Printer Drivers</a>
-<nav><a href="https://macprinterdrivers.com/fr/#search">Vérifier mon imprimante</a><a href="https://macprinterdrivers.com/fr/print-from-iphone/">iPhone &amp; iPad</a><a href="https://macprinterdrivers.com/fr/troubleshooting/">Aide</a><a class="coffee" href="https://github.com/sponsors/theshiver" data-loc="header">☕ Offrez-moi un café</a><details class="langs"><summary>Français</summary><div><a href="https://macprinterdrivers.com/privacy/" hreflang="en" lang="en">English</a><a href="https://macprinterdrivers.com/de/privacy/" hreflang="de" lang="de">Deutsch</a><a href="https://macprinterdrivers.com/es/privacy/" hreflang="es" lang="es">Español</a><a href="https://macprinterdrivers.com/it/privacy/" hreflang="it" lang="it">Italiano</a><a href="https://macprinterdrivers.com/pl/privacy/" hreflang="pl" lang="pl">Polski</a><a href="https://macprinterdrivers.com/ru/privacy/" hreflang="ru" lang="ru">Русский</a><a href="https://macprinterdrivers.com/tr/privacy/" hreflang="tr" lang="tr">Türkçe</a></div></details></nav></header>
+<nav><a href="https://macprinterdrivers.com/fr/#search">Vérifier mon imprimante</a><a href="https://macprinterdrivers.com/fr/print-from-iphone/">iPhone &amp; iPad</a><a href="https://macprinterdrivers.com/fr/troubleshooting/">Aide</a><a class="coffee" href="https://github.com/sponsors/theshiver" data-loc="header">☕ Offrez-moi un café</a></nav></header>
 <main>
 <h1>Confidentialité</h1><p class="lead">Le pilote d’imprimante ne collecte rien. Ce site web compte les visites avec Google Analytics.</p>
 <h2>Statistiques du site</h2><p>Ce site utilise Google Analytics pour savoir quelles pages et quelles imprimantes intéressent les gens. Il dépose des cookies sur votre appareil et s’exécute pour chaque visiteur. Google reçoit des données d’usage : pages vues, votre pays approximatif, clics sur le bouton de téléchargement, questions que vous ouvrez et modèles d’imprimante saisis dans la zone de recherche. Merci de n’y saisir aucune information personnelle. Les fonctions publicitaires sont désactivées. Pour l’éviter, bloquez les cookies pour ce site ou utilisez une extension de navigateur qui bloque Google Analytics.</p>
@@ -68,7 +73,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>

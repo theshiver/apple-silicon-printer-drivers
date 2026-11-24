@@ -1,6 +1,6 @@
 {
  "lang_name": "Türkçe",
- "macos": "macOS 27, macOS 26 Tahoe ve macOS 15 Sequoia",
+ "macos": "macOS 27 Golden Gate, macOS 26 Tahoe ve macOS 15 Sequoia",
  "nav_check": "Yazıcımı kontrol et",
  "nav_help": "Yardım",
  "nav_coffee": "☕ Bana kahve ısmarla",
@@ -214,7 +214,7 @@
    "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
   ]
  ],
- "brands_title": "Desteklenen yazıcı markaları — Apple Silicon için Mac yazıcı sürücüleri",
+ "brands_title": "Desteklenen yazıcı markaları — Apple Silicon Mac sürücüleri",
  "brands_desc": "{brands} markanın {n} yazıcı modeli, macOS için yerel arm64 Gutenprint, brlaser, SpliX ve foo2zjs sürücüleriyle destekleniyor.",
  "brands_h1": "Desteklenen markalar",
  "brands_lead": "{n} model. Tam model listesi için bir markaya tıklayın.",

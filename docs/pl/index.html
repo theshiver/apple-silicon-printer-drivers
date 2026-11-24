@@ -7,6 +7,7 @@
 <meta name="description" content="Twoja drukarka nie jest zepsuta. Napraw komunikat „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem” w macOS 27 darmowym sterownikiem do 3 766 drukarek Canon, Epson, HP, Brother i Samsung. Bez Rosetta.">
 <meta name="keywords" content="sterowniki drukarek mac, sterownik drukarki macos, sterownik drukarki macos 27, sterownik drukarki macos tahoe, drukarka nie działa po aktualizacji maca, oprogramowanie drukarki nie jest zgodne z tym urządzeniem, canon mp250 sterownik mac, sterownik drukarki apple silicon, sterownik drukarki m1, rosetta sterownik drukarki, gutenprint mac arm64">
 
+
 <link rel="canonical" href="https://macprinterdrivers.com/pl/"><link rel="alternate" hreflang="en" href="https://macprinterdrivers.com/"><link rel="alternate" hreflang="de" href="https://macprinterdrivers.com/de/"><link rel="alternate" hreflang="fr" href="https://macprinterdrivers.com/fr/"><link rel="alternate" hreflang="es" href="https://macprinterdrivers.com/es/"><link rel="alternate" hreflang="it" href="https://macprinterdrivers.com/it/"><link rel="alternate" hreflang="pl" href="https://macprinterdrivers.com/pl/"><link rel="alternate" hreflang="ru" href="https://macprinterdrivers.com/ru/"><link rel="alternate" hreflang="tr" href="https://macprinterdrivers.com/tr/"><link rel="alternate" hreflang="x-default" href="https://macprinterdrivers.com/">
 <meta property="og:type" content="website"><meta property="og:title" content="Drukarka nie działa po aktualizacji macOS? Darmowa poprawka">
 <meta property="og:description" content="Twoja drukarka nie jest zepsuta. Napraw komunikat „Oprogramowanie drukarki nie jest zgodne z tym urządzeniem” w macOS 27 darmowym sterownikiem do 3 766 drukarek Canon, Epson, HP, Brother i Samsung. Bez Rosetta."><meta property="og:url" content="https://macprinterdrivers.com/pl/">
@@ -50,6 +51,10 @@ details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointe
 pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
 button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
 .hidden{display:none}ol.steps li{margin:.4em 0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+#dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
 footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
 </style>
 </head>
@@ -63,7 +68,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <p class="lead">Twoja drukarka nie jest zepsuta i nie musisz kupować nowej. Darmowy sterownik przywraca działanie 3 766 drukarek Canon, Epson, HP, Brother i Samsung.</p>
 <div class="dl"><a class="btn" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v2.0.2/AppleSilicon-Printer-Drivers-2.0.2.pkg" data-loc="card">⬇ Pobierz darmowy sterownik</a><p class="trust">Za darmo · Podpisany i poświadczony przez Apple · Każdy Mac z Apple Silicon, macOS 12 lub nowszy</p></div>
 
-<p class="note">Ponad 9 900 pobrań · 98 gwiazdek na <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHubie</a> · Bez zakładania konta</p>
+<p class="note">Ponad 11 600 pobrań · 103 gwiazdek na <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHubie</a> · Bez zakładania konta</p>
 </div><div class="mock" aria-hidden="true"><div class="bad">Twoja drukarka<small>✕ Oprogramowanie niezgodne</small></div><span>↓</span><div class="good">Twoja drukarka<small>✓ Gotowa do druku</small></div></div></section>
 
 <h2>Jak to działa</h2>
@@ -81,6 +86,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <h2 id="symptoms">Brzmi znajomo?</h2>
 <figure style="margin:0 0 16px"><img src="https://macprinterdrivers.com/not-compatible.png" width="1270" height="230" style="width:100%;height:auto;border-radius:12px" alt="Okno Drukarki i skanery w macOS z drukarką Canon MP250 i błędem: Oprogramowanie drukarki nie jest zgodne z tym urządzeniem" loading="lazy"></figure>
 <div class="cards"><div><strong>„Oprogramowanie drukarki nie jest zgodne z tym urządzeniem”</strong>Stary sterownik już nie działa. Zainstaluj ten sterownik i drukuj na nowej pozycji z dopiskiem „Apple Silicon”.</div><div><strong>„Oprogramowanie dla tej drukarki jest niedostępne”</strong>macOS nie ma dla niej sterownika. Zainstaluj ten sterownik, a potem dodaj drukarkę przez Użyj: Wybierz oprogramowanie…</div><div><strong>„Generic PostScript Printer”, puste strony albo brak opcji</strong>macOS wybrał sterownik ogólny. Zainstaluj ten sterownik, dodaj drukarkę ponownie i wybierz pozycję z dopiskiem „Apple Silicon”.</div><div><strong>Drukarka zniknęła z listy</strong>Wyszukaj swój model powyżej, potem zajrzyj do <a href="https://macprinterdrivers.com/pl/troubleshooting/">Pomocy</a>.</div></div>
+
 
 <h2 id="options">Twoje możliwości</h2>
 <style>@media(max-width:600px){table.stack,.stack tbody,.stack tr,.stack td{display:block}.stack thead{display:none}.stack tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:10px 0}.stack td{border:0;padding:4px 0}.stack td:first-child{font-weight:600}.stack td:not(:first-child)::before{content:attr(data-l);display:block;color:var(--muted);font-size:.85rem}}</style><table class=stack><thead><tr><th>Opcja</th><th>Koszt</th><th>Działa w macOS 28?</th><th>Starsze drukarki atramentowe, np. Canon PIXMA?</th></tr></thead><tbody><tr><td data-l="Opcja"><strong>Ten pakiet</strong></td><td data-l="Koszt"><strong>Za darmo</strong></td><td data-l="Działa w macOS 28?"><strong>Tak, natywnie na Apple Silicon</strong></td><td data-l="Starsze drukarki atramentowe, np. Canon PIXMA?"><strong>Tak, wśród 3 766 modeli</strong></td></tr><tr><td data-l="Opcja">Ponowna instalacja Rosetta</td><td data-l="Koszt">Za darmo</td><td data-l="Działa w macOS 28?">Nie, Apple wyłącza Rosetta dla aplikacji w macOS 28</td><td data-l="Starsze drukarki atramentowe, np. Canon PIXMA?">Tylko niektóre drukarki i tylko do tego czasu</td></tr><tr><td data-l="Opcja">Sterownik producenta</td><td data-l="Koszt">Za darmo</td><td data-l="Działa w macOS 28?">Tylko jeśli producent zrobił wersję na Apple Silicon</td><td data-l="Starsze drukarki atramentowe, np. Canon PIXMA?">Starsze modele zwykle go nie mają</td></tr><tr><td data-l="Opcja">Płatny sterownik zastępczy</td><td data-l="Koszt">Płatny, czasem osobno za każdą drukarkę</td><td data-l="Działa w macOS 28?">Zapytaj sprzedawcę</td><td data-l="Starsze drukarki atramentowe, np. Canon PIXMA?">Często nie: wiele obsługuje tylko drukarki PCL lub PostScript</td></tr><tr><td data-l="Opcja">Nowa drukarka</td><td data-l="Koszt">Cena drukarki</td><td data-l="Działa w macOS 28?">Tak</td><td data-l="Starsze drukarki atramentowe, np. Canon PIXMA?">Tak, a stara się marnuje</td></tr></tbody></table>
@@ -108,6 +114,7 @@ footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid v
 <details><summary>Czy to jest darmowe?</summary><p>Tak. Darmowe i open source, bez konta. Sterownik niczego nie zbiera.</p></details>
 <details><summary>Jakie wersje macOS?</summary><p>Przetestowane na macOS 27 na Apple Silicon. Powinno działać na macOS 12 i nowszych na komputerach Mac z Apple Silicon.</p></details>
 <p><a href="https://macprinterdrivers.com/pl/troubleshooting/">Więcej pomocy →</a></p>
+
 <div class="card"><strong>☕ Znowu drukujesz?</strong><br>Ten sterownik jest darmowy i zawsze taki będzie. Jeśli oszczędził ci zakupu nowej drukarki, możesz podziękować kawą. <a href="https://github.com/sponsors/theshiver" data-loc="card">Postaw mi kawę →</a></div>
 <script>
 const BASE="https://macprinterdrivers.com",ALIAS={"Dai": "DNP", "PIXMA": "Canon", "imageRunner": "Canon", "Phaser": "Xerox", "e-Studio": "Toshiba", "MP": "Ricoh", "Datamax-ONeil": "Datamax", "TASKalfa": "Kyocera", "Konica": "Konica Minolta", "Fuji": "Fuji Xerox"};let MODELS=null,sel=-1,st;
@@ -141,7 +148,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
 var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
 window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a)track('driver_download',{link_location:a.dataset.loc||'nav'})});
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
 d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
 })();</script>

@@ -28,7 +28,7 @@ It's off until you turn it on. The Mac has to stay on, and anyone on the same Wi
 
 ## Why it's worth installing now
 
-Many printer makers never updated their Mac drivers for Apple Silicon. macOS 27 marks those drivers as incompatible, and Apple ends Rosetta for apps in macOS 28. This package doesn't need Rosetta, so your printer keeps working after you update.
+Many printer makers never updated their Mac drivers for Apple Silicon. macOS 27 Golden Gate marks Intel-only drivers as incompatible (or breaks printing with `Bad CPU type in executable` and `"Filter" failed`), and Apple ends Rosetta for apps in macOS 28. This package doesn't need Rosetta, so your printer keeps working after you update. See the [Rosetta vs. native driver guide](https://macprinterdrivers.com/fix/rosetta-printer-driver-macos-27/) for details.
 
 ## Supported printers
 
@@ -41,7 +41,7 @@ Not covered: scanners on all-in-ones, Brother DCP-T and MFC-T ink tanks, and dye
 ## Need help?
 
 - **Still seeing the old error?** Restart the Mac once, then unplug and re-plug the printer.
-- **Anything else:** see [troubleshooting](https://macprinterdrivers.com/troubleshooting/) or [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
+- **Anything else:** see [troubleshooting](https://macprinterdrivers.com/troubleshooting/), the [macOS printer error guides](https://macprinterdrivers.com/fix/printer-not-working-after-macos-update/), or [open an issue](https://github.com/theshiver/apple-silicon-printer-drivers/issues) with your printer model and macOS version.
 
 <details>
 <summary>Advanced: Terminal steps</summary>

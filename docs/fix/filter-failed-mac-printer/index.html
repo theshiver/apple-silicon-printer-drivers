@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fix “Stopped - &#x27;Filter&#x27; Failed” Printer Error on Mac</title>
+<meta name="description" content="Seeing Stopped - &#x27;Filter&#x27; failed in the Mac print queue on macOS 27 Golden Gate or Apple Silicon? Fix crashed CUPS filters, reset the queue, or switch to native arm64 drivers.">
+<meta name="keywords" content="stopped filter failed mac, filter failed macos printer, cups filter failed apple silicon, macos 27 filter failed printer, samsung brother canon filter failed mac">
+
+
+<link rel="canonical" href="https://macprinterdrivers.com/fix/filter-failed-mac-printer/">
+<meta property="og:type" content="website"><meta property="og:title" content="Fix “Stopped - &#x27;Filter&#x27; Failed” Printer Error on Mac">
+<meta property="og:description" content="Seeing Stopped - &#x27;Filter&#x27; failed in the Mac print queue on macOS 27 Golden Gate or Apple Silicon? Fix crashed CUPS filters, reset the queue, or switch to native arm64 drivers."><meta property="og:url" content="https://macprinterdrivers.com/fix/filter-failed-mac-printer/">
+<meta property="og:image" content="https://macprinterdrivers.com/not-compatible.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://macprinterdrivers.com/not-compatible.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%96%A8%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"TechArticle","headline":"Fix \u201cStopped - 'Filter' failed\u201d on Mac","description":"Seeing Stopped - 'Filter' failed in the Mac print queue on macOS 27 Golden Gate or Apple Silicon? Fix crashed CUPS filters, reset the queue, or switch to native arm64 drivers.","url":"https://macprinterdrivers.com/fix/filter-failed-mac-printer/","dateModified":"2026-11-24","author":{"@type":"Person","name":"Can \u00c7etin","url":"https://cancetin.com/"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did Samsung or Xerox laser printing fail with 'Filter' failed?","acceptedAnswer":{"@type":"Answer","text":"Older Samsung and Xerox SPL drivers relied on Intel binaries or missing PostScript filters. Native arm64 SpliX (rastertoqpdl) replaces that filter chain without Rosetta."}},{"@type":"Question","name":"I installed the package but the queue still says Filter failed.","acceptedAnswer":{"@type":"Answer","text":"Your queue is almost certainly still bound to the old manufacturer PPD. Remove that queue completely in Printers & Scanners and add the new entry whose name ends in \u201cApple Silicon\u201d."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://macprinterdrivers.com/"},{"@type":"ListItem","position":2,"name":"Troubleshooting","item":"https://macprinterdrivers.com/troubleshooting/"},{"@type":"ListItem","position":3,"name":"Fix \u201cStopped - 'Filter' failed\u201d on Mac","item":"https://macprinterdrivers.com/fix/filter-failed-mac-printer/"}]}]</script>
+<style>
+:root{color-scheme:light dark;--bg:#fff;--soft:#f5f6f8;--fg:#14171f;--muted:#5b6472;--line:#e4e7ec;--accent:#1d5fd1;--code:#f1f2f5;--ok:#127a3e;--ok-soft:#e7f6ed;--bad:#c5342b;--bad-soft:#fdeceb;--btn-bg:#1d5fd1;--btn-fg:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#101216;--soft:#191c22;--fg:#eef0f3;--muted:#a3abb8;--line:#2b2f37;--accent:#7db0ff;--code:#1f2229;--ok:#6fd694;--ok-soft:#14291c;--bad:#ff8f87;--bad-soft:#331a18;--btn-bg:#7db0ff;--btn-fg:#0b1a2b}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;max-width:1000px;margin:0 auto;padding:16px 20px}
+header>a{color:var(--fg);text-decoration:none;font-weight:700;margin-right:auto}header nav{display:flex;flex-wrap:wrap;gap:4px 20px}header nav a{color:var(--muted);text-decoration:none;font-size:.95rem}header nav a:hover{color:var(--fg)}header nav a.coffee{color:var(--accent);font-weight:600}
+main{max-width:1000px;margin:0 auto;padding:12px 20px 48px}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.12;letter-spacing:-.02em;margin:.3em 0 .4em}
+h2{font-size:clamp(1.4rem,3vw,1.75rem);line-height:1.25;letter-spacing:-.01em;margin:2.4em 0 .6em}h3{font-size:1.05rem}
+a{color:var(--accent)}p.lead{font-size:1.2rem;color:var(--muted);margin-top:0}.note{color:var(--muted);font-size:.93rem}
+.hero{display:grid;gap:32px;align-items:center;padding:24px 0 8px}@media(min-width:800px){.hero{grid-template-columns:1.45fr 1fr}}
+.mock{background:var(--soft);border-radius:18px;padding:18px;display:grid;gap:8px;justify-items:center}
+.mock div{width:100%;background:var(--bg);border-radius:12px;padding:12px 14px;line-height:1.3}.mock small{display:block;font-weight:600}
+.mock .bad small{color:var(--bad)}.mock .good small{color:var(--ok)}.mock span{color:var(--muted)}
+.dl{background:var(--soft);border-radius:16px;padding:20px 22px;margin:20px 0}.hero .dl{background:none;padding:0;margin:0}
+.dl .ok{font-size:1.1rem;font-weight:600;margin:0 0 12px;color:var(--ok)}
+a.btn{display:inline-block;background:var(--btn-bg);color:var(--btn-fg);font-size:1.15rem;font-weight:600;text-decoration:none;padding:15px 30px;border-radius:12px}
+a.btn:hover{filter:brightness(1.1)}a.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.dl .trust{color:var(--muted);font-size:.92rem;margin:12px 0 14px}.hero .trust{margin-bottom:6px}
+ol.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;padding:0;margin:0;counter-reset:q}
+ol.quick li{counter-increment:q;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.97rem}
+ol.quick li::before{content:counter(q);display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin-right:8px;border-radius:50%;background:var(--btn-bg);color:var(--btn-fg);font-weight:700;font-size:.85rem}
+@media(max-width:600px){ol.quick{grid-template-columns:1fr}a.btn{display:block;text-align:center}}
+input[type=search]{width:100%;font-size:1.15rem;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}input[type=search]:focus{outline:none;border-color:var(--accent)}
+#results{list-style:none;padding:0;margin:8px 0 0}#results li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-top:8px;cursor:pointer}#results li:hover,#results li.sel{border-color:var(--accent)}
+.card{background:var(--soft);border-radius:16px;padding:18px 22px;margin:18px 0}.brands a{display:inline-block;margin:4px 12px 4px 0}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.cards div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}.cards strong{display:block;margin-bottom:4px}
+.promo{background:var(--soft);border-radius:18px;padding:22px 24px;margin:28px 0;display:grid;gap:20px;align-items:center}@media(min-width:800px){.promo{grid-template-columns:1.3fr 1fr}}.promo h2{margin:0 0 .3em}.promo p{margin:0 0 .6em}
+.app{background:var(--bg);border-radius:14px;padding:6px 14px;box-shadow:0 4px 18px #0002}.app div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.25}.app div:last-child{border:0}.app small{display:block;color:var(--ok)}.app i{flex:none;width:36px;height:21px;border-radius:11px;background:var(--btn-bg);position:relative}.app i::after{content:"";position:absolute;right:2px;top:2px;width:17px;height:17px;border-radius:50%;background:#fff}.app i.off{background:var(--line)}.app i.off::after{right:auto;left:2px}
+.langs{position:relative;font-size:.95rem;color:var(--muted)}.langs summary{list-style:none}.langs summary::after{content:" ▾"}.langs summary::-webkit-details-marker{display:none}.langs summary{font-weight:400;border:0}.langs{border:0;padding:0}.langs div{position:absolute;right:0;z-index:2;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 12px;display:grid;gap:4px;min-width:120px}
+.models{columns:3 220px;list-style:none;padding:0;margin:0}.models li{padding:3px 0;break-inside:avoid}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.9rem;color:var(--muted)}tbody tr:first-child{background:var(--ok-soft)}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:.6em 0 .2em}
+pre,code{font:.92em ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow:auto;position:relative}code{background:var(--code);padding:1px 5px;border-radius:4px}pre code{background:none;padding:0}
+button.copy{position:absolute;top:8px;right:8px;font-size:.8rem;padding:4px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+.hidden{display:none}ol.steps li{margin:.4em 0}
+#dl-toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:360px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px #0003;display:none}
+#dl-toast.show{display:block}#dl-toast p{margin:0 0 8px;font-size:.94rem}#dl-toast .t-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#dl-toast a.t-btn{display:inline-block;background:var(--soft);color:var(--accent);font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:.9rem}
+#dl-toast button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
+footer{color:var(--muted);font-size:.9rem;margin-top:56px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body data-track="{&quot;page_type&quot;: &quot;fix_guide&quot;}">
+<header><a href="https://macprinterdrivers.com/">🖨 Mac Printer Drivers</a>
+<nav><a href="https://macprinterdrivers.com/#search">Check my printer</a><a href="https://macprinterdrivers.com/print-from-iphone/">iPhone &amp; iPad</a><a href="https://macprinterdrivers.com/troubleshooting/">Help</a><a class="coffee" href="https://github.com/sponsors/theshiver" data-loc="header">☕ Buy me a coffee</a></nav></header>
+<main>
+
+<p class="note"><a href="https://macprinterdrivers.com/">Home</a> › <a href="https://macprinterdrivers.com/troubleshooting/">Troubleshooting</a> › Fix “Stopped - &#x27;Filter&#x27; failed” on Mac</p>
+<h1>Fix “Stopped - &#x27;Filter&#x27; failed” on Mac</h1>
+<p class="lead">“Stopped - &#x27;Filter&#x27; failed” means the macOS CUPS filter crashed before data reached your printer. On Apple Silicon and macOS 27 Golden Gate, the most common trigger is an outdated Intel vendor filter or a broken PPD reference.</p>
+<div class="dl"><a class="btn" href="https://github.com/theshiver/apple-silicon-printer-drivers/releases/download/v2.0.2/AppleSilicon-Printer-Drivers-2.0.2.pkg" data-loc="card">⬇ Download the free driver</a><p class="trust">Free · Signed and notarized by Apple · Any Apple Silicon Mac, macOS 12 or later</p><ol class="quick"><li>Plug the printer in with USB and switch it on</li><li>Open the downloaded file and click through</li><li>Print. The printer is set up for you</li></ol></div>
+<p class="note">Still not printing? Restart the Mac once and re-plug the printer, then see <a href="https://macprinterdrivers.com/troubleshooting/">troubleshooting</a>. Wi-Fi printer? See below.</p>
+<h2>1. Try the quick built-in macOS checks first</h2><ol class="steps"><li><strong>Test AirPrint (Wi-Fi printers):</strong> remove the queue in <strong>System Settings → Printers &amp; Scanners</strong>, click <strong>Add</strong>, and choose <strong>Use: AirPrint</strong> if available. AirPrint bypasses third-party filters completely.</li><li><strong>Test from Apple Preview:</strong> if the error happens only in Chrome or Acrobat, export to PDF and print from Preview to rule out an app-specific PDF rendering bug.</li><li><strong>Reset the printing system:</strong> right-click (or Control-click) the printer list in <strong>Printers &amp; Scanners</strong> and choose <strong>Reset printing system…</strong> to clear corrupt queues.</li></ol><h2>2. Check why the filter failed in Console / CUPS log</h2><p>If resetting the queue didn't solve it, the vendor's filter binary inside <code>/Library/Printers/</code> is failing to run on Apple Silicon or macOS 27:</p><pre><button class="copy">Copy</button><code>grep -iE "filter|Bad CPU|gutenprint|brlaser|qpdl" /var/log/cups/error_log | tail -n 20</code></pre><p>If you see <code>Bad CPU type in executable</code>, <code>Library not loaded</code>, or a missing filter inside <code>/Library/Printers/</code>, your old Intel driver is broken and needs a native Apple Silicon replacement.</p><h2>3. Replace the crashed vendor filter with native arm64 drivers</h2><ol class="steps"><li>Delete the failing printer queue in <strong>System Settings → Printers &amp; Scanners</strong>.</li><li>Install the native Apple Silicon driver package above (every filter—<code>rastertogutenprint.5.3</code>, <code>rastertobrlaser</code>, <code>rastertoqpdl</code> and <code>rastertofoo-*</code>—is compiled natively for <code>arm64</code> and signed).</li><li>Re-add the printer and make sure you pick the entry ending in <strong>“Apple Silicon”</strong>, not the old manufacturer entry.</li></ol>
+<h2>Questions</h2>
+<details><summary>Why did Samsung or Xerox laser printing fail with &#x27;Filter&#x27; failed?</summary><p>Older Samsung and Xerox SPL drivers relied on Intel binaries or missing PostScript filters. Native arm64 SpliX (rastertoqpdl) replaces that filter chain without Rosetta.</p></details>
+<details><summary>I installed the package but the queue still says Filter failed.</summary><p>Your queue is almost certainly still bound to the old manufacturer PPD. Remove that queue completely in Printers &amp; Scanners and add the new entry whose name ends in “Apple Silicon”.</p></details>
+<h2>Related guides &amp; brands</h2>
+<ul><li><a href="https://macprinterdrivers.com/fix/rosetta-printer-driver-macos-27/">Reinstall Rosetta vs. native driver</a></li><li><a href="https://macprinterdrivers.com/fix/generic-postscript-printer-blank-pages/">Mac printing blank pages or Generic PostScript</a></li><li><a href="https://macprinterdrivers.com/fix/printer-not-working-after-macos-update/">Printer not working after macOS 27 update</a></li></ul>
+<p class="brands"><a href="https://macprinterdrivers.com/samsung/">Samsung</a> <a href="https://macprinterdrivers.com/brother/">Brother</a> <a href="https://macprinterdrivers.com/canon/">Canon</a> <a href="https://macprinterdrivers.com/xerox/">Xerox</a> <a href="https://macprinterdrivers.com/hp/">HP</a> <a href="https://macprinterdrivers.com/brands/">all brands →</a></p>
+<div class="card"><strong>☕ Printing again?</strong><br>This driver is free and always will be. If it saved you a new printer, you can say thanks with a coffee. <a href="https://github.com/sponsors/theshiver" data-loc="card">Buy me a coffee →</a></div>
+<script>document.querySelectorAll('button.copy').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.nextElementSibling.textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)})</script>
+
+<footer><a href="https://macprinterdrivers.com/brands/">All brands</a> · <a href="https://github.com/theshiver/apple-silicon-printer-drivers">GitHub</a> · <a href="https://github.com/sponsors/theshiver" data-loc="footer">☕ Buy me a coffee</a> · <a href="https://macprinterdrivers.com/privacy/">Privacy</a><br>Free and open source. Not affiliated with Canon, Epson, HP, Brother or Apple. Product names are trademarks of their owners.</footer>
+</main>
+<script>(function(){var G='G-RL7H0KSZYM',d=document;
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+G;d.head.appendChild(s);
+var P=JSON.parse(d.body.dataset.track||'{}');gtag('js',new Date());gtag('config',G,{allow_google_signals:false,allow_ad_personalization_signals:false});if(P.printer_brand)gtag('event','printer_page',P);
+window.track=function(n,p){gtag('event',n,Object.assign({},P,p))};
+function showToast(){var t=d.getElementById('dl-toast');if(!t){t=d.createElement('div');t.id='dl-toast';t.setAttribute('role','status');t.innerHTML='<p><strong>Download started.</strong> Open the .pkg file to install. If it gets your printer working again, consider supporting the project:</p><div class="t-act"><a class="t-btn" href="https://github.com/sponsors/theshiver" data-loc="post_download">☕ Buy me a coffee →</a><button type="button" aria-label="Dismiss">✕</button></div>';t.querySelector('button').onclick=function(){t.classList.remove('show')};d.body.appendChild(t)}t.classList.add('show')}
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".pkg"]');if(a){track('driver_download',{link_location:a.dataset.loc||'nav'});showToast()}});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="sponsors/theshiver"]');if(a)track('coffee_click',{link_location:a.dataset.loc||'other'})});
+d.addEventListener('toggle',function(e){var s=e.target.querySelector&&e.target.querySelector('summary');if(e.target.open&&s&&e.target.closest('main'))track('faq_open',{question:s.textContent.slice(0,100)})},true);
+})();</script>
+</body></html>
