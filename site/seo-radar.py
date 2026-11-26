@@ -13,7 +13,7 @@ from urllib.parse import quote
 from google.auth.transport.requests import AuthorizedSession
 from google.oauth2 import service_account
 
-CFG = os.path.expanduser("~/.config/claude-seo/google-api.json")
+CFG = os.path.expanduser("~/.config/seo-stats/google-api.json")
 SC = "https://www.googleapis.com/webmasters/v3"
 GA_DATA = "https://analyticsdata.googleapis.com/v1beta"
 NEW_SITE = "https://macprinterdrivers.com/"
