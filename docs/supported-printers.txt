@@ -1,4 +1,4 @@
-# Mac Printer Drivers for Apple Silicon: 3766 supported printer models (version 2.0.5)
+# Mac Printer Drivers for Apple Silicon: 3777 supported printer models (version 2.0.6)
 # Every model below works on Apple Silicon Macs with macOS 12 or later, including macOS 26 Tahoe and macOS 27.
 # One signed and notarized installer covers all of them: https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest
 # USB printers are set up automatically. Otherwise: sudo gutenprint-add <model id> [queue name] [device uri]
@@ -69,6 +69,7 @@ Brother HL-1850 | brother-hl-1850 | Gutenprint | https://macprinterdrivers.com/b
 Brother HL-1870N | brother-hl-1870n | Gutenprint | https://macprinterdrivers.com/brother/hl-1870n/
 Brother HL-2030 series | brlaser-hl-2030 | brlaser | https://macprinterdrivers.com/brother/hl-2030-series/
 Brother HL-2060 | brother-hl-2060 | Gutenprint | https://macprinterdrivers.com/brother/hl-2060/
+Brother HL-2070N | brother-hl-2070n | Gutenprint | https://macprinterdrivers.com/brother/hl-2070n/
 Brother HL-2130 series | brlaser-hl-2130 | brlaser | https://macprinterdrivers.com/brother/hl-2130-series/
 Brother HL-2140 series | brlaser-hl-2140 | brlaser | https://macprinterdrivers.com/brother/hl-2140-series/
 Brother HL-2150N | brlaser-hl-2150n | brlaser | https://macprinterdrivers.com/brother/hl-2150n/
@@ -3015,6 +3016,9 @@ Lanier SG3110DNw | lanier-sg3110dnw | Gutenprint | https://macprinterdrivers.com
 Lanier SG3110SFNw | lanier-sg3110sfnw | Gutenprint | https://macprinterdrivers.com/lanier/sg3110sfnw/
 Lexmark 4076 | lexmark-4076 | Gutenprint | https://macprinterdrivers.com/lexmark/4076/
 Lexmark C500 | foo2-lexmark-c500 | foo2zjs | https://macprinterdrivers.com/lexmark/c500/
+Lexmark E120 | lexmark-e120 | Gutenprint | https://macprinterdrivers.com/lexmark/e120/
+Lexmark E120n | lexmark-e120n | Gutenprint | https://macprinterdrivers.com/lexmark/e120n/
+Lexmark E320 | lexmark-e320 | Gutenprint | https://macprinterdrivers.com/lexmark/e320/
 Lexmark Optra E | lexmark-optra_e | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e/
 Lexmark Optra E+ | lexmark-optra_eplus | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e-plus/
 Lexmark Optra E220 | lexmark-optra_e220 | Gutenprint | https://macprinterdrivers.com/lexmark/optra-e220/
@@ -3170,8 +3174,15 @@ NRG SG3110DN | nrg-sg3110dn | Gutenprint | https://macprinterdrivers.com/nrg/sg3
 NRG SG3110DNw | nrg-sg3110dnw | Gutenprint | https://macprinterdrivers.com/nrg/sg3110dnw/
 NRG SG3110SFNw | nrg-sg3110sfnw | Gutenprint | https://macprinterdrivers.com/nrg/sg3110sfnw/
 Oki B401d | oki-b401d | Gutenprint | https://macprinterdrivers.com/oki/b401d/
+Oki B410d | oki-b410d | Gutenprint | https://macprinterdrivers.com/oki/b410d/
+Oki B410dn | oki-b410dn | Gutenprint | https://macprinterdrivers.com/oki/b410dn/
 Oki B430 | oki-b430 | Gutenprint | https://macprinterdrivers.com/oki/b430/
 Oki B4350 | oki-b4350 | Gutenprint | https://macprinterdrivers.com/oki/b4350/
+Oki B4400 | oki-b4400 | Gutenprint | https://macprinterdrivers.com/oki/b4400/
+Oki B4400n | oki-b4400n | Gutenprint | https://macprinterdrivers.com/oki/b4400n/
+Oki B4600 | oki-b4600 | Gutenprint | https://macprinterdrivers.com/oki/b4600/
+Oki B4600n | oki-b4600n | Gutenprint | https://macprinterdrivers.com/oki/b4600n/
+Oki B4600n PS | oki-b4600n_ps | Gutenprint | https://macprinterdrivers.com/oki/b4600n-ps/
 Oki C110 | foo2-oki-c110 | foo2zjs | https://macprinterdrivers.com/oki/c110/
 Oki C301dn | foo2-oki-c301dn | foo2zjs | https://macprinterdrivers.com/oki/c301dn/
 Oki C3100 | foo2-oki-c3100 | foo2zjs | https://macprinterdrivers.com/oki/c3100/

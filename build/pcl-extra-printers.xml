@@ -29,3 +29,19 @@
       <!-- HP LaserJet Pro M203dn/M203dw: PCL6, PCL5c and PostScript (HP datasheet), same class as the M201 entries. -->
       <printer translate="name" name="HP LaserJet Pro M203dn" driver="hp-lj_pro_m203dn" manufacturer="HP" model="6" parameters="pcl_laser_params" />
       <printer translate="name" name="HP LaserJet Pro M203dw" driver="hp-lj_pro_m203dw" manufacturer="HP" model="6" parameters="pcl_laser_params" />
+      <!-- Oki B4400/B4600 series: PCL 5e and PCL 6 emulation (Oki spec), same class as the B430/B4350 entries. Untested on hardware. -->
+      <printer translate="name" name="Oki B4400" driver="oki-b4400" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Oki B4400n" driver="oki-b4400n" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Oki B4600" driver="oki-b4600" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Oki B4600n" driver="oki-b4600n" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Oki B4600n PS" driver="oki-b4600n_ps" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <!-- Oki B410 series: PCL 5e and PCL 6/XL (OpenPrinting), same class as the B430 entry. Untested on hardware. -->
+      <printer translate="name" name="Oki B410d" driver="oki-b410d" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Oki B410dn" driver="oki-b410dn" manufacturer="Oki" model="6" parameters="pcl_laser_params" />
+      <!-- Lexmark E320: PCL 5e emulation standard (Lexmark spec), same class as the Optra E321 entry. Untested on hardware. -->
+      <printer translate="name" name="Lexmark E320" driver="lexmark-e320" manufacturer="Lexmark" model="6" parameters="pcl_laser_params" />
+      <!-- Lexmark E120/E120n: PCL 5e per OpenPrinting (ljet4 class), no vendor sheet found. Untested on hardware. -->
+      <printer translate="name" name="Lexmark E120" driver="lexmark-e120" manufacturer="Lexmark" model="6" parameters="pcl_laser_params" />
+      <printer translate="name" name="Lexmark E120n" driver="lexmark-e120n" manufacturer="Lexmark" model="6" parameters="pcl_laser_params" />
+      <!-- Brother HL-2070N: PCL6 emulation (Brother spec), same reasoning as the HL-2170W entry. Untested on hardware. -->
+      <printer translate="name" name="Brother HL-2070N" driver="brother-hl-2070n" manufacturer="Brother" model="62" parameters="pcl_laser_params" />

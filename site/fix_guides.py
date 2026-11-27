@@ -33,7 +33,7 @@ FIX_GUIDES = [
                 "<p>Instead of translating old Intel filters, you can install native <code>arm64</code> open-source drivers compiled specifically for Apple Silicon Macs "
                 "(Gutenprint, brlaser, SpliX and foo2zjs). They run directly on M1–M4+ Macs with no Rosetta dependency and keep working across macOS updates.</p>"
                 "<table><thead><tr><th>Approach</th><th>Survives macOS 28?</th><th>Works for older USB printers?</th><th>Setup</th></tr></thead>"
-                "<tbody><tr><td><strong>Native Apple Silicon driver</strong></td><td>Yes (native arm64)</td><td>Yes (3,766 models)</td><td>Signed .pkg installer</td></tr>"
+                "<tbody><tr><td><strong>Native Apple Silicon driver</strong></td><td>Yes (native arm64)</td><td>Yes (3,777 models)</td><td>Signed .pkg installer</td></tr>"
                 "<tr><td>Reinstall Rosetta 2</td><td>No (Rosetta ends in macOS 28)</td><td>Only if vendor kexts/filters still load</td><td>Terminal command + re-add queue</td></tr>"
                 "<tr><td>AirPrint</td><td>Yes (built into macOS)</td><td>Wi-Fi/Ethernet AirPrint printers only</td><td>System Settings → Use: AirPrint</td></tr></tbody></table>",
             ),
@@ -62,7 +62,7 @@ FIX_GUIDES = [
     {
         "slug": "software-for-this-printer-isnt-available",
         "title": "Fix “Software for This Printer Isn't Available” on Mac",
-        "desc": "macOS says “Software for this printer isn't available from Apple”? Check AirPrint first, then install native Apple Silicon drivers for 3,766 Canon, Brother, HP, Epson & Samsung printers.",
+        "desc": "macOS says “Software for this printer isn't available from Apple”? Check AirPrint first, then install native Apple Silicon drivers for 3,777 Canon, Brother, HP, Epson & Samsung printers.",
         "keywords": "software for this printer isn't available from apple, software for this printer is not available mac, apple silicon printer driver missing, macos 27 golden gate printer software unavailable",
         "h1": "Fix “Software for this printer isn't available from Apple”",
         "lead": "macOS shows this error when neither Apple's built-in catalog nor Software Update has a driver for your printer. Check AirPrint first; if your printer is older or USB-only, install the native Apple Silicon driver package.",
@@ -79,7 +79,7 @@ FIX_GUIDES = [
             (
                 "2. Why Apple stopped hosting older vendor drivers",
                 "<p>Apple no longer downloads legacy manufacturer driver packages through Software Update for discontinued printers, and many vendor installers on manufacturer websites are Intel-only or fail on macOS 26 Tahoe and macOS 27 Golden Gate.</p>"
-                "<p>When you install this package, 3,766 native Apple Silicon PPD profiles become available immediately under <strong>Select Software…</strong> in Printers &amp; Scanners.</p>",
+                "<p>When you install this package, 3,777 native Apple Silicon PPD profiles become available immediately under <strong>Select Software…</strong> in Printers &amp; Scanners.</p>",
             ),
             (
                 "3. How to add the printer after installing",
