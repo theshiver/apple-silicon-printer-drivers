@@ -59,7 +59,7 @@
   ],
   [
    "“Generic PostScript Printer”, páginas en blanco u opciones que faltan",
-   "macOS ha elegido un driver genérico. Instala este driver, añade la impresora de nuevo y elige la entrada “Apple Silicon”."
+   "macOS ha elegido un driver genérico. Instala este driver, añade la impresora de nuevo y elige tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ],
   [
    "“Detenido - Error de 'Filter'” o “'Data' failed”",
@@ -134,11 +134,11 @@
   ],
   [
    "Mi impresora está en Wi-Fi, no en USB.",
-   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo que termina en “Apple Silicon”."
+   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ],
   [
    "El instalador no añadió mi impresora.",
-   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo que termina en “Apple Silicon”."
+   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ],
   [
    "¿Dónde están la calidad de impresión y el blanco y negro?",
@@ -217,7 +217,7 @@
   ],
   [
    "Mi impresora está en Wi-Fi o no se configuró sola.",
-   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo que termina en “Apple Silicon”."
+   "Instala el driver, abre Ajustes del Sistema → Impresoras y escáneres, haz clic en Añadir, selecciona tu impresora, elige Usar: Seleccionar software… y escoge tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ]
  ],
  "brands_title": "Marcas de impresora compatibles: drivers para Mac con Apple Silicon",
@@ -236,19 +236,19 @@
   ],
   [
    "Mi impresora no aparece en la lista.",
-   "Primero busca tu modelo en la página de inicio: si no es compatible, no aparecerá ninguna entrada. Si es compatible y está conectada por USB, reinicia el Mac una vez, desconecta y vuelve a conectar la impresora, y conéctala directamente, sin hub ni base. Luego añádela en Ajustes del Sistema → Impresoras y escáneres → Añadir, con Usar: Seleccionar software… y la entrada de tu modelo que termina en “Apple Silicon”."
+   "Primero busca tu modelo en la página de inicio: si no es compatible, no aparecerá ninguna entrada. Si es compatible y está conectada por USB, reinicia el Mac una vez, desconecta y vuelve a conectar la impresora, y conéctala directamente, sin hub ni base. Luego añádela en Ajustes del Sistema → Impresoras y escáneres → Añadir, con Usar: Seleccionar software… y la entrada de tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ],
   [
    "“El software para esta impresora no está disponible en Apple”.",
-   "macOS muestra esto cuando añades una impresora para la que no tiene driver. Instala primero este paquete y luego vuelve a añadir la impresora en Ajustes del Sistema → Impresoras y escáneres → Añadir, elige Usar: Seleccionar software… y escoge la entrada de tu modelo que termina en “Apple Silicon”."
+   "macOS muestra esto cuando añades una impresora para la que no tiene driver. Instala primero este paquete y luego vuelve a añadir la impresora en Ajustes del Sistema → Impresoras y escáneres → Añadir, elige Usar: Seleccionar software… y escoge la entrada de tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre."
   ],
   [
    "“No se han encontrado impresoras AirPrint”, o no se ofrece AirPrint.",
-   "Las impresoras antiguas no son compatibles con AirPrint. En tu Mac, añádelas con Usar: Seleccionar software… y la entrada “Apple Silicon”, después de instalar este paquete. Para imprimir desde un iPhone o iPad, activa la impresora en Print from iPhone & iPad, que añade AirPrint a través de tu Mac, incluso por USB."
+   "Las impresoras antiguas no son compatibles con AirPrint. En tu Mac, añádelas con Usar: Seleccionar software… y la entrada de tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre, después de instalar este paquete. Para imprimir desde un iPhone o iPad, activa la impresora en Print from iPhone & iPad, que añade AirPrint a través de tu Mac, incluso por USB."
   ],
   [
    "Mi impresora está en Wi-Fi o Ethernet.",
-   "El instalador solo configura por sí mismo las impresoras USB. Para una impresora de red, añádela en Ajustes del Sistema → Impresoras y escáneres → Añadir con Usar: Seleccionar software… y la entrada “Apple Silicon”. Si la impresora no aparece, conéctala a la misma red que el Mac y apágala y enciéndela."
+   "El instalador solo configura por sí mismo las impresoras USB. Para una impresora de red, añádela en Ajustes del Sistema → Impresoras y escáneres → Añadir con Usar: Seleccionar software… y la entrada de tu modelo con “Apple Silicon” o “CUPS+Gutenprint” en el nombre. Si la impresora no aparece, conéctala a la misma red que el Mac y apágala y enciéndela."
   ],
   [
    "¿Se arregla reinstalando Rosetta?",
@@ -359,7 +359,7 @@
    "Se creó Print from iPhone & iPad para imprimir desde iOS en impresoras USB antiguas."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 láser host-based",
    "Se añadió foo2zjs + carga automática de firmware USB para HP 1018/1020/P1005/P1006 y Brother DCP-8080DN."
   ],

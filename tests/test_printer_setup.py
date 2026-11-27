@@ -1,4 +1,5 @@
 """Test queue setup with isolated files and fake CUPS commands; never change macOS queues."""
+import gzip
 import json
 import os
 import re
@@ -44,6 +45,11 @@ if [ "$1" = -M ] && [ "${2:-}" = -v ]; then
 elif [ "$1" = -M ]; then
   printf '%s\n' brother-hl-5040 brother-hl-5030 bjc-MP250-series escp2-r300 bjc-Pro9000mk2-series \
     brother-hl-2170w hp-lj_p2015 hp-lj_pro_m201dw hp-lj_pro_m225dw mitsubishi-d70dw
+elif [ "$1" = -Z ] && [ "$2" = -p ] && [ $# = 3 ]; then
+  # every model, uncompressed, named like the real genppd
+  for id in bjc-MP250-series hp-lj_p2015 mitsubishi-d70dw; do
+    printf '*PPD-Adobe: "4.3"\n*NickName: "%s - CUPS+Gutenprint v5.3.5"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*cupsFilter: "application/vnd.cups-command 33 commandtocanon"\n*CustomStpX True: "pop"\n*ParamCustomStpX Value/Value: 1 points -15 15\n' "$id" > "$3/stp-$id.5.3.ppd"
+  done
 elif [ "$3" = bjc-MP250-series ]; then
   printf '*PPD-Adobe: "4.3"\n*ShortNickName: "Canon MP250 series"\n*cupsFilter: "application/vnd.cups-raster 100 rastertogutenprint.5.3"\n*OpenUI *StpCDXAdjustment/CD Adjustment: PickOne\n*StpCDXAdjustment 0/0 mm: ""\n*CloseUI: *StpCDXAdjustment\n*CustomStpCDXAdjustment True: "pop"\n*ParamCustomStpCDXAdjustment Value/Value: 1 points -15 15\n' > "$2/stp.ppd"
   # like the real genppd, a comma-decimal locale changes the number format
@@ -190,6 +196,44 @@ fi
                        env=self.env, check=True, capture_output=True)
         args = (self.root / "lpadmin.log").read_text().splitlines()
         self.assertEqual(args[args.index("-p") + 1], "Bad")  # Good is left alone
+
+    def install_all(self):
+        ppds = self.root / "ppds"
+        ppds.mkdir(exist_ok=True)
+        output = self.run_helper("--install-all-ppds")
+        return ppds, output
+
+    def test_install_all_ppds_lists_every_model_for_add_printer(self):
+        ppds = self.root / "ppds"
+        ppds.mkdir()
+        (ppds / "Gutenprint-retired-model.ppd").write_text("old")  # from an older version: can't print
+        (ppds / "Gutenprint-retired-model2.ppd.gz").write_text("old")
+        (ppds / "HP LaserJet.gz").write_text("vendor")  # not ours
+        ppds, output = self.install_all()
+        names = {p.name for p in ppds.iterdir()}
+        shipped = {f"Gutenprint-{p.stem}.ppd.gz" for d in ("brlaser", "splix", "foo2zjs")
+                   for p in (self.gp / "share" / d / "ppd").glob("*.ppd")}
+        expected = shipped | {"Gutenprint-bjc-MP250-series.ppd.gz", "Gutenprint-hp-lj_p2015.ppd.gz", "HP LaserJet.gz"}
+        self.assertEqual(names, expected)  # no dye-sub that can't print, no stale files
+        self.assertIn(f"{len(expected) - 1} PPDs installed", output)
+        ppd = gzip.decompress((ppds / "Gutenprint-bjc-MP250-series.ppd.gz").read_bytes()).decode()
+        self.assertNotIn("CustomStp", ppd)
+        self.assertIn(f"{self.gp}/libexec/rastertogutenprint.5.3", ppd)
+        self.assertIn(f"{self.gp}/libexec/commandtocanon", ppd)
+        self.assertIn('"bjc-MP250-series - CUPS+Gutenprint v5.3.5"', ppd)  # the filter checks this name
+        brl = gzip.decompress((ppds / f"Gutenprint-{MODEL}.ppd.gz").read_bytes()).decode()
+        self.assertEqual(brl, (self.gp / f"share/brlaser/ppd/{MODEL}.ppd").read_text())
+
+    def test_single_install_replaces_the_bulk_copy(self):
+        ppds, _ = self.install_all()
+        self.run_helper(MODEL, "Brother", "socket://192.168.1.50")
+        self.assertTrue((ppds / f"Gutenprint-{MODEL}.ppd").exists())
+        self.assertFalse((ppds / f"Gutenprint-{MODEL}.ppd.gz").exists())  # one entry in Select Software
+
+    def test_install_all_ppds_needs_root(self):
+        self.script(self.bin / "id", "echo 501")
+        self.run_helper("--install-all-ppds", success=False)
+        self.assertFalse((self.root / "ppds").exists())
 
     def test_queue_failure_is_reported(self):
         self.env["TEST_FAIL"] = "1"

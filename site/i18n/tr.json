@@ -59,7 +59,7 @@
   ],
   [
    "“Generic PostScript Printer”, boş sayfalar veya eksik seçenekler",
-   "macOS genel bir sürücü seçmiş. Bu sürücüyü kurun, yazıcıyı yeniden ekleyin ve “Apple Silicon” girdisini seçin."
+   "macOS genel bir sürücü seçmiş. Bu sürücüyü kurun, yazıcıyı yeniden ekleyin ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen modelinizi seçin."
   ],
   [
    "“Durduruldu - 'Filter' başarısız” veya “'Data' failed”",
@@ -134,11 +134,11 @@
   ],
   [
    "Yazıcım USB ile değil, Wi-Fi ile bağlı.",
-   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen modelinizi seçin."
   ],
   [
    "Yükleyici yazıcımı eklemedi.",
-   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen modelinizi seçin."
   ],
   [
    "Baskı kalitesi ve siyah beyaz nerede?",
@@ -217,7 +217,7 @@
   ],
   [
    "Yazıcım Wi-Fi ile bağlı veya otomatik kurulmadı.",
-   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan modelinizi seçin."
+   "Sürücüyü kurun, sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar'ı açın, Ekle'ye tıklayın, yazıcınızı seçin, Kullan: Yazılım Seç… seçeneğini seçin ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen modelinizi seçin."
   ]
  ],
  "brands_title": "Desteklenen yazıcı markaları — Apple Silicon Mac sürücüleri",
@@ -236,19 +236,19 @@
   ],
   [
    "Yazıcım listede görünmüyor.",
-   "Önce ana sayfada modelinizi arayın: desteklenmiyorsa hiçbir girdi görünmez. Destekleniyorsa ve USB ile bağlıysa, Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın ve onu bir hub veya dock üzerinden değil, doğrudan bağlayın. Sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ile ve sonunda “Apple Silicon” yazan model girdisiyle ekleyin."
+   "Önce ana sayfada modelinizi arayın: desteklenmiyorsa hiçbir girdi görünmez. Destekleniyorsa ve USB ile bağlıysa, Mac'i bir kez yeniden başlatın, yazıcının fişini çıkarıp tekrar takın ve onu bir hub veya dock üzerinden değil, doğrudan bağlayın. Sonra Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ile ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen model girdisiyle ekleyin."
   ],
   [
    "“Bu yazıcının yazılımı Apple'dan mevcut değil”.",
-   "macOS, sürücüsü olmayan bir yazıcı eklediğinizde bunu gösterir. Önce bu paketi kurun, sonra yazıcıyı Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den yeniden ekleyin, Kullan: Yazılım Seç… seçeneğini seçin ve sonunda “Apple Silicon” yazan model girdisini seçin."
+   "macOS, sürücüsü olmayan bir yazıcı eklediğinizde bunu gösterir. Önce bu paketi kurun, sonra yazıcıyı Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den yeniden ekleyin, Kullan: Yazılım Seç… seçeneğini seçin ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen model girdisini seçin."
   ],
   [
    "“AirPrint yazıcı bulunamadı” veya AirPrint sunulmuyor.",
-   "Eski yazıcılar AirPrint'i desteklemez. Bu paketi kurduktan sonra Mac'inizde Kullan: Yazılım Seç… ve “Apple Silicon” girdisiyle ekleyin. iPhone veya iPad'den yazdırmak için yazıcıyı Print from iPhone & iPad'de açın; o, Mac'iniz üzerinden, USB ile bile AirPrint ekler."
+   "Eski yazıcılar AirPrint'i desteklemez. Bu paketi kurduktan sonra Mac'inizde Kullan: Yazılım Seç… ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen model girdisiyle ekleyin. iPhone veya iPad'den yazdırmak için yazıcıyı Print from iPhone & iPad'de açın; o, Mac'iniz üzerinden, USB ile bile AirPrint ekler."
   ],
   [
    "Yazıcım Wi-Fi veya Ethernet ile bağlı.",
-   "Yükleyici yalnızca USB yazıcıları kendisi kurar. Ağ yazıcısını Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ve “Apple Silicon” girdisiyle ekleyin. Yazıcı görünmüyorsa Mac ile aynı ağa bağlayın ve kapatıp açın."
+   "Yükleyici yalnızca USB yazıcıları kendisi kurar. Ağ yazıcısını Sistem Ayarları → Yazıcılar ve Tarayıcılar → Ekle'den, Kullan: Yazılım Seç… ve adında “Apple Silicon” veya “CUPS+Gutenprint” geçen model girdisiyle ekleyin. Yazıcı görünmüyorsa Mac ile aynı ağa bağlayın ve kapatıp açın."
   ],
   [
    "Rosetta'yı yeniden kurmak işe yarar mı?",
@@ -359,7 +359,7 @@
    "Eski USB yazıcıların iPhone ve iPad'den kablosuz yazdırması için AirPrint uygulaması eklendi."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 Host-Based Lazer",
    "HP 1018/1020/P1005/P1006 ve Brother DCP-8080DN için foo2zjs + otomatik USB firmware yükleyici eklendi."
   ],

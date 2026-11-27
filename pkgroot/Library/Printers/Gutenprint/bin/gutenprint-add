@@ -3,6 +3,7 @@
 #   gutenprint-add --list [pattern]           list model ids (e.g. --list "HL-1210W")
 #   gutenprint-add <model-id>                 install PPD (+ create queue if a USB match is found)
 #   gutenprint-add <model-id> <queue> <uri>   install PPD and create queue <queue> on device <uri>
+#   gutenprint-add --install-all-ppds         install every model's PPD, so Add Printer > Select Software lists them
 GP=/Library/Printers/Gutenprint
 GEN="$GP/libexec/cups-genppd.5.3"
 PPDDIR=/Library/Printers/PPDs/Contents/Resources
@@ -26,8 +27,36 @@ all_models() {
     printf '%s %s\n' "$(basename "$p" .ppd)" "$(sed -n 's/^\*ModelName: "\(.*\)"/\1/p' "$p")"
   done
 }
+# Drop Gutenprint's *CustomStp*/*ParamCustomStp* entries: with them macOS 27's Printer Features
+# sheet ignores OK (issue #1). The options stay as normal PickOne lists.
+# Filters get absolute paths, since CUPS only looks in its own filter directory otherwise.
+# Keep *NickName untouched: rastertogutenprint checks it at a fixed offset and rejects any change.
+FIX='$_="" if /^\*(Param)?CustomStp/; s#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#'
 case "${1:-}" in
-  ""|-h|--help) sed -n '2,5p' "$0"; exit 0;;
+  ""|-h|--help) sed -n '2,6p' "$0"; exit 0;;
+  --install-all-ppds)
+    # Network printers are added from Add Printer, which only lists PPDs that are on disk.
+    # Old files go first: a PPD from another Gutenprint version can't print.
+    [ "$(id -u)" = 0 ] || { echo "run with sudo"; exit 1; }
+    T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
+    # One process per step, not per model: ~3,800 files.
+    O="$T/out"; mkdir -p "$O" "$PPDDIR" || exit 1
+    LC_ALL=C "$GEN" -Z -p "$O" >/dev/null 2>&1 || { echo "PPD generation failed"; exit 1; }
+    sed 's#^\(.*\)$#'"$O"'/stp-\1.5.3.ppd#' "$NOBACKEND" | tr '\n' '\0' | xargs -0 rm -f
+    for d in brlaser splix foo2zjs; do
+      for f in "$GP/share/$d/ppd"/*.ppd; do [ -f "$f" ] && cp "$GP/share/$d/ppd"/*.ppd "$O"/; break; done
+    done
+    find "$O" -name '*.ppd' -exec perl -pi -e "$FIX" {} + &&
+      find "$O" -name '*.ppd' -exec gzip -n {} + &&
+      find "$O" -name '*.ppd.gz' -exec perl -e 'for (@ARGV) { my $n = $_; $n =~ s#/(?:stp-)?([^/]+?)(?:\.5\.3)?\.ppd\.gz$#/Gutenprint-$1.ppd.gz#; rename $_, $n or die "$_: $!\n" }' {} + ||
+      { echo "PPD preparation failed"; exit 1; }
+    N=$(find "$O" -name 'Gutenprint-*.ppd.gz' | wc -l | tr -d ' ')
+    [ "$N" -gt 0 ] || { echo "no PPDs generated"; exit 1; }
+    find "$PPDDIR" -maxdepth 1 \( -name 'Gutenprint-*.ppd' -o -name 'Gutenprint-*.ppd.gz' \) -delete
+    find "$O" -name 'Gutenprint-*.ppd.gz' -exec perl -MFile::Copy=move -e 'my $d = shift; for (@ARGV) { chmod 0644, $_; move($_, $d) or die "$_: $!\n" }' "$PPDDIR" {} + ||
+      { echo "could not install PPDs in $PPDDIR"; exit 1; }
+    echo "$N PPDs installed in $PPDDIR"
+    exit 0;;
   --list|-l) shift; list_models | { [ -n "${1:-}" ] && grep -i -- "$1" || cat; }; exit 0;;
   --match-usb)
     # Internal interface shared with postinstall. Only USB URIs are candidates.
@@ -72,12 +101,10 @@ case "$MODEL" in
 esac
 mkdir -p "$PPDDIR" || exit 1
 OUT="$PPDDIR/Gutenprint-$MODEL.ppd"
-# Drop Gutenprint's *CustomStp*/*ParamCustomStp* entries: with them macOS 27's Printer Features
-# sheet ignores OK (issue #1). The options stay as normal PickOne lists.
-case "$SRC" in *.gz) gunzip -c "$SRC";; *) cat "$SRC";; esac \
- | perl -pe '$_="" if /^\*(Param)?CustomStp/; s#(\*cupsFilter:\s*"application/vnd\.cups-raster \d+ )rastertogutenprint\.5\.3"#$1'"$GP"'/libexec/rastertogutenprint.5.3"#; s#(\*cupsFilter:\s*"application/vnd\.cups-command \d+ )(commandto\w+)"#$1'"$GP"'/libexec/$2"#' > "$OUT"
+case "$SRC" in *.gz) gunzip -c "$SRC";; *) cat "$SRC";; esac | perl -pe "$FIX" > "$OUT"
 chmod 644 "$OUT"
-# Keep *NickName untouched: rastertogutenprint validates the "- CUPS+Gutenprint vX.Y.Z" suffix.
+# the installer's copy of the same model would show up twice in Select Software
+rm -f "$OUT.gz"
 # The friendly name goes into the queue description, which is what Printers & Scanners shows.
 NICK="$(grep '^\*ShortNickName' "$OUT" | cut -d'"' -f2) - Apple Silicon"
 case "$MODEL" in foo2-*) NICK=$(grep '^\*NickName' "$OUT" | cut -d'"' -f2);; esac

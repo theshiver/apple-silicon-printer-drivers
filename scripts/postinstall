@@ -11,6 +11,8 @@ log() { echo "[printer-drivers] $*"; }
 
 chown -R root:wheel "$GP"; chmod -R u=rwX,go=rX "$GP"
 mkdir -p /usr/local/bin && ln -sf "$GP/bin/gutenprint-add" /usr/local/bin/gutenprint-add
+# every model in Add Printer > Select Software, so network printers need no Terminal
+log "$("$GP/bin/gutenprint-add" --install-all-ppds 2>&1)"
 
 FW_PLIST=/Library/LaunchDaemons/com.github.apple-silicon-printer-drivers.foo2-firmware.plist
 if [ -f "$FW_PLIST" ]; then

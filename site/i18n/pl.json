@@ -59,7 +59,7 @@
   ],
   [
    "„Generic PostScript Printer”, puste strony albo brak opcji",
-   "macOS wybrał sterownik ogólny. Zainstaluj ten sterownik, dodaj drukarkę ponownie i wybierz pozycję z dopiskiem „Apple Silicon”."
+   "macOS wybrał sterownik ogólny. Zainstaluj ten sterownik, dodaj drukarkę ponownie i wybierz pozycję swojego modelu z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ],
   [
    "„Zatrzymano - Błąd 'Filter'” lub „'Data' failed”",
@@ -134,11 +134,11 @@
   ],
   [
    "Moja drukarka jest w Wi-Fi, nie przez USB.",
-   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ],
   [
    "Instalator nie dodał mojej drukarki.",
-   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ],
   [
    "Gdzie jest jakość druku i czerń i biel?",
@@ -217,7 +217,7 @@
   ],
   [
    "Moja drukarka jest w Wi-Fi albo nie dodała się automatycznie.",
-   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z dopiskiem „Apple Silicon”."
+   "Zainstaluj sterownik, potem otwórz Ustawienia systemowe → Drukarki i skanery, kliknij Dodaj, wybierz swoją drukarkę, wybierz Użyj: Wybierz oprogramowanie… i wskaż swój model z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ]
  ],
  "brands_title": "Obsługiwane marki drukarek — sterowniki drukarek Mac dla Apple Silicon",
@@ -236,19 +236,19 @@
   ],
   [
    "Mojej drukarki nie ma na liście.",
-   "Najpierw wyszukaj swój model na stronie głównej: jeśli nie jest obsługiwany, żadna pozycja się nie pojawi. Jeśli jest obsługiwany i podłączony przez USB, raz uruchom Maca ponownie, odłącz drukarkę i podłącz ją jeszcze raz, i to bezpośrednio, a nie przez hub czy stację dokującą. Potem dodaj ją w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją swojego modelu z dopiskiem „Apple Silicon”."
+   "Najpierw wyszukaj swój model na stronie głównej: jeśli nie jest obsługiwany, żadna pozycja się nie pojawi. Jeśli jest obsługiwany i podłączony przez USB, raz uruchom Maca ponownie, odłącz drukarkę i podłącz ją jeszcze raz, i to bezpośrednio, a nie przez hub czy stację dokującą. Potem dodaj ją w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją swojego modelu z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ],
   [
    "„Oprogramowanie dla tej drukarki jest niedostępne w Apple”.",
-   "macOS pokazuje to, gdy dodajesz drukarkę, dla której nie ma sterownika. Najpierw zainstaluj ten pakiet, potem dodaj drukarkę jeszcze raz w Ustawienia systemowe → Drukarki i skanery → Dodaj, wybierz Użyj: Wybierz oprogramowanie… i wskaż pozycję swojego modelu z dopiskiem „Apple Silicon”."
+   "macOS pokazuje to, gdy dodajesz drukarkę, dla której nie ma sterownika. Najpierw zainstaluj ten pakiet, potem dodaj drukarkę jeszcze raz w Ustawienia systemowe → Drukarki i skanery → Dodaj, wybierz Użyj: Wybierz oprogramowanie… i wskaż pozycję swojego modelu z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie."
   ],
   [
    "„Nie znaleziono drukarek AirPrint” albo AirPrint nie jest oferowany.",
-   "Starsze drukarki nie obsługują AirPrint. Po zainstalowaniu tego pakietu dodaj je na Macu przez Użyj: Wybierz oprogramowanie… i pozycję „Apple Silicon”. Aby drukować z iPhone'a lub iPada, włącz drukarkę w Print from iPhone & iPad, który dodaje AirPrint przez twojego Maca, nawet przez USB."
+   "Starsze drukarki nie obsługują AirPrint. Po zainstalowaniu tego pakietu dodaj je na Macu przez Użyj: Wybierz oprogramowanie… i pozycję swojego modelu z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie. Aby drukować z iPhone'a lub iPada, włącz drukarkę w Print from iPhone & iPad, który dodaje AirPrint przez twojego Maca, nawet przez USB."
   ],
   [
    "Moja drukarka jest w Wi-Fi lub w Ethernecie.",
-   "Instalator sam konfiguruje tylko drukarki USB. Drukarkę sieciową dodaj w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją „Apple Silicon”. Jeśli drukarka się nie pojawia, podłącz ją do tej samej sieci co Mac i wyłącz ją, a potem włącz."
+   "Instalator sam konfiguruje tylko drukarki USB. Drukarkę sieciową dodaj w Ustawienia systemowe → Drukarki i skanery → Dodaj, z opcją Użyj: Wybierz oprogramowanie… i pozycją swojego modelu z „Apple Silicon” lub „CUPS+Gutenprint” w nazwie. Jeśli drukarka się nie pojawia, podłącz ją do tej samej sieci co Mac i wyłącz ją, a potem włącz."
   ],
   [
    "Czy ponowna instalacja Rosetta to naprawi?",
@@ -359,7 +359,7 @@
    "Stworzono Print from iPhone & iPad do bezprzewodowego druku z iOS na drukarkach USB."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 laserów host-based",
    "Dodano foo2zjs + automatyczne wgrywanie firmware USB dla HP 1018/1020/P1005/P1006 i Brother DCP-8080DN."
   ],

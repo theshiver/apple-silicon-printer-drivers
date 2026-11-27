@@ -12,6 +12,6 @@ launchctl bootout system "$FW_PLIST" >/dev/null 2>&1 || true
 rm -f "$FW_PLIST"
 rm -f /usr/local/bin/gutenprint-add
 rm -rf "/Applications/Print from iPhone & iPad.app"
-rm -rf /Library/Printers/Gutenprint /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd
+rm -rf /Library/Printers/Gutenprint /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd /Library/Printers/PPDs/Contents/Resources/Gutenprint-*.ppd.gz
 pkgutil --forget com.github.apple-silicon-printer-drivers >/dev/null 2>&1
 echo "removed"

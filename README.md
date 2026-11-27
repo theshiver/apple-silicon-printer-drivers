@@ -16,7 +16,7 @@ Seeing "The printer software is not compatible with this device"? This fixes it.
 2. **[Download the installer](https://github.com/theshiver/apple-silicon-printer-drivers/releases/latest)** and open it. It's signed and notarized by Apple.
 3. Print. The installer finds your printer and sets it up.
 
-Printer on Wi-Fi? Install the package, then add the printer in *System Settings → Printers & Scanners → Add → Use: Select Software…* and pick the entry ending in "Apple Silicon".
+Printer on Wi-Fi? Install the package, then add the printer in *System Settings → Printers & Scanners → Add → Use: Select Software…* type your model number and pick the entry with "Apple Silicon" or "CUPS+Gutenprint" in its name. No Terminal needed.
 
 Using Homebrew? `brew install --cask theshiver/tap/apple-silicon-printer-drivers`
 

@@ -59,7 +59,7 @@
   ],
   [
    "« Generic PostScript Printer », pages blanches ou options manquantes",
-   "macOS a choisi un pilote générique. Installez ce pilote, ajoutez de nouveau l’imprimante et choisissez l’entrée « Apple Silicon »."
+   "macOS a choisi un pilote générique. Installez ce pilote, ajoutez de nouveau l’imprimante et choisissez votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ],
   [
    "« Arrêté - Échec du filtre » (« Filter failed » / « Data failed »)",
@@ -134,11 +134,11 @@
   ],
   [
    "Mon imprimante est en Wi-Fi, pas en USB.",
-   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ],
   [
    "L’installateur n’a pas ajouté mon imprimante.",
-   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ],
   [
    "Où régler la qualité d’impression et le noir et blanc ?",
@@ -217,7 +217,7 @@
   ],
   [
    "Mon imprimante est en Wi-Fi, ou elle n’a pas été configurée automatiquement.",
-   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle qui se termine par « Apple Silicon »."
+   "Installez le pilote, puis ouvrez Réglages Système → Imprimantes et scanners, cliquez sur Ajouter, sélectionnez votre imprimante, choisissez Utiliser : Sélectionner un logiciel… et prenez votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ]
  ],
  "brands_title": "Marques prises en charge : pilotes Mac Apple Silicon",
@@ -236,19 +236,19 @@
   ],
   [
    "Mon imprimante n’apparaît pas dans la liste.",
-   "Cherchez d’abord votre modèle sur la page d’accueil : s’il n’est pas pris en charge, aucune entrée n’apparaîtra. S’il l’est et que l’imprimante est en USB, redémarrez le Mac une fois, débranchez et rebranchez l’imprimante, et branchez-la directement, sans hub ni station d’accueil. Ajoutez-la ensuite dans Réglages Système → Imprimantes et scanners → Ajouter, avec Utiliser : Sélectionner un logiciel… et l’entrée de votre modèle qui se termine par « Apple Silicon »."
+   "Cherchez d’abord votre modèle sur la page d’accueil : s’il n’est pas pris en charge, aucune entrée n’apparaîtra. S’il l’est et que l’imprimante est en USB, redémarrez le Mac une fois, débranchez et rebranchez l’imprimante, et branchez-la directement, sans hub ni station d’accueil. Ajoutez-la ensuite dans Réglages Système → Imprimantes et scanners → Ajouter, avec Utiliser : Sélectionner un logiciel… et l’entrée de votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ],
   [
    "« Aucun logiciel n’est disponible auprès d’Apple pour cette imprimante ».",
-   "macOS affiche ce message quand vous ajoutez une imprimante pour laquelle il n’a pas de pilote. Installez d’abord ce paquet, puis ajoutez de nouveau l’imprimante dans Réglages Système → Imprimantes et scanners → Ajouter, choisissez Utiliser : Sélectionner un logiciel… et prenez l’entrée de votre modèle qui se termine par « Apple Silicon »."
+   "macOS affiche ce message quand vous ajoutez une imprimante pour laquelle il n’a pas de pilote. Installez d’abord ce paquet, puis ajoutez de nouveau l’imprimante dans Réglages Système → Imprimantes et scanners → Ajouter, choisissez Utiliser : Sélectionner un logiciel… et prenez l’entrée de votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom."
   ],
   [
    "« Aucune imprimante AirPrint trouvée », ou AirPrint n’est pas proposé.",
-   "Les anciennes imprimantes ne gèrent pas AirPrint. Sur votre Mac, après avoir installé ce paquet, ajoutez-les avec Utiliser : Sélectionner un logiciel… et l’entrée « Apple Silicon ». Pour imprimer depuis un iPhone ou un iPad, activez l’imprimante dans Print from iPhone & iPad, qui ajoute AirPrint via votre Mac, même en USB."
+   "Les anciennes imprimantes ne gèrent pas AirPrint. Sur votre Mac, après avoir installé ce paquet, ajoutez-les avec Utiliser : Sélectionner un logiciel… et l’entrée de votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom. Pour imprimer depuis un iPhone ou un iPad, activez l’imprimante dans Print from iPhone & iPad, qui ajoute AirPrint via votre Mac, même en USB."
   ],
   [
    "Mon imprimante est en Wi-Fi ou en Ethernet.",
-   "L’installateur ne configure tout seul que les imprimantes USB. Pour une imprimante réseau, ajoutez-la dans Réglages Système → Imprimantes et scanners → Ajouter avec Utiliser : Sélectionner un logiciel… et l’entrée « Apple Silicon ». Si l’imprimante n’apparaît pas, connectez-la au même réseau que le Mac, puis éteignez-la et rallumez-la."
+   "L’installateur ne configure tout seul que les imprimantes USB. Pour une imprimante réseau, ajoutez-la dans Réglages Système → Imprimantes et scanners → Ajouter avec Utiliser : Sélectionner un logiciel… et l’entrée de votre modèle avec « Apple Silicon » ou « CUPS+Gutenprint » dans son nom. Si l’imprimante n’apparaît pas, connectez-la au même réseau que le Mac, puis éteignez-la et rallumez-la."
   ],
   [
    "Réinstaller Rosetta règle-t-il le problème ?",
@@ -359,7 +359,7 @@
    "Création de Print from iPhone & iPad pour imprimer depuis iOS sur une imprimante USB."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 lasers GDI",
    "Ajout de foo2zjs + chargeur firmware USB auto pour HP 1018/1020/P1005/P1006 et Brother DCP-8080DN."
   ],

@@ -59,7 +59,7 @@
   ],
   [
    "„Generic PostScript Printer“, leere Seiten oder fehlende Optionen",
-   "macOS hat einen allgemeinen Treiber gewählt. Installiere diesen Treiber, füge den Drucker neu hinzu und wähle den Eintrag mit „Apple Silicon“."
+   "macOS hat einen allgemeinen Treiber gewählt. Installiere diesen Treiber, füge den Drucker neu hinzu und wähle dein Modell mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ],
   [
    "„Gestoppt - 'Filter' fehlgeschlagen“ oder „'Data' failed“",
@@ -134,11 +134,11 @@
   ],
   [
    "Mein Drucker ist im WLAN, nicht per USB angeschlossen.",
-   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell, das auf „Apple Silicon“ endet."
+   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ],
   [
    "Das Installationsprogramm hat meinen Drucker nicht hinzugefügt.",
-   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell, das auf „Apple Silicon“ endet."
+   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ],
   [
    "Wo finde ich Druckqualität und Schwarzweiß?",
@@ -217,7 +217,7 @@
   ],
   [
    "Mein Drucker ist im WLAN oder wurde nicht automatisch eingerichtet.",
-   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell, das auf „Apple Silicon“ endet."
+   "Installiere den Treiber, öffne dann Systemeinstellungen → Drucker & Scanner, klicke auf Hinzufügen, wähle deinen Drucker, wähle bei Verwenden „Software auswählen…“ und nimm dein Modell mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ]
  ],
  "brands_title": "Unterstützte Druckermarken: Mac-Druckertreiber für Apple Silicon",
@@ -236,19 +236,19 @@
   ],
   [
    "Mein Drucker erscheint nicht in der Liste.",
-   "Suche zuerst auf der Startseite dein Modell: Wird es nicht unterstützt, erscheint auch kein Eintrag. Wird es unterstützt und per USB angeschlossen, starte den Mac einmal neu, stecke den Drucker aus und wieder ein und schließe ihn direkt an, nicht über einen Hub oder eine Dockingstation. Füge ihn dann unter Systemeinstellungen → Drucker & Scanner → Hinzufügen hinzu, mit Verwenden: „Software auswählen…“ und dem Eintrag deines Modells, der auf „Apple Silicon“ endet."
+   "Suche zuerst auf der Startseite dein Modell: Wird es nicht unterstützt, erscheint auch kein Eintrag. Wird es unterstützt und per USB angeschlossen, starte den Mac einmal neu, stecke den Drucker aus und wieder ein und schließe ihn direkt an, nicht über einen Hub oder eine Dockingstation. Füge ihn dann unter Systemeinstellungen → Drucker & Scanner → Hinzufügen hinzu, mit Verwenden: „Software auswählen…“ und dem Eintrag deines Modells mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ],
   [
    "„Für diesen Drucker ist keine Software von Apple verfügbar“.",
-   "macOS zeigt das, wenn du einen Drucker hinzufügst, für den es keinen Treiber hat. Installiere zuerst dieses Paket. Füge den Drucker dann unter Systemeinstellungen → Drucker & Scanner → Hinzufügen erneut hinzu, wähle Verwenden: „Software auswählen…“ und nimm den Eintrag deines Modells, der auf „Apple Silicon“ endet."
+   "macOS zeigt das, wenn du einen Drucker hinzufügst, für den es keinen Treiber hat. Installiere zuerst dieses Paket. Füge den Drucker dann unter Systemeinstellungen → Drucker & Scanner → Hinzufügen erneut hinzu, wähle Verwenden: „Software auswählen…“ und nimm den Eintrag deines Modells mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen."
   ],
   [
    "„Keine AirPrint-Drucker gefunden“, oder AirPrint wird nicht angeboten.",
-   "Ältere Drucker unterstützen kein AirPrint. Füge sie am Mac nach der Installation dieses Pakets mit Verwenden: „Software auswählen…“ und dem Eintrag mit „Apple Silicon“ hinzu. Um vom iPhone oder iPad zu drucken, schalte den Drucker in Print from iPhone & iPad ein. Das fügt AirPrint über deinen Mac hinzu, auch über USB."
+   "Ältere Drucker unterstützen kein AirPrint. Füge sie am Mac nach der Installation dieses Pakets mit Verwenden: „Software auswählen…“ und dem Eintrag deines Modells mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen hinzu. Um vom iPhone oder iPad zu drucken, schalte den Drucker in Print from iPhone & iPad ein. Das fügt AirPrint über deinen Mac hinzu, auch über USB."
   ],
   [
    "Mein Drucker ist im WLAN oder per Ethernet verbunden.",
-   "Das Installationsprogramm richtet nur USB-Drucker selbst ein. Einen Netzwerkdrucker fügst du unter Systemeinstellungen → Drucker & Scanner → Hinzufügen hinzu, mit Verwenden: „Software auswählen…“ und dem Eintrag mit „Apple Silicon“. Erscheint der Drucker nicht, verbinde ihn mit demselben Netzwerk wie den Mac und schalte ihn aus und wieder ein."
+   "Das Installationsprogramm richtet nur USB-Drucker selbst ein. Einen Netzwerkdrucker fügst du unter Systemeinstellungen → Drucker & Scanner → Hinzufügen hinzu, mit Verwenden: „Software auswählen…“ und dem Eintrag deines Modells mit „Apple Silicon“ oder „CUPS+Gutenprint“ im Namen. Erscheint der Drucker nicht, verbinde ihn mit demselben Netzwerk wie den Mac und schalte ihn aus und wieder ein."
   ],
   [
    "Hilft es, Rosetta neu zu installieren?",
@@ -359,7 +359,7 @@
    "Print from iPhone & iPad entwickelt, damit alte USB-Drucker kabellos von iOS drucken."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 Host-Laserdrucker",
    "foo2zjs + automatischer USB-Firmware-Loader für HP 1018/1020/P1005/P1006 und Brother DCP-8080DN."
   ],

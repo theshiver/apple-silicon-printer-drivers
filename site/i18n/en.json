@@ -59,7 +59,7 @@
   ],
   [
    "“Generic PostScript Printer”, blank pages or missing options",
-   "macOS picked a generic driver. Install this driver, add the printer again and pick the “Apple Silicon” entry."
+   "macOS picked a generic driver. Install this driver, add the printer again and pick your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ],
   [
    "“Stopped - 'Filter' failed” or “'Data' failed”",
@@ -134,11 +134,11 @@
   ],
   [
    "My printer is on Wi-Fi, not USB.",
-   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ],
   [
    "The installer didn't add my printer.",
-   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ],
   [
    "Where are print quality and black & white?",
@@ -217,7 +217,7 @@
   ],
   [
    "My printer is on Wi-Fi, or wasn't set up automatically.",
-   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model ending in “Apple Silicon”."
+   "Install the driver, then open System Settings → Printers & Scanners, click Add, select your printer, choose Use: Select Software… and pick your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ]
  ],
  "brands_title": "Supported printer brands — Mac printer drivers for Apple Silicon",
@@ -236,19 +236,19 @@
   ],
   [
    "My printer doesn't show up in the list.",
-   "Search your model on the home page first: if it isn't supported, no entry will appear. If it is supported and connected over USB, restart the Mac once and unplug / re-plug the printer, and connect it directly rather than through a hub or dock. Then add it in System Settings → Printers & Scanners → Add, with Use: Select Software… and the entry for your model ending in “Apple Silicon”."
+   "Search your model on the home page first: if it isn't supported, no entry will appear. If it is supported and connected over USB, restart the Mac once and unplug / re-plug the printer, and connect it directly rather than through a hub or dock. Then add it in System Settings → Printers & Scanners → Add, with Use: Select Software… and the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ],
   [
    "“Software for this printer isn't available from Apple”.",
-   "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model ending in “Apple Silicon”."
+   "macOS shows this when you add a printer it has no driver for. Install this package first, then add the printer again in System Settings → Printers & Scanners → Add, choose Use: Select Software… and pick the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name."
   ],
   [
    "“No AirPrint printers found”, or AirPrint isn't offered.",
-   "Older printers don't support AirPrint. On your Mac, add them with Use: Select Software… and the “Apple Silicon” entry, after installing this package. To print from an iPhone or iPad, turn the printer on in Print from iPhone & iPad, which adds AirPrint through your Mac, even over USB."
+   "Older printers don't support AirPrint. On your Mac, add them with Use: Select Software… and the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name, after installing this package. To print from an iPhone or iPad, turn the printer on in Print from iPhone & iPad, which adds AirPrint through your Mac, even over USB."
   ],
   [
    "My printer is on Wi-Fi or Ethernet.",
-   "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the “Apple Silicon” entry. If the printer doesn't appear, connect it to the same network as the Mac and switch it off and on."
+   "The installer only sets up USB printers by itself. For a network printer, add it in System Settings → Printers & Scanners → Add with Use: Select Software… and the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name. If the printer doesn't appear, connect it to the same network as the Mac and switch it off and on."
   ],
   [
    "Will reinstalling Rosetta fix it?",
@@ -359,7 +359,7 @@
    "Built Print from iPhone & iPad so old USB printers work wirelessly from iOS."
   ],
   [
-   "v2.0.1 – v2.0.6",
+   "v2.0.1 – v2.0.7",
    "86 Host-Based Lasers",
    "Added foo2zjs + automatic USB firmware loader for HP 1018/1020/P1005/P1006 & Brother DCP-8080DN."
   ],

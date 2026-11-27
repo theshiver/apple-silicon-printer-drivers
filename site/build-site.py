@@ -13,7 +13,7 @@ DOCS = ROOT / "docs"
 BASE = "https://macprinterdrivers.com"
 REPO = "https://github.com/theshiver/apple-silicon-printer-drivers"
 RELEASE = f"{REPO}/releases/latest"
-PKG = "AppleSilicon-Printer-Drivers-2.0.6.pkg"
+PKG = "AppleSilicon-Printer-Drivers-2.0.7.pkg"
 TODAY = datetime.date.today().isoformat()
 
 models = json.load(open(DOCS / "models.json"))
@@ -360,6 +360,9 @@ def model_page(m, b, siblings, is_indexed=False):
               else f'<a href="https://github.com/OpenPrinting/splix">SpliX {SPLIX}</a>' if splix
               else f'<a href="https://packages.debian.org/source/sid/foo2zjs">foo2zjs {FOO2}</a>' if foo2
               else f'<a href="https://gimp-print.sourceforge.io/">Gutenprint {GUTENPRINT}</a>')
+    # what Select Software lists is the PPD's *NickName; Gutenprint's can't carry "Apple Silicon"
+    pick = (f"“{esc}” ending in “Apple Silicon”" if brlaser or splix or foo2
+            else f"“{esc} - CUPS+Gutenprint”")
     brand_url = f"{BASE}/{slug(b)}/" if b in BRANDS else f"{BASE}/brands/"
     brand_label = f"{b} printers" if b in BRANDS else "All brands"
     notes = []
@@ -395,7 +398,7 @@ def model_page(m, b, siblings, is_indexed=False):
 <p class="lead">Works on Apple Silicon Macs with {MACOS}. One free installer, no Rosetta, nothing to compile.</p>
 {download_card(f"The {esc} is supported")}
 <h2>Wi-Fi, network, or not detected over USB</h2>
-<ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Pick “{esc}” ending in “Apple Silicon” and click Add.</li></ol>
+<ol class="steps"><li>Install the driver above.</li><li>Open System Settings → Printers &amp; Scanners and click Add.</li><li>Select your printer, then under Use choose Select Software…</li><li>Type the model number in the search box, pick {pick} and click Add.</li></ol>
 <p><strong>Print from your iPhone or iPad?</strong> Your Mac can share the {esc} over AirPrint. <a href="{BASE}/print-from-iphone/">See how →</a></p>
 <h2>Why did my {esc} stop working?</h2>
 <p>{html.escape(b)}'s own Mac driver for this printer was built for Intel Macs only. On Apple Silicon it ran through Rosetta, but macOS 27 Golden Gate marks Intel-only printer drivers as incompatible, so System Settings now says <em>“The printer software is not compatible with this device”</em>. This package replaces it with {driver}, compiled natively for Apple Silicon.</p>

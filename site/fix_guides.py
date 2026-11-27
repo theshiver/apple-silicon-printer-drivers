@@ -41,7 +41,7 @@ FIX_GUIDES = [
         "faq": [
             (
                 "What if reinstalling Rosetta didn't fix my printer?",
-                "Remove the old printer entry in System Settings → Printers & Scanners, install the native Apple Silicon driver package above, restart once, and add the printer using the entry ending in “Apple Silicon”.",
+                "Remove the old printer entry in System Settings → Printers & Scanners, install the native Apple Silicon driver package above, restart once, and add the printer again, picking the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name.",
             ),
             (
                 "Does this driver work alongside Rosetta?",
@@ -86,7 +86,7 @@ FIX_GUIDES = [
                 "<ol class=\"steps\">"
                 "<li>Download and run the signed <code>.pkg</code> installer above.</li>"
                 "<li>If connected over <strong>USB</strong>, the installer sets up supported models automatically. If nothing appears, unplug and re-plug the USB cable (directly into the Mac, avoiding unpowered hubs).</li>"
-                "<li>For <strong>Wi-Fi / network</strong> printers or manual setup: click <strong>Add Printer…</strong>, select your printer, set <strong>Use: Select Software…</strong>, search for your model ending in <strong>“Apple Silicon”</strong>, and click <strong>Add</strong>.</li>"
+                "<li>For <strong>Wi-Fi / network</strong> printers or manual setup: click <strong>Add Printer…</strong>, select your printer, set <strong>Use: Select Software…</strong>, type your model number and pick the entry with <strong>“Apple Silicon”</strong> or <strong>“CUPS+Gutenprint”</strong> in its name, then click <strong>Add</strong>.</li>"
                 "</ol>",
             ),
         ],
@@ -134,7 +134,7 @@ FIX_GUIDES = [
                 "<ol class=\"steps\">"
                 "<li>Delete the failing printer queue in <strong>System Settings → Printers &amp; Scanners</strong>.</li>"
                 "<li>Install the native Apple Silicon driver package above (every filter—<code>rastertogutenprint.5.3</code>, <code>rastertobrlaser</code>, <code>rastertoqpdl</code> and <code>rastertofoo-*</code>—is compiled natively for <code>arm64</code> and signed).</li>"
-                "<li>Re-add the printer and make sure you pick the entry ending in <strong>“Apple Silicon”</strong>, not the old manufacturer entry.</li>"
+                "<li>Re-add the printer and make sure you pick the entry with <strong>“Apple Silicon”</strong> or <strong>“CUPS+Gutenprint”</strong> in its name, not the old manufacturer entry.</li>"
                 "</ol>",
             ),
         ],
@@ -145,7 +145,7 @@ FIX_GUIDES = [
             ),
             (
                 "I installed the package but the queue still says Filter failed.",
-                "Your queue is almost certainly still bound to the old manufacturer PPD. Remove that queue completely in Printers & Scanners and add the new entry whose name ends in “Apple Silicon”.",
+                "Your queue is almost certainly still bound to the old manufacturer PPD. Remove that queue completely in Printers & Scanners and add it again, picking the entry for your model with “Apple Silicon” or “CUPS+Gutenprint” in its name.",
             ),
         ],
         "related": [
@@ -174,7 +174,7 @@ FIX_GUIDES = [
                 "<li>Install the free native Apple Silicon driver package above.</li>"
                 "<li>Open <strong>System Settings → Printers &amp; Scanners</strong> and remove the <em>Generic PostScript</em> queue.</li>"
                 "<li>Click <strong>Add Printer…</strong>, select your printer, open the <strong>Use:</strong> dropdown and choose <strong>Select Software…</strong>.</li>"
-                "<li>Type your model number and pick the entry ending in <strong>“Apple Silicon”</strong> (for example, <code>Canon MP250 series - Apple Silicon</code>).</li>"
+                "<li>Type your model number and pick the entry with <strong>“Apple Silicon”</strong> or <strong>“CUPS+Gutenprint”</strong> in its name (for example, <code>Canon MP250 series - CUPS+Gutenprint v5.3.5</code>).</li>"
                 "</ol>",
             ),
             (
@@ -224,7 +224,7 @@ FIX_GUIDES = [
                 "<li><strong>Canon USB printers:</strong> Canon's old driver leaves a kernel extension that blocks macOS USB printing. The installer moves it aside automatically, but you must <strong>restart your Mac once</strong>, then unplug and re-plug the USB cable.</li>"
                 "<li><strong>HP LaserJet 1018 / 1020 / P1005 / P1006:</strong> these host-based lasers require RAM firmware upload after power-on; our launchd hotplug helper and filter handle this automatically.</li>"
                 "<li><strong>USB hubs and docks:</strong> if macOS doesn't detect the printer at all, plug the USB cable directly into the Mac (or through a simple USB-C adapter) instead of an unpowered hub.</li>"
-                "<li><strong>Wi-Fi / Ethernet printers:</strong> the installer auto-configures USB printers only. For network printers, use <strong>Add Printer → Use: Select Software…</strong> and pick your model ending in <strong>“Apple Silicon”</strong>.</li>"
+                "<li><strong>Wi-Fi / Ethernet printers:</strong> the installer auto-configures USB printers only. For network printers, use <strong>Add Printer → Use: Select Software…</strong> and pick your model with <strong>“Apple Silicon”</strong> or <strong>“CUPS+Gutenprint”</strong> in its name.</li>"
                 "</ul>",
             ),
         ],
@@ -321,7 +321,7 @@ TIER1_SPECIFIC_NOTES = {
     ),
     "canon/pixma-ip4300": (
         "The Canon PIXMA iP4300 photo inkjet supports duplex and high-resolution photo modes natively through arm64 Gutenprint. "
-        "If macOS added it as a Generic driver or refused the old Canon package, delete the old queue and pick “Canon PIXMA iP4300 - Apple Silicon”."
+        "If macOS added it as a Generic driver or refused the old Canon package, delete the old queue and pick “Canon PIXMA iP4300 - CUPS+Gutenprint”."
     ),
     "canon/pixma-ip4700": (
         "The Canon PIXMA iP4700 works natively over USB on macOS 27 Golden Gate via Gutenprint. "
@@ -329,7 +329,7 @@ TIER1_SPECIFIC_NOTES = {
     ),
     "hp/laserjet-1010": (
         "Unlike the 1018 and 1020, the HP LaserJet 1010 uses Gutenprint's PCL driver directly and does not require RAM firmware upload. "
-        "Connect over USB directly to the Mac; if macOS picked Generic PostScript, switch to “HP LaserJet 1010 - Apple Silicon”."
+        "Connect over USB directly to the Mac; if macOS picked Generic PostScript, switch to “HP LaserJet 1010 - CUPS+Gutenprint”."
     ),
     "hp/laserjet-1018": (
         "The HP LaserJet 1018 is a host-based Zenographics laser that loses its firmware whenever switched off. "
@@ -366,7 +366,7 @@ TIER1_SPECIFIC_NOTES = {
     ),
     "generic/pcl-6-pcl-xl-printer": (
         "Use the Generic PCL 6/PCL XL profile when your exact laser printer model isn't listed but supports PCL 6 / PCL XL. "
-        "Select it under System Settings → Printers & Scanners → Add → Use: Select Software… → “Generic PCL 6/PCL XL Printer - Apple Silicon”."
+        "Select it under System Settings → Printers & Scanners → Add → Use: Select Software… → “Generic PCL 6/PCL XL Printer - CUPS+Gutenprint”."
     ),
 }
 
