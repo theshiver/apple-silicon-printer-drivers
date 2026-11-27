@@ -88,12 +88,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           # the notarized package is built locally with Developer ID certs and attached first;
-          # CI only fills in when a tag has no package yet (and always refreshes checksums of its own build as ci-*)
+          # CI only fills in when a tag has no package yet. Its own build stays a workflow artifact:
+          # an unsigned package on the release page gets downloaded by mistake and blocked by Gatekeeper (issue #28).
           # probe the download URL: the release API's asset list can lag and come back empty
           PKG=$(basename dist/*.pkg)
           if curl -sfIL -o /dev/null "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/$PKG"; then
-            for f in dist/*; do cp "$f" "dist/ci-$(basename "$f")"; done
-            gh release upload "$GITHUB_REF_NAME" dist/ci-* --clobber
+            echo "release already has $PKG; CI build kept as a workflow artifact only"
           else
             gh release upload "$GITHUB_REF_NAME" dist/*.pkg dist/SHA256SUMS.txt --clobber
           fi
